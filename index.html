@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEOCODE | Desenvolvimento Web & Serviços Digitais</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">GEOCODE</div>
+            <button class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMenu()">Início</a></li>
+                <li><a href="#servicos" onclick="closeMenu()">Serviços</a></li>
+                <li><a href="#portfolio" onclick="closeMenu()">Portfólio</a></li>
+                <li><a href="#sobre" onclick="closeMenu()">Sobre</a></li>
+                <li><a href="#contato" onclick="closeMenu()">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>
+                Olá, sou <span class="gradient-text">Geovani Santos</span><br>
+                Desenvolvedor Web & Designer Digital
+            </h1>
+            <p>
+                Transformo ideias em experiências digitais incríveis. Especializado em desenvolvimento web, 
+                design gráfico e soluções tecnológicas personalizadas.
+            </p>
+            <div class="cta-buttons">
+                <a href="#servicos" class="btn btn-primary">
+                    Ver Serviços <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#contato" class="btn btn-secondary">
+                    Entre em Contato <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos">
+        <h2 class="section-title">Serviços Oferecidos</h2>
+        <p class="section-subtitle">Soluções digitais completas para suas necessidades</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3>Criação de Currículos</h3>
+                <p>
+                    Desenvolvo currículos profissionais e modernos gratuitamente, 
+                    destacando suas qualificações de forma estratégica para impressionar recrutadores.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Desenvolvimento Web</h3>
+                <p>
+                    Criação de sites e páginas web responsivas, modernas e otimizadas. 
+                    Do design à implementação, entrego soluções digitais completas.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-laptop"></i>
+                </div>
+                <h3>Aulas de Informática</h3>
+                <p>
+                    Ensino informática básica, pacote Office e ferramentas digitais essenciais 
+                    de forma didática e personalizada para todas as idades.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-share-alt"></i>
+                </div>
+                <h3>Social Media</h3>
+                <p>
+                    Gestão de redes sociais, criação de conteúdo visual e estratégias 
+                    digitais para aumentar o engajamento e visibilidade da sua marca.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2 class="section-title">Portfólio</h2>
+        <p class="section-subtitle">Alguns dos meus trabalhos recentes</p>
+        
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>Psi Meire França</h3>
+                    <p class="portfolio-client">Psicóloga Meire França</p>
+                    <p>
+                        Página web estática desenvolvida para apresentar serviços 
+                        e especialidades da psicóloga, com design clean e profissional.
+                    </p>
+                    <a href="https://psimeirefranca.vercel.app/" target="_blank" class="portfolio-link">
+                        Visitar site <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>D'Queiroz Advocacia</h3>
+                    <p class="portfolio-client">Escritório de Advocacia</p>
+                    <p>
+                        Página web desenvolvida para escritório de advocacia, 
+                        com sistema de armazenamento de arquivos jurídicos.
+                    </p>
+                    <a href="https://queirozadvocacia.vercel.app/" target="_blank" class="portfolio-link">
+                        Visitar site <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>Concursômetro</h3>
+                    <p class="portfolio-client">Elisângela A. Queiroz</p>
+                    <p>
+                        Planilha Excel completa para análise de desempenho em concursos, 
+                        com métricas detalhadas e visualizações.
+                    </p>
+                    <a href="https://drive.google.com/file/d/1TgVgnaUP3mFVo29wWVYxgk_wAuITrWD8/view" target="_blank" class="portfolio-link">
+                        Ver projeto <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <i class="fas fa-boxes"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>Controle de Estoque</h3>
+                    <p class="portfolio-client">Primasa Engenharia</p>
+                    <p>
+                        Sistema de gestão de inventário com controle de entradas, 
+                        saídas e monitoramento em tempo real.
+                    </p>
+                    <a href="https://drive.google.com/file/d/1XsM2XAjDm7HFU5ge56k-hb1YDDExr9JE/view" target="_blank" class="portfolio-link">
+                        Ver projeto <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>Controle Financeiro</h3>
+                    <p class="portfolio-client">Elisângela A. Queiroz</p>
+                    <p>
+                        Planilha de gerenciamento financeiro pessoal com análises 
+                        de gastos e projeções de saldo futuro.
+                    </p>
+                    <a href="https://drive.google.com/file/d/1G_A3pmpX2rR23uRfpwJwCk24t9QP9qtL/view" target="_blank" class="portfolio-link">
+                        Ver projeto <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <div class="portfolio-content">
+                    <h3>Controle de Processos</h3>
+                    <p class="portfolio-client">D'Queiroz Advocacia</p>
+                    <p>
+                        Sistema de gestão jurídica para organização e acompanhamento 
+                        de processos em escritórios de advocacia.
+                    </p>
+                    <a href="https://drive.google.com/file/d/1Hm5E_GOAOkB1YZB8E8vJZ_7unjEHVWHj/view" target="_blank" class="portfolio-link">
+                        Ver projeto <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <h2 class="section-title">Sobre Mim</h2>
+        <p class="section-subtitle">Conheça minha trajetória e experiência</p>
+        
+        <div class="about-content">
+            <div class="about-image">
+                <i class="fas fa-user"></i>
+            </div>
+            
+            <div class="about-text">
+                <h3>Geovani Santos</h3>
+                <p>
+                    Formado como <strong>Assistente Administrativo</strong> pelo SENAI e atualmente 
+                    cursando <strong>Ciência da Computação na Universidade Federal de Sergipe (UFS)</strong>.
+                </p>
+                <p>
+                    Tenho experiência em ministrar aulas para jovens entre 12 e 18 anos, com foco em 
+                    desenvolvimento web, design gráfico e lógica de programação. Já atuei como Assistente 
+                    Administrativo na Primasa Engenharia e como professor de Pacote Office, Design Gráfico 
+                    e Desenvolvimento Web na School Vision.
+                </p>
+                <p>
+                    Sou apaixonado por tecnologia, educação transformadora e por criar soluções digitais 
+                    que fazem a diferença. Multiatleta e entusiasta de inovação, busco constantemente 
+                    unir conhecimentos administrativos e tecnológicos em projetos eficientes.
+                </p>
+                
+                <div class="skills">
+                    <span class="skill-tag">HTML/CSS/JavaScript</span>
+                    <span class="skill-tag">Design Gráfico</span>
+                    <span class="skill-tag">Excel Avançado</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Scratch</span>
+                    <span class="skill-tag">Administração</span>
+                    <span class="skill-tag">Ensino</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <h2 class="section-title">Entre em Contato</h2>
+        <p class="section-subtitle">Vamos conversar sobre seu projeto!</p>
+        
+        <div class="contact-container">
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div>
+                        <strong>Email</strong><br>
+                        <a href="mailto:geocodeprogrammer@gmail.com">geocodeprogrammer@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div>
+                        <strong>Telefone</strong><br>
+                        <a href="tel:+5579988663905">+55 (79) 98866-3905</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://wa.me/+5579988663905" target="_blank" class="social-btn" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://instagram.com/geovanikeeper" target="_blank" class="social-btn" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/@GEOCODEProgrammer" target="_blank" class="social-btn" title="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="https://discord.gg/96WEpwWWG2" target="_blank" class="social-btn" title="Discord">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/eusougeovani/" target="_blank" class="social-btn" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Geovani Santos - GEOCODE Programmer. Todos os direitos reservados.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">Desenvolvido com <i class="fas fa-heart" style="color: #06b6d4;"></i> por GEOCODE</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
