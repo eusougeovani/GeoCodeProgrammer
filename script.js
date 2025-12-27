@@ -1,3 +1,15 @@
+// Seleciona o elemento onde o ano será exibido
+const elementoAno = document.getElementById('anoAtual');
+
+// Cria um objeto Date para obter a data e hora atuais
+const data = new Date();
+
+// Pega apenas o ano (getFullYear)
+const anoAtual = data.getFullYear();
+
+// Insere o ano no elemento HTML
+elementoAno.innerHTML = anoAtual;
+
 function toggleMenu() {
     const navLinks = document.getElementById('navLinks');
     navLinks.classList.toggle('active');
