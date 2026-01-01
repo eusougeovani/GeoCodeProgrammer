@@ -1,0 +1,15 @@
+{
+  "name": "GeoCODE Programmer",
+  "short_name": "GeoCODE",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#1e40af",
+  "theme_color": "#1e40af",
+  "icons": [
+    {
+      "src": "icon_geocodemob.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
