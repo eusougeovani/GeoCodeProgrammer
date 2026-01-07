@@ -3,12 +3,12 @@
   "short_name": "GeoCODE",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#1e40af",
-  "theme_color": "#1e40af",
+  "background_color": "#0a1428",
+  "theme_color": "#0a1428",
   "icons": [
     {
-      "src": "icon_geocodemob.png",
-      "sizes": "512x512",
+      "src": "geocode.png",
+      "sizes": "300x169",
       "type": "image/png"
     }
   ]
