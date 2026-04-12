@@ -2,496 +2,524 @@
 <html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <meta name="author" content="Geovani Santos — GeoCODE Programmer" />
-  <meta name="theme-color" content="#050B18" />
-  <meta name="description"
-    content="GeoCODE Programmer — Geovani Santos. Desenvolvimento de sites institucionais, sistemas CRM, digital signage e aulas de tecnologia em Sergipe." />
-  <meta name="keywords"
-    content="desenvolvedor web, freelancer Sergipe, Firebase, HTML CSS JavaScript, digital signage, CRM, aulas de programação" />
-  <!-- Open Graph -->
-  <meta property="og:title" content="GeoCODE Programmer — Geovani Santos" />
-  <meta property="og:description"
-    content="Soluções web de alto nível: Sites Institucionais, Sistemas CRM, Digital Signage e Mentoria em Tecnologia." />
-  <meta property="og:type" content="website" />
-  <title>GeoCODE Programmer — Geovani Santos</title>
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="geocode.png" type="image/png" />
-  <!-- Fonts: Syne (display) + Figtree (body) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Figtree:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="author" content="Geovani Santos — GeoCODE Programmer" />
+    <meta name="theme-color" content="#050B18" />
+    <meta name="description"
+        content="GeoCODE Programmer — Geovani Santos. Desenvolvimento de sites institucionais, sistemas CRM, digital signage e aulas de tecnologia em Sergipe." />
+    <meta name="keywords"
+        content="desenvolvedor web, freelancer Sergipe, Firebase, HTML CSS JavaScript, digital signage, CRM, aulas de programação" />
+    <link rel="icon" type="image/png" href="/assets/img/ui/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/ui/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/img/ui/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/ui/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="GeoCODE" />
+    <link rel="manifest" href="/assets/img/ui/site.webmanifest" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="GeoCODE Programmer — Geovani Santos" />
+    <meta property="og:description"
+        content="Soluções web de alto nível: Sites Institucionais, Sistemas CRM, Digital Signage e Mentoria em Tecnologia." />
+    <meta property="og:type" content="website" />
+    <title>GeoCODE Programmer — Geovani Santos</title>
+    <!-- Fonts: Syne (display) + Figtree (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Figtree:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-  <!-- ═══════════════════════════════════ HEADER ══════════════════════════════════ -->
-  <header id="site-header" role="banner">
-    <nav aria-label="Navegação principal">
-      <a href="#home" class="logo" aria-label="GeoCODE — página inicial">
-        <img src="geocode.png" alt="GeoCODE" height="36" />
-      </a>
+    <!-- ═══════════════════════════════════ HEADER ══════════════════════════════════ -->
+    <header id="site-header" role="banner">
+        <nav aria-label="Navegação principal">
+            <a href="#home" class="logo" aria-label="GeoCODE — página inicial">
+                <img src="geocode.png" alt="GeoCODE" height="36" />
+            </a>
 
-      <ul class="nav-links" id="navLinks" role="list">
-        <li><a href="#home" class="nav-link">Início</a></li>
-        <li><a href="#servicos" class="nav-link">Serviços</a></li>
-        <li><a href="#portfolio" class="nav-link">Portfólio</a></li>
-        <li><a href="#sobre" class="nav-link">Sobre</a></li>
-        <li>
-          <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
-            target="_blank" rel="noopener noreferrer" class="nav-cta">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i> Falar Agora
-          </a>
-        </li>
-      </ul>
-
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false"
-        aria-controls="navLinks">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </nav>
-  </header>
-
-  <main>
-
-    <!-- ═══════════════════════════════════ HERO ════════════════════════════════════ -->
-    <section class="hero" id="home" aria-label="Apresentação">
-      <div class="hero__bg-grid" aria-hidden="true"></div>
-      <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
-      <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
-
-      <div class="hero__content">
-        <p class="hero__tag reveal" aria-label="Localização">
-          <span class="hero__dot" aria-hidden="true"></span>
-          Aracaju — SE &nbsp;·&nbsp; Disponível para projetos remotos
-        </p>
-
-        <h1 class="hero__title reveal reveal--delay-1">
-          Soluções digitais<br />
-          <span class="gradient-text">que geram resultados.</span>
-        </h1>
-
-        <p class="hero__desc reveal reveal--delay-2">
-          Sou <strong>Geovani Santos</strong>, desenvolvedor web full-stack e instrutor de tecnologia.
-          Construo desde sites institucionais de alta performance até sistemas CRM sob medida —
-          sempre com código limpo, arquitetura escalável e entrega no prazo.
-        </p>
-
-        <div class="hero__cta reveal reveal--delay-3">
-          <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20um%20orçamento."
-            target="_blank" rel="noopener noreferrer" class="btn btn--primary">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i>
-            Solicitar Orçamento
-          </a>
-          <a href="#portfolio" class="btn btn--ghost">
-            Ver Portfólio <i class="fas fa-arrow-down" aria-hidden="true"></i>
-          </a>
-        </div>
-
-        <div class="hero__stats reveal reveal--delay-4" aria-label="Números">
-          <div class="hero__stat">
-            <span class="hero__stat-num" data-count="15">0</span>
-            <span class="hero__stat-label">Projetos entregues</span>
-          </div>
-          <div class="hero__stat-divider" aria-hidden="true"></div>
-          <div class="hero__stat">
-            <span class="hero__stat-num" data-count="3">0</span>
-            <span class="hero__stat-label">Anos de experiência</span>
-          </div>
-          <div class="hero__stat-divider" aria-hidden="true"></div>
-          <div class="hero__stat">
-            <span class="hero__stat-num" data-count="100">0</span><span class="hero__stat-suffix">%</span>
-            <span class="hero__stat-label">Satisfação garantida</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero__scroll" aria-hidden="true">
-        <span>scroll</span>
-        <div class="hero__scroll-line"></div>
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════ SERVIÇOS ══════════════════════════════════ -->
-    <section class="services" id="servicos" aria-labelledby="services-title">
-      <div class="container">
-        <header class="section-header">
-          <p class="section-tag reveal">// 01 — Serviços</p>
-          <h2 class="section-title reveal" id="services-title">
-            O que posso <span class="gradient-text">fazer por você</span>
-          </h2>
-          <p class="section-desc reveal">
-            Cada projeto é tratado com a mesma seriedade de uma grande agência — mas com a agilidade
-            e atenção personalizada de um parceiro técnico dedicado.
-          </p>
-        </header>
-
-        <div class="services__grid">
-
-          <article class="service-card reveal" aria-label="Sites Institucionais">
-            <div class="service-card__number" aria-hidden="true">01</div>
-            <div class="service-card__icon" aria-hidden="true">
-              <i class="fas fa-globe"></i>
-            </div>
-            <h3 class="service-card__title">Sites Institucionais</h3>
-            <p class="service-card__desc">
-              Presença digital que vende. Desenvolvo sites de alta performance com SEO técnico,
-              design responsivo (mobile-first) e código semântico que os buscadores adoram.
-            </p>
-            <ul class="service-card__list" aria-label="Inclui">
-              <li><i class="fas fa-check" aria-hidden="true"></i> Design responsivo e acessível</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Otimização para SEO e Core Web Vitals</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Hospedagem na Vercel com HTTPS</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Integração com Firebase / Analytics</li>
+            <ul class="nav-links" id="navLinks" role="list">
+                <li><a href="#home" class="nav-link">Início</a></li>
+                <li><a href="#servicos" class="nav-link">Serviços</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfólio</a></li>
+                <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li>
+                    <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+                        target="_blank" rel="noopener noreferrer" class="nav-cta">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i> Falar Agora
+                    </a>
+                </li>
             </ul>
-            <a href="https://wa.me/+5579988663905?text=Quero%20um%20site%20institucional."
-              target="_blank" rel="noopener noreferrer" class="service-card__link">
-              Solicitar proposta <i class="fas fa-arrow-right" aria-hidden="true"></i>
-            </a>
-          </article>
 
-          <article class="service-card reveal" aria-label="CRMs e Sistemas Sob Medida">
-            <div class="service-card__number" aria-hidden="true">02</div>
-            <div class="service-card__icon" aria-hidden="true">
-              <i class="fas fa-cubes"></i>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false"
+                aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ═══════════════════════════════════ HERO ════════════════════════════════════ -->
+        <section class="hero" id="home" aria-label="Apresentação">
+            <div class="hero__bg-grid" aria-hidden="true"></div>
+            <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
+            <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
+
+            <div class="hero__content">
+                <p class="hero__tag reveal" aria-label="Localização">
+                    <span class="hero__dot" aria-hidden="true"></span>
+                    Aracaju — SE &nbsp;·&nbsp; Disponível para projetos remotos
+                </p>
+
+                <h1 class="hero__title reveal reveal--delay-1">
+                    Soluções digitais<br />
+                    <span class="gradient-text">que geram resultados.</span>
+                </h1>
+
+                <p class="hero__desc reveal reveal--delay-2">
+                    Sou <strong>Geovani Santos</strong>, desenvolvedor web full-stack e instrutor de tecnologia.
+                    Construo desde sites institucionais de alta performance até sistemas CRM sob medida —
+                    sempre com código limpo, arquitetura escalável e entrega no prazo.
+                </p>
+
+                <div class="hero__cta reveal reveal--delay-3">
+                    <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20um%20orçamento."
+                        target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        Solicitar Orçamento
+                    </a>
+                    <a href="#portfolio" class="btn btn--ghost">
+                        Ver Portfólio <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <div class="hero__stats reveal reveal--delay-4" aria-label="Números">
+                    <div class="hero__stat">
+                        <span class="hero__stat-num" data-count="15">0</span>
+                        <span class="hero__stat-label">Projetos entregues</span>
+                    </div>
+                    <div class="hero__stat-divider" aria-hidden="true"></div>
+                    <div class="hero__stat">
+                        <span class="hero__stat-num" data-count="3">0</span>
+                        <span class="hero__stat-label">Anos de experiência</span>
+                    </div>
+                    <div class="hero__stat-divider" aria-hidden="true"></div>
+                    <div class="hero__stat">
+                        <span class="hero__stat-num" data-count="100">0</span><span class="hero__stat-suffix">%</span>
+                        <span class="hero__stat-label">Satisfação garantida</span>
+                    </div>
+                </div>
             </div>
-            <h3 class="service-card__title">CRMs & Sistemas Sob Medida</h3>
-            <p class="service-card__desc">
-              Lógicas de negócio complexas transformadas em sistemas web escaláveis. Arquitetura
-              pensada para crescer junto com a sua operação, com banco de dados em tempo real.
-            </p>
-            <ul class="service-card__list" aria-label="Inclui">
-              <li><i class="fas fa-check" aria-hidden="true"></i> Backend com Firebase Firestore & Auth</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Regras de segurança (Firebase Rules)</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Dashboards e relatórios interativos</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Controle de usuários e permissões</li>
-            </ul>
-            <a href="https://wa.me/+5579988663905?text=Preciso%20de%20um%20sistema%20sob%20medida."
-              target="_blank" rel="noopener noreferrer" class="service-card__link">
-              Solicitar proposta <i class="fas fa-arrow-right" aria-hidden="true"></i>
-            </a>
-          </article>
 
-          <article class="service-card reveal" aria-label="Digital Signage">
-            <div class="service-card__number" aria-hidden="true">03</div>
-            <div class="service-card__icon" aria-hidden="true">
-              <i class="fas fa-tv"></i>
+            <div class="hero__scroll" aria-hidden="true">
+                <span>scroll</span>
+                <div class="hero__scroll-line"></div>
             </div>
-            <h3 class="service-card__title">Digital Signage</h3>
-            <p class="service-card__desc">
-              Soluções interativas para comunicação visual em painéis digitais. Transformo TVs e
-              totens em canais de informação dinâmicos, com atualização remota e em tempo real.
-            </p>
-            <ul class="service-card__list" aria-label="Inclui">
-              <li><i class="fas fa-check" aria-hidden="true"></i> Painéis web para TV/totem</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Atualização de conteúdo em tempo real</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Layouts interativos e animados</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Integração com fontes de dados externas</li>
-            </ul>
-            <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20em%20digital%20signage."
-              target="_blank" rel="noopener noreferrer" class="service-card__link">
-              Solicitar proposta <i class="fas fa-arrow-right" aria-hidden="true"></i>
-            </a>
-          </article>
+        </section>
 
-          <article class="service-card reveal" aria-label="Aulas de Tecnologia">
-            <div class="service-card__number" aria-hidden="true">04</div>
-            <div class="service-card__icon" aria-hidden="true">
-              <i class="fas fa-chalkboard-teacher"></i>
+        <!-- ════════════════════════════════ SERVIÇOS ══════════════════════════════════ -->
+        <section class="services" id="servicos" aria-labelledby="services-title">
+            <div class="container">
+                <header class="section-header">
+                    <p class="section-tag reveal">// 01 — Serviços</p>
+                    <h2 class="section-title reveal" id="services-title">
+                        O que posso <span class="gradient-text">fazer por você</span>
+                    </h2>
+                    <p class="section-desc reveal">
+                        Cada projeto é tratado com a mesma seriedade de uma grande agência — mas com a agilidade
+                        e atenção personalizada de um parceiro técnico dedicado.
+                    </p>
+                </header>
+
+                <div class="services__grid">
+
+                    <article class="service-card reveal" aria-label="Sites Institucionais">
+                        <div class="service-card__number" aria-hidden="true">01</div>
+                        <div class="service-card__icon" aria-hidden="true">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3 class="service-card__title">Sites Institucionais</h3>
+                        <p class="service-card__desc">
+                            Presença digital que vende. Desenvolvo sites de alta performance com SEO técnico,
+                            design responsivo (mobile-first) e código semântico que os buscadores adoram.
+                        </p>
+                        <ul class="service-card__list" aria-label="Inclui">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Design responsivo e acessível</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Otimização para SEO e Core Web Vitals
+                            </li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Hospedagem na Vercel com HTTPS</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Integração com Firebase / Analytics</li>
+                        </ul>
+                        <a href="https://wa.me/+5579988663905?text=Quero%20um%20site%20institucional." target="_blank"
+                            rel="noopener noreferrer" class="service-card__link">
+                            Solicitar proposta <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </article>
+
+                    <article class="service-card reveal" aria-label="CRMs e Sistemas Sob Medida">
+                        <div class="service-card__number" aria-hidden="true">02</div>
+                        <div class="service-card__icon" aria-hidden="true">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <h3 class="service-card__title">CRMs & Sistemas Sob Medida</h3>
+                        <p class="service-card__desc">
+                            Lógicas de negócio complexas transformadas em sistemas web escaláveis. Arquitetura
+                            pensada para crescer junto com a sua operação, com banco de dados em tempo real.
+                        </p>
+                        <ul class="service-card__list" aria-label="Inclui">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Backend com Firebase Firestore & Auth
+                            </li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Regras de segurança (Firebase Rules)
+                            </li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Dashboards e relatórios interativos</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Controle de usuários e permissões</li>
+                        </ul>
+                        <a href="https://wa.me/+5579988663905?text=Preciso%20de%20um%20sistema%20sob%20medida."
+                            target="_blank" rel="noopener noreferrer" class="service-card__link">
+                            Solicitar proposta <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </article>
+
+                    <article class="service-card reveal" aria-label="Digital Signage">
+                        <div class="service-card__number" aria-hidden="true">03</div>
+                        <div class="service-card__icon" aria-hidden="true">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <h3 class="service-card__title">Digital Signage</h3>
+                        <p class="service-card__desc">
+                            Soluções interativas para comunicação visual em painéis digitais. Transformo TVs e
+                            totens em canais de informação dinâmicos, com atualização remota e em tempo real.
+                        </p>
+                        <ul class="service-card__list" aria-label="Inclui">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Painéis web para TV/totem</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Atualização de conteúdo em tempo real
+                            </li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Layouts interativos e animados</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Integração com fontes de dados externas
+                            </li>
+                        </ul>
+                        <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20em%20digital%20signage."
+                            target="_blank" rel="noopener noreferrer" class="service-card__link">
+                            Solicitar proposta <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </article>
+
+                    <article class="service-card reveal" aria-label="Aulas de Tecnologia">
+                        <div class="service-card__number" aria-hidden="true">04</div>
+                        <div class="service-card__icon" aria-hidden="true">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                        </div>
+                        <h3 class="service-card__title">Aulas de Tecnologia</h3>
+                        <p class="service-card__desc">
+                            Mentoria e ensino com metodologia prática. Do básico de informática à lógica de
+                            programação e desenvolvimento web — presencial em Aracaju ou online para todo o Brasil.
+                        </p>
+                        <ul class="service-card__list" aria-label="Inclui">
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Informática básica e Pacote Office</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> HTML, CSS e JavaScript do zero</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Lógica de programação com Scratch</li>
+                            <li><i class="fas fa-check" aria-hidden="true"></i> Aulas online e presenciais</li>
+                        </ul>
+                        <a href="https://wa.me/+5579988663905?text=Quero%20agendar%20uma%20aula." target="_blank"
+                            rel="noopener noreferrer" class="service-card__link">
+                            Agendar aula <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+                    </article>
+
+                </div>
             </div>
-            <h3 class="service-card__title">Aulas de Tecnologia</h3>
-            <p class="service-card__desc">
-              Mentoria e ensino com metodologia prática. Do básico de informática à lógica de
-              programação e desenvolvimento web — presencial em Aracaju ou online para todo o Brasil.
-            </p>
-            <ul class="service-card__list" aria-label="Inclui">
-              <li><i class="fas fa-check" aria-hidden="true"></i> Informática básica e Pacote Office</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> HTML, CSS e JavaScript do zero</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Lógica de programação com Scratch</li>
-              <li><i class="fas fa-check" aria-hidden="true"></i> Aulas online e presenciais</li>
-            </ul>
-            <a href="https://wa.me/+5579988663905?text=Quero%20agendar%20uma%20aula."
-              target="_blank" rel="noopener noreferrer" class="service-card__link">
-              Agendar aula <i class="fas fa-arrow-right" aria-hidden="true"></i>
-            </a>
-          </article>
+        </section>
 
+        <!-- ══════════════════════════════ PROCESSO ════════════════════════════════════ -->
+        <section class="process" id="processo" aria-labelledby="process-title">
+            <div class="container">
+                <header class="section-header">
+                    <p class="section-tag reveal">// 02 — Como Funciona</p>
+                    <h2 class="section-title reveal" id="process-title">
+                        Do briefing à <span class="gradient-text">entrega final</span>
+                    </h2>
+                </header>
+
+                <ol class="process__steps" aria-label="Etapas do processo">
+                    <li class="process__step reveal">
+                        <div class="process__step-num" aria-hidden="true">01</div>
+                        <div class="process__step-body">
+                            <h3>Reunião & Briefing</h3>
+                            <p>Entendemos a fundo sua necessidade, objetivos e público-alvo. Sem suposições — só
+                                clareza.</p>
+                        </div>
+                    </li>
+                    <li class="process__step reveal">
+                        <div class="process__step-num" aria-hidden="true">02</div>
+                        <div class="process__step-body">
+                            <h3>Proposta Transparente</h3>
+                            <p>Você recebe um orçamento detalhado com escopo, prazo, valor e formas de pagamento. Sem
+                                surpresas.</p>
+                        </div>
+                    </li>
+                    <li class="process__step reveal">
+                        <div class="process__step-num" aria-hidden="true">03</div>
+                        <div class="process__step-body">
+                            <h3>Desenvolvimento & Revisões</h3>
+                            <p>Acompanhamento constante com entregas parciais. Você valida cada etapa antes de seguirmos
+                                adiante.</p>
+                        </div>
+                    </li>
+                    <li class="process__step reveal">
+                        <div class="process__step-num" aria-hidden="true">04</div>
+                        <div class="process__step-body">
+                            <h3>Entrega & Suporte</h3>
+                            <p>Deploy na Vercel, treinamento de uso e suporte pós-entrega. Sua solução, funcionando de
+                                verdade.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- ══════════════════════════════ PORTFÓLIO ═══════════════════════════════════ -->
+        <section class="portfolio" id="portfolio" aria-labelledby="portfolio-title">
+            <div class="container">
+                <header class="section-header">
+                    <p class="section-tag reveal">// 03 — Portfólio</p>
+                    <h2 class="section-title reveal" id="portfolio-title">
+                        Projetos que <span class="gradient-text">falam por si</span>
+                    </h2>
+                    <p class="section-desc reveal">
+                        Cada entrega representa uma parceria real, um problema resolvido e um cliente satisfeito.
+                    </p>
+                </header>
+
+                <div class="portfolio__grid">
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-card__thumb portfolio-card__thumb--blue" aria-hidden="true">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="portfolio-card__body">
+                            <span class="portfolio-card__category">Site Institucional</span>
+                            <h3 class="portfolio-card__title">Psi Meire França</h3>
+                            <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i>
+                                Psicóloga Meire França</p>
+                            <p class="portfolio-card__desc">Site institucional estático com design clean e profissional
+                                para apresentar serviços e especialidades da psicóloga.</p>
+                            <a href="https://psimeirefranca.vercel.app/" target="_blank" rel="noopener noreferrer"
+                                class="portfolio-card__link">
+                                Visitar site <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-card__thumb portfolio-card__thumb--dark" aria-hidden="true">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div class="portfolio-card__body">
+                            <span class="portfolio-card__category">Site + Sistema</span>
+                            <h3 class="portfolio-card__title">D'Queiroz Advocacia</h3>
+                            <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i>
+                                Escritório de Advocacia</p>
+                            <p class="portfolio-card__desc">Site institucional com sistema integrado de armazenamento e
+                                gestão de arquivos jurídicos para escritório de advocacia.</p>
+                            <a href="https://queirozadvocacia.vercel.app/" target="_blank" rel="noopener noreferrer"
+                                class="portfolio-card__link">
+                                Visitar site <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-card__thumb portfolio-card__thumb--teal" aria-hidden="true">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="portfolio-card__body">
+                            <span class="portfolio-card__category">Planilha Avançada</span>
+                            <h3 class="portfolio-card__title">Concursômetro</h3>
+                            <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i>
+                                Elisângela A. Queiroz</p>
+                            <p class="portfolio-card__desc">Planilha Excel avançada para análise de desempenho em
+                                concursos, com métricas detalhadas e visualizações automáticas.</p>
+                            <a href="https://drive.google.com/file/d/1TgVgnaUP3mFVo29wWVYxgk_wAuITrWD8/view"
+                                target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
+                                Ver projeto <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-card__thumb portfolio-card__thumb--purple" aria-hidden="true">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <div class="portfolio-card__body">
+                            <span class="portfolio-card__category">Sistema CRM</span>
+                            <h3 class="portfolio-card__title">Controle de Estoque</h3>
+                            <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i> Primasa
+                                Engenharia</p>
+                            <p class="portfolio-card__desc">Sistema de gestão de inventário com controle de entradas,
+                                saídas e monitoramento de estoque em tempo real.</p>
+                            <a href="https://drive.google.com/file/d/1XsM2XAjDm7HFU5ge56k-hb1YDDExr9JE/view"
+                                target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
+                                Ver projeto <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-card__thumb portfolio-card__thumb--orange" aria-hidden="true">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="portfolio-card__body">
+                            <span class="portfolio-card__category">Planilha Avançada</span>
+                            <h3 class="portfolio-card__title">Controle Financeiro</h3>
+                            <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i>
+                                Elisângela A. Queiroz</p>
+                            <p class="portfolio-card__desc">Planilha de gerenciamento financeiro pessoal com análises de
+                                gastos, categorização e projeções de saldo futuro.</p>
+                            <a href="https://drive.google.com/file/d/1G_A3pmpX2rR23uRfpwJwCk24t9QP9qtL/view"
+                                target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
+                                Ver projeto <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="portfolio-card reveal">
+                        <div class="portfolio-card__thumb portfolio-card__thumb--green" aria-hidden="true">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <div class="portfolio-card__body">
+                            <span class="portfolio-card__category">Sistema CRM</span>
+                            <h3 class="portfolio-card__title">Controle de Processos</h3>
+                            <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i>
+                                D'Queiroz Advocacia</p>
+                            <p class="portfolio-card__desc">Sistema de gestão jurídica para organização e acompanhamento
+                                de processos em escritórios de advocacia.</p>
+                            <a href="https://drive.google.com/file/d/1Hm5E_GOAOkB1YZB8E8vJZ_7unjEHVWHj/view"
+                                target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
+                                Ver projeto <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════ SOBRE ═════════════════════════════════════ -->
+        <section class="about" id="sobre" aria-labelledby="about-title">
+            <div class="container">
+                <div class="about__grid">
+
+                    <div class="about__visual" aria-hidden="true">
+                        <div class="about__avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="about__badge about__badge--1">
+                            <i class="fas fa-graduation-cap"></i> UFS — Ciência da Computação
+                        </div>
+                        <div class="about__badge about__badge--2">
+                            <i class="fas fa-fire"></i> Firebase Certified Flow
+                        </div>
+                    </div>
+
+                    <div class="about__text">
+                        <p class="section-tag reveal">// 04 — Sobre</p>
+                        <h2 class="section-title reveal" id="about-title">
+                            Quem está por trás<br /><span class="gradient-text">do código</span>
+                        </h2>
+
+                        <p class="about__bio reveal">
+                            Sou <strong>Geovani Santos</strong>, desenvolvedor web full-stack baseado em Aracaju (SE).
+                            Formado como <strong>Assistente Administrativo pelo SENAI</strong> e
+                            cursando <strong>Ciência da Computação na UFS</strong>, combino visão administrativa
+                            com profundidade técnica para entregar soluções que realmente funcionam no mundo real.
+                        </p>
+                        <p class="about__bio reveal">
+                            Já atuei como instrutor na <strong>School Vision</strong>, ministrando aulas de
+                            desenvolvimento web, design gráfico e lógica de programação para jovens de 12 a 18 anos.
+                            Fui Assistente Administrativo na <strong>Primasa Engenharia</strong> — o que me deu
+                            perspectiva de negócio que poucos devs têm.
+                        </p>
+
+                        <div class="about__stack reveal" aria-label="Stack tecnológica">
+                            <span class="stack-tag">HTML5</span>
+                            <span class="stack-tag">CSS3</span>
+                            <span class="stack-tag">JavaScript ES6+</span>
+                            <span class="stack-tag">Firebase</span>
+                            <span class="stack-tag">Firestore</span>
+                            <span class="stack-tag">Vercel</span>
+                            <span class="stack-tag">Excel Avançado</span>
+                            <span class="stack-tag">Python</span>
+                            <span class="stack-tag">Scratch</span>
+                            <span class="stack-tag">Design Gráfico</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════ CONTATO ════════════════════════════════════ -->
+        <section class="contact" id="contato" aria-labelledby="contact-title">
+            <div class="container">
+                <div class="contact__card reveal">
+                    <p class="section-tag">// 05 — Contato</p>
+                    <h2 class="contact__title" id="contact-title">
+                        Pronto para <span class="gradient-text">começar?</span>
+                    </h2>
+                    <p class="contact__desc">
+                        Me chame pelo WhatsApp e receba um orçamento detalhado em até 24h.
+                        Sem jargão técnico — só clareza, prazo e valor justo.
+                    </p>
+
+                    <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+                        target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp btn--lg">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        Falar no WhatsApp
+                    </a>
+
+                    <div class="contact__links" aria-label="Outras formas de contato">
+                        <a href="mailto:geocodeprogrammer@gmail.com" class="contact__link" aria-label="Enviar e-mail">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <span>geocodeprogrammer@gmail.com</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/eusougeovani/" target="_blank" rel="noopener noreferrer"
+                            class="contact__link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin" aria-hidden="true"></i>
+                            <span>linkedin.com/in/eusougeovani</span>
+                        </a>
+                        <a href="https://instagram.com/geovanikeeper" target="_blank" rel="noopener noreferrer"
+                            class="contact__link" aria-label="Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                            <span>@geovanikeeper</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <p class="site-footer__copy">
+                &copy; <span id="anoAtual"></span> GeoCODE Programmer · Geovani Santos. Todos os direitos reservados.
+            </p>
+            <p class="site-footer__made">
+                Feito com <i class="fas fa-code" aria-hidden="true"></i> e <i class="fas fa-coffee"
+                    aria-hidden="true"></i>
+                em Aracaju — SE
+            </p>
         </div>
-      </div>
-    </section>
+    </footer>
 
-    <!-- ══════════════════════════════ PROCESSO ════════════════════════════════════ -->
-    <section class="process" id="processo" aria-labelledby="process-title">
-      <div class="container">
-        <header class="section-header">
-          <p class="section-tag reveal">// 02 — Como Funciona</p>
-          <h2 class="section-title reveal" id="process-title">
-            Do briefing à <span class="gradient-text">entrega final</span>
-          </h2>
-        </header>
-
-        <ol class="process__steps" aria-label="Etapas do processo">
-          <li class="process__step reveal">
-            <div class="process__step-num" aria-hidden="true">01</div>
-            <div class="process__step-body">
-              <h3>Reunião & Briefing</h3>
-              <p>Entendemos a fundo sua necessidade, objetivos e público-alvo. Sem suposições — só clareza.</p>
-            </div>
-          </li>
-          <li class="process__step reveal">
-            <div class="process__step-num" aria-hidden="true">02</div>
-            <div class="process__step-body">
-              <h3>Proposta Transparente</h3>
-              <p>Você recebe um orçamento detalhado com escopo, prazo, valor e formas de pagamento. Sem surpresas.</p>
-            </div>
-          </li>
-          <li class="process__step reveal">
-            <div class="process__step-num" aria-hidden="true">03</div>
-            <div class="process__step-body">
-              <h3>Desenvolvimento & Revisões</h3>
-              <p>Acompanhamento constante com entregas parciais. Você valida cada etapa antes de seguirmos adiante.</p>
-            </div>
-          </li>
-          <li class="process__step reveal">
-            <div class="process__step-num" aria-hidden="true">04</div>
-            <div class="process__step-body">
-              <h3>Entrega & Suporte</h3>
-              <p>Deploy na Vercel, treinamento de uso e suporte pós-entrega. Sua solução, funcionando de verdade.</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════ PORTFÓLIO ═══════════════════════════════════ -->
-    <section class="portfolio" id="portfolio" aria-labelledby="portfolio-title">
-      <div class="container">
-        <header class="section-header">
-          <p class="section-tag reveal">// 03 — Portfólio</p>
-          <h2 class="section-title reveal" id="portfolio-title">
-            Projetos que <span class="gradient-text">falam por si</span>
-          </h2>
-          <p class="section-desc reveal">
-            Cada entrega representa uma parceria real, um problema resolvido e um cliente satisfeito.
-          </p>
-        </header>
-
-        <div class="portfolio__grid">
-
-          <article class="portfolio-card reveal">
-            <div class="portfolio-card__thumb portfolio-card__thumb--blue" aria-hidden="true">
-              <i class="fas fa-brain"></i>
-            </div>
-            <div class="portfolio-card__body">
-              <span class="portfolio-card__category">Site Institucional</span>
-              <h3 class="portfolio-card__title">Psi Meire França</h3>
-              <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i> Psicóloga Meire França</p>
-              <p class="portfolio-card__desc">Site institucional estático com design clean e profissional para apresentar serviços e especialidades da psicóloga.</p>
-              <a href="https://psimeirefranca.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
-                Visitar site <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-              </a>
-            </div>
-          </article>
-
-          <article class="portfolio-card reveal">
-            <div class="portfolio-card__thumb portfolio-card__thumb--dark" aria-hidden="true">
-              <i class="fas fa-balance-scale"></i>
-            </div>
-            <div class="portfolio-card__body">
-              <span class="portfolio-card__category">Site + Sistema</span>
-              <h3 class="portfolio-card__title">D'Queiroz Advocacia</h3>
-              <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i> Escritório de Advocacia</p>
-              <p class="portfolio-card__desc">Site institucional com sistema integrado de armazenamento e gestão de arquivos jurídicos para escritório de advocacia.</p>
-              <a href="https://queirozadvocacia.vercel.app/" target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
-                Visitar site <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-              </a>
-            </div>
-          </article>
-
-          <article class="portfolio-card reveal">
-            <div class="portfolio-card__thumb portfolio-card__thumb--teal" aria-hidden="true">
-              <i class="fas fa-chart-bar"></i>
-            </div>
-            <div class="portfolio-card__body">
-              <span class="portfolio-card__category">Planilha Avançada</span>
-              <h3 class="portfolio-card__title">Concursômetro</h3>
-              <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i> Elisângela A. Queiroz</p>
-              <p class="portfolio-card__desc">Planilha Excel avançada para análise de desempenho em concursos, com métricas detalhadas e visualizações automáticas.</p>
-              <a href="https://drive.google.com/file/d/1TgVgnaUP3mFVo29wWVYxgk_wAuITrWD8/view"
-                target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
-                Ver projeto <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-              </a>
-            </div>
-          </article>
-
-          <article class="portfolio-card reveal">
-            <div class="portfolio-card__thumb portfolio-card__thumb--purple" aria-hidden="true">
-              <i class="fas fa-boxes"></i>
-            </div>
-            <div class="portfolio-card__body">
-              <span class="portfolio-card__category">Sistema CRM</span>
-              <h3 class="portfolio-card__title">Controle de Estoque</h3>
-              <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i> Primasa Engenharia</p>
-              <p class="portfolio-card__desc">Sistema de gestão de inventário com controle de entradas, saídas e monitoramento de estoque em tempo real.</p>
-              <a href="https://drive.google.com/file/d/1XsM2XAjDm7HFU5ge56k-hb1YDDExr9JE/view"
-                target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
-                Ver projeto <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-              </a>
-            </div>
-          </article>
-
-          <article class="portfolio-card reveal">
-            <div class="portfolio-card__thumb portfolio-card__thumb--orange" aria-hidden="true">
-              <i class="fas fa-wallet"></i>
-            </div>
-            <div class="portfolio-card__body">
-              <span class="portfolio-card__category">Planilha Avançada</span>
-              <h3 class="portfolio-card__title">Controle Financeiro</h3>
-              <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i> Elisângela A. Queiroz</p>
-              <p class="portfolio-card__desc">Planilha de gerenciamento financeiro pessoal com análises de gastos, categorização e projeções de saldo futuro.</p>
-              <a href="https://drive.google.com/file/d/1G_A3pmpX2rR23uRfpwJwCk24t9QP9qtL/view"
-                target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
-                Ver projeto <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-              </a>
-            </div>
-          </article>
-
-          <article class="portfolio-card reveal">
-            <div class="portfolio-card__thumb portfolio-card__thumb--green" aria-hidden="true">
-              <i class="fas fa-file-contract"></i>
-            </div>
-            <div class="portfolio-card__body">
-              <span class="portfolio-card__category">Sistema CRM</span>
-              <h3 class="portfolio-card__title">Controle de Processos</h3>
-              <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i> D'Queiroz Advocacia</p>
-              <p class="portfolio-card__desc">Sistema de gestão jurídica para organização e acompanhamento de processos em escritórios de advocacia.</p>
-              <a href="https://drive.google.com/file/d/1Hm5E_GOAOkB1YZB8E8vJZ_7unjEHVWHj/view"
-                target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
-                Ver projeto <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-              </a>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════ SOBRE ═════════════════════════════════════ -->
-    <section class="about" id="sobre" aria-labelledby="about-title">
-      <div class="container">
-        <div class="about__grid">
-
-          <div class="about__visual" aria-hidden="true">
-            <div class="about__avatar">
-              <i class="fas fa-user"></i>
-            </div>
-            <div class="about__badge about__badge--1">
-              <i class="fas fa-graduation-cap"></i> UFS — Ciência da Computação
-            </div>
-            <div class="about__badge about__badge--2">
-              <i class="fas fa-fire"></i> Firebase Certified Flow
-            </div>
-          </div>
-
-          <div class="about__text">
-            <p class="section-tag reveal">// 04 — Sobre</p>
-            <h2 class="section-title reveal" id="about-title">
-              Quem está por trás<br /><span class="gradient-text">do código</span>
-            </h2>
-
-            <p class="about__bio reveal">
-              Sou <strong>Geovani Santos</strong>, desenvolvedor web full-stack baseado em Aracaju (SE).
-              Formado como <strong>Assistente Administrativo pelo SENAI</strong> e
-              cursando <strong>Ciência da Computação na UFS</strong>, combino visão administrativa
-              com profundidade técnica para entregar soluções que realmente funcionam no mundo real.
-            </p>
-            <p class="about__bio reveal">
-              Já atuei como instrutor na <strong>School Vision</strong>, ministrando aulas de
-              desenvolvimento web, design gráfico e lógica de programação para jovens de 12 a 18 anos.
-              Fui Assistente Administrativo na <strong>Primasa Engenharia</strong> — o que me deu
-              perspectiva de negócio que poucos devs têm.
-            </p>
-
-            <div class="about__stack reveal" aria-label="Stack tecnológica">
-              <span class="stack-tag">HTML5</span>
-              <span class="stack-tag">CSS3</span>
-              <span class="stack-tag">JavaScript ES6+</span>
-              <span class="stack-tag">Firebase</span>
-              <span class="stack-tag">Firestore</span>
-              <span class="stack-tag">Vercel</span>
-              <span class="stack-tag">Excel Avançado</span>
-              <span class="stack-tag">Python</span>
-              <span class="stack-tag">Scratch</span>
-              <span class="stack-tag">Design Gráfico</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════ CONTATO ════════════════════════════════════ -->
-    <section class="contact" id="contato" aria-labelledby="contact-title">
-      <div class="container">
-        <div class="contact__card reveal">
-          <p class="section-tag">// 05 — Contato</p>
-          <h2 class="contact__title" id="contact-title">
-            Pronto para <span class="gradient-text">começar?</span>
-          </h2>
-          <p class="contact__desc">
-            Me chame pelo WhatsApp e receba um orçamento detalhado em até 24h.
-            Sem jargão técnico — só clareza, prazo e valor justo.
-          </p>
-
-          <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
-            target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp btn--lg">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i>
-            Falar no WhatsApp
-          </a>
-
-          <div class="contact__links" aria-label="Outras formas de contato">
-            <a href="mailto:geocodeprogrammer@gmail.com" class="contact__link" aria-label="Enviar e-mail">
-              <i class="fas fa-envelope" aria-hidden="true"></i>
-              <span>geocodeprogrammer@gmail.com</span>
-            </a>
-            <a href="https://www.linkedin.com/in/eusougeovani/" target="_blank" rel="noopener noreferrer"
-              class="contact__link" aria-label="LinkedIn">
-              <i class="fab fa-linkedin" aria-hidden="true"></i>
-              <span>linkedin.com/in/eusougeovani</span>
-            </a>
-            <a href="https://instagram.com/geovanikeeper" target="_blank" rel="noopener noreferrer"
-              class="contact__link" aria-label="Instagram">
-              <i class="fab fa-instagram" aria-hidden="true"></i>
-              <span>@geovanikeeper</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <p class="site-footer__copy">
-        &copy; <span id="anoAtual"></span> GeoCODE Programmer · Geovani Santos. Todos os direitos reservados.
-      </p>
-      <p class="site-footer__made">
-        Feito com <i class="fas fa-code" aria-hidden="true"></i> e <i class="fas fa-coffee" aria-hidden="true"></i>
-        em Aracaju — SE
-      </p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
