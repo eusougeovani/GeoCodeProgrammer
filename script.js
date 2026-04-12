@@ -1,62 +1,277 @@
-// Seleciona o elemento onde o ano será exibido
-const elementoAno = document.getElementById('anoAtual');
+/**
+ * GeoCODE Programmer — script.js
+ * Vanilla JS ES6+ · Modular · Performático
+ * Author: Geovani Santos
+ */
 
-// Cria um objeto Date para obter a data e hora atuais
-const data = new Date();
+'use strict';
 
-// Pega apenas o ano (getFullYear)
-const anoAtual = data.getFullYear();
+/* ════════════════════════════════════════════════════════════════
+   01. UTILITÁRIOS
+   ════════════════════════════════════════════════════════════════ */
 
-// Insere o ano no elemento HTML
-elementoAno.innerHTML = anoAtual;
+/**
+ * Shorthand para querySelector e querySelectorAll
+ */
+const qs  = (sel, ctx = document) => ctx.querySelector(sel);
+const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 
-function toggleMenu() {
-    const navLinks = document.getElementById('navLinks');
-    navLinks.classList.toggle('active');
+/**
+ * Adiciona múltiplos event listeners em um único elemento
+ * @param {Element} el
+ * @param {string[]} events
+ * @param {Function} handler
+ */
+function onEvents(el, events, handler) {
+  events.forEach(ev => el.addEventListener(ev, handler, { passive: true }));
 }
 
-function closeMenu() {
-    const navLinks = document.getElementById('navLinks');
-    navLinks.classList.remove('active');
+/* ════════════════════════════════════════════════════════════════
+   02. ANO ATUAL NO FOOTER
+   ════════════════════════════════════════════════════════════════ */
+
+function initCurrentYear() {
+  const el = qs('#anoAtual');
+  if (el) el.textContent = new Date().getFullYear();
 }
 
-// Smooth scroll e fechamento automático do menu
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
+/* ════════════════════════════════════════════════════════════════
+   03. NAVEGAÇÃO MOBILE (menu hambúrguer)
+   ════════════════════════════════════════════════════════════════ */
 
-// Fechar menu ao clicar fora
-document.addEventListener('click', function (e) {
-    const navLinks = document.getElementById('navLinks');
-    const menuToggle = document.querySelector('.menu-toggle');
+function initMobileNav() {
+  const toggle   = qs('#menuToggle');
+  const navLinks = qs('#navLinks');
 
-    if (navLinks.classList.contains('active') &&
-        !navLinks.contains(e.target) &&
-        !menuToggle.contains(e.target)) {
-        navLinks.classList.remove('active');
-    }
-});
+  if (!toggle || !navLinks) return;
 
-// Animação de scroll no header
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('header');
-    const currentScroll = window.pageYOffset;
+  function openMenu() {
+    navLinks.classList.add('is-open');
+    toggle.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Fechar menu');
+    document.body.style.overflow = 'hidden';
+  }
 
-    if (currentScroll > 100) {
-        header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+  function closeMenu() {
+    navLinks.classList.remove('is-open');
+    toggle.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Abrir menu');
+    document.body.style.overflow = '';
+  }
+
+  function toggleMenu() {
+    navLinks.classList.contains('is-open') ? closeMenu() : openMenu();
+  }
+
+  // Botão hambúrguer
+  toggle.addEventListener('click', toggleMenu);
+
+  // Fechar ao clicar em link interno
+  qsa('a[href^="#"]', navLinks).forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Fechar ao clicar fora
+  document.addEventListener('click', (e) => {
+    if (
+      navLinks.classList.contains('is-open') &&
+      !navLinks.contains(e.target) &&
+      !toggle.contains(e.target)
+    ) closeMenu();
+  });
+
+  // Fechar com Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('is-open')) closeMenu();
+  });
+}
+
+/* ════════════════════════════════════════════════════════════════
+   04. HEADER — SCROLL BEHAVIOR
+   ════════════════════════════════════════════════════════════════ */
+
+function initHeaderScroll() {
+  const header = qs('#site-header');
+  if (!header) return;
+
+  let rafId = null;
+
+  function updateHeader() {
+    rafId = null;
+    if (window.scrollY > 60) {
+      header.classList.add('scrolled');
     } else {
-        header.style.boxShadow = 'none';
+      header.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!rafId) rafId = requestAnimationFrame(updateHeader);
+  }, { passive: true });
+
+  // Estado inicial
+  updateHeader();
+}
+
+/* ════════════════════════════════════════════════════════════════
+   05. SMOOTH SCROLL PARA ÂNCORAS
+   ════════════════════════════════════════════════════════════════ */
+
+function initSmoothScroll() {
+  const headerHeight = qs('#site-header')?.offsetHeight ?? 72;
+
+  qsa('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', (e) => {
+      const href   = anchor.getAttribute('href');
+      const target = qs(href);
+      if (!target) return;
+
+      e.preventDefault();
+
+      const top = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+}
+
+/* ════════════════════════════════════════════════════════════════
+   06. SCROLL REVEAL — IntersectionObserver
+   ════════════════════════════════════════════════════════════════ */
+
+function initScrollReveal() {
+  const elements = qsa('.reveal');
+  if (!elements.length) return;
+
+  // Respeita prefers-reduced-motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    elements.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target); // Observa apenas uma vez
+        }
+      });
+    },
+    {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px',
+    }
+  );
+
+  elements.forEach(el => observer.observe(el));
+}
+
+/* ════════════════════════════════════════════════════════════════
+   07. CONTADOR ANIMADO NAS ESTATÍSTICAS DO HERO
+   ════════════════════════════════════════════════════════════════ */
+
+function initCounters() {
+  const counters = qsa('[data-count]');
+  if (!counters.length) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    counters.forEach(el => { el.textContent = el.dataset.count; });
+    return;
+  }
+
+  /**
+   * Anima um número de 0 até o target
+   * @param {Element} el
+   * @param {number} target
+   * @param {number} duration ms
+   */
+  function animateCount(el, target, duration = 1800) {
+    const start     = performance.now();
+    const easeOut   = t => 1 - Math.pow(1 - t, 3); // cubic ease-out
+
+    function step(now) {
+      const elapsed  = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const current  = Math.round(easeOut(progress) * target);
+      el.textContent = current;
+
+      if (progress < 1) requestAnimationFrame(step);
     }
 
-    lastScroll = currentScroll;
-});
+    requestAnimationFrame(step);
+  }
+
+  // Dispara quando os contadores ficam visíveis
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el     = entry.target;
+          const target = parseInt(el.dataset.count, 10);
+          animateCount(el, target);
+          observer.unobserve(el);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  counters.forEach(el => observer.observe(el));
+}
+
+/* ════════════════════════════════════════════════════════════════
+   08. ACTIVE NAV LINK — SCROLLSPY
+   ════════════════════════════════════════════════════════════════ */
+
+function initScrollspy() {
+  const navLinks = qsa('.nav-link');
+  const sections = qsa('section[id]');
+
+  if (!navLinks.length || !sections.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        const id = entry.target.getAttribute('id');
+
+        navLinks.forEach(link => {
+          link.classList.toggle(
+            'is-active',
+            link.getAttribute('href') === `#${id}`
+          );
+        });
+      });
+    },
+    {
+      rootMargin: '-40% 0px -55% 0px',
+    }
+  );
+
+  sections.forEach(sec => observer.observe(sec));
+}
+
+/* ════════════════════════════════════════════════════════════════
+   09. INICIALIZAÇÃO
+   ════════════════════════════════════════════════════════════════ */
+
+function init() {
+  initCurrentYear();
+  initMobileNav();
+  initHeaderScroll();
+  initSmoothScroll();
+  initScrollReveal();
+  initCounters();
+  initScrollspy();
+}
+
+// Aguarda o DOM estar pronto
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
