@@ -974,17 +974,49 @@ section:not(.hero) {
   gap: 0.4rem;
 }
 
-.site-footer__copy {
-  font-size: 0.88rem;
-  color: var(--clr-muted-2);
+.footer-bottom {
+    padding: 24px 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
 }
 
-.site-footer__made {
-  font-size: 0.82rem;
-  color: var(--clr-muted-2);
+.footer-bottom p {
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.28);
+    font-weight: 300;
 }
 
-.site-footer__made i { color: var(--clr-blue-light); }
+.footer-bottom a {
+    color: var(--primary-light);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.footer-bottom a:hover {
+    color: var(--primary);
+}
+
+.footer-bottom i {
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .footer-bottom {
+        padding: 20px 1.5rem;
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-bottom {
+        padding: 18px 1.2rem;
+    }
+}
 
 /* ─── 16. RESPONSIVE ─────────────────────────────────────────────── */
 
