@@ -36,30 +36,6 @@
          ═══════════════════════════════════════════════════════════════ -->
     <style>
 
-        /* ── BREADCRUMB ─────────────────────────────────────────────── */
-        .breadcrumb {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--clr-muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            padding: 0.45rem 1rem 0.45rem 0.75rem;
-            border-radius: var(--radius-pill);
-            border: 1px solid var(--clr-border);
-            background: rgba(255,255,255,0.02);
-            transition: color var(--dur-fast), border-color var(--dur-fast), background var(--dur-fast);
-        }
-
-        .breadcrumb:hover {
-            color: var(--clr-cyan-light);
-            border-color: var(--clr-border-hover);
-            background: rgba(0,200,232,0.04);
-        }
-
-        .breadcrumb i { font-size: 0.75rem; }
-
         /* ── PAGE HERO / BANNER ─────────────────────────────────────── */
         .lgpd-hero {
             position: relative;
@@ -82,22 +58,6 @@
         .lgpd-hero .container {
             position: relative;
             z-index: 1;
-        }
-
-        .lgpd-hero__badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.4rem 1rem;
-            border-radius: var(--radius-pill);
-            border: 1px solid rgba(37,99,235,0.3);
-            background: rgba(37,99,235,0.08);
-            font-family: var(--font-mono);
-            font-size: 0.72rem;
-            color: var(--clr-blue-light);
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
         }
 
         .lgpd-hero__title {
@@ -594,6 +554,7 @@
                 <li><a href="index.html#servicos" class="nav-link">Serviços</a></li>
                 <li><a href="index.html#portfolio" class="nav-link">Portfólio</a></li>
                 <li><a href="index.html#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="lgpd.html" class="nav-link">LGPD</a></li>
                 <li>
                     <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
                         target="_blank" rel="noopener noreferrer" class="nav-cta">
@@ -617,18 +578,6 @@
         <section class="lgpd-hero" aria-labelledby="lgpd-title">
             <div class="lgpd-hero__glow" aria-hidden="true"></div>
             <div class="container">
-
-                <!-- Breadcrumb -->
-                <a href="index.html" class="breadcrumb reveal" aria-label="Voltar à página inicial">
-                    <i class="fas fa-arrow-left" aria-hidden="true"></i>
-                    Voltar
-                </a>
-
-                <!-- Badge -->
-                <div class="lgpd-hero__badge reveal reveal--delay-1" aria-hidden="true">
-                    <i class="fas fa-shield-halved"></i>
-                    Política de Privacidade
-                </div>
 
                 <!-- Title -->
                 <h1 class="lgpd-hero__title reveal reveal--delay-2" id="lgpd-title">
