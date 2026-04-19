@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="author" content="Geovani Santos — GeoCODE Programmer" />
+    <meta name="theme-color" content="#050B18" />
+    <meta name="description"
+        content="Política de Privacidade e conformidade com a LGPD — GeoCODE Programmer. Informações sobre proteção de dados pessoais e seus direitos." />
+    <link rel="icon" type="image/png" href="/assets/ui/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/ui/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/ui/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/ui/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="GeoCODE" />
+    <link rel="manifest" href="site.webmanifest" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="LGPD — GeoCODE Programmer" />
+    <meta property="og:description"
+        content="Informações sobre proteção de dados pessoais e seus direitos sob a LGPD." />
+    <meta property="og:type" content="website" />
+    <title>LGPD — Lei Geral de Proteção de Dados · GeoCODE Programmer</title>
+    <!-- Fonts: Syne (display) + Figtree (body) + JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Figtree:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Base design system -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         LGPD PAGE — Estilos específicos
+         Herda todos os tokens de styles.css: --clr-*, --font-*, --space-*, etc.
+         ═══════════════════════════════════════════════════════════════ -->
+    <style>
+
+        /* ── BREADCRUMB ─────────────────────────────────────────────── */
+        .breadcrumb {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--clr-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 0.45rem 1rem 0.45rem 0.75rem;
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--clr-border);
+            background: rgba(255,255,255,0.02);
+            transition: color var(--dur-fast), border-color var(--dur-fast), background var(--dur-fast);
+        }
+
+        .breadcrumb:hover {
+            color: var(--clr-cyan-light);
+            border-color: var(--clr-border-hover);
+            background: rgba(0,200,232,0.04);
+        }
+
+        .breadcrumb i { font-size: 0.75rem; }
+
+        /* ── PAGE HERO / BANNER ─────────────────────────────────────── */
+        .lgpd-hero {
+            position: relative;
+            padding: calc(var(--space-3xl) + 1rem) clamp(1.25rem, 5vw, 3rem) var(--space-2xl);
+            overflow: hidden;
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .lgpd-hero__glow {
+            position: absolute;
+            width: 500px;
+            height: 300px;
+            background: radial-gradient(ellipse, rgba(37,99,235,0.2), transparent 70%);
+            top: -80px;
+            right: -100px;
+            pointer-events: none;
+            filter: blur(60px);
+        }
+
+        .lgpd-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .lgpd-hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 1rem;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(37,99,235,0.3);
+            background: rgba(37,99,235,0.08);
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--clr-blue-light);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .lgpd-hero__title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .lgpd-hero__desc {
+            font-size: 1.05rem;
+            color: var(--clr-muted);
+            max-width: 560px;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .lgpd-hero__meta {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .lgpd-hero__meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.82rem;
+            color: var(--clr-muted-2);
+            font-family: var(--font-mono);
+        }
+
+        .lgpd-hero__meta-item i { color: var(--clr-cyan); font-size: 0.75rem; }
+
+        /* ── LGPD SECTIONS WRAPPER ──────────────────────────────────── */
+        .lgpd-section {
+            padding-block: var(--space-xl);
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .lgpd-section:last-child { border-bottom: none; }
+
+        .lgpd-section:nth-child(even) {
+            background: var(--clr-surface);
+        }
+
+        .lgpd-section__header {
+            margin-bottom: var(--space-lg);
+        }
+
+        .lgpd-section__title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--clr-text);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .lgpd-section__title-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            background: rgba(37,99,235,0.12);
+            border: 1px solid rgba(37,99,235,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--clr-cyan);
+            flex-shrink: 0;
+        }
+
+        /* ── COMMITMENT CARDS (2×2 grid) ────────────────────────────── */
+        .commitment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+            gap: 1.25rem;
+        }
+
+        .commitment-card {
+            background: var(--clr-surface-2);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            transition: border-color var(--dur-med), transform var(--dur-med) var(--ease-out), box-shadow var(--dur-med);
+        }
+
+        .commitment-card:hover {
+            border-color: var(--clr-border-hover);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .commitment-card__icon {
+            font-size: 1.4rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .commitment-card__icon--lock    { color: #2563EB; }
+        .commitment-card__icon--eye     { color: #00C8E8; }
+        .commitment-card__icon--user    { color: #F97316; }
+        .commitment-card__icon--shield  { color: #22C55E; }
+
+        .commitment-card__title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--clr-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .commitment-card__desc {
+            font-size: 0.88rem;
+            color: var(--clr-muted);
+            line-height: 1.75;
+        }
+
+        /* ── DATA COLLECTION — two-column lists ─────────────────────── */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 2rem;
+        }
+
+        .data-block {
+            background: var(--clr-surface-2);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            padding: 1.75rem 2rem;
+        }
+
+        .data-block__title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--clr-text);
+            margin-bottom: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .data-block__title i { color: var(--clr-cyan); font-size: 0.85rem; }
+
+        .data-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .data-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            font-size: 0.9rem;
+            color: var(--clr-muted);
+            line-height: 1.6;
+        }
+
+        .data-list li::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--clr-cyan);
+            margin-top: 0.45rem;
+            flex-shrink: 0;
+        }
+
+        /* ── RIGHTS GRID ─────────────────────────────────────────────── */
+        .rights-intro {
+            font-size: 1rem;
+            color: var(--clr-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.75;
+        }
+
+        .rights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: 1rem;
+        }
+
+        .right-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            background: var(--clr-surface-2);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            padding: 1.1rem 1.25rem;
+            transition: border-color var(--dur-fast), background var(--dur-fast);
+        }
+
+        .right-item:hover {
+            border-color: var(--clr-border-hover);
+            background: rgba(37,99,235,0.04);
+        }
+
+        .right-item__icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .right-item__icon--green {
+            background: rgba(34,197,94,0.12);
+            border: 1px solid rgba(34,197,94,0.3);
+            color: #22C55E;
+        }
+
+        .right-item__icon--red {
+            background: rgba(239,68,68,0.1);
+            border: 1px solid rgba(239,68,68,0.25);
+            color: #F87171;
+        }
+
+        .right-item__text {
+            font-size: 0.9rem;
+            color: var(--clr-muted);
+            line-height: 1.6;
+        }
+
+        /* ── HOW TO EXERCISE RIGHTS ──────────────────────────────────── */
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 1.5rem;
+        }
+
+        .exercise-box {
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            border: 1px solid var(--clr-border);
+        }
+
+        .exercise-box--default {
+            background: var(--clr-surface-2);
+        }
+
+        .exercise-box--highlight {
+            background: linear-gradient(135deg, var(--clr-surface-2) 0%, rgba(37,99,235,0.12) 100%);
+            border-color: rgba(37,99,235,0.35);
+            box-shadow: var(--shadow-glow-blue);
+        }
+
+        .exercise-box__title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--clr-text);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .exercise-box__title i {
+            color: var(--clr-cyan);
+        }
+
+        .exercise-box--highlight .exercise-box__title i {
+            color: var(--clr-blue-light);
+        }
+
+        .exercise-steps {
+            list-style: none;
+            counter-reset: step-counter;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .exercise-steps li {
+            counter-increment: step-counter;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--clr-muted);
+            line-height: 1.6;
+        }
+
+        .exercise-steps li::before {
+            content: counter(step-counter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--grad-primary);
+            color: #fff;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .exercise-box__email {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 1.25rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--clr-border-hover);
+            background: rgba(0,200,232,0.05);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--clr-cyan-light);
+            text-decoration: none;
+            transition: background var(--dur-fast), border-color var(--dur-fast);
+        }
+
+        .exercise-box__email:hover {
+            background: rgba(0,200,232,0.1);
+        }
+
+        /* ── SECURITY — two-column measure lists ─────────────────────── */
+        .security-intro {
+            font-size: 0.95rem;
+            color: var(--clr-muted);
+            line-height: 1.8;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid var(--clr-blue);
+            background: rgba(37,99,235,0.05);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .security-intro i { color: var(--clr-blue-light); margin-right: 0.5rem; }
+
+        .measures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+            gap: 1.25rem;
+        }
+
+        .measures-block {
+            background: var(--clr-surface-2);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem 1.75rem;
+        }
+
+        .measures-block__title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--clr-text);
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--clr-border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .measures-block__title i { color: var(--clr-cyan); }
+
+        .measures-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+
+        .measures-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.88rem;
+            color: var(--clr-muted);
+        }
+
+        .measures-list li i {
+            color: var(--clr-cyan);
+            font-size: 0.65rem;
+            flex-shrink: 0;
+        }
+
+        /* ── SHARING SECTION ─────────────────────────────────────────── */
+        .sharing-intro {
+            font-size: 0.95rem;
+            color: var(--clr-muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .exceptions-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+            margin-bottom: 2rem;
+        }
+
+        .exceptions-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--clr-muted);
+            line-height: 1.65;
+        }
+
+        .exceptions-list li i {
+            color: var(--clr-blue-light);
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .partners-card {
+            background: linear-gradient(135deg, var(--clr-surface-2), rgba(0,200,232,0.05));
+            border: 1px solid rgba(0,200,232,0.2);
+            border-radius: var(--radius-md);
+            padding: 1.5rem 1.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .partners-card__icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            background: rgba(0,200,232,0.1);
+            border: 1px solid rgba(0,200,232,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--clr-cyan);
+            flex-shrink: 0;
+        }
+
+        .partners-card__body {
+        }
+
+        .partners-card__title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--clr-text);
+            margin-bottom: 0.35rem;
+        }
+
+        .partners-card__text {
+            font-size: 0.88rem;
+            color: var(--clr-muted);
+            line-height: 1.7;
+        }
+
+        /* ── RESPONSIVE ──────────────────────────────────────────────── */
+        @media (max-width: 640px) {
+            .lgpd-hero {
+                padding-top: calc(var(--space-3xl) + 0.5rem);
+            }
+
+            .commitment-grid,
+            .data-grid,
+            .rights-grid,
+            .exercise-grid,
+            .measures-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partners-card {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════ HEADER ══════════════════════════════════ -->
+    <header id="site-header" role="banner">
+        <nav aria-label="Navegação principal">
+            <a href="index.html" class="logo" aria-label="GeoCODE — página inicial">
+                <img src="/assets/img/banner.png" alt="GeoCODE" height="36" />
+            </a>
+
+            <ul class="nav-links" id="navLinks" role="list">
+                <li><a href="index.html#home" class="nav-link">Início</a></li>
+                <li><a href="index.html#servicos" class="nav-link">Serviços</a></li>
+                <li><a href="index.html#portfolio" class="nav-link">Portfólio</a></li>
+                <li><a href="index.html#sobre" class="nav-link">Sobre</a></li>
+                <li>
+                    <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+                        target="_blank" rel="noopener noreferrer" class="nav-cta">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i> Falar Agora
+                    </a>
+                </li>
+            </ul>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false"
+                aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ════════════════════════════════ HERO / BANNER ═══════════════════════════ -->
+        <section class="lgpd-hero" aria-labelledby="lgpd-title">
+            <div class="lgpd-hero__glow" aria-hidden="true"></div>
+            <div class="container">
+
+                <!-- Breadcrumb -->
+                <a href="index.html" class="breadcrumb reveal" aria-label="Voltar à página inicial">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                    Voltar
+                </a>
+
+                <!-- Badge -->
+                <div class="lgpd-hero__badge reveal reveal--delay-1" aria-hidden="true">
+                    <i class="fas fa-shield-halved"></i>
+                    Política de Privacidade
+                </div>
+
+                <!-- Title -->
+                <h1 class="lgpd-hero__title reveal reveal--delay-2" id="lgpd-title">
+                    LGPD — <span class="gradient-text">Lei Geral de</span><br />
+                    Proteção de Dados
+                </h1>
+
+                <!-- Description -->
+                <p class="lgpd-hero__desc reveal reveal--delay-3">
+                    Informações sobre proteção de dados pessoais e direitos sob a LGPD.
+                </p>
+
+                <!-- Meta row -->
+                <div class="lgpd-hero__meta reveal reveal--delay-4">
+                    <span class="lgpd-hero__meta-item">
+                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                        Atualizado em Janeiro de 2025
+                    </span>
+                    <span class="lgpd-hero__meta-item">
+                        <i class="fas fa-file-contract" aria-hidden="true"></i>
+                        Lei nº 13.709/2018
+                    </span>
+                    <span class="lgpd-hero__meta-item">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        geocodeprogrammer@gmail.com
+                    </span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════ SEÇÃO 1 — COMPROMISSOS ═════════════════ -->
+        <section class="lgpd-section" aria-labelledby="compromissos-title">
+            <div class="container">
+
+                <header class="lgpd-section__header">
+                    <h2 class="lgpd-section__title reveal" id="compromissos-title">
+                        <span class="lgpd-section__title-icon" aria-hidden="true">
+                            <i class="fas fa-handshake"></i>
+                        </span>
+                        Nossos Compromissos com Privacidade
+                    </h2>
+                </header>
+
+                <div class="commitment-grid">
+
+                    <!-- Confidencialidade -->
+                    <article class="commitment-card reveal" aria-label="Confidencialidade">
+                        <div class="commitment-card__icon commitment-card__icon--lock" aria-hidden="true">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3 class="commitment-card__title">Confidencialidade</h3>
+                        <p class="commitment-card__desc">
+                            Protegemos as informações de todos os clientes com criptografia,
+                            controle de acesso e políticas rigorosas.
+                        </p>
+                    </article>
+
+                    <!-- Transparência -->
+                    <article class="commitment-card reveal" aria-label="Transparência">
+                        <div class="commitment-card__icon commitment-card__icon--eye" aria-hidden="true">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3 class="commitment-card__title">Transparência</h3>
+                        <p class="commitment-card__desc">
+                            Informamos claramente como coletamos, usamos e armazenamos dados pessoais.
+                        </p>
+                    </article>
+
+                    <!-- Autonomia -->
+                    <article class="commitment-card reveal" aria-label="Autonomia">
+                        <div class="commitment-card__icon commitment-card__icon--user" aria-hidden="true">
+                            <i class="fas fa-user-gear"></i>
+                        </div>
+                        <h3 class="commitment-card__title">Autonomia</h3>
+                        <p class="commitment-card__desc">
+                            Você decide quais dados acessar, corrigir, excluir ou solicitar
+                            a portabilidade de dados.
+                        </p>
+                    </article>
+
+                    <!-- Segurança -->
+                    <article class="commitment-card reveal" aria-label="Segurança">
+                        <div class="commitment-card__icon commitment-card__icon--shield" aria-hidden="true">
+                            <i class="fas fa-shield-halved"></i>
+                        </div>
+                        <h3 class="commitment-card__title">Segurança</h3>
+                        <p class="commitment-card__desc">
+                            Implementamos medidas técnicas e administrativas para proteger
+                            contra ameaças.
+                        </p>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════ SEÇÃO 2 — COLETA E USO ════════════════ -->
+        <section class="lgpd-section" aria-labelledby="coleta-title">
+            <div class="container">
+
+                <header class="lgpd-section__header">
+                    <h2 class="lgpd-section__title reveal" id="coleta-title">
+                        <span class="lgpd-section__title-icon" aria-hidden="true">
+                            <i class="fas fa-database"></i>
+                        </span>
+                        Coleta e Uso de Dados
+                    </h2>
+                </header>
+
+                <div class="data-grid">
+
+                    <!-- Quais dados coletamos -->
+                    <div class="data-block reveal">
+                        <h3 class="data-block__title">
+                            <i class="fas fa-circle-question" aria-hidden="true"></i>
+                            Quais dados coletamos?
+                        </h3>
+                        <ul class="data-list" aria-label="Lista de dados coletados">
+                            <li>Informações de contato (nome, email, telefone)</li>
+                            <li>Dados de identificação (CPF, CNPJ)</li>
+                            <li>Dados profissionais (cargo, formação, experiência)</li>
+                            <li>Dados de navegação e cookies em nosso sistema</li>
+                            <li>Histórico de participação em nossos programas</li>
+                        </ul>
+                    </div>
+
+                    <!-- Para que usamos -->
+                    <div class="data-block reveal">
+                        <h3 class="data-block__title">
+                            <i class="fas fa-circle-info" aria-hidden="true"></i>
+                            Para que usamos esses dados?
+                        </h3>
+                        <ul class="data-list" aria-label="Finalidades do uso dos dados">
+                            <li>Executar programas de capacitação e treinamento</li>
+                            <li>Comunicação sobre eventos e oportunidades</li>
+                            <li>Gerenciamento de inscrições e candidaturas</li>
+                            <li>Análise de efetividade dos programas</li>
+                            <li>Cumprimento de obrigações legais e regulatórias</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════ SEÇÃO 3 — SEUS DIREITOS ════════════════ -->
+        <section class="lgpd-section" aria-labelledby="direitos-title">
+            <div class="container">
+
+                <header class="lgpd-section__header">
+                    <h2 class="lgpd-section__title reveal" id="direitos-title">
+                        <span class="lgpd-section__title-icon" aria-hidden="true">
+                            <i class="fas fa-scale-balanced"></i>
+                        </span>
+                        Seus Direitos
+                    </h2>
+                </header>
+
+                <p class="rights-intro reveal">
+                    Sob a LGPD, você tem o direito de:
+                </p>
+
+                <div class="rights-grid" role="list">
+
+                    <div class="right-item reveal" role="listitem">
+                        <div class="right-item__icon right-item__icon--green" aria-hidden="true">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="right-item__text">
+                            Confirmar se possuímos seus dados pessoais
+                        </span>
+                    </div>
+
+                    <div class="right-item reveal" role="listitem">
+                        <div class="right-item__icon right-item__icon--green" aria-hidden="true">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="right-item__text">
+                            Ter acesso aos dados pessoais que temos sobre você
+                        </span>
+                    </div>
+
+                    <div class="right-item reveal" role="listitem">
+                        <div class="right-item__icon right-item__icon--green" aria-hidden="true">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="right-item__text">
+                            Corrigir dados pessoais incompletos ou desatualizados
+                        </span>
+                    </div>
+
+                    <div class="right-item reveal" role="listitem">
+                        <div class="right-item__icon right-item__icon--green" aria-hidden="true">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="right-item__text">
+                            Solicitar a exclusão de seus dados pessoais
+                        </span>
+                    </div>
+
+                    <div class="right-item reveal" role="listitem">
+                        <div class="right-item__icon right-item__icon--green" aria-hidden="true">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="right-item__text">
+                            Obter uma cópia dos dados em formato estruturado
+                        </span>
+                    </div>
+
+                    <div class="right-item reveal" role="listitem">
+                        <div class="right-item__icon right-item__icon--green" aria-hidden="true">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="right-item__text">
+                            Revogar consentimento para tratamento de dados
+                        </span>
+                    </div>
+
+                    <div class="right-item reveal" role="listitem">
+                        <div class="right-item__icon right-item__icon--red" aria-hidden="true">
+                            <i class="fas fa-xmark"></i>
+                        </div>
+                        <span class="right-item__text">
+                            Opor-se a tratamentos realizados sem consentimento expresso
+                        </span>
+                    </div>
+
+                    <div class="right-item reveal" role="listitem">
+                        <div class="right-item__icon right-item__icon--green" aria-hidden="true">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <span class="right-item__text">
+                            Cancelar autorizações e limitar tratamentos desnecessários
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════ SEÇÃO 4 — COMO EXERCER ════════════════ -->
+        <section class="lgpd-section" aria-labelledby="exercer-title">
+            <div class="container">
+
+                <header class="lgpd-section__header">
+                    <h2 class="lgpd-section__title reveal" id="exercer-title">
+                        <span class="lgpd-section__title-icon" aria-hidden="true">
+                            <i class="fas fa-circle-chevron-right"></i>
+                        </span>
+                        Como Exercer Seus Direitos
+                    </h2>
+                </header>
+
+                <div class="exercise-grid">
+
+                    <!-- Solicitação de Dados -->
+                    <article class="exercise-box exercise-box--default reveal"
+                        aria-label="Solicitação de acesso a dados">
+                        <h3 class="exercise-box__title">
+                            <i class="fas fa-folder-open" aria-hidden="true"></i>
+                            Solicitação de Dados
+                        </h3>
+                        <ol class="exercise-steps" aria-label="Passos para solicitar dados">
+                            <li>Envie um email para o nosso canal de atendimento LGPD.</li>
+                            <li>Descreva claramente quais dados você deseja acessar.</li>
+                            <li>Vamos informar exatamente quais dados temos sobre você.</li>
+                            <li>Nos comprometemos com o prazo de resposta de 30 dias.</li>
+                        </ol>
+                        <a href="mailto:geocodeprogrammer@gmail.com" class="exercise-box__email"
+                            aria-label="Enviar email de solicitação">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            geocodeprogrammer@gmail.com
+                        </a>
+                    </article>
+
+                    <!-- Exclusão de Dados -->
+                    <article class="exercise-box exercise-box--highlight reveal"
+                        aria-label="Exclusão de dados pessoais">
+                        <h3 class="exercise-box__title">
+                            <i class="fas fa-trash-can" aria-hidden="true"></i>
+                            Exclusão de Dados
+                        </h3>
+                        <ol class="exercise-steps" aria-label="Passos para solicitar exclusão de dados">
+                            <li>Envie a solicitação de exclusão por email.</li>
+                            <li>Informe quais dados devem ser removidos ou anonimizados.</li>
+                            <li>Confirme sua identidade conforme solicitado.</li>
+                            <li>Processaremos a exclusão em até 30 dias corridos.</li>
+                        </ol>
+                        <a href="mailto:geocodeprogrammer@gmail.com" class="exercise-box__email"
+                            aria-label="Enviar email de solicitação de exclusão">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            geocodeprogrammer@gmail.com
+                        </a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════ SEÇÃO 5 — SEGURANÇA ════════════════════ -->
+        <section class="lgpd-section" aria-labelledby="seguranca-title">
+            <div class="container">
+
+                <header class="lgpd-section__header">
+                    <h2 class="lgpd-section__title reveal" id="seguranca-title">
+                        <span class="lgpd-section__title-icon" aria-hidden="true">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                        Segurança de Dados
+                    </h2>
+                </header>
+
+                <p class="security-intro reveal" role="note">
+                    <i class="fas fa-circle-info" aria-hidden="true"></i>
+                    A <strong>GeoCODE Programmer</strong> implementa medidas técnicas e administrativas rigorosas
+                    para proteger seus dados contra acesso não autorizado, perda ou divulgação indevida.
+                </p>
+
+                <div class="measures-grid">
+
+                    <!-- Medidas Técnicas -->
+                    <div class="measures-block reveal">
+                        <h3 class="measures-block__title">
+                            <i class="fas fa-microchip" aria-hidden="true"></i>
+                            Medidas Técnicas
+                        </h3>
+                        <ul class="measures-list" aria-label="Lista de medidas técnicas">
+                            <li>
+                                <i class="fas fa-circle" aria-hidden="true"></i>
+                                Criptografia de dados em trânsito (TLS/HTTPS)
+                            </li>
+                            <li>
+                                <i class="fas fa-circle" aria-hidden="true"></i>
+                                Armazenamento seguro com Firebase Firestore
+                            </li>
+                            <li>
+                                <i class="fas fa-circle" aria-hidden="true"></i>
+                                Firewall e regras de segurança nativas
+                            </li>
+                            <li>
+                                <i class="fas fa-circle" aria-hidden="true"></i>
+                                Backups regulares e automatizados
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Medidas Administrativas -->
+                    <div class="measures-block reveal">
+                        <h3 class="measures-block__title">
+                            <i class="fas fa-users-gear" aria-hidden="true"></i>
+                            Medidas Administrativas
+                        </h3>
+                        <ul class="measures-list" aria-label="Lista de medidas administrativas">
+                            <li>
+                                <i class="fas fa-circle" aria-hidden="true"></i>
+                                Controle de acesso interno por perfil de usuário
+                            </li>
+                            <li>
+                                <i class="fas fa-circle" aria-hidden="true"></i>
+                                Treinamento de colaboradores em LGPD
+                            </li>
+                            <li>
+                                <i class="fas fa-circle" aria-hidden="true"></i>
+                                Política interna de confidencialidade
+                            </li>
+                            <li>
+                                <i class="fas fa-circle" aria-hidden="true"></i>
+                                Auditoria regular de segurança e acessos
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════ SEÇÃO 6 — COMPARTILHAMENTO ════════════ -->
+        <section class="lgpd-section" aria-labelledby="compartilhamento-title">
+            <div class="container">
+
+                <header class="lgpd-section__header">
+                    <h2 class="lgpd-section__title reveal" id="compartilhamento-title">
+                        <span class="lgpd-section__title-icon" aria-hidden="true">
+                            <i class="fas fa-share-nodes"></i>
+                        </span>
+                        Compartilhamento de Dados
+                    </h2>
+                </header>
+
+                <p class="sharing-intro reveal">
+                    A <strong>GeoCODE Programmer</strong> não compartilha seus dados pessoais com terceiros
+                    sem consentimento expresso, <strong>exceto quando:</strong>
+                </p>
+
+                <ul class="exceptions-list reveal" aria-label="Exceções ao compartilhamento de dados">
+                    <li>
+                        <i class="fas fa-gavel" aria-hidden="true"></i>
+                        Exigido por lei ou por ordem judicial vigente.
+                    </li>
+                    <li>
+                        <i class="fas fa-wrench" aria-hidden="true"></i>
+                        Necessário para prestação dos serviços que você contratou ou utilizou.
+                    </li>
+                    <li>
+                        <i class="fas fa-pen" aria-hidden="true"></i>
+                        Solicitado expressamente por você e devidamente documentado.
+                    </li>
+                    <li>
+                        <i class="fas fa-building-columns" aria-hidden="true"></i>
+                        Para cumprir obrigações regulatórias perante autoridades competentes.
+                    </li>
+                </ul>
+
+                <!-- Partners Card -->
+                <div class="partners-card reveal" role="note" aria-label="Parceiros de Confiança">
+                    <div class="partners-card__icon" aria-hidden="true">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="partners-card__body">
+                        <h3 class="partners-card__title">Parceiros de Confiança</h3>
+                        <p class="partners-card__text">
+                            Utilizamos prestadores de serviços de email, hospedagem (Vercel), autenticação
+                            (Firebase/Google) e outros fornecedores que operam em conformidade com a LGPD
+                            e possuem suas próprias políticas de privacidade adequadas.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-bottom">
+            <p>&copy; <span id="anoAtual"></span> GeoCODE Programmer · Geovani Santos. Todos os Direitos
+                Reservados.</p>
+            <p>Desenvolvido com <i class="fa-solid fa-mug-hot"></i> por <strong><a
+                        href="https://eusougeovani.vercel.app/">GeoCODE Programmer</a></strong> — Sistema
+                seguro e em conformidade com a LGPD</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
