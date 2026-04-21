@@ -413,7 +413,7 @@ nav {
 
 .hero__stat-suffix {
   font-family: var(--font-display);
-  font-size: 2.2rem;
+  font-size: 1.1rem;
   font-weight: 800;
   background: var(--grad-primary);
   -webkit-background-clip: text;
