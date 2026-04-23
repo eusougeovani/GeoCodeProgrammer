@@ -1,5 +1,6 @@
 /**
  * GeoCODE Programmer — script.js
+ * Inspirado na estrutura do Alfama Web — alfamaweb.com.br
  * Vanilla JS ES6+ · Modular · Performático
  * Author: Geovani Santos
  */
@@ -10,21 +11,8 @@
    01. UTILITÁRIOS
    ════════════════════════════════════════════════════════════════ */
 
-/**
- * Shorthand para querySelector e querySelectorAll
- */
-const qs  = (sel, ctx = document) => ctx.querySelector(sel);
+const qs = (sel, ctx = document) => ctx.querySelector(sel);
 const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
-
-/**
- * Adiciona múltiplos event listeners em um único elemento
- * @param {Element} el
- * @param {string[]} events
- * @param {Function} handler
- */
-function onEvents(el, events, handler) {
-  events.forEach(ev => el.addEventListener(ev, handler, { passive: true }));
-}
 
 /* ════════════════════════════════════════════════════════════════
    02. ANO ATUAL NO FOOTER
@@ -40,7 +28,7 @@ function initCurrentYear() {
    ════════════════════════════════════════════════════════════════ */
 
 function initMobileNav() {
-  const toggle   = qs('#menuToggle');
+  const toggle = qs('#menuToggle');
   const navLinks = qs('#navLinks');
 
   if (!toggle || !navLinks) return;
@@ -65,15 +53,12 @@ function initMobileNav() {
     navLinks.classList.contains('is-open') ? closeMenu() : openMenu();
   }
 
-  // Botão hambúrguer
   toggle.addEventListener('click', toggleMenu);
 
-  // Fechar ao clicar em link interno
   qsa('a[href^="#"]', navLinks).forEach(link => {
     link.addEventListener('click', closeMenu);
   });
 
-  // Fechar ao clicar fora
   document.addEventListener('click', (e) => {
     if (
       navLinks.classList.contains('is-open') &&
@@ -82,7 +67,6 @@ function initMobileNav() {
     ) closeMenu();
   });
 
-  // Fechar com Escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && navLinks.classList.contains('is-open')) closeMenu();
   });
@@ -100,18 +84,13 @@ function initHeaderScroll() {
 
   function updateHeader() {
     rafId = null;
-    if (window.scrollY > 60) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
+    header.classList.toggle('scrolled', window.scrollY > 60);
   }
 
   window.addEventListener('scroll', () => {
     if (!rafId) rafId = requestAnimationFrame(updateHeader);
   }, { passive: true });
 
-  // Estado inicial
   updateHeader();
 }
 
@@ -124,14 +103,13 @@ function initSmoothScroll() {
 
   qsa('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
-      const href   = anchor.getAttribute('href');
+      const href = anchor.getAttribute('href');
       const target = qs(href);
       if (!target) return;
 
       e.preventDefault();
 
       const top = target.getBoundingClientRect().top + window.scrollY - headerHeight;
-
       window.scrollTo({ top, behavior: 'smooth' });
     });
   });
@@ -145,7 +123,6 @@ function initScrollReveal() {
   const elements = qsa('.reveal');
   if (!elements.length) return;
 
-  // Respeita prefers-reduced-motion
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     elements.forEach(el => el.classList.add('is-visible'));
     return;
@@ -156,14 +133,11 @@ function initScrollReveal() {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target); // Observa apenas uma vez
+          observer.unobserve(entry.target);
         }
       });
     },
-    {
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px',
-    }
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
   );
 
   elements.forEach(el => observer.observe(el));
@@ -182,34 +156,25 @@ function initCounters() {
     return;
   }
 
-  /**
-   * Anima um número de 0 até o target
-   * @param {Element} el
-   * @param {number} target
-   * @param {number} duration ms
-   */
   function animateCount(el, target, duration = 1800) {
-    const start     = performance.now();
-    const easeOut   = t => 1 - Math.pow(1 - t, 3); // cubic ease-out
+    const start = performance.now();
+    const easeOut = t => 1 - Math.pow(1 - t, 3);
 
     function step(now) {
-      const elapsed  = now - start;
+      const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
-      const current  = Math.round(easeOut(progress) * target);
-      el.textContent = current;
-
+      el.textContent = Math.round(easeOut(progress) * target);
       if (progress < 1) requestAnimationFrame(step);
     }
 
     requestAnimationFrame(step);
   }
 
-  // Dispara quando os contadores ficam visíveis
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const el     = entry.target;
+          const el = entry.target;
           const target = parseInt(el.dataset.count, 10);
           animateCount(el, target);
           observer.unobserve(el);
@@ -247,16 +212,57 @@ function initScrollspy() {
         });
       });
     },
-    {
-      rootMargin: '-40% 0px -55% 0px',
-    }
+    { rootMargin: '-40% 0px -55% 0px' }
   );
 
   sections.forEach(sec => observer.observe(sec));
 }
 
 /* ════════════════════════════════════════════════════════════════
-   09. INICIALIZAÇÃO
+   09. FILTRO DE PORTFÓLIO — inspirado no Alfama Web
+   ════════════════════════════════════════════════════════════════ */
+
+function initPortfolioFilter() {
+  const filterBtns = qsa('.filter-btn');
+  const cards = qsa('.project-card');
+
+  if (!filterBtns.length || !cards.length) return;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+
+      // Atualiza botão ativo
+      filterBtns.forEach(b => {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-selected', 'true');
+
+      // Filtra os cards com animação suave
+      cards.forEach(card => {
+        const category = card.dataset.category;
+        const show = filter === 'all' || category === filter;
+
+        if (show) {
+          card.classList.remove('is-hidden');
+          // Re-trigger reveal se ainda não visível
+          requestAnimationFrame(() => {
+            if (!card.classList.contains('is-visible')) {
+              card.classList.add('is-visible');
+            }
+          });
+        } else {
+          card.classList.add('is-hidden');
+        }
+      });
+    });
+  });
+}
+
+/* ════════════════════════════════════════════════════════════════
+   10. INICIALIZAÇÃO
    ════════════════════════════════════════════════════════════════ */
 
 function init() {
@@ -267,9 +273,9 @@ function init() {
   initScrollReveal();
   initCounters();
   initScrollspy();
+  initPortfolioFilter();
 }
 
-// Aguarda o DOM estar pronto
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', init);
 } else {

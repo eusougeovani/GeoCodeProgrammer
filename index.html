@@ -22,11 +22,12 @@
         content="Soluções web de alto nível: Sites Institucionais, Sistemas CRM, Digital Signage e Mentoria em Tecnologia." />
     <meta property="og:type" content="website" />
     <title>GeoCODE Programmer — Geovani Santos</title>
-    <!-- Fonts: Syne (display) + Figtree (body) -->
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Figtree:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="styles.css" />
@@ -34,75 +35,91 @@
 
 <body>
 
-    <!-- ═══════════════════════════════════ HEADER ══════════════════════════════════ -->
+    <!-- ═══════════════════════ WHATSAPP FLUTUANTE ════════════════════════ -->
+    <div class="whatsapp-float" aria-label="Atendimento WhatsApp">
+        <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20ser%20atendido."
+            target="_blank" rel="noopener noreferrer" class="whatsapp-float__btn" aria-label="Falar no WhatsApp">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i>
+            <span class="whatsapp-float__label">Falar Agora</span>
+        </a>
+    </div>
+
+    <!-- ═══════════════════════════════ HEADER ═══════════════════════════════ -->
     <header id="site-header" role="banner">
         <nav aria-label="Navegação principal">
             <a href="#home" class="logo" aria-label="GeoCODE — página inicial">
-                <img src="/assets/img/banner.png" alt="GeoCODE" height="36" />
+                <img src="/assets/img/banner.png" alt="GeoCODE Programmer" height="38" />
             </a>
 
             <ul class="nav-links" id="navLinks" role="list">
                 <li><a href="#home" class="nav-link">Início</a></li>
-                <li><a href="#servicos" class="nav-link">Serviços</a></li>
-                <li><a href="#portfolio" class="nav-link">Portfólio</a></li>
+                <li><a href="#solucoes" class="nav-link">Soluções</a></li>
+                <li><a href="#portfolio" class="nav-link">Projetos</a></li>
                 <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
                 <li><a href="lgpd.html" class="nav-link">LGPD</a></li>
-                <li>
-                    <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
-                        target="_blank" rel="noopener noreferrer" class="nav-cta">
-                        <i class="fab fa-whatsapp" aria-hidden="true"></i> Falar Agora
-                    </a>
-                </li>
             </ul>
+
+            <div class="nav-actions">
+                <a href="mailto:geocodeprogrammer@gmail.com" class="btn-nav btn-nav--ghost">
+                    Já sou cliente
+                </a>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20um%20orçamento."
+                    target="_blank" rel="noopener noreferrer" class="btn-nav btn-nav--primary">
+                    Solicite Orçamento
+                </a>
+            </div>
 
             <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false"
                 aria-controls="navLinks">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span></span><span></span><span></span>
             </button>
         </nav>
     </header>
 
     <main>
 
-        <!-- ═══════════════════════════════════ HERO ════════════════════════════════════ -->
+        <!-- ═══════════════════════════════ HERO ═════════════════════════════════ -->
         <section class="hero" id="home" aria-label="Apresentação">
             <div class="hero__bg-grid" aria-hidden="true"></div>
             <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
             <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
 
             <div class="hero__content">
-                <h1 class="hero__title reveal reveal--delay-1">
-                    Soluções digitais<br />
-                    <span class="gradient-text">que geram resultados.</span>
+                <span class="hero__eyebrow reveal reveal--delay-1">
+                    <i class="fas fa-code" aria-hidden="true"></i> Desenvolvedor Web Full-Stack · Sergipe
+                </span>
+
+                <h1 class="hero__title reveal reveal--delay-2">
+                    Transformando ideias<br />
+                    <span class="gradient-text">em realizações.dev</span>
                 </h1>
 
-                <p class="hero__desc reveal reveal--delay-2">
-                    Sou <strong>Geovani Santos</strong>, desenvolvedor web full-stack e instrutor de tecnologia.
-                    Construo desde sites institucionais de alta performance até sistemas CRM sob medida —
-                    sempre com código limpo, arquitetura escalável e entrega no prazo.
+                <p class="hero__desc reveal reveal--delay-3">
+                    Sou <strong>Geovani Santos</strong> — construo sites institucionais de alta performance,
+                    sistemas CRM sob medida, painéis de Digital Signage e dashboards interativos.
+                    Código limpo, arquitetura escalável e entrega no prazo.
                 </p>
 
-                <div class="hero__cta reveal reveal--delay-3">
+                <div class="hero__cta reveal reveal--delay-4">
                     <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20um%20orçamento."
                         target="_blank" rel="noopener noreferrer" class="btn btn--primary">
                         <i class="fab fa-whatsapp" aria-hidden="true"></i>
                         Solicitar Orçamento
                     </a>
                     <a href="#portfolio" class="btn btn--ghost">
-                        Ver Portfólio <i class="fas fa-arrow-down" aria-hidden="true"></i>
+                        Ver Projetos <i class="fas fa-arrow-right" aria-hidden="true"></i>
                     </a>
                 </div>
 
-                <div class="hero__stats reveal reveal--delay-4" aria-label="Números">
+                <div class="hero__stats reveal reveal--delay-5" aria-label="Números">
                     <div class="hero__stat">
-                        <span class="hero__stat-num" data-count="6">0</span>
+                        <span class="hero__stat-num" data-count="6">0</span><span class="hero__stat-suffix">+</span>
                         <span class="hero__stat-label">Projetos entregues</span>
                     </div>
                     <div class="hero__stat-divider" aria-hidden="true"></div>
                     <div class="hero__stat">
-                        <span class="hero__stat-num" data-count="3">0</span>
+                        <span class="hero__stat-num" data-count="3">0</span><span class="hero__stat-suffix">+</span>
                         <span class="hero__stat-label">Anos de experiência</span>
                     </div>
                     <div class="hero__stat-divider" aria-hidden="true"></div>
@@ -118,358 +135,352 @@
             </div>
         </section>
 
-        <!-- ════════════════════════════════ SERVIÇOS ══════════════════════════════════ -->
-        <section class="services" id="servicos" aria-labelledby="services-title">
+        <!-- ══════════════════════════ NOSSAS SOLUÇÕES ═══════════════════════════ -->
+        <section class="solutions" id="solucoes" aria-labelledby="solutions-title">
             <div class="container">
-                <header class="section-header">
-                    <p class="section-tag reveal">// 01 — Serviços</p>
-                    <h2 class="section-title reveal" id="services-title">
+                <header class="section-header reveal">
+                    <p class="section-eyebrow">Nossas Soluções</p>
+                    <h2 class="section-title" id="solutions-title">
                         O que posso <span class="gradient-text">fazer por você</span>
                     </h2>
-                    <p class="section-desc reveal">
-                        Cada projeto é tratado com a mesma seriedade de uma grande agência — mas com a agilidade
+                    <p class="section-desc">
+                        Cada projeto é tratado com a seriedade de uma grande agência — com a agilidade
                         e atenção personalizada de um parceiro técnico dedicado.
                     </p>
                 </header>
 
-                <div class="services__grid">
+                <div class="solutions__grid">
 
-                    <article class="service-card reveal" aria-label="Sites Institucionais">
-                        <div class="service-card__number" aria-hidden="true">01</div>
-                        <div class="service-card__icon" aria-hidden="true">
-                            <i class="fas fa-globe"></i>
+                    <a href="https://wa.me/+5579988663905?text=Quero%20um%20site%20institucional." target="_blank"
+                        rel="noopener noreferrer" class="solution-card reveal" aria-label="Sites Institucionais">
+                        <div class="solution-card__icon">
+                            <i class="fas fa-globe" aria-hidden="true"></i>
                         </div>
-                        <h3 class="service-card__title">Sites Institucionais</h3>
-                        <p class="service-card__desc">
-                            Desenvolvo sites institucionais rápidos e otimizados para buscas locais,
-                            ideais para profissionais autônomos, intituições ou divulgações.
+                        <h3 class="solution-card__title">Sites Institucionais</h3>
+                        <p class="solution-card__desc">
+                            Projetos personalizados e de alta performance para o seu público.
                         </p>
-                        <ul class="service-card__list" aria-label="Inclui">
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Otimização SEO com Core Web Vitals.</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Hospedagem Vercel e Analytics integrados.</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Design responsivo mobile-first.</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Dashboards para monitoramento de tráfego.</li>
-                        </ul>
-                        <a href="https://wa.me/+5579988663905?text=Quero%20um%20site%20institucional." target="_blank"
-                            rel="noopener noreferrer" class="service-card__link">
-                            Solicitar proposta <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </a>
-                    </article>
+                        <span class="solution-card__more">Mais Informações <i class="fas fa-arrow-right"></i></span>
+                    </a>
 
-                    <article class="service-card reveal" aria-label="CRMs e Sistemas">
-                        <div class="service-card__number" aria-hidden="true">02</div>
-                        <div class="service-card__icon" aria-hidden="true">
-                            <i class="fas fa-cubes"></i>
+                    <a href="https://wa.me/+5579988663905?text=Preciso%20de%20um%20sistema%20ou%20crm." target="_blank"
+                        rel="noopener noreferrer" class="solution-card reveal" aria-label="CRMs e Sistemas">
+                        <div class="solution-card__icon">
+                            <i class="fas fa-cubes" aria-hidden="true"></i>
                         </div>
-                        <h3 class="service-card__title">CRMs & Sistemas</h3>
-                        <p class="service-card__desc">
-                            CRMs personalizados gerenciam clínicas com lógica escalável,
-                            segurança Firebase e automações em tempo real para eficiência operacional.
+                        <h3 class="solution-card__title">CRMs & Sistemas</h3>
+                        <p class="solution-card__desc">
+                            Construa seu sistema completo e gerencie seus clientes com facilidade.
                         </p>
-                        <ul class="service-card__list" aria-label="Inclui">
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Backend Firestore com autenticação.</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Regras de segurança Firebase nativas.</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Dashboards relacionais interativos.</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Controle de usuários e permissões.</li>
-                        </ul>
-                        <a href="https://wa.me/+5579988663905?text=Preciso%20de%20um%20sistema%20ou%20crm."
-                            target="_blank" rel="noopener noreferrer" class="service-card__link">
-                            Solicitar proposta <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </a>
-                    </article>
+                        <span class="solution-card__more">Mais Informações <i class="fas fa-arrow-right"></i></span>
+                    </a>
 
-                    <article class="service-card reveal" aria-label="Digital Signage">
-                        <div class="service-card__number" aria-hidden="true">03</div>
-                        <div class="service-card__icon" aria-hidden="true">
-                            <i class="fas fa-tv"></i>
+                    <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20em%20digital%20signage."
+                        target="_blank" rel="noopener noreferrer" class="solution-card reveal"
+                        aria-label="Digital Signage">
+                        <div class="solution-card__icon">
+                            <i class="fas fa-tv" aria-hidden="true"></i>
                         </div>
-                        <h3 class="service-card__title">Digital Signage</h3>
-                        <p class="service-card__desc">
-                            Digital Signage transforma TVs em painéis interativos com conteúdos dinâmicos
-                            em tempo real para comunicação visual impactante.
+                        <h3 class="solution-card__title">Digital Signage</h3>
+                        <p class="solution-card__desc">
+                            Transforme TVs em painéis interativos com conteúdo dinâmico em tempo real.
                         </p>
-                        <ul class="service-card__list" aria-label="Inclui">
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Painéis web para TV em tempo real.</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Layouts interativos animados.</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Integração de dados externos.</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Fontes e layouts personalizáveis.</li>
-                        </ul>
-                        <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20em%20digital%20signage."
-                            target="_blank" rel="noopener noreferrer" class="service-card__link">
-                            Solicitar proposta <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </a>
-                    </article>
+                        <span class="solution-card__more">Mais Informações <i class="fas fa-arrow-right"></i></span>
+                    </a>
 
-                    <article class="service-card reveal" aria-label="Pacote Office">
-                        <div class="service-card__number" aria-hidden="true">04</div>
-                        <div class="service-card__icon" aria-hidden="true">
-                            <i class="fa-solid fa-file"></i>
+                    <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20em%20pacote%20office."
+                        target="_blank" rel="noopener noreferrer" class="solution-card reveal"
+                        aria-label="Pacote Office">
+                        <div class="solution-card__icon">
+                            <i class="fas fa-file-alt" aria-hidden="true"></i>
                         </div>
-                        <h3 class="service-card__title">Pacote Office</h3>
-                        <p class="service-card__desc">
-                            Criação de planilhas avançadas, apresentações profissionais e documentos otimizados para produtividade e organização.
+                        <h3 class="solution-card__title">Pacote Office</h3>
+                        <p class="solution-card__desc">
+                            Planilhas avançadas, apresentações profissionais e documentos otimizados.
                         </p>
-                        <ul class="service-card__list" aria-label="Inclui">
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Microsoft Office</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Google Workspace</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> LibreOffice</li>
-                        </ul>
-                        <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20em%20pacote%20office." target="_blank"
-                            rel="noopener noreferrer" class="service-card__link">
-                            Solicitar Proposta <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </a>
-                    </article>
+                        <span class="solution-card__more">Mais Informações <i class="fas fa-arrow-right"></i></span>
+                    </a>
 
-                    <article class="service-card reveal" aria-label="Looker Studio">
-                        <div class="service-card__number" aria-hidden="true">05</div>
-                        <div class="service-card__icon" aria-hidden="true">
-                            <i class="fa-solid fa-tachograph-digital"></i>
+                    <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20em%20dashboard." target="_blank"
+                        rel="noopener noreferrer" class="solution-card reveal" aria-label="Dashboards Interativos">
+                        <div class="solution-card__icon">
+                            <i class="fas fa-tachograph-digital" aria-hidden="true"></i>
                         </div>
-                        <h3 class="service-card__title">Dashboards Interativos</h3>
-                        <p class="service-card__desc">
-                            Dashboards interativos para visualização de dados complexos de forma clara e intuitiva, facilitando a tomada de decisões estratégicas.
+                        <h3 class="solution-card__title">Dashboards Interativos</h3>
+                        <p class="solution-card__desc">
+                            Visualização de dados complexos de forma clara para decisões estratégicas.
                         </p>
-                        <ul class="service-card__list" aria-label="Inclui">
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Looker Studio</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Google Sheets</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Google Analytics</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Ferramentos Google</li>
-                        </ul>
-                        <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20em%20dashboard." target="_blank"
-                            rel="noopener noreferrer" class="service-card__link">
-                            Solicitar Proposta <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </a>
-                    </article>
+                        <span class="solution-card__more">Mais Informações <i class="fas fa-arrow-right"></i></span>
+                    </a>
 
-                    <article class="service-card reveal" aria-label="Aulas de Tecnologia">
-                        <div class="service-card__number" aria-hidden="true">06</div>
-                        <div class="service-card__icon" aria-hidden="true">
-                            <i class="fas fa-chalkboard-teacher"></i>
+                    <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20em%20aulas." target="_blank"
+                        rel="noopener noreferrer" class="solution-card reveal" aria-label="Aulas de Tecnologia">
+                        <div class="solution-card__icon">
+                            <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
                         </div>
-                        <h3 class="service-card__title">Aulas de Tecnologia</h3>
-                        <p class="service-card__desc">
-                            Mentoria e ensino com metodologia prática. Do básico de informática à lógica de
-                            programação e desenvolvimento web — presencial em Aracaju ou online para todo o Brasil.
+                        <h3 class="solution-card__title">Aulas de Tecnologia</h3>
+                        <p class="solution-card__desc">
+                            Mentoria personalizada em desenvolvimento web, design e lógica de programação.
                         </p>
-                        <ul class="service-card__list" aria-label="Inclui">
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Informática básica e Pacote Office</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> HTML, CSS e JavaScript do zero</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Lógica de programação com Python</li>
-                            <li><i class="fas fa-check" aria-hidden="true"></i> Aulas online e presenciais</li>
-                        </ul>
-                        <a href="https://wa.me/+5579988663905?text=Quero%20agendar%20uma%20aula." target="_blank"
-                            rel="noopener noreferrer" class="service-card__link">
-                            Agendar aula <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                        </a>
-                    </article>
+                        <span class="solution-card__more">Mais Informações <i class="fas fa-arrow-right"></i></span>
+                    </a>
 
+                </div>
+
+                <div class="solutions__footer reveal">
+                    <a href="https://wa.me/+5579988663905" target="_blank" rel="noopener noreferrer"
+                        class="btn btn--outline-primary">
+                        Ver mais Soluções <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- ══════════════════════════════ PROCESSO ════════════════════════════════════ -->
-        <section class="process" id="processo" aria-labelledby="process-title">
-            <div class="container">
-                <header class="section-header">
-                    <p class="section-tag reveal">// 02 — Como Funciona</p>
-                    <h2 class="section-title reveal" id="process-title">
-                        Do briefing à <span class="gradient-text">entrega final</span>
-                    </h2>
-                </header>
-
-                <ol class="process__steps" aria-label="Etapas do processo">
-                    <li class="process__step reveal">
-                        <div class="process__step-num" aria-hidden="true">01</div>
-                        <div class="process__step-body">
-                            <h3>Reunião & Briefing</h3>
-                            <p>Entendemos a fundo sua necessidade, objetivos e público-alvo. Sem suposições — só
-                                clareza.</p>
-                        </div>
-                    </li>
-                    <li class="process__step reveal">
-                        <div class="process__step-num" aria-hidden="true">02</div>
-                        <div class="process__step-body">
-                            <h3>Proposta Transparente</h3>
-                            <p>Você recebe um orçamento detalhado com escopo, prazo, valor e formas de pagamento. Sem
-                                surpresas.</p>
-                        </div>
-                    </li>
-                    <li class="process__step reveal">
-                        <div class="process__step-num" aria-hidden="true">03</div>
-                        <div class="process__step-body">
-                            <h3>Desenvolvimento & Revisões</h3>
-                            <p>Acompanhamento constante com entregas parciais. Você valida cada etapa antes de seguirmos
-                                adiante.</p>
-                        </div>
-                    </li>
-                    <li class="process__step reveal">
-                        <div class="process__step-num" aria-hidden="true">04</div>
-                        <div class="process__step-body">
-                            <h3>Entrega & Suporte</h3>
-                            <p>Deploy na Vercel, treinamento de uso e suporte pós-entrega. Sua solução, funcionando de
-                                verdade.</p>
-                        </div>
-                    </li>
-                </ol>
-            </div>
-        </section>
-
-        <!-- ══════════════════════════════ PORTFÓLIO ═══════════════════════════════════ -->
+        <!-- ════════════════════════ TRABALHOS RECENTES ══════════════════════════ -->
         <section class="portfolio" id="portfolio" aria-labelledby="portfolio-title">
             <div class="container">
-                <header class="section-header">
-                    <p class="section-tag reveal">// 03 — Portfólio</p>
-                    <h2 class="section-title reveal" id="portfolio-title">
-                        Projetos que <span class="gradient-text">falam por si</span>
+                <header class="section-header reveal">
+                    <p class="section-eyebrow">Trabalhos Recentes</p>
+                    <h2 class="section-title" id="portfolio-title">
+                        Realizando <span class="gradient-text">suas ideias</span>
                     </h2>
-                    <p class="section-desc reveal">
-                        Cada entrega representa uma parceria real, um problema resolvido e um cliente satisfeito.
-                    </p>
                 </header>
 
-                <div class="portfolio__grid">
-                    <!-- Site Institucional -->
-                    <article class="portfolio-card reveal">
-                        <div class="portfolio-card__thumb portfolio-card__thumb--blue" aria-hidden="true">
-                            <img src="/assets/img/sitePsiMF.png" alt="Captura de tela do site Psi Meire França" />
+                <!-- Filtros -->
+                <div class="portfolio__filters reveal" role="tablist" aria-label="Filtrar projetos">
+                    <button class="filter-btn is-active" data-filter="all" role="tab"
+                        aria-selected="true">Todos</button>
+                    <button class="filter-btn" data-filter="site" role="tab" aria-selected="false">Sites</button>
+                    <button class="filter-btn" data-filter="crm" role="tab" aria-selected="false">CRMs &
+                        Sistemas</button>
+                    <button class="filter-btn" data-filter="signage" role="tab" aria-selected="false">Digital
+                        Signage</button>
+                    <button class="filter-btn" data-filter="dashboard" role="tab"
+                        aria-selected="false">Dashboards</button>
+                </div>
+
+                <div class="portfolio__grid" id="portfolioGrid">
+
+                    <!-- Sites -->
+                    <article class="project-card reveal" data-category="site">
+                        <div class="project-card__thumb project-card__thumb--blue">
+                            <img src="/assets/img/sitePsiMF.png" alt="Captura de tela do Site Psi Meire França"
+                                loading="lazy" />
+                            <div class="project-card__overlay">
+                                <a href="https://psimeirefranca.vercel.app/" target="_blank" rel="noopener noreferrer"
+                                    class="project-card__visit">
+                                    Visitar <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="portfolio-card__body">
-                            <span class="portfolio-card__category">Site Institucional</span>
-                            <h3 class="portfolio-card__title">Psi Meire França</h3>
-                            <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i>
-                                Psicóloga Meire França</p>
-                            <p class="portfolio-card__desc">Site institucional estático com design clean e profissional
-                                para apresentar serviços e especialidades da psicóloga.</p>
-                            <a href="https://psimeirefranca.vercel.app/" target="_blank" rel="noopener noreferrer"
-                                class="portfolio-card__link">
-                                Visitar <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </article>
-                    <article class="portfolio-card reveal">
-                        <div class="portfolio-card__thumb portfolio-card__thumb--purple" aria-hidden="true">
-                            <img src="/assets/img/siteFF193.png" alt="Captura de tela da Fundação Fênix 193" />
-                        </div>
-                        <div class="portfolio-card__body">
-                            <span class="portfolio-card__category">Site Institucional</span>
-                            <h3 class="portfolio-card__title">Fundação Fênix 193</h3>
-                            <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i> Fundação Fênix 193</p>
-                            <p class="portfolio-card__desc">Site institucional estático para divulgação e transparência das atividades da Fundação.</p>
-                            <a href="https://ff193.vercel.app/"
-                                target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
-                                Visitar <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                            </a>
+                        <div class="project-card__body">
+                            <span class="project-card__tag">Site Institucional</span>
+                            <h3 class="project-card__title">Psi Meire França</h3>
                         </div>
                     </article>
-                    <!-- CRMs & Sistemas -->
-                    <article class="portfolio-card reveal">
-                        <div class="portfolio-card__thumb portfolio-card__thumb--dark" aria-hidden="true">
-                            <img src="/assets/img/psiconecta.png" alt="Captura de tela do CRM PsiConecta" />
+
+                    <article class="project-card reveal" data-category="site">
+                        <div class="project-card__thumb project-card__thumb--purple">
+                            <img src="/assets/img/siteFF193.png" alt="Captura de tela da Fundação Fênix 193"
+                                loading="lazy" />
+                            <div class="project-card__overlay">
+                                <a href="https://ff193.vercel.app/" target="_blank" rel="noopener noreferrer"
+                                    class="project-card__visit">
+                                    Visitar <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="portfolio-card__body">
-                            <span class="portfolio-card__category">CRMs & Sistemas</span>
-                            <h3 class="portfolio-card__title">PsiConecta</h3>
-                            <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i>
-                                Psicóloga Meire França</p>
-                            <p class="portfolio-card__desc">Sistema de software completo para gerenciar clientes.</p>
-                            <a href="https://psimeirefranca.vercel.app/app.html" target="_blank" rel="noopener noreferrer"
-                                class="portfolio-card__link">
-                                Visitar <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </article>
-                    <article class="portfolio-card reveal">
-                        <div class="portfolio-card__thumb portfolio-card__thumb--purple" aria-hidden="true">
-                            <img src="/assets/img/arkiv.png" alt="Captura de tela do sistema de controle de estoque" />
-                        </div>
-                        <div class="portfolio-card__body">
-                            <span class="portfolio-card__category">CRMs & Sistemas</span>
-                            <h3 class="portfolio-card__title">ARKIV | Controle de Estoque</h3>
-                            <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i> GeoCODE Programmer</p>
-                            <p class="portfolio-card__desc">Sistema de gestão de inventário com controle de entradas,
-                                saídas e monitoramento de estoque em tempo real.</p>
-                            <a href="https://estoquegeocode.vercel.app/"
-                                target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
-                                Visitar <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                            </a>
+                        <div class="project-card__body">
+                            <span class="project-card__tag">Site Institucional</span>
+                            <h3 class="project-card__title">Fundação Fênix 193</h3>
                         </div>
                     </article>
-                    <article class="portfolio-card reveal">
-                        <div class="portfolio-card__thumb portfolio-card__thumb--orange" aria-hidden="true">
-                            <img src="/assets/img/koinos.png" alt="Captura de tela do sistema de controle financeiro" />
+
+                    <!-- CRMs -->
+                    <article class="project-card reveal" data-category="crm">
+                        <div class="project-card__thumb project-card__thumb--dark">
+                            <img src="/assets/img/psiconecta.png" alt="Captura de tela do CRM PsiConecta"
+                                loading="lazy" />
+                            <div class="project-card__overlay">
+                                <a href="https://psimeirefranca.vercel.app/app.html" target="_blank"
+                                    rel="noopener noreferrer" class="project-card__visit">
+                                    Visitar <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="portfolio-card__body">
-                            <span class="portfolio-card__category">CRMs & Sistemas</span>
-                            <h3 class="portfolio-card__title">KOINOS | Controle Financeiro</h3>
-                            <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i>
-                                Elisângela A. Queiroz</p>
-                            <p class="portfolio-card__desc">Planilha de gerenciamento financeiro pessoal com análises de
-                                gastos, categorização e projeções de saldo futuro.</p>
-                            <a href="https://financasgeocode.vercel.app/"
-                                target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
-                                Visitar <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </article>
-                    <!-- Blog -->
-                    <article class="portfolio-card reveal">
-                        <div class="portfolio-card__thumb portfolio-card__thumb--orange" aria-hidden="true">
-                            <img src="/assets/img/blogPsiMF.png" alt="Captura de tela do Blog da Psi Meire França" />
-                        </div>
-                        <div class="portfolio-card__body">
-                            <span class="portfolio-card__category">Blog</span>
-                            <h3 class="portfolio-card__title">Blog da Psi</h3>
-                            <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i>
-                                Psicóloga Meire França</p>
-                            <p class="portfolio-card__desc">Blog destinado para a postagem de textos, artigos e notícias.</p>
-                            <a href="https://psimeirefranca.vercel.app/blog"
-                                target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
-                                Visitar <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                            </a>
+                        <div class="project-card__body">
+                            <span class="project-card__tag">CRM & Sistema</span>
+                            <h3 class="project-card__title">PsiConecta</h3>
                         </div>
                     </article>
+
+                    <article class="project-card reveal" data-category="crm">
+                        <div class="project-card__thumb project-card__thumb--purple">
+                            <img src="/assets/img/arkiv.png" alt="Captura de tela do ARKIV" loading="lazy" />
+                            <div class="project-card__overlay">
+                                <a href="https://estoquegeocode.vercel.app/" target="_blank" rel="noopener noreferrer"
+                                    class="project-card__visit">
+                                    Visitar <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-card__body">
+                            <span class="project-card__tag">CRM & Sistema</span>
+                            <h3 class="project-card__title">ARKIV | Controle de Estoque</h3>
+                        </div>
+                    </article>
+
+                    <article class="project-card reveal" data-category="crm">
+                        <div class="project-card__thumb project-card__thumb--orange">
+                            <img src="/assets/img/koinos.png" alt="Captura de tela do KOINOS" loading="lazy" />
+                            <div class="project-card__overlay">
+                                <a href="https://financasgeocode.vercel.app/" target="_blank" rel="noopener noreferrer"
+                                    class="project-card__visit">
+                                    Visitar <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-card__body">
+                            <span class="project-card__tag">CRM & Sistema</span>
+                            <h3 class="project-card__title">KOINOS | Controle Financeiro</h3>
+                        </div>
+                    </article>
+
                     <!-- Digital Signage -->
-                    <article class="portfolio-card reveal">
-                        <div class="portfolio-card__thumb portfolio-card__thumb--orange" aria-hidden="true">
-                            <img src="/assets/img/digitalsignagePsiMF.png" alt="Captura de tela do Digital Signage" />
+                    <article class="project-card reveal" data-category="signage">
+                        <div class="project-card__thumb project-card__thumb--orange">
+                            <img src="/assets/img/digitalsignagePsiMF.png" alt="Captura de tela do Digital Signage"
+                                loading="lazy" />
+                            <div class="project-card__overlay">
+                                <a href="https://psimeirefranca.vercel.app/dashboard.html" target="_blank"
+                                    rel="noopener noreferrer" class="project-card__visit">
+                                    Visitar <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="portfolio-card__body">
-                            <span class="portfolio-card__category">Digital Signage</span>
-                            <h3 class="portfolio-card__title">DS Psi Meire França</h3>
-                            <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i>
-                                Psicóloga Meire França</p>
-                            <p class="portfolio-card__desc">Exibição dinâmica para transmitir informações, publicidade ou
-                                entretenimento em clínicas</p>
-                            <a href="https://psimeirefranca.vercel.app/dashboard.html"
-                                target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
-                                Visitar <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </article>
-                    <!-- Dashboards Interativos -->
-                    <article class="portfolio-card reveal">
-                        <div class="portfolio-card__thumb portfolio-card__thumb--orange" aria-hidden="true">
-                            <img src="/assets/img/dashboardSantaIsabel.png" alt="Captura de tela do Dashboard" />
-                        </div>
-                        <div class="portfolio-card__body">
-                            <span class="portfolio-card__category">Dashboard DataStudio</span>
-                            <h3 class="portfolio-card__title">Dashboard Indicadores do NSP</h3>
-                            <p class="portfolio-card__client"><i class="fas fa-user-tie" aria-hidden="true"></i>
-                                Suyane Amaral</p>
-                            <p class="portfolio-card__desc">Exposição de Dados Brutos em Formato Interativo e de Leitura Visual Simplificada</p>
-                            <a href="#"
-                                target="_blank" rel="noopener noreferrer" class="portfolio-card__link">
-                                Visitar <i class="fas fa-external-link-alt" aria-hidden="true"></i>
-                            </a>
+                        <div class="project-card__body">
+                            <span class="project-card__tag">Digital Signage</span>
+                            <h3 class="project-card__title">DS Psi Meire França</h3>
                         </div>
                     </article>
-                    <!-- Microsoft Excel -->
-                    
+
+                    <!-- Dashboards -->
+                    <article class="project-card reveal" data-category="dashboard">
+                        <div class="project-card__thumb project-card__thumb--blue">
+                            <img src="/assets/img/dashboardSantaIsabel.png" alt="Captura de tela do Dashboard"
+                                loading="lazy" />
+                            <div class="project-card__overlay">
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="project-card__visit">
+                                    Visitar <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-card__body">
+                            <span class="project-card__tag">Dashboard</span>
+                            <h3 class="project-card__title">Dashboard NSP</h3>
+                        </div>
+                    </article>
+
+                    <!-- Blog -->
+                    <article class="project-card reveal" data-category="site">
+                        <div class="project-card__thumb project-card__thumb--orange">
+                            <img src="/assets/img/blogPsiMF.png" alt="Captura de tela do Blog da Psi Meire França"
+                                loading="lazy" />
+                            <div class="project-card__overlay">
+                                <a href="https://psimeirefranca.vercel.app/blog" target="_blank"
+                                    rel="noopener noreferrer" class="project-card__visit">
+                                    Visitar <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-card__body">
+                            <span class="project-card__tag">Blog</span>
+                            <h3 class="project-card__title">Blog da Psi</h3>
+                        </div>
+                    </article>
+
+                </div>
+
+                <div class="portfolio__footer reveal">
+                    <a href="https://wa.me/+5579988663905" target="_blank" rel="noopener noreferrer"
+                        class="btn btn--outline-primary">
+                        Ver mais projetos <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- ═══════════════════════════════ SOBRE ═════════════════════════════════════ -->
+        <!-- ═══════════════════════════ DEPOIMENTOS ══════════════════════════════ -->
+        <section class="testimonials" id="depoimentos" aria-labelledby="testimonials-title">
+            <div class="container">
+                <header class="section-header reveal">
+                    <p class="section-eyebrow">Ideias Realizadas</p>
+                    <h2 class="section-title" id="testimonials-title">
+                        O que meus <span class="gradient-text">clientes dizem</span>
+                    </h2>
+                </header>
+
+                <div class="testimonials__grid">
+
+                    <article class="testimonial-card reveal">
+                        <div class="testimonial-card__quote" aria-hidden="true">"</div>
+                        <p class="testimonial-card__text">
+                            O Geovani entregou meu site com muito cuidado e atenção aos detalhes.
+                            O resultado foi um site clean, profissional e que representa muito bem
+                            o meu trabalho como psicóloga. Recomendo demais!
+                        </p>
+                        <footer class="testimonial-card__footer">
+                            <div class="testimonial-card__avatar">
+                                <i class="fas fa-user-circle" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <strong class="testimonial-card__name">Meire França</strong>
+                                <span class="testimonial-card__role">Psicóloga · Site Institucional</span>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="testimonial-card reveal">
+                        <div class="testimonial-card__quote" aria-hidden="true">"</div>
+                        <p class="testimonial-card__text">
+                            O sistema de controle de estoque ficou exatamente como eu precisava.
+                            Organizado, fácil de usar e com todas as funcionalidades que eu não
+                            imaginava conseguir com o orçamento disponível.
+                        </p>
+                        <footer class="testimonial-card__footer">
+                            <div class="testimonial-card__avatar">
+                                <i class="fas fa-user-circle" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <strong class="testimonial-card__name">GeoCODE Programmer</strong>
+                                <span class="testimonial-card__role">Projeto ARKIV · Sistema</span>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="testimonial-card reveal">
+                        <div class="testimonial-card__quote" aria-hidden="true">"</div>
+                        <p class="testimonial-card__text">
+                            As aulas foram didáticas, práticas e com exemplos reais. Aprendi HTML,
+                            CSS e JavaScript de verdade — o Geovani tem paciência e explica de um
+                            jeito que qualquer um entende.
+                        </p>
+                        <footer class="testimonial-card__footer">
+                            <div class="testimonial-card__avatar">
+                                <i class="fas fa-user-circle" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <strong class="testimonial-card__name">Aluno School Vision</strong>
+                                <span class="testimonial-card__role">Mentoria · Desenvolvimento Web</span>
+                            </div>
+                        </footer>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════ SOBRE ══════════════════════════════════ -->
         <section class="about" id="sobre" aria-labelledby="about-title">
             <div class="container">
                 <div class="about__grid">
@@ -482,12 +493,12 @@
                             <i class="fas fa-graduation-cap"></i> UFS — Ciência da Computação
                         </div>
                         <div class="about__badge about__badge--2">
-                            <i class="fas fa-graduation-cap"></i> SENAI — Assistente Administrativo
+                            <i class="fas fa-award"></i> SENAI — Assistente Administrativo
                         </div>
                     </div>
 
                     <div class="about__text">
-                        <p class="section-tag reveal">// 04 — Sobre</p>
+                        <p class="section-eyebrow reveal">A GeoCODE</p>
                         <h2 class="section-title reveal" id="about-title">
                             Quem está por trás<br /><span class="gradient-text">do código</span>
                         </h2>
@@ -522,58 +533,109 @@
             </div>
         </section>
 
-        <!-- ═══════════════════════════════ CONTATO ════════════════════════════════════ -->
-        <section class="contact" id="contato" aria-labelledby="contact-title">
+        <!-- ══════════════════════════ CTA BANNER ════════════════════════════════ -->
+        <section class="cta-banner" id="contato" aria-label="Pronto para começar">
             <div class="container">
-                <div class="contact__card reveal">
-                    <p class="section-tag">// 05 — Contato</p>
-                    <h2 class="contact__title" id="contact-title">
-                        Pronto para <span class="gradient-text">começar?</span>
+                <div class="cta-banner__inner reveal">
+                    <h2 class="cta-banner__title">
+                        Pronto para realizar<br /><span class="gradient-text">suas ideias?</span>
                     </h2>
-                    <p class="contact__desc">
+                    <p class="cta-banner__desc">
                         Me chame pelo WhatsApp e receba um orçamento detalhado em até 24h.
                         Sem jargão técnico — só clareza, prazo e valor justo.
                     </p>
-
                     <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
-                        target="_blank" rel="noopener noreferrer" class="btn btn--whatsapp btn--lg">
+                        target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">
                         <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                        Falar no WhatsApp
+                        Solicitar Orçamento
                     </a>
-
-                    <div class="contact__links" aria-label="Outras formas de contato">
-                        <a href="mailto:geocodeprogrammer@gmail.com" class="contact__link" aria-label="Enviar e-mail">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
-                            <span>geocodeprogrammer@gmail.com</span>
-                        </a>
-                        <a href="https://www.linkedin.com/in/eusougeovani/" target="_blank" rel="noopener noreferrer"
-                            class="contact__link" aria-label="LinkedIn">
-                            <i class="fab fa-linkedin" aria-hidden="true"></i>
-                            <span>linkedin.com/in/eusougeovani</span>
-                        </a>
-                        <a href="https://instagram.com/geovanikeeper" target="_blank" rel="noopener noreferrer"
-                            class="contact__link" aria-label="Instagram">
-                            <i class="fab fa-instagram" aria-hidden="true"></i>
-                            <span>@geovanikeeper</span>
-                        </a>
-                    </div>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+    <!-- ══════════════════════════════ FOOTER ════════════════════════════════ -->
     <footer class="site-footer" role="contentinfo">
+        <div class="footer-main container">
+
+            <div class="footer-col footer-col--brand">
+                <a href="#home" class="logo" aria-label="GeoCODE — topo">
+                    <img src="/assets/img/banner.png" alt="GeoCODE Programmer" height="34" />
+                </a>
+                <p class="footer-tagline">Transformando ideias em realizações digitais desde 2022.</p>
+                <div class="footer-social" aria-label="Redes sociais">
+                    <a href="https://instagram.com/geovanikeeper" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram" class="footer-social__link">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/eusougeovani/" target="_blank" rel="noopener noreferrer"
+                        aria-label="LinkedIn" class="footer-social__link">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
+                    </a>
+                    <a href="mailto:geocodeprogrammer@gmail.com" aria-label="E-mail" class="footer-social__link">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col__title">Soluções</h4>
+                <ul class="footer-col__links">
+                    <li><a href="https://wa.me/+5579988663905?text=Sites%20Institucionais">Sites Institucionais</a></li>
+                    <li><a href="https://wa.me/+5579988663905?text=CRM%20e%20Sistemas">CRMs & Sistemas</a></li>
+                    <li><a href="https://wa.me/+5579988663905?text=Digital%20Signage">Digital Signage</a></li>
+                    <li><a href="https://wa.me/+5579988663905?text=Dashboards">Dashboards Interativos</a></li>
+                    <li><a href="https://wa.me/+5579988663905?text=Pacote%20Office">Pacote Office</a></li>
+                    <li><a href="https://wa.me/+5579988663905?text=Aulas">Aulas de Tecnologia</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col__title">Navegação</h4>
+                <ul class="footer-col__links">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#solucoes">Soluções</a></li>
+                    <li><a href="#portfolio">Projetos</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="lgpd.html">Política de Privacidade (LGPD)</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-col__title">Contato</h4>
+                <ul class="footer-contact">
+                    <li>
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        <a href="https://wa.me/+5579988663905" target="_blank" rel="noopener noreferrer">(79)
+                            98866-3905</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        <a href="mailto:geocodeprogrammer@gmail.com">geocodeprogrammer@gmail.com</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <span>Aracaju, Sergipe — Brasil</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
         <div class="footer-bottom">
-            <p>&copy; <span id="anoAtual"></span> GeoCODE Programmer · Geovani Santos. Todos os Direitos
-                Reservados.</p>
-            <p>Desenvolvido com <i class="fa-solid fa-mug-hot"></i> por <strong><a
-                        href="https://eusougeovani.vercel.app/">GeoCODE Programmer</a></strong> — Sistema
-                seguro e em conformidade com a <strong><a
-                        href="lgpd.html">LGPD</a></strong></p>
+            <div class="container footer-bottom__inner">
+                <p>&copy; <span id="anoAtual"></span> GeoCODE Programmer · Geovani Santos. Todos os Direitos Reservados.
+                </p>
+                <p>Desenvolvido com <i class="fa-solid fa-mug-hot"></i> por <strong><a
+                            href="https://eusougeovani.vercel.app/">GeoCODE</a></strong>
+                    — Em conformidade com a <strong><a href="lgpd.html">LGPD</a></strong></p>
+            </div>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
+
 </html>
