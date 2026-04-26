@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="author" content="Geovani Santos — GeoCODE Programmer" />
+    <meta name="theme-color" content="#050B18" />
+    <meta name="description"
+        content="Termos de Uso da GeoCODE Programmer — Regras, responsabilidades e condições para utilização de todos os serviços, sistemas e plataformas fornecidos, incluindo o ecossistema Akanni e Digital Signage." />
+    <link rel="icon" type="image/png" href="/assets/ui/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/ui/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/ui/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/ui/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="GeoCODE" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta property="og:title" content="Termos de Uso — GeoCODE Programmer" />
+    <meta property="og:description"
+        content="Regras e responsabilidades para utilização dos serviços, sistemas e plataformas da GeoCODE Programmer, incluindo o ecossistema Akanni e Digital Signage." />
+    <meta property="og:type" content="website" />
+    <title>Termos de Uso · GeoCODE Programmer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Figtree:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+
+        /* ── PAGE HERO / BANNER ─────────────────────────────────────── */
+        .lgpd-hero {
+            position: relative;
+            padding: calc(var(--space-3xl) + 1rem) clamp(1.25rem, 5vw, 3rem) var(--space-2xl);
+            overflow: hidden;
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .lgpd-hero__glow {
+            position: absolute;
+            width: 500px;
+            height: 300px;
+            background: radial-gradient(ellipse, rgba(249,115,22,0.18), transparent 70%);
+            top: -80px;
+            right: -100px;
+            pointer-events: none;
+            filter: blur(60px);
+        }
+
+        .lgpd-hero__glow--secondary {
+            position: absolute;
+            width: 360px;
+            height: 260px;
+            background: radial-gradient(ellipse, rgba(37,99,235,0.14), transparent 70%);
+            bottom: -60px;
+            left: -80px;
+            pointer-events: none;
+            filter: blur(55px);
+        }
+
+        .lgpd-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .lgpd-hero__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--clr-orange);
+            border: 1px solid rgba(249,115,22,0.3);
+            background: rgba(249,115,22,0.07);
+            border-radius: var(--radius-pill);
+            padding: 0.35rem 0.9rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .lgpd-hero__title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .lgpd-hero__desc {
+            font-size: 1.05rem;
+            color: var(--clr-muted);
+            max-width: 620px;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .lgpd-hero__meta {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .lgpd-hero__meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.82rem;
+            color: var(--clr-muted-2);
+            font-family: var(--font-mono);
+        }
+
+        .lgpd-hero__meta-item i { color: var(--clr-orange); font-size: 0.75rem; }
+
+        /* ── ICON ACCENT ORANGE ─────────────────────────────────────── */
+        .lgpd-section__title-icon--orange {
+            background: rgba(249,115,22,0.1);
+            border-color: rgba(249,115,22,0.2);
+        }
+
+        .lgpd-section__title-icon--orange i { color: var(--clr-orange); }
+
+        /* ── LGPD SECTIONS WRAPPER ──────────────────────────────────── */
+        .lgpd-section {
+            padding-block: var(--space-xl);
+            border-bottom: 1px solid var(--clr-border);
+        }
+
+        .lgpd-section:last-child { border-bottom: none; }
+
+        .lgpd-section:nth-child(even) { background: var(--clr-surface); }
+
+        .lgpd-section__header { margin-bottom: var(--space-lg); }
+
+        .lgpd-section__title {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--clr-text);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .lgpd-section__subtitle {
+            font-size: 0.95rem;
+            color: var(--clr-muted);
+            margin-top: 0.6rem;
+            line-height: 1.7;
+        }
+
+        .lgpd-section__title-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            background: rgba(37,99,235,0.12);
+            border: 1px solid rgba(37,99,235,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--clr-cyan);
+            flex-shrink: 0;
+        }
+
+        /* ── ACCEPTANCE BANNER ──────────────────────────────────────── */
+        .acceptance-banner {
+            background: linear-gradient(135deg, rgba(249,115,22,0.08) 0%, rgba(37,99,235,0.06) 100%);
+            border: 1px solid rgba(249,115,22,0.22);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            margin-bottom: var(--space-lg);
+        }
+
+        .acceptance-banner__icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            background: rgba(249,115,22,0.12);
+            border: 1px solid rgba(249,115,22,0.28);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--clr-orange);
+            flex-shrink: 0;
+        }
+
+        .acceptance-banner__title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--clr-text);
+            margin-bottom: 0.4rem;
+        }
+
+        .acceptance-banner__text {
+            font-size: 0.9rem;
+            color: var(--clr-muted);
+            line-height: 1.75;
+        }
+
+        .acceptance-banner__text strong { color: var(--clr-orange); }
+
+        /* ── COMMITMENT CARDS ────────────────────────────────────────── */
+        .commitment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+            gap: 1.25rem;
+        }
+
+        .commitment-card {
+            background: var(--clr-surface-2);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            padding: 1.75rem;
+            transition: border-color var(--dur-med), transform var(--dur-med) var(--ease-out), box-shadow var(--dur-med);
+        }
+
+        .commitment-card:hover {
+            border-color: var(--clr-border-hover);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .commitment-card__icon { font-size: 1.4rem; margin-bottom: 0.9rem; }
+        .commitment-card__icon--orange  { color: var(--clr-orange); }
+        .commitment-card__icon--blue    { color: #2563EB; }
+        .commitment-card__icon--cyan    { color: #00C8E8; }
+        .commitment-card__icon--green   { color: #22C55E; }
+
+        .commitment-card__title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--clr-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .commitment-card__desc {
+            font-size: 0.88rem;
+            color: var(--clr-muted);
+            line-height: 1.75;
+        }
+
+        /* ── DATA BLOCKS ─────────────────────────────────────────────── */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 2rem;
+        }
+
+        .data-block {
+            background: var(--clr-surface-2);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            padding: 1.75rem 2rem;
+        }
+
+        .data-block__title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--clr-text);
+            margin-bottom: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .data-block__title i { color: var(--clr-orange); font-size: 0.85rem; }
+
+        .data-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .data-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            font-size: 0.9rem;
+            color: var(--clr-muted);
+            line-height: 1.6;
+        }
+
+        .data-list li::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--clr-orange);
+            margin-top: 0.45rem;
+            flex-shrink: 0;
+        }
+
+        /* ── IP HIGHLIGHT CARD ────────────────────────────────────────── */
+        .ip-card {
+            background: linear-gradient(135deg, var(--clr-surface-2) 0%, rgba(249,115,22,0.08) 100%);
+            border: 1px solid rgba(249,115,22,0.28);
+            border-radius: var(--radius-lg);
+            padding: 2rem 2.25rem;
+            box-shadow: var(--shadow-glow-orange);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .ip-card__icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            background: rgba(249,115,22,0.14);
+            border: 1px solid rgba(249,115,22,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--clr-orange);
+            flex-shrink: 0;
+        }
+
+        .ip-card__title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--clr-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .ip-card__text {
+            font-size: 0.9rem;
+            color: var(--clr-muted);
+            line-height: 1.75;
+        }
+
+        .ip-card__text strong { color: var(--clr-orange); }
+
+        /* ── LICENSE GRID ────────────────────────────────────────────── */
+        .license-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+            gap: 1rem;
+        }
+
+        .license-item {
+            background: var(--clr-surface-2);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            transition: border-color var(--dur-fast);
+        }
+
+        .license-item:hover { border-color: var(--clr-border-hover); }
+        .license-item--allowed  { border-left: 3px solid rgba(34,197,94,0.5); }
+        .license-item--forbidden { border-left: 3px solid rgba(239,68,68,0.45); }
+
+        .license-item__icon {
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .license-item__icon--green {
+            background: rgba(34,197,94,0.1);
+            border: 1px solid rgba(34,197,94,0.25);
+            color: #22C55E;
+        }
+
+        .license-item__icon--red {
+            background: rgba(239,68,68,0.1);
+            border: 1px solid rgba(239,68,68,0.22);
+            color: #F87171;
+        }
+
+        .license-item__title {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--clr-text);
+            margin-bottom: 0.25rem;
+        }
+
+        .license-item__text {
+            font-size: 0.84rem;
+            color: var(--clr-muted);
+            line-height: 1.6;
+        }
+
+        /* ── LIABILITY BLOCKS ────────────────────────────────────────── */
+        .liability-intro {
+            font-size: 0.95rem;
+            color: var(--clr-muted);
+            line-height: 1.8;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid rgba(249,115,22,0.5);
+            background: rgba(249,115,22,0.05);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .liability-intro i { color: var(--clr-orange); margin-right: 0.5rem; }
+
+        .liability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: 1.25rem;
+        }
+
+        .liability-block {
+            background: var(--clr-surface-2);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            padding: 1.5rem 1.75rem;
+        }
+
+        .liability-block__title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--clr-text);
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--clr-border);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .liability-block__title i { color: var(--clr-orange); }
+
+        .liability-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .liability-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.88rem;
+            color: var(--clr-muted);
+            line-height: 1.65;
+        }
+
+        .liability-list li i {
+            color: var(--clr-orange);
+            font-size: 0.7rem;
+            margin-top: 0.3rem;
+            flex-shrink: 0;
+        }
+
+        /* ── CONDUCT GRID ────────────────────────────────────────────── */
+        .conduct-intro {
+            font-size: 0.95rem;
+            color: var(--clr-muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .rights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: 1rem;
+        }
+
+        .right-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            background: var(--clr-surface-2);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            padding: 1.1rem 1.25rem;
+            transition: border-color var(--dur-fast), background var(--dur-fast);
+        }
+
+        .right-item:hover {
+            border-color: var(--clr-border-hover);
+            background: rgba(249,115,22,0.03);
+        }
+
+        .right-item__icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .right-item__icon--red {
+            background: rgba(239,68,68,0.1);
+            border: 1px solid rgba(239,68,68,0.25);
+            color: #F87171;
+        }
+
+        .right-item__icon--orange {
+            background: rgba(249,115,22,0.1);
+            border: 1px solid rgba(249,115,22,0.25);
+            color: var(--clr-orange);
+        }
+
+        .right-item__text {
+            font-size: 0.9rem;
+            color: var(--clr-muted);
+            line-height: 1.6;
+        }
+
+        /* ── SLA GRID ────────────────────────────────────────────────── */
+        .sla-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .sla-item {
+            background: var(--clr-surface-2);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            padding: 1.25rem 1.5rem;
+            transition: border-color var(--dur-fast);
+        }
+
+        .sla-item:hover { border-color: var(--clr-border-hover); }
+
+        .sla-item__label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--clr-cyan);
+            font-family: var(--font-mono);
+            margin-bottom: 0.4rem;
+        }
+
+        .sla-item__title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--clr-text);
+            margin-bottom: 0.35rem;
+        }
+
+        .sla-item__desc {
+            font-size: 0.84rem;
+            color: var(--clr-muted);
+            line-height: 1.6;
+        }
+
+        /* ── EXERCISE BOXES ──────────────────────────────────────────── */
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 1.5rem;
+        }
+
+        .exercise-box {
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            border: 1px solid var(--clr-border);
+        }
+
+        .exercise-box--default { background: var(--clr-surface-2); }
+
+        .exercise-box--highlight {
+            background: linear-gradient(135deg, var(--clr-surface-2) 0%, rgba(249,115,22,0.1) 100%);
+            border-color: rgba(249,115,22,0.32);
+            box-shadow: var(--shadow-glow-orange);
+        }
+
+        .exercise-box__title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--clr-text);
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .exercise-box__title i { color: var(--clr-cyan); }
+        .exercise-box--highlight .exercise-box__title i { color: var(--clr-orange); }
+
+        .exercise-steps {
+            list-style: none;
+            counter-reset: step-counter;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .exercise-steps li {
+            counter-increment: step-counter;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--clr-muted);
+            line-height: 1.6;
+        }
+
+        .exercise-steps li::before {
+            content: counter(step-counter);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--grad-orange);
+            color: #fff;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 500;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .exercise-box__email {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 1.25rem;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(249,115,22,0.3);
+            background: rgba(249,115,22,0.06);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--clr-orange);
+            text-decoration: none;
+            transition: background var(--dur-fast), border-color var(--dur-fast);
+        }
+
+        .exercise-box__email:hover { background: rgba(249,115,22,0.12); }
+
+        /* ── SECURITY INTRO (reutilizado) ────────────────────────────── */
+        .security-intro {
+            font-size: 0.95rem;
+            color: var(--clr-muted);
+            line-height: 1.8;
+            padding: 1rem 1.25rem;
+            border-left: 3px solid var(--clr-blue);
+            background: rgba(37,99,235,0.05);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .security-intro i { color: var(--clr-blue-light); margin-right: 0.5rem; }
+
+        /* ── PARTNERS CARD ───────────────────────────────────────────── */
+        .partners-card {
+            background: linear-gradient(135deg, var(--clr-surface-2), rgba(249,115,22,0.05));
+            border: 1px solid rgba(249,115,22,0.2);
+            border-radius: var(--radius-md);
+            padding: 1.5rem 1.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .partners-card__icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            background: rgba(249,115,22,0.1);
+            border: 1px solid rgba(249,115,22,0.22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--clr-orange);
+            flex-shrink: 0;
+        }
+
+        .partners-card__title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--clr-text);
+            margin-bottom: 0.35rem;
+        }
+
+        .partners-card__text {
+            font-size: 0.88rem;
+            color: var(--clr-muted);
+            line-height: 1.7;
+        }
+
+        /* ── VERSION BAR ─────────────────────────────────────────────── */
+        .version-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background: var(--clr-surface-2);
+            border: 1px solid var(--clr-border);
+            border-radius: var(--radius-md);
+            padding: 1rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .version-bar__item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.82rem;
+            color: var(--clr-muted-2);
+            font-family: var(--font-mono);
+        }
+
+        .version-bar__item i { color: var(--clr-cyan); font-size: 0.75rem; }
+        .version-bar__item strong { color: var(--clr-text-soft); }
+
+        /* ── DPO CARD ────────────────────────────────────────────────── */
+        .dpo-card {
+            background: linear-gradient(135deg, var(--clr-surface-2) 0%, rgba(249,115,22,0.09) 100%);
+            border: 1px solid rgba(249,115,22,0.3);
+            border-radius: var(--radius-lg);
+            padding: 2rem 2.25rem;
+            box-shadow: var(--shadow-glow-orange);
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .dpo-card__icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            background: rgba(249,115,22,0.14);
+            border: 1px solid rgba(249,115,22,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--clr-orange);
+            flex-shrink: 0;
+        }
+
+        .dpo-card__title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--clr-text);
+            margin-bottom: 0.35rem;
+        }
+
+        .dpo-card__text {
+            font-size: 0.9rem;
+            color: var(--clr-muted);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .dpo-card__links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+        .dpo-card__link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 1rem;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(249,115,22,0.28);
+            background: rgba(249,115,22,0.06);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--clr-orange);
+            text-decoration: none;
+            transition: background var(--dur-fast), border-color var(--dur-fast);
+        }
+
+        .dpo-card__link:hover { background: rgba(249,115,22,0.12); }
+
+        /* ── RESPONSIVE ──────────────────────────────────────────────── */
+        @media (max-width: 640px) {
+            .lgpd-hero { padding-top: calc(var(--space-3xl) + 0.5rem); }
+
+            .commitment-grid,
+            .data-grid,
+            .rights-grid,
+            .exercise-grid,
+            .liability-grid,
+            .license-grid,
+            .sla-grid { grid-template-columns: 1fr; }
+
+            .partners-card,
+            .acceptance-banner,
+            .ip-card,
+            .dpo-card { flex-direction: column; }
+
+            .version-bar { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════ HEADER ══════════════════════════════════ -->
+    <header id="site-header" role="banner">
+        <nav aria-label="Navegação principal">
+            <a href="index.html" class="logo" aria-label="GeoCODE — página inicial">
+                <img src="/assets/img/banner.png" alt="GeoCODE" height="36" />
+            </a>
+
+            <ul class="nav-links" id="navLinks" role="list">
+                <li><a href="index.html#home" class="nav-link">Início</a></li>
+                <li><a href="index.html#servicos" class="nav-link">Serviços</a></li>
+                <li><a href="index.html#portfolio" class="nav-link">Portfólio</a></li>
+                <li><a href="index.html#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="lgpd.html" class="nav-link">LGPD</a></li>
+                <li>
+                    <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+                        target="_blank" rel="noopener noreferrer" class="nav-cta">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i> Falar Agora
+                    </a>
+                </li>
+            </ul>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false"
+                aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- ════════════════════════════════ HERO / BANNER ═══════════════════════════ -->
+        <section class="lgpd-hero" aria-labelledby="termos-title">
+            <div class="lgpd-hero__glow" aria-hidden="true"></div>
+            <div class="lgpd-hero__glow--secondary" aria-hidden="true"></div>
+            <div class="container">
+                <div class="lgpd-hero__badge reveal reveal--delay-1">
+                    <i class="fas fa-file-contract" aria-hidden="true"></i>
+                    Documento Jurídico Vinculante
+                </div>
+                <h1 class="lgpd-hero__title reveal reveal--delay-2" id="termos-title">
+                    Termos de Uso — <span class="gradient-text">Regras</span><br />
+                    e Responsabilidades
+                </h1>
+                <p class="lgpd-hero__desc reveal reveal--delay-3">
+                    Este documento estabelece as regras, direitos e responsabilidades que regem o uso de
+                    todos os serviços, sistemas e plataformas fornecidos pela <strong>GeoCODE Programmer</strong>,
+                    incluindo sites institucionais, sistemas de Digital Signage, PWAs e o ecossistema
+                    <strong>Akanni</strong>. A contratação ou utilização de qualquer produto implica
+                    aceitação integral destes termos.
+                </p>
+                <div class="lgpd-hero__meta reveal reveal--delay-4">
+                    <span class="lgpd-hero__meta-item">
+                        <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                        Vigência a partir de Janeiro de 2025
+                    </span>
+                    <span class="lgpd-hero__meta-item">
+                        <i class="fas fa-scale-balanced" aria-hidden="true"></i>
+                        Foro: Comarca de Aracaju/SE
+                    </span>
+                    <span class="lgpd-hero__meta-item">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
+                        geocodeprogrammer@gmail.com
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════ SEÇÃO 1 — ACEITAÇÃO ════════════════════ -->
+        <section class="lgpd-section" aria-labelledby="aceitacao-title">
+            <div class="container">
+
+                <header class="lgpd-section__header">
+                    <h2 class="lgpd-section__title reveal" id="aceitacao-title">
+                        <span class="lgpd-section__title-icon lgpd-section__title-icon--orange" aria-hidden="true">
+                            <i class="fas fa-circle-check"></i>
+                        </span>
+                        Aceitação e Âmbito de Aplicação
+                    </h2>
+                    <p class="lgpd-section__subtitle reveal">
+                        Ao contratar, acessar ou utilizar qualquer serviço GeoCODE, o usuário ou contratante
+                        declara ter lido, compreendido e aceito todos os termos aqui dispostos.
+                    </p>
+                </header>
+
+                <div class="acceptance-banner reveal" role="note" aria-label="Aviso de aceitação dos termos">
+                    <div class="acceptance-banner__icon" aria-hidden="true">
+                        <i class="fas fa-triangle-exclamation"></i>
+                    </div>
+                    <div>
+                        <p class="acceptance-banner__title">Leia com atenção antes de usar os serviços</p>
+                        <p class="acceptance-banner__text">
+                            Estes Termos de Uso constituem um <strong>contrato legalmente vinculante</strong>
+                            entre o usuário/contratante e a GeoCODE Programmer. Aplicam-se a todos os
+                            serviços contratados, plataformas acessadas e sistemas utilizados — sejam eles
+                            desenvolvidos sob medida, licenciados ou fornecidos como SaaS.
+                            Caso não concorde com algum item, entre em contato antes de prosseguir com a
+                            contratação. A continuidade do uso implica aceitação tácita e integral.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="commitment-grid">
+                    <article class="commitment-card reveal" aria-label="Usuários contemplados">
+                        <div class="commitment-card__icon commitment-card__icon--blue" aria-hidden="true">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="commitment-card__title">Usuários Contemplados</h3>
+                        <p class="commitment-card__desc">
+                            Estes termos aplicam-se a contratantes pessoa física ou jurídica, usuários
+                            finais autorizados, administradores de sistemas e qualquer pessoa que
+                            acesse plataformas ou recursos fornecidos pela GeoCODE Programmer.
+                        </p>
+                    </article>
+                    <article class="commitment-card reveal" aria-label="Serviços abrangidos">
+                        <div class="commitment-card__icon commitment-card__icon--cyan" aria-hidden="true">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3 class="commitment-card__title">Serviços Abrangidos</h3>
+                        <p class="commitment-card__desc">
+                            Sites institucionais, sistemas de Digital Signage, Progressive Web Apps (PWAs),
+                            plataforma Akanni, APIs, painéis administrativos, dashboards analíticos
+                            e qualquer entregável digital desenvolvido pela GeoCODE.
+                        </p>
+                    </article>
+                    <article class="commitment-card reveal" aria-label="Legislação aplicável">
+                        <div class="commitment-card__icon commitment-card__icon--orange" aria-hidden="true">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h3 class="commitment-card__title">Legislação Aplicável</h3>
+                        <p class="commitment-card__desc">
+                            Estes Termos são regidos pelo Código Civil (Lei nº 10.406/2002), a LGPD
+                            (Lei nº 13.709/2018), o Marco Civil da Internet (Lei nº 12.965/2014)
+                            e a Lei de Software (Lei nº 9.609/1998). Foro: Comarca de Aracaju/SE.
+                        </p>
+                    </article>
+                    <article class="commitment-card reveal" aria-label="Revisão e vigência dos termos">
+                        <div class="commitment-card__icon commitment-card__icon--green" aria-hidden="true">
+                            <i class="fas fa-rotate"></i>
+                        </div>
+                        <h3 class="commitment-card__title">Revisão e Vigência</h3>
+                        <p class="commitment-card__desc">
+                            A GeoCODE reserva-se o direito de atualizar estes termos. Alterações
+                            substanciais serão comunicadas com mínimo de 15 dias de antecedência
+                            por e-mail. O uso continuado implica aceitação das novas condições.
+                        </p>
+                    </article>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════ SEÇÃO 2 — PROPRIEDADE INTELECTUAL ══════ -->
+        <section class="lgpd-section" aria-labelledby="propriedade-title">
+            <div class="container">
+
+                <header class="lgpd-section__header">
+                    <h2 class="lgpd-section__title reveal" id="propriedade-title">
+                        <span class="lgpd-section__title-icon lgpd-section__title-icon--orange" aria-hidden="true">
+                            <i class="fas fa-registered"></i>
+                        </span>
+                        Propriedade Intelectual
+                    </h2>
+                    <p class="lgpd-section__subtitle reveal">
+                        Todos os ativos digitais, códigos-fonte e marcas do ecossistema GeoCODE são
+                        propriedade exclusiva de Geovani Santos — o uso pelo cliente é sempre por licença.
+                    </p>
+                </header>
+
+                <div class="ip-card reveal" role="note" aria-label="Declaração de propriedade intelectual">
+                    <div class="ip-card__icon" aria-hidden="true">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div>
+                        <p class="ip-card__title">Titularidade Exclusiva — GeoCODE Programmer</p>
+                        <p class="ip-card__text">
+                            Todos os <strong>códigos-fonte</strong>, algoritmos, arquiteturas de sistema,
+                            designs de interface, documentações técnicas, fluxos de trabalho, a
+                            <strong>marca GeoCODE Programmer</strong> e todo o conjunto de software que
+                            compõe o <strong>ecossistema Akanni</strong> — incluindo painéis, APIs, SDKs,
+                            módulos e integrações — são de titularidade exclusiva de
+                            <strong>Geovani Santos</strong> e protegidos pela Lei de Direitos Autorais
+                            (Lei nº 9.610/1998) e pela Lei de Software (Lei nº 9.609/1998).
+                            O uso pelo contratante ocorre <strong>exclusivamente mediante licença de uso</strong>,
+                            não transferindo qualquer direito de propriedade, seja ela total ou parcial.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="license-grid">
+                    <div class="license-item license-item--allowed reveal">
+                        <div class="license-item__icon license-item__icon--green" aria-hidden="true">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div>
+                            <p class="license-item__title">Uso Licenciado Permitido</p>
+                            <p class="license-item__text">
+                                Utilizar o sistema contratado para as finalidades descritas no escopo do
+                                contrato, dentro dos limites de usuários e recursos acordados entre as partes.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="license-item license-item--allowed reveal">
+                        <div class="license-item__icon license-item__icon--green" aria-hidden="true">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div>
+                            <p class="license-item__title">Personalização Contratada</p>
+                            <p class="license-item__text">
+                                Solicitar adaptações, customizações e novas funcionalidades conforme
+                                escopo acordado em contrato ou proposta comercial aprovada por escrito.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="license-item license-item--forbidden reveal">
+                        <div class="license-item__icon license-item__icon--red" aria-hidden="true">
+                            <i class="fas fa-xmark"></i>
+                        </div>
+                        <div>
+                            <p class="license-item__title">Engenharia Reversa — Proibido</p>
+                            <p class="license-item__text">
+                                É expressamente vedado descompilar, desmontar, decompilar ou realizar
+                                qualquer forma de engenharia reversa sobre os sistemas fornecidos.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="license-item license-item--forbidden reveal">
+                        <div class="license-item__icon license-item__icon--red" aria-hidden="true">
+                            <i class="fas fa-xmark"></i>
+                        </div>
+                        <div>
+                            <p class="license-item__title">Revenda Não Autorizada — Proibido</p>
+                            <p class="license-item__text">
+                                É vedada a revenda, sublicenciamento, cessão ou disponibilização dos
+                                sistemas e softwares a terceiros sem autorização escrita prévia do titular.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="license-item license-item--forbidden reveal">
+                        <div class="license-item__icon license-item__icon--red" aria-hidden="true">
+                            <i class="fas fa-xmark"></i>
+                        </div>
+                        <div>
+                            <p class="license-item__title">Cópia de Código — Proibido</p>
+                            <p class="license-item__text">
+                                É proibido copiar, reproduzir, distribuir ou criar obras derivadas
+                                baseadas nos códigos-fonte, telas ou fluxos dos sistemas GeoCODE.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="license-item license-item--forbidden reveal">
+                        <div class="license-item__icon license-item__icon--red" aria-hidden="true">
+                            <i class="fas fa-xmark"></i>
+                        </div>
+                        <div>
+                            <p class="license-item__title">Uso da Marca — Restrito</p>
+                            <p class="license-item__text">
+                                O uso da marca GeoCODE Programmer, Akanni ou qualquer logotipo
+                                associado requer autorização prévia e por escrito do titular.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════ SEÇÃO 3 — LIMITAÇÃO DE RESPONSABILIDADE -->
+        <section class="lgpd-section" aria-labelledby="responsabilidade-title">
+            <div class="container">
+
+                <header class="lgpd-section__header">
+                    <h2 class="lgpd-section__title reveal" id="responsabilidade-title">
+                        <span class="lgpd-section__title-icon lgpd-section__title-icon--orange" aria-hidden="true">
+                            <i class="fas fa-shield-halved"></i>
+                        </span>
+                        Limitação de Responsabilidade
+                    </h2>
+                    <p class="lgpd-section__subtitle reveal">
+                        Definição clara dos limites da responsabilidade da GeoCODE Programmer perante
+                        contratantes, usuários e terceiros em qualquer cenário de uso.
+                    </p>
+                </header>
+
+                <p class="liability-intro reveal" role="note">
+                    <i class="fas fa-circle-info" aria-hidden="true"></i>
+                    A <strong>GeoCODE Programmer</strong> emprega todos os esforços técnicos e profissionais
+                    para garantir a qualidade, disponibilidade e segurança dos sistemas fornecidos. Contudo,
+                    determinadas situações extrapolam o controle do desenvolvedor e, portanto, não geram
+                    responsabilização direta, conforme descrito nas colunas abaixo.
+                </p>
+
+                <div class="liability-grid">
+                    <div class="liability-block reveal">
+                        <h3 class="liability-block__title">
+                            <i class="fas fa-ban" aria-hidden="true"></i>
+                            Não Somos Responsáveis Por
+                        </h3>
+                        <ul class="liability-list"
+                            aria-label="Situações fora da responsabilidade da GeoCODE">
+                            <li>
+                                <i class="fas fa-circle-xmark" aria-hidden="true"></i>
+                                <span><strong style="color: var(--clr-text-soft);">Lucros cessantes:</strong>
+                                perdas financeiras indiretas decorrentes de eventual indisponibilidade
+                                dos sistemas, mesmo que temporária e involuntária.</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-circle-xmark" aria-hidden="true"></i>
+                                <span><strong style="color: var(--clr-text-soft);">Internet do cliente:</strong>
+                                quedas, lentidão ou instabilidade na conexão do contratante que afetem
+                                o funcionamento de plataformas, especialmente sistemas de Digital Signage.</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-circle-xmark" aria-hidden="true"></i>
+                                <span><strong style="color: var(--clr-text-soft);">Mau uso por terceiros:</strong>
+                                danos causados por uso indevido ou não autorizado dos sistemas por
+                                funcionários, prestadores ou terceiros vinculados ao contratante.</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-circle-xmark" aria-hidden="true"></i>
+                                <span><strong style="color: var(--clr-text-soft);">Conteúdo do cliente:</strong>
+                                informações, mídias ou dados inseridos pelo contratante ou seus usuários
+                                nas plataformas são de responsabilidade exclusiva de quem os publica.</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-circle-xmark" aria-hidden="true"></i>
+                                <span><strong style="color: var(--clr-text-soft);">Força maior:</strong>
+                                eventos imprevisíveis como desastres, falhas de data centers de terceiros,
+                                ataques cibernéticos em larga escala ou atos de governo e autoridades.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="liability-block reveal">
+                        <h3 class="liability-block__title">
+                            <i class="fas fa-circle-check" aria-hidden="true"></i>
+                            Somos Responsáveis Por
+                        </h3>
+                        <ul class="liability-list"
+                            aria-label="Responsabilidades assumidas pela GeoCODE">
+                            <li>
+                                <i class="fas fa-circle-check" aria-hidden="true"></i>
+                                <span><strong style="color: var(--clr-text-soft);">Qualidade técnica:</strong>
+                                entregar sistemas funcionais, seguros e dentro das especificações
+                                acordadas em contrato ou proposta comercial aprovada.</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-circle-check" aria-hidden="true"></i>
+                                <span><strong style="color: var(--clr-text-soft);">Correção de bugs internos:</strong>
+                                solucionar falhas originadas em código produzido pela GeoCODE dentro
+                                do prazo estabelecido pelo nível de severidade do SLA contratado.</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-circle-check" aria-hidden="true"></i>
+                                <span><strong style="color: var(--clr-text-soft);">Proteção dos dados:</strong>
+                                adotar as medidas de segurança descritas na Política de Privacidade para
+                                proteger dados pessoais e sensíveis dos contratantes e usuários finais.</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-circle-check" aria-hidden="true"></i>
+                                <span><strong style="color: var(--clr-text-soft);">Suporte contratado:</strong>
+                                atender chamados de suporte dentro dos prazos e canais definidos no
+                                contrato ou plano de serviço ativo do cliente em vigência.</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-circle-check" aria-hidden="true"></i>
+                                <span><strong style="color: var(--clr-text-soft);">Comunicação proativa:</strong>
+                                notificar sobre manutenções programadas, descontinuações e alterações
+                                relevantes nos sistemas ou nestes Termos com antecedência adequada.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════ SEÇÃO 4 — CONDIÇÕES DE USO ════════════ -->
+        <section class="lgpd-section" aria-labelledby="conduta-title">
+            <div class="container">
+
+                <header class="lgpd-section__header">
+                    <h2 class="lgpd-section__title reveal" id="conduta-title">
+                        <span class="lgpd-section__title-icon lgpd-section__title-icon--orange" aria-hidden="true">
+                            <i class="fas fa-user-check"></i>
+                        </span>
+                        Condições de Uso e Conduta Aceitável
+                    </h2>
+                    <p class="lgpd-section__subtitle reveal">
+                        Regras que garantem um ambiente seguro, íntegro e funcional para todos os
+                        usuários e plataformas do ecossistema GeoCODE.
+                    </p>
+                </header>
+
+                <p class="conduct-intro reveal">
+                    O contratante e todos os usuários autorizados comprometem-se a utilizar os sistemas
+                    GeoCODE de forma ética, legal e dentro das finalidades para as quais foram contratados.
+                    As seguintes condutas são expressamente
+                    <strong style="color: var(--clr-orange);">proibidas</strong> e podem resultar em
+                    suspensão imediata do serviço, rescisão contratual e apuração de responsabilidade
+                    civil e criminal, conforme a legislação brasileira vigente:
+                </p>
+
+                <div class="rights-grid" role="list">
+
+                    <div class="right-item reveal" role="listitem">
+                        <div class="right-item__icon right-item__icon--red" aria-hidden="true">
+                            <i class="fas fa-xmark"></i>
+                        </div>
+                        <span class="right-item__text">
+                            <strong style="color: var(--clr-text-soft);">Spam e envios em massa:</strong>
+                            utilizar os sistemas para envio não autorizado de mensagens, e-mails
+                            comerciais em massa ou qualquer comunicação não solicitada a terceiros.
+                        </span>
+                    </div>
+
+                    <div class="right-item reveal" role="listitem">
+                        <div class="right-item__icon right-item__icon--red" aria-hidden="true">
+                            <i class="fas fa-xmark"></i>
+                        </div>
+                        <span class="right-item__text">
+                            <strong style="color: var(--clr-text-soft);">Uploads maliciosos:</strong>
+                            carregar arquivos contendo vírus, malware, ransomware, scripts maliciosos
+                            ou qualquer conteúdo que comprometa a segurança da plataforma ou de terceiros.
+                        </span>
+                    </div>
+
+                    <div class="right-item reveal" role="listitem">
+                        <div class="right-item__icon right-item__icon--red" aria-hidden="true">
+                            <i class="fas fa-xmark"></i>
+                        </div>
+                        <span class="right-item__text">
+                            <strong style="color: var(--clr-text-soft);">Conteúdo ilegal ou ofensivo:</strong>
+                            publicar, armazenar ou transmitir conteúdo que viole a legislação brasileira,
+                            direitos autorais, privacidade de terceiros ou que seja discriminatório.
+                        </span>
+                    </div>
+
+                    <div class="right-item reveal" role="listitem">
+                        <div class="right-item__icon right-item__icon--red" aria-hidden="true">
+                            <i class="fas fa-xmark"></i>
+                        </div>
+                        <span class="right-item__text">
+                            <strong style="color: var(--clr-text-soft);">Ataques e exploits:</strong>
+                            tentar invadir, sobrecarregar (DDoS), explorar vulnerabilidades ou obter
+                            acesso não autorizado a qualquer parte dos sistemas GeoCODE ou de terceiros.
+                        </span>
+                    </div>
+
+                    <div class="right-item reveal" role="listitem">
+                        <div class="right-item__icon right-item__icon--red" aria-hidden="true">
+                            <i class="fas fa-xmark"></i>
+                        </div>
+                        <span class="right-item__text">
+                            <strong style="color: var(--clr-text-soft);">Compartilhamento de credenciais:</strong>
+                            compartilhar senhas, tokens de acesso ou credenciais com pessoas não
+                            autorizadas expressamente pelo contrato de serviço em vigor.
+                        </span>
+                    </div>
+
+                    <div class="right-item reveal" role="listitem">
+                        <div class="right-item__icon right-item__icon--red" aria-hidden="true">
+                            <i class="fas fa-xmark"></i>
+                        </div>
+                        <span class="right-item__text">
+                            <strong style="color: var(--clr-text-soft);">Uso para fins ilegais:</strong>
+                            utilizar as plataformas para fraude, falsificação, lavagem de dinheiro,
+                            evasão fiscal ou qualquer atividade contrária à legislação brasileira.
+                        </span>
+                    </div>
+
+                    <div class="right-item reveal" role="listitem">
+                        <div class="right-item__icon right-item__icon--orange" aria-hidden="true">
+                            <i class="fas fa-triangle-exclamation"></i>
+                        </div>
+                        <span class="right-item__text">
+                            <strong style="color: var(--clr-text-soft);">Uso além do escopo licenciado:</strong>
+                            utilizar o sistema para finalidades não previstas em contrato, exceder
+                            limites de usuários ou acessar módulos não contratados sem autorização.
+                        </span>
+                    </div>
+
+                    <div class="right-item reveal" role="listitem">
+                        <div class="right-item__icon right-item__icon--orange" aria-hidden="true">
+                            <i class="fas fa-triangle-exclamation"></i>
+                        </div>
+                        <span class="right-item__text">
+                            <strong style="color: var(--clr-text-soft);">Automações abusivas:</strong>
+                            realizar raspagem de dados (scraping), bots automatizados ou requisições
+                            em volume que sobrecarreguem a infraestrutura dos sistemas GeoCODE.
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════ SEÇÃO 5 — PAGAMENTO E CANCELAMENTO ════ -->
+        <section class="lgpd-section" aria-labelledby="pagamento-title">
+            <div class="container">
+
+                <header class="lgpd-section__header">
+                    <h2 class="lgpd-section__title reveal" id="pagamento-title">
+                        <span class="lgpd-section__title-icon lgpd-section__title-icon--orange" aria-hidden="true">
+                            <i class="fas fa-credit-card"></i>
+                        </span>
+                        Pagamento, Inadimplência e Cancelamento
+                    </h2>
+                    <p class="lgpd-section__subtitle reveal">
+                        Condições financeiras que regem os contratos de serviço da GeoCODE Programmer.
+                    </p>
+                </header>
+
+                <div class="data-grid">
+                    <div class="data-block reveal">
+                        <h3 class="data-block__title">
+                            <i class="fas fa-money-bill-wave" aria-hidden="true"></i>
+                            Condições de Pagamento
+                        </h3>
+                        <ul class="data-list" aria-label="Condições de pagamento dos serviços">
+                            <li>Os valores, periodicidade e formas de pagamento são definidos em contrato
+                            ou proposta comercial aprovada pelas partes por escrito.</li>
+                            <li>Serviços recorrentes (mensalidades de SaaS, hospedagem, licenças) são
+                            cobrados antecipadamente, com vencimento na data acordada.</li>
+                            <li>Desenvolvimentos sob medida podem exigir pagamento parcial antecipado
+                            conforme cronograma estabelecido em proposta aprovada.</li>
+                            <li>Valores não incluem impostos, taxas bancárias ou encargos sobre remessas
+                            internacionais aplicáveis a cada transação.</li>
+                            <li>Reajustes anuais seguem o IGPM acumulado ou índice acordado em contrato.</li>
+                        </ul>
+                    </div>
+                    <div class="data-block reveal">
+                        <h3 class="data-block__title">
+                            <i class="fas fa-triangle-exclamation" aria-hidden="true"></i>
+                            Inadimplência e Rescisão
+                        </h3>
+                        <ul class="data-list" aria-label="Consequências de inadimplência e rescisão">
+                            <li>Faturas em atraso superior a 7 dias corridos podem resultar em suspensão
+                            preventiva do acesso ao sistema sem aviso prévio adicional.</li>
+                            <li>Após 30 dias de inadimplência, o contrato poderá ser rescindido
+                            unilateralmente, com exclusão dos dados do ambiente de produção.</li>
+                            <li>Multa por atraso de 2% ao mês e juros de 1% ao mês, calculados
+                            pro rata die sobre o valor total em aberto.</li>
+                            <li>A rescisão pelo contratante antes do prazo mínimo pode gerar cobrança
+                            de multa rescisória conforme previsto no instrumento contratual firmado.</li>
+                            <li>O contratante terá 15 dias após rescisão para exportar seus dados
+                            antes da exclusão definitiva dos ambientes contratados.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════ SEÇÃO 6 — SLA E MANUTENÇÃO ════════════ -->
+        <section class="lgpd-section" aria-labelledby="sla-title">
+            <div class="container">
+
+                <header class="lgpd-section__header">
+                    <h2 class="lgpd-section__title reveal" id="sla-title">
+                        <span class="lgpd-section__title-icon" aria-hidden="true">
+                            <i class="fas fa-gauge-high"></i>
+                        </span>
+                        SLA, Manutenções e Atualizações
+                    </h2>
+                    <p class="lgpd-section__subtitle reveal">
+                        Compromissos de disponibilidade e comunicação sobre manutenções preventivas
+                        e evolutivas em todos os sistemas do ecossistema GeoCODE.
+                    </p>
+                </header>
+
+                <p class="security-intro reveal" role="note">
+                    <i class="fas fa-circle-info" aria-hidden="true"></i>
+                    Os sistemas fornecidos pela <strong>GeoCODE Programmer</strong> passam periodicamente
+                    por manutenções preventivas, corretivas e evolutivas, necessárias para garantir
+                    segurança, desempenho e conformidade com novas tecnologias e padrões de mercado.
+                    Estas manutenções são planejadas para minimizar o impacto na operação dos contratantes.
+                </p>
+
+                <div class="sla-grid">
+                    <div class="sla-item reveal">
+                        <p class="sla-item__label">Disponibilidade-alvo</p>
+                        <p class="sla-item__title">99% ao mês</p>
+                        <p class="sla-item__desc">
+                            Meta de uptime para sistemas SaaS em produção, excluídas janelas de
+                            manutenção previamente comunicadas ao contratante.
+                        </p>
+                    </div>
+                    <div class="sla-item reveal">
+                        <p class="sla-item__label">Manutenção preventiva</p>
+                        <p class="sla-item__title">Aviso com 48h</p>
+                        <p class="sla-item__desc">
+                            Manutenções planejadas comunicadas com mínimo de 48 horas de antecedência
+                            via e-mail ou notificação na plataforma do contratante.
+                        </p>
+                    </div>
+                    <div class="sla-item reveal">
+                        <p class="sla-item__label">Bugs críticos</p>
+                        <p class="sla-item__title">Até 24 horas</p>
+                        <p class="sla-item__desc">
+                            Falhas que impedem o funcionamento do sistema são tratadas com prioridade
+                            máxima e resolução em até 24 horas úteis após abertura do chamado.
+                        </p>
+                    </div>
+                    <div class="sla-item reveal">
+                        <p class="sla-item__label">Bugs não críticos</p>
+                        <p class="sla-item__title">Até 5 dias úteis</p>
+                        <p class="sla-item__desc">
+                            Falhas que não impedem o uso do sistema são corrigidas em até 5 dias
+                            úteis contados a partir da abertura do chamado de suporte.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="exercise-grid">
+                    <article class="exercise-box exercise-box--default reveal"
+                        aria-label="Processo de manutenção preventiva">
+                        <h3 class="exercise-box__title">
+                            <i class="fas fa-wrench" aria-hidden="true"></i>
+                            Manutenção Preventiva e Corretiva
+                        </h3>
+                        <ol class="exercise-steps" aria-label="Passos do processo de manutenção">
+                            <li>A GeoCODE identifica a necessidade de atualização ou manutenção do sistema.</li>
+                            <li>O contratante é notificado com mínimo de 48h de antecedência por e-mail.</li>
+                            <li>A janela de manutenção ocorre preferencialmente em horários de baixo uso.</li>
+                            <li>Após a conclusão, é enviada confirmação com o relatório resumido de mudanças.</li>
+                        </ol>
+                        <a href="mailto:geocodeprogrammer@gmail.com" class="exercise-box__email"
+                            aria-label="Contato para dúvidas sobre manutenção">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            geocodeprogrammer@gmail.com
+                        </a>
+                    </article>
+                    <article class="exercise-box exercise-box--highlight reveal"
+                        aria-label="Atualizações e novas funcionalidades">
+                        <h3 class="exercise-box__title">
+                            <i class="fas fa-rocket" aria-hidden="true"></i>
+                            Atualizações e Novas Versões
+                        </h3>
+                        <ol class="exercise-steps" aria-label="Como funcionam as atualizações dos sistemas">
+                            <li>Atualizações de segurança são aplicadas automaticamente sem necessidade de aprovação prévia.</li>
+                            <li>Novas funcionalidades são comunicadas via changelog e e-mail ao contratante.</li>
+                            <li>Mudanças que alterem fluxos existentes são comunicadas com 7 dias de antecedência.</li>
+                            <li>Versões legadas podem ser mantidas por prazo acordado em contrato para sistemas críticos.</li>
+                        </ol>
+                        <a href="mailto:geocodeprogrammer@gmail.com" class="exercise-box__email"
+                            aria-label="Contato para sugestões de funcionalidades">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            geocodeprogrammer@gmail.com
+                        </a>
+                    </article>
+                </div>
+
+                <div class="partners-card reveal" role="note"
+                    aria-label="Nota sobre Digital Signage e infraestrutura local do cliente">
+                    <div class="partners-card__icon" aria-hidden="true">
+                        <i class="fas fa-display"></i>
+                    </div>
+                    <div>
+                        <h3 class="partners-card__title">Atenção: Digital Signage e Infraestrutura Local</h3>
+                        <p class="partners-card__text">
+                            Sistemas de Digital Signage e plataformas que dependem de infraestrutura local
+                            do cliente (televisores, players de mídia, redes internas, conexão à internet)
+                            têm sua disponibilidade diretamente condicionada à qualidade dessa infraestrutura.
+                            <strong>Instabilidades de internet, quedas de energia, falhas em dispositivos
+                            de exibição ou configurações incorretas de rede local</strong> não são cobertas
+                            pelo SLA da GeoCODE e devem ser gerenciadas pelo próprio contratante.
+                            Recomendamos o uso de conexões redundantes e nobreaks para ambientes críticos.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════ SEÇÃO 7 — SUPORTE E CONTATO ═══════════ -->
+        <section class="lgpd-section" aria-labelledby="suporte-title">
+            <div class="container">
+
+                <header class="lgpd-section__header">
+                    <h2 class="lgpd-section__title reveal" id="suporte-title">
+                        <span class="lgpd-section__title-icon lgpd-section__title-icon--orange" aria-hidden="true">
+                            <i class="fas fa-headset"></i>
+                        </span>
+                        Suporte, Contato e Foro Competente
+                    </h2>
+                    <p class="lgpd-section__subtitle reveal">
+                        Canais oficiais para suporte técnico, dúvidas jurídicas e resolução de conflitos
+                        relacionados a estes Termos de Uso.
+                    </p>
+                </header>
+
+                <div class="version-bar reveal" aria-label="Informações de versão e vigência do documento">
+                    <div class="version-bar__item">
+                        <i class="fas fa-file-lines" aria-hidden="true"></i>
+                        <span>Versão: <strong>1.0</strong></span>
+                    </div>
+                    <div class="version-bar__item">
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        <span>Vigência: <strong>Janeiro de 2025</strong></span>
+                    </div>
+                    <div class="version-bar__item">
+                        <i class="fas fa-rotate" aria-hidden="true"></i>
+                        <span>Última revisão: <strong>Janeiro de 2025</strong></span>
+                    </div>
+                    <div class="version-bar__item">
+                        <i class="fas fa-scale-balanced" aria-hidden="true"></i>
+                        <span>Foro: <strong>Aracaju / SE</strong></span>
+                    </div>
+                </div>
+
+                <div class="dpo-card reveal" role="note"
+                    aria-label="Contato para suporte e questões jurídicas">
+                    <div class="dpo-card__icon" aria-hidden="true">
+                        <i class="fas fa-handshake-angle"></i>
+                    </div>
+                    <div>
+                        <p class="dpo-card__title">Geovani Santos — GeoCODE Programmer</p>
+                        <p class="dpo-card__text">
+                            Para questões relacionadas a estes Termos de Uso, dúvidas sobre contratos,
+                            solicitações de suporte técnico, reporte de violações ou qualquer assunto
+                            jurídico relativo aos sistemas e serviços fornecidos, entre em contato pelos
+                            canais oficiais abaixo. Comprometemo-nos a responder em até
+                            <strong>2 dias úteis</strong> para questões contratuais e jurídicas, e dentro
+                            dos prazos de SLA para chamados de suporte técnico. Caso não seja possível
+                            resolver amigavelmente, as partes elegem o
+                            <strong>Foro da Comarca de Aracaju/SE</strong> como competente para dirimir
+                            quaisquer litígios decorrentes deste instrumento, com renúncia expressa a
+                            qualquer outro foro, por mais privilegiado que seja.
+                        </p>
+                        <div class="dpo-card__links">
+                            <a href="mailto:geocodeprogrammer@gmail.com" class="dpo-card__link"
+                                aria-label="Enviar e-mail para suporte ou questões jurídicas">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                                geocodeprogrammer@gmail.com
+                            </a>
+                            <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20tenho%20uma%20dúvida%20sobre%20os%20termos%20de%20uso%20dos%20seus%20serviços."
+                                target="_blank" rel="noopener noreferrer" class="dpo-card__link"
+                                aria-label="Contato via WhatsApp">
+                                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                                WhatsApp
+                            </a>
+                            <a href="privacidade.html" class="dpo-card__link"
+                                aria-label="Acessar Política de Privacidade">
+                                <i class="fas fa-shield-halved" aria-hidden="true"></i>
+                                Política de Privacidade
+                            </a>
+                            <a href="lgpd.html" class="dpo-card__link" aria-label="Acessar página LGPD">
+                                <i class="fas fa-scale-balanced" aria-hidden="true"></i>
+                                LGPD
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-bottom">
+            <p>&copy; <span id="anoAtual"></span> GeoCODE Programmer · Geovani Santos. Todos os Direitos
+                Reservados.</p>
+            <p>Desenvolvido com <i class="fa-solid fa-mug-hot"></i> por <strong><a
+                        href="https://eusougeovani.vercel.app/">GeoCODE Programmer</a></strong> — Sistema
+                seguro e em conformidade com a <strong><a href="lgpd.html">LGPD</a></strong></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
