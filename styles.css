@@ -15,33 +15,36 @@ html {
 
 /* ─── 02. DESIGN TOKENS ─────────────────────────────────────────── */
 :root {
-  /* Colors */
-  --clr-bg: #050B18;
-  --clr-surface: #0D1B2E;
-  --clr-surface-2: #112240;
-  --clr-border: rgba(99, 179, 255, 0.1);
-  --clr-border-hover: rgba(99, 179, 255, 0.28);
+  /* ── Colors: Akanni Dark Base ── */
+  --clr-bg: #1A2230;          /* Fundo base: Uma versão super escura do Slate */
+  --clr-surface: #222D3D;     /* Superfície 1: Painéis e cards principais */
+  --clr-surface-2: #324158;   /* Superfície 2: Slate Deep da paleta Akanni */
+  --clr-border: rgba(117, 167, 189, 0.15);     /* Steel Blue com transparência */
+  --clr-border-hover: rgba(52, 209, 183, 0.35); /* Mint Bright para interações */
 
-  --clr-blue: #2563EB;
-  --clr-blue-light: #60A5FA;
-  --clr-cyan: #00C8E8;
-  --clr-cyan-light: #67E8F9;
-  --clr-orange: #F97316;
-  --clr-orange-dark: #EA6A0A;
-  --clr-green: #22C55E;
+  /* ── Colors: Akanni Accents ── */
+  --clr-mint: #34D1B7;        /* Principal (Antigo blue): Menta Vibrante */
+  --clr-mint-dark: #29A893;   /* Hover principal: Menta Escurecido */
+  --clr-steel: #75A7BD;       /* Secundário (Antigo cyan): Azul Aço Médio */
+  --clr-teal: #357066;        /* Suporte: Verde-azulado escuro */
+  --clr-orange: #FF5E00;      /* Destaque (Neon): Laranja vibrante para alertas */
+  --clr-orange-dark: #E07A5F; /* Destaque secundário: Tom coral/perigo */
+  --clr-green: #2A9D8F;       /* Sucesso: Verde água escuro */
+  --clr-lime: #A7FF33;        /* Extra: Lima neon para status "online" */
 
-  --clr-text: #E8EEFF;
-  --clr-text-soft: #C4D0F0;
-  --clr-muted: #8899BB;
-  --clr-muted-2: #5A6F9A;
+  /* ── Text: Contraste para o Dark Theme ── */
+  --clr-text: #FAFCFD;        /* Branco azulado (Ice Soft) para leitura principal */
+  --clr-text-soft: #E2E8F0;   /* Cinza azulado (Ice Dark) para subtítulos */
+  --clr-muted: #75A7BD;       /* Steel blue para textos desativados ou placeholders */
+  --clr-muted-2: #475569;     /* Ardósia médio para dados auxiliares */
 
-  /* Gradients */
-  --grad-primary: linear-gradient(135deg, var(--clr-blue) 0%, var(--clr-cyan) 100%);
+  /* ── Gradients: DNA Akanni ── */
+  --grad-primary: linear-gradient(135deg, var(--clr-steel) 0%, var(--clr-mint) 100%);
   --grad-orange: linear-gradient(135deg, var(--clr-orange) 0%, var(--clr-orange-dark) 100%);
-  --grad-hero: radial-gradient(ellipse at 60% 0%, rgba(37, 99, 235, .25) 0%, transparent 60%),
-    radial-gradient(ellipse at 10% 80%, rgba(0, 200, 232, .12) 0%, transparent 55%);
+  --grad-hero: radial-gradient(ellipse at 60% 0%, rgba(52, 209, 183, .20) 0%, transparent 60%),
+               radial-gradient(ellipse at 10% 80%, rgba(117, 167, 189, .15) 0%, transparent 55%);
 
-  /* Typography */
+  /* ── Typography (Mantidas as suas escolhas) ── */
   --font-display: 'Syne', sans-serif;
   --font-body: 'Figtree', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -62,11 +65,11 @@ html {
   --radius-xl: 28px;
   --radius-pill: 999px;
 
-  /* Shadows */
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
-  --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.55);
-  --shadow-glow-blue: 0 0 40px rgba(37, 99, 235, 0.25);
-  --shadow-glow-orange: 0 8px 28px rgba(249, 115, 22, 0.35);
+  /* ── Shadows: Adaptadas para tons frios e brilho menta ── */
+  --shadow-card: 0 4px 24px rgba(26, 34, 48, 0.6);
+  --shadow-card-hover: 0 12px 40px rgba(26, 34, 48, 0.85);
+  --shadow-glow-mint: 0 0 40px rgba(52, 209, 183, 0.20); /* Brilho usando a cor Menta */
+  --shadow-glow-orange: 0 8px 28px rgba(255, 94, 0, 0.25);
 
   /* Transitions */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -140,7 +143,7 @@ strong {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--clr-cyan);
+  color: var(--clr-steel);
   margin-bottom: 0.85rem;
   font-family: var(--font-mono);
 }
@@ -180,7 +183,7 @@ strong {
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--clr-cyan);
+  outline: 2px solid var(--clr-steel);
   outline-offset: 3px;
 }
 
@@ -197,13 +200,13 @@ strong {
 
 .btn--ghost {
   background: transparent;
-  color: var(--clr-cyan-light);
+  color: var(--clr-teal);
   border: 1.5px solid rgba(0, 200, 232, 0.4);
 }
 
 .btn--ghost:hover {
   background: rgba(0, 200, 232, 0.07);
-  border-color: var(--clr-cyan);
+  border-color: var(--clr-steel);
   transform: translateY(-2px);
 }
 
@@ -426,7 +429,7 @@ nav {
   display: block;
   width: 100%;
   height: 2px;
-  background: var(--clr-cyan);
+  background: var(--clr-steel);
   border-radius: 2px;
   transition: transform var(--dur-med) var(--ease-out), opacity var(--dur-fast);
   transform-origin: center;
@@ -599,7 +602,7 @@ nav {
 .hero__scroll-line {
   width: 1px;
   height: 50px;
-  background: linear-gradient(to bottom, var(--clr-cyan), transparent);
+  background: linear-gradient(to bottom, var(--clr-steel), transparent);
   animation: scrollPulse 2s ease-in-out infinite;
 }
 
@@ -1061,7 +1064,7 @@ nav {
   background: rgba(37, 99, 235, 0.06);
   font-size: 0.82rem;
   font-family: var(--font-mono);
-  color: var(--clr-blue-light);
+  color: var(--clr-mint-dark);
   transition: background var(--dur-fast), border-color var(--dur-fast);
 }
 
@@ -1244,7 +1247,7 @@ nav {
 }
 
 .footer-bottom a {
-  color: var(--clr-blue-light);
+  color: var(--clr-mint-dark);
   font-weight: 600;
   text-decoration: none;
   transition: color var(--dur-fast);
@@ -1419,7 +1422,7 @@ nav {
 }
 
 :focus-visible {
-  outline: 2px solid var(--clr-cyan);
+  outline: 2px solid var(--clr-steel);
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -1493,7 +1496,7 @@ nav {
 }
 
 .lgpd-hero__meta-item i {
-  color: var(--clr-cyan);
+  color: var(--clr-steel);
   font-size: 0.75rem;
 }
 
@@ -1519,7 +1522,7 @@ nav {
   align-items: center;
   justify-content: center;
   font-size: 1.2rem;
-  color: var(--clr-blue-light);
+  color: var(--clr-mint-dark);
   flex-shrink: 0;
 }
 
@@ -1537,7 +1540,7 @@ nav {
 }
 
 .scope-banner__text strong {
-  color: var(--clr-cyan-light);
+  color: var(--clr-teal);
 }
 
 /* ── LGPD SECTIONS WRAPPER ──────────────────────────────────── */
@@ -1585,7 +1588,7 @@ nav {
   align-items: center;
   justify-content: center;
   font-size: 1rem;
-  color: var(--clr-cyan);
+  color: var(--clr-steel);
   flex-shrink: 0;
 }
 
@@ -1677,7 +1680,7 @@ nav {
 }
 
 .data-block__title i {
-  color: var(--clr-cyan);
+  color: var(--clr-steel);
   font-size: 0.85rem;
 }
 
@@ -1703,7 +1706,7 @@ nav {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--clr-cyan);
+  background: var(--clr-steel);
   margin-top: 0.45rem;
   flex-shrink: 0;
 }
@@ -1728,7 +1731,7 @@ nav {
 }
 
 .systems-note__title i {
-  color: var(--clr-cyan);
+  color: var(--clr-steel);
 }
 
 .systems-note__grid {
@@ -1748,7 +1751,7 @@ nav {
 }
 
 .systems-note__item i {
-  color: var(--clr-cyan-light);
+  color: var(--clr-teal);
   font-size: 0.75rem;
   margin-top: 0.3rem;
   flex-shrink: 0;
@@ -1786,7 +1789,7 @@ nav {
   align-items: center;
   justify-content: center;
   font-size: 0.85rem;
-  color: var(--clr-blue-light);
+  color: var(--clr-mint-dark);
   flex-shrink: 0;
 }
 
@@ -1897,11 +1900,11 @@ nav {
 }
 
 .exercise-box__title i {
-  color: var(--clr-cyan);
+  color: var(--clr-steel);
 }
 
 .exercise-box--highlight .exercise-box__title i {
-  color: var(--clr-blue-light);
+  color: var(--clr-mint-dark);
 }
 
 .exercise-steps {
@@ -1950,7 +1953,7 @@ nav {
   background: rgba(0, 200, 232, 0.05);
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  color: var(--clr-cyan-light);
+  color: var(--clr-teal);
   text-decoration: none;
   transition: background var(--dur-fast), border-color var(--dur-fast);
 }
@@ -1965,14 +1968,14 @@ nav {
   color: var(--clr-muted);
   line-height: 1.8;
   padding: 1rem 1.25rem;
-  border-left: 3px solid var(--clr-blue);
+  border-left: 3px solid var(--clr-mint);
   background: rgba(37, 99, 235, 0.05);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   margin-bottom: 1.5rem;
 }
 
 .security-intro i {
-  color: var(--clr-blue-light);
+  color: var(--clr-mint-dark);
   margin-right: 0.5rem;
 }
 
@@ -2002,7 +2005,7 @@ nav {
 }
 
 .measures-block__title i {
-  color: var(--clr-cyan);
+  color: var(--clr-steel);
 }
 
 .measures-list {
@@ -2021,7 +2024,7 @@ nav {
 }
 
 .measures-list li i {
-  color: var(--clr-cyan);
+  color: var(--clr-steel);
   font-size: 0.65rem;
   flex-shrink: 0;
 }
@@ -2052,7 +2055,7 @@ nav {
 }
 
 .exceptions-list li i {
-  color: var(--clr-blue-light);
+  color: var(--clr-mint-dark);
   margin-top: 0.2rem;
   flex-shrink: 0;
 }
@@ -2077,7 +2080,7 @@ nav {
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
-  color: var(--clr-cyan);
+  color: var(--clr-steel);
   flex-shrink: 0;
 }
 
@@ -2118,7 +2121,7 @@ nav {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--clr-cyan);
+  color: var(--clr-steel);
   font-family: var(--font-mono);
   margin-bottom: 0.4rem;
 }
@@ -2158,7 +2161,7 @@ nav {
   align-items: center;
   justify-content: center;
   font-size: 1.3rem;
-  color: var(--clr-blue-light);
+  color: var(--clr-mint-dark);
   flex-shrink: 0;
 }
 
@@ -2192,7 +2195,7 @@ nav {
   background: rgba(0, 200, 232, 0.05);
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  color: var(--clr-cyan-light);
+  color: var(--clr-teal);
   text-decoration: none;
   transition: background var(--dur-fast), border-color var(--dur-fast);
 }
@@ -2492,7 +2495,7 @@ nav {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--clr-cyan);
+  color: var(--clr-steel);
   font-family: var(--font-mono);
   margin-bottom: 0.4rem;
 }
@@ -2534,7 +2537,7 @@ nav {
 }
 
 .version-bar__item i {
-  color: var(--clr-cyan);
+  color: var(--clr-steel);
   font-size: 0.75rem;
 }
 
