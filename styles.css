@@ -2201,30 +2201,6 @@ nav {
   background: rgba(0, 200, 232, 0.1);
 }
 
-/* ── RESPONSIVE ──────────────────────────────────────────────── */
-@media (max-width: 640px) {
-  .lgpd-hero {
-    padding-top: calc(var(--space-3xl) + 0.5rem);
-  }
-
-  .commitment-grid,
-  .data-grid,
-  .rights-grid,
-  .exercise-grid,
-  .measures-grid,
-  .legal-basis-grid,
-  .retention-grid,
-  .systems-note__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .partners-card,
-  .scope-banner,
-  .dpo-card {
-    flex-direction: column;
-  }
-}
-
 /* ─── 20. TERMOS ─────────────────────────────────────────── */
 
 /* ── ICON ACCENT ORANGE ─────────────────────────────────────── */
@@ -2566,7 +2542,7 @@ nav {
   color: var(--clr-text-soft);
 }
 
-/* ── RESPONSIVE ──────────────────────────────────────────────── */
+/* ─── 21. RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 640px) {
   .lgpd-hero {
     padding-top: calc(var(--space-3xl) + 0.5rem);
@@ -2576,6 +2552,13 @@ nav {
   .data-grid,
   .rights-grid,
   .exercise-grid,
+  .measures-grid,
+  .legal-basis-grid,
+  .retention-grid,
+  .systems-note__grid {
+    grid-template-columns: 1fr;
+  }
+
   .liability-grid,
   .license-grid,
   .sla-grid {
@@ -2583,6 +2566,7 @@ nav {
   }
 
   .partners-card,
+  .scope-banner,
   .acceptance-banner,
   .ip-card,
   .dpo-card {
