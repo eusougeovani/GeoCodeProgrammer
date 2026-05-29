@@ -5,67 +5,1335 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <meta name="author" content="Geovani Santos — GeoCODE Programmer" />
-    <meta name="theme-color" content="#050B18" />
+    <meta name="theme-color" content="#0D1520" />
     <meta name="description"
-        content="GeoCODE Programmer — Geovani Santos. Desenvolvimento de sites institucionais, Landing Pages, AkanniMED/HUB, digital signage e gestão de Google Meu Negócio em Sergipe." />
-    <meta name="keywords"
-        content="desenvolvedor web, freelancer Sergipe, Firebase, HTML CSS JavaScript, digital signage, SaaS, Google Meu Negócio, AkanniMED" />
-    <link rel="icon" type="image/png" href="/assets/ui/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/assets/ui/favicon.svg" />
-    <link rel="shortcut icon" href="/assets/ui/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/ui/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="GeoCODE" />
-    <link rel="manifest" href="site.webmanifest" />
-    <meta property="og:title" content="GeoCODE Programmer — Geovani Santos" />
-    <meta property="og:description"
-        content="Soluções digitais acessíveis para profissionais e clínicas: Sites Institucionais, SaaS, Digital Signage e Google Meu Negócio." />
-    <meta property="og:type" content="website" />
+        content="GeoCODE Programmer — Geovani Santos. Desenvolvimento de sites institucionais, sistemas SaaS (Akanni), Digital Signage e Google Meu Negócio em Sergipe." />
     <title>GeoCODE Programmer · Geovani Santos</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Figtree:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Figtree:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+        /* ═══════════════════════════════════════════
+       RESET & TOKENS
+    ═══════════════════════════════════════════ */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0D1520;
+            --surface: #131F30;
+            --surface-2: #1C2B40;
+            --border: rgba(100, 160, 190, 0.14);
+            --border-h: rgba(52, 209, 183, 0.32);
+
+            --mint: #34D1B7;
+            --mint-d: #29A893;
+            --steel: #75A7BD;
+            --orange: #FF5E00;
+            --orange-d: #E05500;
+
+            --text: #F0F6FA;
+            --text-soft: #C8D8E8;
+            --muted: #6B8CA8;
+
+            --grad: linear-gradient(135deg, var(--steel) 0%, var(--mint) 100%);
+            --grad-o: linear-gradient(135deg, var(--orange) 0%, #FF8C42 100%);
+
+            --font-h: 'Syne', sans-serif;
+            --font-b: 'Figtree', sans-serif;
+            --font-m: 'JetBrains Mono', monospace;
+
+            --radius: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --radius-pill: 999px;
+
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --dur: 320ms;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-b);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-h);
+            line-height: 1.15;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* ═══════════════════════════════════════════
+       UTILITIES
+    ═══════════════════════════════════════════ */
+        .wrap {
+            width: 100%;
+            max-width: 1200px;
+            margin-inline: auto;
+            padding-inline: clamp(1.25rem, 5vw, 2.5rem);
+        }
+
+        .g-text {
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .eyebrow {
+            font-family: var(--font-m);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--steel);
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .sec-title {
+            font-size: clamp(1.8rem, 3.8vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .sec-sub {
+            font-size: 1rem;
+            color: var(--muted);
+            max-width: 520px;
+            line-height: 1.8;
+        }
+
+        /* Reveal */
+        .rv {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+        }
+
+        .rv.on {
+            opacity: 1;
+            transform: none;
+        }
+
+        .rv.d1 {
+            transition-delay: 80ms;
+        }
+
+        .rv.d2 {
+            transition-delay: 160ms;
+        }
+
+        .rv.d3 {
+            transition-delay: 240ms;
+        }
+
+        .rv.d4 {
+            transition-delay: 320ms;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.85rem 2rem;
+            border-radius: var(--radius-pill);
+            font-family: var(--font-b);
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+        }
+
+        .btn-primary {
+            background: var(--grad-o);
+            color: #fff;
+            box-shadow: 0 6px 24px rgba(255, 94, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 36px rgba(255, 94, 0, 0.48);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--mint);
+            border: 1.5px solid var(--border-h);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(52, 209, 183, 0.06);
+            transform: translateY(-2px);
+        }
+
+        /* ═══════════════════════════════════════════
+       WHATSAPP FLOAT
+    ═══════════════════════════════════════════ */
+        .wa-float {
+            position: fixed;
+            bottom: 1.75rem;
+            right: 1.75rem;
+            z-index: 900;
+        }
+
+        .wa-float a {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: #fff;
+            padding: 0.75rem 1.35rem;
+            border-radius: var(--radius-pill);
+            font-size: 0.9rem;
+            font-weight: 700;
+            font-family: var(--font-b);
+            box-shadow: 0 6px 28px rgba(37, 211, 102, 0.4);
+            transition: transform var(--dur), box-shadow var(--dur);
+        }
+
+        .wa-float a:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.58);
+        }
+
+        .wa-float i {
+            font-size: 1.2rem;
+        }
+
+        /* ═══════════════════════════════════════════
+       HEADER
+    ═══════════════════════════════════════════ */
+        #hdr {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 1000;
+            background: rgba(13, 21, 32, 0.72);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: background var(--dur), box-shadow var(--dur);
+        }
+
+        #hdr.scrolled {
+            background: rgba(13, 21, 32, 0.97);
+            box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            height: 68px;
+        }
+
+        .logo-text {
+            font-family: var(--font-h);
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+        }
+
+        .logo-text span {
+            color: var(--mint);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-left: auto;
+        }
+
+        .nav-links a {
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--muted);
+            padding: 0.45rem 0.75rem;
+            border-radius: var(--radius);
+            transition: color var(--dur), background var(--dur);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.on {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: var(--radius-pill);
+            background: var(--grad-o);
+            color: #fff;
+            font-size: 0.87rem;
+            font-weight: 700;
+            box-shadow: 0 4px 16px rgba(255, 94, 0, 0.28);
+            transition: transform var(--dur), box-shadow var(--dur);
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 94, 0, 0.45);
+        }
+
+        /* Hamburger */
+        .hbg {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            margin-left: auto;
+        }
+
+        .hbg span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: all var(--dur);
+        }
+
+        .hbg.on span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hbg.on span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hbg.on span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        @media (max-width: 860px) {
+            .hbg {
+                display: flex;
+            }
+
+            .nav-cta-wrap,
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                inset: 68px 0 0 0;
+                background: rgba(13, 21, 32, 0.98);
+                backdrop-filter: blur(20px);
+                align-items: center;
+                justify-content: center;
+                gap: 1.5rem;
+                z-index: 999;
+            }
+
+            .nav-links.open,
+            .nav-cta-wrap.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1.25rem;
+            }
+
+            .nav-cta {
+                font-size: 1rem;
+                padding: 0.8rem 2rem;
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════ */
+        .hero {
+            min-height: 100svh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 68px;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(52, 209, 183, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 209, 183, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 100%);
+        }
+
+        .hero-glow-1 {
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(ellipse, rgba(52, 209, 183, 0.12) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .hero-glow-2 {
+            position: absolute;
+            bottom: 0;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(ellipse, rgba(117, 167, 189, 0.1) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            max-width: 780px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(52, 209, 183, 0.08);
+            border: 1px solid rgba(52, 209, 183, 0.22);
+            border-radius: var(--radius-pill);
+            padding: 0.4rem 1rem;
+            font-family: var(--font-m);
+            font-size: 0.75rem;
+            color: var(--mint);
+            margin-bottom: 1.75rem;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            background: var(--mint);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(0.8);
+            }
+        }
+
+        .hero-title {
+            font-size: clamp(2.4rem, 6vw, 4.2rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-desc {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: var(--text-soft);
+            max-width: 600px;
+            line-height: 1.8;
+            margin-bottom: 2.25rem;
+        }
+
+        .hero-btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat-num {
+            font-family: var(--font-h);
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.83rem;
+            color: var(--muted);
+            margin-top: 0.3rem;
+        }
+
+        /* ═══════════════════════════════════════════
+       SECTION BASE
+    ═══════════════════════════════════════════ */
+        section {
+            padding: clamp(4rem, 8vw, 7rem) 0;
+        }
+
+        .sec-head {
+            margin-bottom: 3.5rem;
+        }
+
+        .sec-head.center {
+            text-align: center;
+        }
+
+        .sec-head.center .sec-sub {
+            margin-inline: auto;
+        }
+
+        /* Divider line */
+        .sec-line {
+            width: 48px;
+            height: 3px;
+            background: var(--grad);
+            border-radius: 2px;
+            margin-bottom: 1.5rem;
+        }
+
+        .sec-head.center .sec-line {
+            margin-inline: auto;
+        }
+
+        /* ═══════════════════════════════════════════
+       SOLUTIONS
+    ═══════════════════════════════════════════ */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 1.25rem;
+        }
+
+        .sol-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 2rem 1.75rem;
+            transition: border-color var(--dur), transform var(--dur), box-shadow var(--dur);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sol-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(135deg, rgba(52, 209, 183, 0.04) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity var(--dur);
+        }
+
+        .sol-card:hover {
+            border-color: var(--border-h);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+        }
+
+        .sol-card:hover::before {
+            opacity: 1;
+        }
+
+        .sol-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 1.25rem;
+            background: rgba(52, 209, 183, 0.1);
+            border: 1px solid rgba(52, 209, 183, 0.2);
+            color: var(--mint);
+        }
+
+        .sol-icon.orange {
+            background: rgba(255, 94, 0, 0.1);
+            border-color: rgba(255, 94, 0, 0.2);
+            color: var(--orange);
+        }
+
+        .sol-icon.steel {
+            background: rgba(117, 167, 189, 0.1);
+            border-color: rgba(117, 167, 189, 0.2);
+            color: var(--steel);
+        }
+
+        .sol-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .sol-desc {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.75;
+            margin-bottom: 1.25rem;
+        }
+
+        .sol-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: var(--font-m);
+            font-size: 0.75rem;
+            color: var(--steel);
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .sol-meta i {
+            color: var(--mint);
+        }
+
+        .sol-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .tag {
+            font-family: var(--font-m);
+            font-size: 0.72rem;
+            padding: 0.25rem 0.65rem;
+            border-radius: var(--radius-pill);
+            background: rgba(117, 167, 189, 0.1);
+            border: 1px solid rgba(117, 167, 189, 0.18);
+            color: var(--steel);
+        }
+
+        /* ═══════════════════════════════════════════
+       PLANS / PRICING
+    ═══════════════════════════════════════════ */
+        .plans-bg {
+            background: var(--surface);
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .plan-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 2.25rem 2rem;
+            position: relative;
+            transition: border-color var(--dur), box-shadow var(--dur), transform var(--dur);
+        }
+
+        .plan-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+        }
+
+        .plan-card.featured {
+            border-color: rgba(52, 209, 183, 0.45);
+            box-shadow: 0 0 0 1px rgba(52, 209, 183, 0.12), 0 16px 48px rgba(52, 209, 183, 0.1);
+        }
+
+        .plan-badge {
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--grad);
+            color: #0D1520;
+            font-size: 0.7rem;
+            font-weight: 700;
+            font-family: var(--font-m);
+            letter-spacing: 0.08em;
+            padding: 0.3rem 1rem;
+            border-radius: 0 0 var(--radius) var(--radius);
+        }
+
+        .plan-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-soft);
+            margin-bottom: 0.25rem;
+        }
+
+        .plan-price-setup {
+            display: flex;
+            align-items: baseline;
+            gap: 0.25rem;
+            margin: 1.25rem 0 0.5rem;
+        }
+
+        .plan-price-setup .label {
+            font-size: 0.75rem;
+            color: var(--muted);
+            font-family: var(--font-m);
+        }
+
+        .plan-price-setup .val {
+            font-family: var(--font-h);
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .plan-price-setup .val.orange {
+            background: var(--grad-o);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .plan-monthly {
+            font-family: var(--font-m);
+            font-size: 0.82rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .plan-monthly strong {
+            color: var(--text-soft);
+        }
+
+        .plan-includes-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-family: var(--font-m);
+            margin-bottom: 1rem;
+        }
+
+        .plan-features {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 2rem;
+        }
+
+        .plan-feat {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            font-size: 0.9rem;
+            color: var(--text-soft);
+        }
+
+        .plan-feat i {
+            color: var(--mint);
+            font-size: 0.75rem;
+            margin-top: 0.35rem;
+            flex-shrink: 0;
+        }
+
+        .plan-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.9rem;
+            border-radius: var(--radius-pill);
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all var(--dur);
+            border: 1.5px solid var(--border-h);
+            color: var(--mint);
+        }
+
+        .plan-link:hover {
+            background: rgba(52, 209, 183, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .plan-link.primary {
+            background: var(--grad-o);
+            border-color: transparent;
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(255, 94, 0, 0.3);
+        }
+
+        .plan-link.primary:hover {
+            box-shadow: 0 12px 32px rgba(255, 94, 0, 0.45);
+        }
+
+        /* Modular Table */
+        .modular-table {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .table-head {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 1rem;
+            padding: 0.85rem 1.5rem;
+            background: var(--surface-2);
+            font-family: var(--font-m);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .table-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            transition: background var(--dur);
+        }
+
+        .table-row:last-child {
+            border-bottom: none;
+        }
+
+        .table-row:hover {
+            background: rgba(52, 209, 183, 0.03);
+        }
+
+        .table-row-name {
+            font-size: 0.92rem;
+            font-weight: 600;
+        }
+
+        .table-row-name small {
+            display: block;
+            font-size: 0.78rem;
+            color: var(--muted);
+            font-weight: 400;
+            margin-top: 0.15rem;
+            font-family: var(--font-m);
+        }
+
+        .table-val {
+            font-family: var(--font-m);
+            font-size: 0.88rem;
+            color: var(--text-soft);
+            white-space: nowrap;
+            text-align: right;
+        }
+
+        .table-val.accent {
+            color: var(--mint);
+        }
+
+        /* Support note box */
+        .support-note {
+            display: flex;
+            gap: 1rem;
+            background: var(--surface-2);
+            border: 1px solid rgba(255, 94, 0, 0.22);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 1.75rem;
+            margin-top: 2rem;
+            align-items: flex-start;
+        }
+
+        .support-note i {
+            color: var(--orange);
+            font-size: 1.1rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .support-note p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .support-note p strong {
+            color: var(--text);
+        }
+
+        /* Infra badges */
+        .infra-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .infra-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 0.9rem 1.25rem;
+            flex: 1;
+            min-width: 140px;
+            transition: border-color var(--dur);
+        }
+
+        .infra-badge:hover {
+            border-color: var(--border-h);
+        }
+
+        .infra-badge i {
+            font-size: 1.1rem;
+            color: var(--mint);
+            flex-shrink: 0;
+        }
+
+        .infra-badge-text strong {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 700;
+        }
+
+        .infra-badge-text span {
+            font-size: 0.78rem;
+            color: var(--muted);
+            font-family: var(--font-m);
+        }
+
+        /* ═══════════════════════════════════════════
+       STACK
+    ═══════════════════════════════════════════ */
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+            gap: 1rem;
+        }
+
+        .stack-item {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem 1.25rem;
+            text-align: center;
+            transition: border-color var(--dur), transform var(--dur);
+        }
+
+        .stack-item:hover {
+            border-color: var(--border-h);
+            transform: translateY(-3px);
+        }
+
+        .stack-item i {
+            font-size: 1.75rem;
+            color: var(--mint);
+            margin-bottom: 0.75rem;
+            display: block;
+        }
+
+        .stack-item strong {
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .stack-item span {
+            font-size: 0.78rem;
+            color: var(--muted);
+            font-family: var(--font-m);
+        }
+
+        /* ═══════════════════════════════════════════
+       ABOUT
+    ═══════════════════════════════════════════ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .about-avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: var(--grad);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.25rem;
+            position: relative;
+        }
+
+        .about-avatar::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            background: var(--grad);
+            z-index: -1;
+            opacity: 0.3;
+            filter: blur(8px);
+        }
+
+        .about-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+        }
+
+        .about-role {
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-family: var(--font-m);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            justify-content: center;
+        }
+
+        .about-text .bio {
+            font-size: 0.97rem;
+            color: var(--text-soft);
+            line-height: 1.85;
+            margin-bottom: 1rem;
+        }
+
+        .about-text .bio strong {
+            color: var(--text);
+        }
+
+        .about-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 1.5rem;
+        }
+
+        /* ═══════════════════════════════════════════
+       CTA BANNER
+    ═══════════════════════════════════════════ */
+        .cta-section {
+            padding: clamp(4rem, 8vw, 7rem) 0;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--surface) 0%, rgba(52, 209, 183, 0.06) 100%);
+            border: 1px solid rgba(52, 209, 183, 0.22);
+            border-radius: var(--radius-xl);
+            padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 5vw, 3.5rem);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(52, 209, 183, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 1rem;
+        }
+
+        .cta-desc {
+            color: var(--muted);
+            max-width: 500px;
+            margin: 0 auto 2.25rem;
+            line-height: 1.8;
+        }
+
+        /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+        footer {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr 1fr;
+            gap: 3rem;
+            padding: 3.5rem 0;
+        }
+
+        @media (max-width: 860px) {
+            .footer-main {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-main {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-brand .tagline {
+            font-size: 0.88rem;
+            color: var(--muted);
+            margin: 0.75rem 0 1.25rem;
+            line-height: 1.7;
+        }
+
+        .socials {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius);
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            color: var(--muted);
+            transition: all var(--dur);
+        }
+
+        .social-link:hover {
+            color: var(--mint);
+            border-color: var(--border-h);
+        }
+
+        .footer-col h4 {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-family: var(--font-m);
+            margin-bottom: 1.1rem;
+        }
+
+        .footer-col ul {
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+
+        .footer-col li a,
+        .footer-col li span {
+            font-size: 0.88rem;
+            color: var(--text-soft);
+            transition: color var(--dur);
+        }
+
+        .footer-col li a:hover {
+            color: var(--mint);
+        }
+
+        .footer-col li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-col li i {
+            color: var(--muted);
+            font-size: 0.75rem;
+            width: 14px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding: 1.25rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .footer-bottom p {
+            font-size: 0.82rem;
+            color: var(--muted);
+        }
+
+        .footer-bottom a {
+            color: var(--steel);
+            transition: color var(--dur);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--mint);
+        }
+
+        /* ═══════════════════════════════════════════
+       MISC
+    ═══════════════════════════════════════════ */
+        .divider {
+            width: 1px;
+            height: 40px;
+            background: var(--border);
+        }
+
+        @media (max-width: 600px) {
+            .hero-btns {
+                flex-direction: column;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .table-head,
+            .table-row {
+                grid-template-columns: 1fr auto;
+            }
+
+            .table-head>*:last-child,
+            .table-row>*:last-child {
+                display: none;
+            }
+
+            .infra-row {
+                flex-direction: column;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- ═══════════════════════ WHATSAPP FLUTUANTE ════════════════════════ -->
-    <div class="whatsapp-float" aria-label="Atendimento WhatsApp">
+    <!-- ═══ WHATSAPP ═══ -->
+    <div class="wa-float">
         <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20ser%20atendido."
-            target="_blank" rel="noopener noreferrer" class="whatsapp-float__btn" aria-label="Falar no WhatsApp">
-            <i class="fab fa-whatsapp" aria-hidden="true"></i>
-            <span class="whatsapp-float__label">Falar Agora</span>
+            target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+            Falar Agora
         </a>
     </div>
 
-    <!-- ═══════════════════════════════ HEADER ═══════════════════════════════ -->
-    <header id="site-header" role="banner">
-        <nav aria-label="Navegação principal">
-            <a href="#home" class="logo" aria-label="GeoCODE — página inicial">
-                <img src="/assets/img/banner.png" alt="GeoCODE Programmer" height="38" />
+    <!-- ═══ HEADER ═══ -->
+    <header id="hdr">
+        <nav class="wrap">
+            <a href="#home" class="logo-text" aria-label="GeoCODE — início">
+                Geo<span>CODE</span>
             </a>
 
-            <ul class="nav-links" id="navLinks" role="list">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="nav-link">Início</a></li>
                 <li><a href="#solucoes" class="nav-link">Soluções</a></li>
                 <li><a href="#planos" class="nav-link">Planos</a></li>
-                <li><a href="#portfolio" class="nav-link">Projetos</a></li>
-                <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+                <li><a href="#stack" class="nav-link">Stack</a></li>
                 <li><a href="#sobre" class="nav-link">Sobre</a></li>
             </ul>
 
-            <div class="nav-actions">
-                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20um%20orçamento."
-                    target="_blank" rel="noopener noreferrer" class="btn-nav btn-nav--primary">
-                    Solicite Orçamento
+            <div class="nav-cta-wrap" id="navCta">
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20um%20orçamento."
+                    target="_blank" rel="noopener noreferrer" class="nav-cta">
+                    <i class="fab fa-whatsapp"></i> Orçamento
                 </a>
             </div>
 
-            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false"
-                aria-controls="navLinks">
+            <button class="hbg" id="hbgBtn" aria-label="Abrir menu" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
         </nav>
@@ -73,492 +1341,135 @@
 
     <main>
 
-        <!-- ═══════════════════════════════ HERO ═════════════════════════════════ -->
-        <section class="hero" id="home" aria-label="Apresentação">
-            <div class="hero__bg-grid" aria-hidden="true"></div>
-            <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
-            <div class="hero__glow hero__glow--2" aria-hidden="true"></div>
+        <!-- ═══ HERO ═══ -->
+        <section class="hero" id="home">
+            <div class="hero-grid" aria-hidden="true"></div>
+            <div class="hero-glow-1" aria-hidden="true"></div>
+            <div class="hero-glow-2" aria-hidden="true"></div>
 
-            <div class="hero__content">
-                <h1 class="hero__title reveal reveal--delay-2">
-                    A presença digital que o<br />
-                    <span class="gradient-text">seu negócio merece.dev</span>
-                </h1>
+            <div class="wrap">
+                <div class="hero-inner">
+                    <div class="hero-badge rv on">Disponível para novos projetos · Aracaju, SE</div>
 
-                <p class="hero__desc reveal reveal--delay-3">
-                    Sou <strong>Geovani Santos</strong> — ajudo clínicas, pequenos profissionais e instituições a se
-                    destacarem.
-                    Construo Sites Institucionais de alta performance, ecossistemas completos de gestão (AkanniMED e
-                    AkanniHUB), painéis de Digital Signage e administro seu Google Meu Negócio.
-                </p>
+                    <h1 class="hero-title rv d1">
+                        Sua presença digital,<br />
+                        <span class="g-text">construída com código.</span>
+                    </h1>
 
-                <div class="hero__cta reveal reveal--delay-4">
-                    <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20um%20orçamento."
-                        target="_blank" rel="noopener noreferrer" class="btn btn--primary">
-                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                        Solicitar Orçamento
-                    </a>
-                    <a href="#portfolio" class="btn btn--ghost">
-                        Ver Projetos <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-
-                <div class="hero__stats reveal reveal--delay-5" aria-label="Números">
-                    <div class="hero__stat">
-                        <span class="hero__stat-num" data-count="15">0</span><span class="hero__stat-suffix">+</span>
-                        <span class="hero__stat-label">Projetos entregues</span>
-                    </div>
-                    <div class="hero__stat-divider" aria-hidden="true"></div>
-                    <div class="hero__stat">
-                        <span class="hero__stat-num" data-count="4">0</span><span class="hero__stat-suffix">+</span>
-                        <span class="hero__stat-label">Anos de experiência</span>
-                    </div>
-                    <div class="hero__stat-divider" aria-hidden="true"></div>
-                    <div class="hero__stat">
-                        <span class="hero__stat-num" data-count="100">0</span><span class="hero__stat-suffix">%</span>
-                        <span class="hero__stat-label">Foco em Resultados</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hero__scroll" aria-hidden="true">
-                <div class="hero__scroll-line"></div>
-            </div>
-        </section>
-
-        <!-- ══════════════════════════ NOSSAS SOLUÇÕES ═══════════════════════════ -->
-        <section class="solutions" id="solucoes" aria-labelledby="solutions-title">
-            <div class="container">
-                <header class="section-header reveal">
-                    <p class="section-eyebrow">Nossas Soluções</p>
-                    <h2 class="section-title" id="solutions-title">
-                        O que posso <span class="gradient-text">fazer por você</span>
-                    </h2>
-                    <p class="section-desc">
-                        Acessibilidade financeira sem abrir mão da excelência tecnológica. Projetos ágeis, com
-                        arquitetura escalável utilizando integrações modernas via APIs.
+                    <p class="hero-desc rv d2">
+                        Sou <strong>Geovani Santos</strong> — desenvolvedor web especialista em <strong>Sites
+                            Institucionais</strong>, sistemas de gestão <strong>Akanni</strong>, <strong>Digital
+                            Signage</strong> e administração de <strong>Google Meu Negócio</strong>. Tecnologia de
+                        ponta, preço acessível.
                     </p>
-                </header>
 
-                <div class="solutions__grid">
+                    <div class="hero-btns rv d3">
+                        <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20um%20orçamento."
+                            target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                            <i class="fab fa-whatsapp"></i> Solicitar Orçamento
+                        </a>
+                        <a href="#planos" class="btn btn-ghost">
+                            Ver Planos <i class="fas fa-arrow-down"></i>
+                        </a>
+                    </div>
 
-                    <a href="https://wa.me/+5579988663905?text=Quero%20um%20site%20institucional." target="_blank"
-                        rel="noopener noreferrer" class="solution-card reveal" aria-label="Sites Institucionais">
-                        <div class="solution-card__icon">
-                            <i class="fas fa-globe" aria-hidden="true"></i>
+                    <div class="hero-stats rv d4">
+                        <div>
+                            <div class="stat-num"><span data-count="15">0</span>+</div>
+                            <div class="stat-label">Projetos entregues</div>
                         </div>
-                        <h3 class="solution-card__title">Sites & Landing Pages</h3>
-                        <p class="solution-card__desc">
-                            Criação de páginas ágeis e responsivas, otimizadas para conversão e presença digital da sua
-                            marca.
-                        </p>
-                        <span class="solution-card__more">Mais Informações <i class="fas fa-arrow-right"></i></span>
-                    </a>
-
-                    <a href="https://wa.me/+5579988663905?text=Preciso%20de%20um%20sistema%20ou%20SaaS." target="_blank"
-                        rel="noopener noreferrer" class="solution-card reveal" aria-label="SaaS">
-                        <div class="solution-card__icon">
-                            <i class="fas fa-cubes" aria-hidden="true"></i>
+                        <div class="divider"></div>
+                        <div>
+                            <div class="stat-num"><span data-count="4">0</span>+</div>
+                            <div class="stat-label">Anos de experiência</div>
                         </div>
-                        <h3 class="solution-card__title">AkanniMED & AkanniHUB</h3>
-                        <p class="solution-card__desc">
-                            Plataformas completas de gestão (CRMs) para controlar o fluxo de pacientes, clientes e
-                            estoque.
-                        </p>
-                        <span class="solution-card__more">Mais Informações <i class="fas fa-arrow-right"></i></span>
-                    </a>
-
-                    <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20em%20digital%20signage."
-                        target="_blank" rel="noopener noreferrer" class="solution-card reveal"
-                        aria-label="Digital Signage">
-                        <div class="solution-card__icon">
-                            <i class="fas fa-tv" aria-hidden="true"></i>
+                        <div class="divider"></div>
+                        <div>
+                            <div class="stat-num">100%</div>
+                            <div class="stat-label">Foco em resultados</div>
                         </div>
-                        <h3 class="solution-card__title">Digital Signage</h3>
-                        <p class="solution-card__desc">
-                            Transforme as TVs da sua recepção em painéis interativos com conteúdo dinâmico e chamadas de
-                            senhas.
-                        </p>
-                        <span class="solution-card__more">Mais Informações <i class="fas fa-arrow-right"></i></span>
-                    </a>
-
-                    <a href="https://wa.me/+5579988663905?text=Gostaria%20de%20otimizar%20meu%20Google." target="_blank"
-                        rel="noopener noreferrer" class="solution-card reveal" aria-label="Google Meu Negócio">
-                        <div class="solution-card__icon">
-                            <i class="fab fa-google" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="solution-card__title">Google Meu Negócio</h3>
-                        <p class="solution-card__desc">
-                            Administração estratégica do seu perfil corporativo para melhorar o alcance local (SEO) da
-                            sua clínica ou serviço.
-                        </p>
-                        <span class="solution-card__more">Mais Informações <i class="fas fa-arrow-right"></i></span>
-                    </a>
-
-                    <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20em%20APIs." target="_blank"
-                        rel="noopener noreferrer" class="solution-card reveal" aria-label="Integração de APIs">
-                        <div class="solution-card__icon">
-                            <i class="fas fa-network-wired" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="solution-card__title">Integração via APIs</h3>
-                        <p class="solution-card__desc">
-                            Consumo e integração de APIs para conectar sistemas, trazer dados dinâmicos e automatizar
-                            processos.
-                        </p>
-                        <span class="solution-card__more">Mais Informações <i class="fas fa-arrow-right"></i></span>
-                    </a>
-
-                    <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20em%20aulas." target="_blank"
-                        rel="noopener noreferrer" class="solution-card reveal" aria-label="Aulas de Tecnologia">
-                        <div class="solution-card__icon">
-                            <i class="fas fa-chalkboard-teacher" aria-hidden="true"></i>
-                        </div>
-                        <h3 class="solution-card__title">Aulas de Tecnologia</h3>
-                        <p class="solution-card__desc">
-                            Mentoria personalizada em desenvolvimento web (HTML, CSS, JS), design e lógica de
-                            programação.
-                        </p>
-                        <span class="solution-card__more">Mais Informações <i class="fas fa-arrow-right"></i></span>
-                    </a>
-
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- ════════════════════════ PLANOS E PACOTES ═══════════════════════════ -->
-        <section class="lgpd-section" id="planos" aria-labelledby="planos-title" style="background: var(--clr-bg);">
-            <div class="container">
-                <header class="section-header reveal">
-                    <p class="section-eyebrow">Investimento Estratégico</p>
-                    <h2 class="section-title" id="planos-title">
-                        Planos e <span class="gradient-text">Combos</span>
-                    </h2>
-                    <p class="section-desc">
-                        Condições comerciais otimizadas na contratação conjunta de soluções. Infraestrutura base
-                        configurada estrategicamente para minimizar custos fixos.
-                    </p>
-                </header>
-
-                <div class="commitment-grid">
-                    <article class="commitment-card reveal" aria-label="Combo Básico">
-                        <div class="commitment-card__icon commitment-card__icon--blue" aria-hidden="true">
-                            <i class="fas fa-layer-group"></i>
-                        </div>
-                        <h3 class="commitment-card__title" style="font-size: 1.2rem;">Combo Básico</h3>
-                        <ul class="liability-list" style="margin-top: 1rem; margin-bottom: 1.5rem;">
-                            <li><i class="fas fa-check" style="color: var(--clr-mint);"></i> Site Institucional</li>
-                            <li><i class="fas fa-check" style="color: var(--clr-mint);"></i> Sistema Akanni</li>
-                        </ul>
-                        <div style="padding-top: 1rem; border-top: 1px solid var(--clr-border);">
-                            <p style="font-size: 0.85rem; color: var(--clr-muted);">Setup Inicial: <strong
-                                    style="color: var(--clr-text);">R$ 1.600,00</strong></p>
-                            <p style="font-size: 0.85rem; color: var(--clr-muted);">Mensalidade: <strong
-                                    style="color: var(--clr-text);">R$ 190,00 / mês</strong></p>
-                        </div>
-                    </article>
-
-                    <article class="commitment-card reveal" aria-label="Combo Clínico">
-                        <div class="commitment-card__icon commitment-card__icon--cyan" aria-hidden="true">
-                            <i class="fas fa-stethoscope"></i>
-                        </div>
-                        <h3 class="commitment-card__title" style="font-size: 1.2rem;">Combo Clínico</h3>
-                        <ul class="liability-list" style="margin-top: 1rem; margin-bottom: 1.5rem;">
-                            <li><i class="fas fa-check" style="color: var(--clr-mint);"></i> AkanniMED / HUB</li>
-                            <li><i class="fas fa-check" style="color: var(--clr-mint);"></i> Digital Signage (Recepção)
-                            </li>
-                            <li><i class="fas fa-check" style="color: var(--clr-mint);"></i> Portal do Paciente</li>
-                        </ul>
-                        <div style="padding-top: 1rem; border-top: 1px solid var(--clr-border);">
-                            <p style="font-size: 0.85rem; color: var(--clr-muted);">Setup Inicial: <strong
-                                    style="color: var(--clr-text);">R$ 1.400,00</strong></p>
-                            <p style="font-size: 0.85rem; color: var(--clr-muted);">Mensalidade: <strong
-                                    style="color: var(--clr-text);">R$ 280,00 / mês</strong></p>
-                        </div>
-                    </article>
-
-                    <article class="commitment-card reveal" aria-label="Ecossistema Completo"
-                        style="border-color: var(--clr-orange); box-shadow: var(--shadow-glow-orange);">
-                        <div class="commitment-card__icon commitment-card__icon--orange" aria-hidden="true">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h3 class="commitment-card__title" style="font-size: 1.2rem;">Ecossistema Completo</h3>
-                        <ul class="liability-list" style="margin-top: 1rem; margin-bottom: 1.5rem;">
-                            <li><i class="fas fa-check" style="color: var(--clr-orange);"></i> Site Institucional + Blog
-                            </li>
-                            <li><i class="fas fa-check" style="color: var(--clr-orange);"></i> Gestão Google Maps / Meu
-                                Negócio</li>
-                            <li><i class="fas fa-check" style="color: var(--clr-orange);"></i> Akanni + Portal + Digital
-                                Signage</li>
-                        </ul>
-                        <div style="padding-top: 1rem; border-top: 1px solid var(--clr-border);">
-                            <p style="font-size: 0.85rem; color: var(--clr-muted);">Setup Inicial: <strong
-                                    style="color: var(--clr-text);">R$ 3.500,00</strong></p>
-                            <p style="font-size: 0.85rem; color: var(--clr-muted);">Mensalidade: <strong
-                                    style="color: var(--clr-text);">R$ 450,00 / mês</strong></p>
-                        </div>
-                    </article>
+        <!-- ═══ SOLUÇÕES ═══ -->
+        <section id="solucoes">
+            <div class="wrap">
+                <div class="sec-head center rv">
+                    <div class="sec-line"></div>
+                    <p class="eyebrow">O que eu faço</p>
+                    <h2 class="sec-title">Soluções digitais completas</h2>
+                    <p class="sec-sub">Arquitetura modular, deploy em cloud de ponta e integrações via API — do site
+                        institucional ao sistema de gestão.</p>
                 </div>
 
-                <div class="solutions__footer reveal" style="margin-top: 2rem;">
-                    <a href="https://wa.me/+5579988663905" target="_blank" rel="noopener noreferrer"
-                        class="btn btn--outline-primary">
-                        Consultar Soluções Avulsas <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
+                <div class="solutions-grid">
 
-        <!-- ════════════════════════ TRABALHOS RECENTES ══════════════════════════ -->
-        <section class="portfolio" id="portfolio" aria-labelledby="portfolio-title">
-            <div class="container">
-                <header class="section-header reveal">
-                    <p class="section-eyebrow">Trabalhos Recentes</p>
-                    <h2 class="section-title" id="portfolio-title">
-                        Realizando <span class="gradient-text">suas ideias</span>
-                    </h2>
-                </header>
-
-                <!-- Filtros -->
-                <div class="portfolio__filters reveal" role="tablist" aria-label="Filtrar projetos">
-                    <button class="filter-btn is-active" data-filter="all" role="tab"
-                        aria-selected="true">Todos</button>
-                    <button class="filter-btn" data-filter="site" role="tab" aria-selected="false">Sites</button>
-                    <button class="filter-btn" data-filter="saas" role="tab" aria-selected="false">SaaS & CRMs</button>
-                    <button class="filter-btn" data-filter="signage" role="tab" aria-selected="false">Digital
-                        Signage</button>
-                    <button class="filter-btn" data-filter="jogos" role="tab" aria-selected="false">Jogos</button>
-                </div>
-
-                <div class="portfolio__grid" id="portfolioGrid">
-
-                    <!-- Ecossistema Psi Meire -->
-                    <article class="project-card reveal" data-category="site">
-                        <div class="project-card__thumb project-card__thumb--blue">
-                            <img src="/assets/img/sitePsiMF.png" alt="Captura de tela do Site Psi Meire França"
-                                loading="lazy" />
-                            <div class="project-card__overlay">
-                                <a href="https://psimeirefranca.vercel.app/" target="_blank" rel="noopener noreferrer"
-                                    class="project-card__visit">
-                                    Visitar <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
+                    <!-- Site Institucional -->
+                    <div class="sol-card rv d1">
+                        <div class="sol-icon"><i class="fas fa-globe"></i></div>
+                        <h3 class="sol-title">Site Institucional</h3>
+                        <p class="sol-desc">Presença digital profissional com design responsivo, SEO técnico e
+                            performance otimizada. Layout adaptado para smartphone, tablet e desktop.</p>
+                        <div class="sol-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Vercel</span>
                         </div>
-                        <div class="project-card__body">
-                            <span class="project-card__tag">Site Institucional</span>
-                            <h3 class="project-card__title">Site Psi Meire França</h3>
+                        <div class="sol-meta">
+                            <i class="fas fa-clock"></i> Prazo: 3 a 5 semanas
                         </div>
-                    </article>
-
-                    <!-- SaaS -->
-                    <article class="project-card reveal" data-category="saas">
-                        <div class="project-card__thumb project-card__thumb--dark">
-                            <img src="/assets/img/akanniPsiMF.png" alt="Captura de tela do AkanniMED" loading="lazy" />
-                            <div class="project-card__overlay">
-                                <a href="https://psimeirefranca.vercel.app/app.html" target="_blank"
-                                    rel="noopener noreferrer" class="project-card__visit">
-                                    Visitar <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-card__body">
-                            <span class="project-card__tag">SaaS / CRM</span>
-                            <h3 class="project-card__title">AkanniMED | Gestão Clínica</h3>
-                        </div>
-                    </article>
-
-                    <article class="project-card reveal" data-category="saas">
-                        <div class="project-card__thumb project-card__thumb--purple">
-                            <img src="/assets/img/akanniEstoque.png" alt="Captura de tela do AkanniHUB"
-                                loading="lazy" />
-                            <div class="project-card__overlay">
-                                <a href="https://estoquegeocode.vercel.app/" target="_blank" rel="noopener noreferrer"
-                                    class="project-card__visit">
-                                    Visitar <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-card__body">
-                            <span class="project-card__tag">SaaS</span>
-                            <h3 class="project-card__title">AkanniHUB | Gestão Web</h3>
-                        </div>
-                    </article>
+                    </div>
 
                     <!-- Digital Signage -->
-                    <article class="project-card reveal" data-category="signage">
-                        <div class="project-card__thumb project-card__thumb--orange">
-                            <img src="/assets/img/dsPsiMF.png"
-                                alt="Captura de tela do Digital Signage da Psi Meire França" loading="lazy" />
-                            <div class="project-card__overlay">
-                                <a href="https://psimeirefranca.vercel.app/dashboard.html" target="_blank"
-                                    rel="noopener noreferrer" class="project-card__visit">
-                                    Visitar <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
+                    <div class="sol-card rv d2">
+                        <div class="sol-icon orange"><i class="fas fa-tv"></i></div>
+                        <h3 class="sol-title">Digital Signage</h3>
+                        <p class="sol-desc">Painéis digitais dinâmicos para salas de espera, vitrines e recepções.
+                            Interface para TV com widgets de clima, notícias e conteúdo personalizado.</p>
+                        <div class="sol-tags">
+                            <span class="tag">Front-end</span>
+                            <span class="tag">API</span>
+                            <span class="tag">OpenWeather</span>
+                            <span class="tag">RSS.app</span>
                         </div>
-                        <div class="project-card__body">
-                            <span class="project-card__tag">Digital Signage</span>
-                            <h3 class="project-card__title">Painel de Recepção</h3>
-                        </div>
-                    </article>
-
-                    <!-- Institucional -->
-                    <article class="project-card reveal" data-category="site">
-                        <div class="project-card__thumb project-card__thumb--purple">
-                            <img src="/assets/img/siteFF193.png" alt="Captura de tela da Fundação Fênix 193"
-                                loading="lazy" />
-                            <div class="project-card__overlay">
-                                <a href="https://ff193.vercel.app/" target="_blank" rel="noopener noreferrer"
-                                    class="project-card__visit">
-                                    Visitar <i class="fas fa-external-link-alt"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-card__body">
-                            <span class="project-card__tag">Transparência</span>
-                            <h3 class="project-card__title">Fundação Fênix 193</h3>
-                        </div>
-                    </article>
-
-                    <!-- Jogos/Projetos Pessoais -->
-                    <article class="project-card reveal" data-category="jogos">
-                        <div class="project-card__thumb project-card__thumb--dark">
-                            <div class="project-card__overlay" style="background: rgba(5,11,24,0.3);">
-                                <!-- Placeholder if image not available -->
-                            </div>
-                        </div>
-                        <div class="project-card__body">
-                            <span class="project-card__tag">Simulação Tática</span>
-                            <h3 class="project-card__title">Football Manager Autoral</h3>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="portfolio__footer reveal">
-                    <a href="https://wa.me/+5579988663905" target="_blank" rel="noopener noreferrer"
-                        class="btn btn--outline-primary">
-                        Conversar sobre um Projeto <i class="fas fa-arrow-right" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══════════════════════════ DEPOIMENTOS ══════════════════════════════ -->
-        <section class="testimonials" id="depoimentos" aria-labelledby="testimonials-title">
-            <div class="container">
-                <header class="section-header reveal">
-                    <p class="section-eyebrow">Ideias Realizadas</p>
-                    <h2 class="section-title" id="testimonials-title">
-                        O que meus <span class="gradient-text">clientes dizem</span>
-                    </h2>
-                </header>
-
-                <div class="testimonials__grid">
-
-                    <article class="testimonial-card reveal">
-                        <div class="testimonial-card__quote" aria-hidden="true">"</div>
-                        <p class="testimonial-card__text">
-                            O Geovani entregou nosso ecossistema com muita atenção.
-                            O resultado uniu Site, Blog e Painel de Sinalização Digital de forma impecável, organizando
-                            perfeitamente o fluxo de atendimento da clínica!
-                        </p>
-                        <footer class="testimonial-card__footer">
-                            <div class="testimonial-card__avatar">
-                                <i class="fas fa-user-circle" aria-hidden="true"></i>
-                            </div>
-                            <div>
-                                <strong class="testimonial-card__name">Meire França</strong>
-                                <span class="testimonial-card__role">Psicóloga Clínica</span>
-                            </div>
-                        </footer>
-                    </article>
-
-                    <article class="testimonial-card reveal">
-                        <div class="testimonial-card__quote" aria-hidden="true">"</div>
-                        <p class="testimonial-card__text">
-                            O AkanniHUB e as implementações organizaram nossa presença online.
-                            Rápido, funcional e com valores perfeitamente adequados para a nossa instituição prestar
-                            contas à sociedade.
-                        </p>
-                        <footer class="testimonial-card__footer">
-                            <div class="testimonial-card__avatar">
-                                <i class="fas fa-user-circle" aria-hidden="true"></i>
-                            </div>
-                            <div>
-                                <strong class="testimonial-card__name">Equipe FF193</strong>
-                                <span class="testimonial-card__role">Fundação Fênix 193</span>
-                            </div>
-                        </footer>
-                    </article>
-
-                    <article class="testimonial-card reveal">
-                        <div class="testimonial-card__quote" aria-hidden="true">"</div>
-                        <p class="testimonial-card__text">
-                            As aulas foram didáticas, práticas e com exemplos reais. Aprendi HTML,
-                            CSS e JavaScript de verdade — o Geovani tem paciência e explica de um
-                            jeito que qualquer um entende.
-                        </p>
-                        <footer class="testimonial-card__footer">
-                            <div class="testimonial-card__avatar">
-                                <i class="fas fa-user-circle" aria-hidden="true"></i>
-                            </div>
-                            <div>
-                                <strong class="testimonial-card__name">Aluno School Vision</strong>
-                                <span class="testimonial-card__role">Mentoria · Web Development</span>
-                            </div>
-                        </footer>
-                    </article>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- ════════════════════════════ SOBRE ══════════════════════════════════ -->
-        <section class="about" id="sobre" aria-labelledby="about-title">
-            <div class="container">
-                <div class="about__grid">
-
-                    <div class="about__visual" aria-hidden="true">
-                        <div class="about__avatar">
-                            <img src="/assets/img/avatar.png" alt="Foto de Geovani Santos" />
-                        </div>
-                        <div class="about__badge about__badge--1">
-                            <i class="fas fa-graduation-cap"></i> UFS — Ciência da Computação
-                        </div>
-                        <div class="about__badge about__badge--2">
-                            <i class="fas fa-award"></i> SENAI — Assistente Administrativo
+                        <div class="sol-meta">
+                            <i class="fas fa-clock"></i> Prazo: 3 a 5 semanas
                         </div>
                     </div>
 
-                    <div class="about__text">
-                        <p class="section-eyebrow reveal">A GeoCODE</p>
-                        <h2 class="section-title reveal" id="about-title">
-                            Quem está por trás<br /><span class="gradient-text">do código</span>
-                        </h2>
+                    <!-- Akanni -->
+                    <div class="sol-card rv d3">
+                        <div class="sol-icon steel"><i class="fas fa-database"></i></div>
+                        <h3 class="sol-title">Sistema Akanni</h3>
+                        <p class="sol-desc">Gestão integrada em tempo real: agendamentos, área restrita, automações e
+                            portal do paciente. AkanniMED para clínicas, AkanniHUB para empresas.</p>
+                        <div class="sol-tags">
+                            <span class="tag">Firebase</span>
+                            <span class="tag">Firestore</span>
+                            <span class="tag">Auth</span>
+                            <span class="tag">Jitsi</span>
+                        </div>
+                        <div class="sol-meta">
+                            <i class="fas fa-clock"></i> Prazo: 8 a 12 semanas
+                        </div>
+                    </div>
 
-                        <p class="about__bio reveal">
-                            Sou <strong>Geovani Santos</strong>, 25 anos, desenvolvedor web diretamente de Aracaju,
-                            Sergipe.
-                            Atuando inteiramente sobre ambiente Linux (Ubuntu e Mint), construo interfaces e
-                            arquiteturas focadas em performance e acessibilidade financeira utilizando HTML5, CSS3, JS
-                            Moderno e consumo avançado de APIs.
-                        </p>
-                        <p class="about__bio reveal">
-                            Já atuei como instrutor na <strong>School Vision</strong> ministrando aulas de tecnologia e
-                            como Assistente Administrativo na <strong>Primasa Engenharia</strong>. Hoje, além do
-                            desenvolvimento em tempo integral, sou goleiro e atuo na administração esportiva do RCA,
-                            equilibrando a vida técnica com esporte, cinema nacional e meus projetos pessoais, como o
-                            Netlove.
-                        </p>
-
-                        <div class="about__stack reveal" aria-label="Stack tecnológica">
-                            <span class="stack-tag">Ubuntu / Mint</span>
-                            <span class="stack-tag">HTML5 / CSS3</span>
-                            <span class="stack-tag">JavaScript ES6+</span>
-                            <span class="stack-tag">Integração de APIs</span>
-                            <span class="stack-tag">Firebase</span>
-                            <span class="stack-tag">Vercel & GitHub</span>
-                            <span class="stack-tag">Canva & Photopea</span>
-                            <span class="stack-tag">Google Meu Negócio</span>
+                    <!-- Google Meu Negócio -->
+                    <div class="sol-card rv d4">
+                        <div class="sol-icon"><i class="fab fa-google"></i></div>
+                        <h3 class="sol-title">Google Meu Negócio</h3>
+                        <p class="sol-desc">Configuração, otimização e administração contínua do seu perfil no Google.
+                            Mais visibilidade nas buscas locais e melhor posicionamento no Maps.</p>
+                        <div class="sol-tags">
+                            <span class="tag">Google Cloud</span>
+                            <span class="tag">SEO Local</span>
+                            <span class="tag">Maps API</span>
+                        </div>
+                        <div class="sol-meta">
+                            <i class="fas fa-infinity"></i> Suporte contínuo
                         </div>
                     </div>
 
@@ -566,21 +1477,311 @@
             </div>
         </section>
 
-        <!-- ══════════════════════════ CTA BANNER ════════════════════════════════ -->
-        <section class="cta-banner" id="contato" aria-label="Pronto para começar">
-            <div class="container">
-                <div class="cta-banner__inner reveal">
-                    <h2 class="cta-banner__title">
-                        Pronto para digitalizar<br /><span class="gradient-text">seu fluxo de trabalho?</span>
-                    </h2>
-                    <p class="cta-banner__desc">
-                        Seja para uma Landing Page rápida, gestão do seu Google ou um sistema AkanniMED completo. Me
-                        chame no WhatsApp e vamos estruturar o projeto ideal para o seu momento.
+        <!-- ═══ PLANOS ═══ -->
+        <section id="planos" class="plans-bg">
+            <div class="wrap">
+                <div class="sec-head rv">
+                    <div class="sec-line"></div>
+                    <p class="eyebrow">Investimento</p>
+                    <h2 class="sec-title">Combos e planos disponíveis</h2>
+                    <p class="sec-sub">Soluções modulares ou pacotes integrados. Hospedagem em cloud gratuita (Vercel +
+                        Firebase) com custo de domínio de apenas R$ 40/ano.</p>
+                </div>
+
+                <!-- Combo Cards -->
+                <div class="plans-grid">
+
+                    <!-- Combo Básico -->
+                    <div class="plan-card rv d1">
+                        <div class="plan-name">Combo Básico</div>
+                        <div class="plan-price-setup">
+                            <span class="label">setup</span>
+                            <span class="val">R$1.600</span>
+                        </div>
+                        <div class="plan-monthly">Mensalidade: <strong>R$ 190,00 / mês</strong></div>
+                        <div class="plan-includes-label">Incluso</div>
+                        <div class="plan-features">
+                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Site Institucional completo</div>
+                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Sistema Akanni (gestão integrada)
+                            </div>
+                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Domínio configurado</div>
+                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Deploy na Vercel</div>
+                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Suporte mensal incluso</div>
+                        </div>
+                        <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20no%20Combo%20Básico."
+                            target="_blank" rel="noopener noreferrer" class="plan-link">
+                            <i class="fab fa-whatsapp"></i> Quero esse plano
+                        </a>
+                    </div>
+
+                    <!-- Combo Clínico (Destaque) -->
+                    <div class="plan-card featured rv d2">
+                        <div class="plan-badge">MAIS PROCURADO</div>
+                        <div class="plan-name">Combo Clínico</div>
+                        <div class="plan-price-setup">
+                            <span class="label">setup</span>
+                            <span class="val">R$1.400</span>
+                        </div>
+                        <div class="plan-monthly">Mensalidade: <strong>R$ 280,00 / mês</strong></div>
+                        <div class="plan-includes-label">Incluso</div>
+                        <div class="plan-features">
+                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Sistema AkanniMED completo</div>
+                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Painel Digital Signage</div>
+                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Portal do Paciente</div>
+                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Videochamadas via Jitsi</div>
+                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Suporte prioritário mensal</div>
+                        </div>
+                        <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20no%20Combo%20Clínico."
+                            target="_blank" rel="noopener noreferrer" class="plan-link primary">
+                            <i class="fab fa-whatsapp"></i> Quero esse plano
+                        </a>
+                    </div>
+
+                    <!-- Ecossistema Completo -->
+                    <div class="plan-card rv d3">
+                        <div class="plan-name">Ecossistema GeoCODE</div>
+                        <div class="plan-price-setup">
+                            <span class="label">setup</span>
+                            <span class="val orange">R$3.500</span>
+                        </div>
+                        <div class="plan-monthly">Mensalidade: <strong>R$ 450,00 / mês</strong></div>
+                        <div class="plan-includes-label">Incluso</div>
+                        <div class="plan-features">
+                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Site + Blog + Google Maps</div>
+                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Sistema Akanni completo</div>
+                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Portal do Paciente/Cliente</div>
+                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Digital Signage integrado</div>
+                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Suporte full mensal incluso</div>
+                        </div>
+                        <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20no%20Ecossistema%20Completo."
+                            target="_blank" rel="noopener noreferrer" class="plan-link">
+                            <i class="fab fa-whatsapp"></i> Quero esse plano
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Módulos Avulsos -->
+                <div class="rv" style="margin-top:3rem;">
+                    <p class="eyebrow" style="margin-bottom:1rem;">Soluções Avulsas</p>
+                    <div class="modular-table">
+                        <div class="table-head">
+                            <span>Serviço</span>
+                            <span>Setup</span>
+                            <span>Mensalidade</span>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-row-name">
+                                Site Institucional
+                                <small>Design UI + Front-end + Deploy</small>
+                            </div>
+                            <div class="table-val">R$ 1.500</div>
+                            <div class="table-val accent">R$ 80/mês</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-row-name">
+                                Digital Signage
+                                <small>Interface TV + APIs integradas</small>
+                            </div>
+                            <div class="table-val">R$ 450</div>
+                            <div class="table-val accent">R$ 90/mês</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-row-name">
+                                Sistema Akanni
+                                <small>Banco de Dados + Back-end + Auth</small>
+                            </div>
+                            <div class="table-val">R$ 250</div>
+                            <div class="table-val accent">R$ 139/mês</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-row-name">
+                                Suporte Avulso
+                                <small>Mínimo de R$ 100 por chamado</small>
+                            </div>
+                            <div class="table-val">—</div>
+                            <div class="table-val accent">R$ 50/h</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Condições de Pagamento -->
+                <div class="support-note rv" style="margin-top:1.5rem;">
+                    <i class="fas fa-circle-info"></i>
+                    <p>
+                        <strong>Condições de pagamento:</strong> 30% na assinatura do contrato · 30% na entrega da
+                        estrutura base · 40% na publicação final.
+                        Suporte disponível de segunda a sexta, 8h às 20h. Finais de semana apenas para falhas críticas.
+                        Domínio próprio: <strong>R$ 40/ano</strong> (único custo fixo de terceiros).
                     </p>
-                    <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto."
-                        target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--lg">
-                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                        Solicitar Orçamento
+                </div>
+
+                <!-- Infraestrutura -->
+                <div class="rv" style="margin-top:3rem;">
+                    <p class="eyebrow" style="margin-bottom:1rem;">Infraestrutura</p>
+                    <div class="infra-row">
+                        <div class="infra-badge">
+                            <i class="fas fa-rocket"></i>
+                            <div class="infra-badge-text">
+                                <strong>Vercel</strong>
+                                <span>Deploy front-end</span>
+                            </div>
+                        </div>
+                        <div class="infra-badge">
+                            <i class="fas fa-fire"></i>
+                            <div class="infra-badge-text">
+                                <strong>Firebase</strong>
+                                <span>BD + Auth</span>
+                            </div>
+                        </div>
+                        <div class="infra-badge">
+                            <i class="fab fa-github"></i>
+                            <div class="infra-badge-text">
+                                <strong>GitHub</strong>
+                                <span>Código + Chamados</span>
+                            </div>
+                        </div>
+                        <div class="infra-badge">
+                            <i class="fas fa-image"></i>
+                            <div class="infra-badge-text">
+                                <strong>Cloudinary</strong>
+                                <span>Mídias otimizadas</span>
+                            </div>
+                        </div>
+                        <div class="infra-badge">
+                            <i class="fab fa-google"></i>
+                            <div class="infra-badge-text">
+                                <strong>Google Cloud</strong>
+                                <span>Maps + APIs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ═══ STACK ═══ -->
+        <section id="stack">
+            <div class="wrap">
+                <div class="sec-head center rv">
+                    <div class="sec-line"></div>
+                    <p class="eyebrow">Tecnologias</p>
+                    <h2 class="sec-title">Stack que uso no dia a dia</h2>
+                    <p class="sec-sub">Ambiente Linux 100% (Ubuntu / Mint). Front-end moderno, integrações de API e
+                        cloud de ponta.</p>
+                </div>
+
+                <div class="stack-grid rv">
+                    <div class="stack-item">
+                        <i class="fab fa-html5"></i>
+                        <strong>HTML5</strong>
+                        <span>Semântica & SEO</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fab fa-css3-alt"></i>
+                        <strong>CSS3</strong>
+                        <span>Layout & Animações</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fab fa-js"></i>
+                        <strong>JavaScript ES6+</strong>
+                        <span>Vanilla & APIs</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fas fa-fire"></i>
+                        <strong>Firebase</strong>
+                        <span>Firestore & Auth</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fas fa-rocket"></i>
+                        <strong>Vercel</strong>
+                        <span>Deploy & CDN</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fab fa-github"></i>
+                        <strong>GitHub</strong>
+                        <span>Versionamento</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fab fa-google"></i>
+                        <strong>Google Cloud</strong>
+                        <span>Maps & Workspace</span>
+                    </div>
+                    <div class="stack-item">
+                        <i class="fab fa-linux"></i>
+                        <strong>Linux</strong>
+                        <span>Ubuntu & Mint</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ SOBRE ═══ -->
+        <section id="sobre" class="plans-bg">
+            <div class="wrap">
+                <div class="about-grid">
+
+                    <div class="about-visual rv">
+                        <div class="about-card">
+                            <div class="about-avatar">👨‍💻</div>
+                            <div class="about-name">Geovani Santos</div>
+                            <div class="about-role">GeoCODE Programmer · Aracaju, SE</div>
+                            <div class="about-tags">
+                                <span class="tag">HTML5 / CSS3</span>
+                                <span class="tag">JavaScript ES6+</span>
+                                <span class="tag">Firebase</span>
+                                <span class="tag">APIs</span>
+                                <span class="tag">Vercel</span>
+                                <span class="tag">Linux</span>
+                                <span class="tag">Google GMB</span>
+                                <span class="tag">Digital Signage</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-text rv d2">
+                        <div class="sec-line"></div>
+                        <p class="eyebrow">Sobre mim</p>
+                        <h2 class="sec-title">Quem está por trás<br /><span class="g-text">do código</span></h2>
+                        <p class="bio">
+                            Tenho 25 anos e trabalho inteiramente sobre <strong>Linux (Ubuntu e Mint)</strong>,
+                            construindo interfaces e arquiteturas focadas em performance e acessibilidade financeira.
+                            Utilizo <strong>HTML5, CSS3, JavaScript moderno</strong> e consumo avançado de APIs.
+                        </p>
+                        <p class="bio">
+                            Já atuei como instrutor na <strong>School Vision</strong> ministrando aulas de tecnologia e
+                            como Assistente Administrativo na <strong>Primasa Engenharia</strong>. Hoje desenvolvo em
+                            tempo integral, sempre buscando entregar a melhor solução possível pelo menor custo de
+                            infraestrutura.
+                        </p>
+                        <div style="margin-top:2rem;">
+                            <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+                                target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                                <i class="fab fa-whatsapp"></i> Fale comigo
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ CTA ═══ -->
+        <section class="cta-section">
+            <div class="wrap">
+                <div class="cta-box rv">
+                    <h2 class="cta-title">
+                        Pronto para digitalizar<br /><span class="g-text">seu negócio?</span>
+                    </h2>
+                    <p class="cta-desc">
+                        De uma landing page rápida a um ecossistema digital completo. Me chame no WhatsApp e
+                        estruturamos o projeto ideal para o seu momento.
+                    </p>
+                    <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20um%20orçamento."
+                        target="_blank" rel="noopener noreferrer" class="btn btn-primary"
+                        style="font-size:1.05rem;padding:1rem 2.5rem;">
+                        <i class="fab fa-whatsapp"></i> Solicitar Orçamento Agora
                     </a>
                 </div>
             </div>
@@ -588,86 +1789,155 @@
 
     </main>
 
-    <!-- ══════════════════════════════ FOOTER ════════════════════════════════ -->
-    <footer class="site-footer" role="contentinfo">
-        <div class="footer-main container">
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="wrap">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="logo-text" style="font-size:1.25rem;">Geo<span style="color:var(--mint)">CODE</span>
+                    </div>
+                    <p class="tagline">Soluções digitais inteligentes<br />e acessíveis em Sergipe.</p>
+                    <div class="socials">
+                        <a href="https://instagram.com/geovanikeeper" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/eusougeovani/" target="_blank" rel="noopener noreferrer"
+                            class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="mailto:geocodeprogrammer@gmail.com" class="social-link" aria-label="E-mail"><i
+                                class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
 
-            <div class="footer-col footer-col--brand">
-                <a href="#home" class="logo" aria-label="GeoCODE — topo">
-                    <img src="/assets/img/banner.png" alt="GeoCODE Programmer" height="34" />
-                </a>
-                <p class="footer-tagline">Soluções digitais inteligentes e acessíveis em Sergipe.</p>
-                <div class="footer-social" aria-label="Redes sociais">
-                    <a href="https://instagram.com/geovanikeeper" target="_blank" rel="noopener noreferrer"
-                        aria-label="Instagram" class="footer-social__link">
-                        <i class="fab fa-instagram" aria-hidden="true"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/eusougeovani/" target="_blank" rel="noopener noreferrer"
-                        aria-label="LinkedIn" class="footer-social__link">
-                        <i class="fab fa-linkedin" aria-hidden="true"></i>
-                    </a>
-                    <a href="mailto:geocodeprogrammer@gmail.com" aria-label="E-mail" class="footer-social__link">
-                        <i class="fas fa-envelope" aria-hidden="true"></i>
-                    </a>
+                <div class="footer-col">
+                    <h4>Soluções</h4>
+                    <ul>
+                        <li><i class="fas fa-globe"></i><a href="#solucoes">Sites Institucionais</a></li>
+                        <li><i class="fas fa-tv"></i><a href="#solucoes">Digital Signage</a></li>
+                        <li><i class="fas fa-database"></i><a href="#solucoes">Sistema Akanni</a></li>
+                        <li><i class="fab fa-google"></i><a href="#solucoes">Google Meu Negócio</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><i class="fas fa-house"></i><a href="#home">Início</a></li>
+                        <li><i class="fas fa-layer-group"></i><a href="#solucoes">Soluções</a></li>
+                        <li><i class="fas fa-tag"></i><a href="#planos">Planos</a></li>
+                        <li><i class="fas fa-code"></i><a href="#stack">Stack</a></li>
+                        <li><i class="fas fa-user"></i><a href="#sobre">Sobre</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><i class="fab fa-whatsapp"></i><a href="https://wa.me/+5579988663905" target="_blank"
+                                rel="noopener noreferrer">(79) 98866-3905</a></li>
+                        <li><i class="fas fa-envelope"></i><a
+                                href="mailto:geocodeprogrammer@gmail.com">geocodeprogrammer@gmail.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i><span>Aracaju, Sergipe — Brasil</span></li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="footer-col">
-                <h4 class="footer-col__title">Soluções</h4>
-                <ul class="footer-col__links">
-                    <li><a href="https://wa.me/+5579988663905?text=Sites%20Institucionais">Sites e Landing Pages</a>
-                    </li>
-                    <li><a href="https://wa.me/+5579988663905?text=SaaS">AkanniMED / AkanniHUB</a></li>
-                    <li><a href="https://wa.me/+5579988663905?text=Digital%20Signage">Digital Signage</a></li>
-                    <li><a href="https://wa.me/+5579988663905?text=Google">Google Meu Negócio</a></li>
-                    <li><a href="https://wa.me/+5579988663905?text=APIs">Integração de APIs</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4 class="footer-col__title">Navegação</h4>
-                <ul class="footer-col__links">
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="#solucoes">Soluções</a></li>
-                    <li><a href="#planos">Planos</a></li>
-                    <li><a href="#portfolio">Projetos</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4 class="footer-col__title">Contato</h4>
-                <ul class="footer-contact">
-                    <li>
-                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                        <a href="https://wa.me/+5579988663905" target="_blank" rel="noopener noreferrer">(79)
-                            98866-3905</a>
-                    </li>
-                    <li>
-                        <i class="fas fa-envelope" aria-hidden="true"></i>
-                        <a href="mailto:geocodeprogrammer@gmail.com">geocodeprogrammer@gmail.com</a>
-                    </li>
-                    <li>
-                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                        <span>Aracaju, Sergipe — Brasil</span>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-            <div class="container footer-bottom__inner">
-                <p>&copy; <span id="anoAtual"></span> GeoCODE Programmer · Geovani Santos. Todos os Direitos Reservados.
+            <div class="footer-bottom wrap" style="padding-inline:0;">
+                <p>&copy; <span id="anoAtual"></span> GeoCODE Programmer · Geovani Santos. Todos os direitos reservados.
                 </p>
-                <p>Desenvolvido no ambiente Linux com <i class="fa-solid fa-mug-hot"></i> por <strong><a
-                            href="https://eusougeovani.vercel.app/">GeoCODE Programmer</a></strong>
-                    — <a href="privacidade.html">Privacidade</a> &middot; <a href="termos.html">Termos de Uso</a></p>
+                <p>Desenvolvido no Linux com ☕ por <strong>GeoCODE</strong> · <a href="privacidade.html">Privacidade</a>
+                    · <a href="termos.html">Termos</a></p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        'use strict';
+
+        // Ano
+        document.getElementById('anoAtual').textContent = new Date().getFullYear();
+
+        // Header scroll
+        const hdr = document.getElementById('hdr');
+        window.addEventListener('scroll', () => {
+            hdr.classList.toggle('scrolled', window.scrollY > 50);
+        }, { passive: true });
+
+        // Mobile nav
+        const hbgBtn = document.getElementById('hbgBtn');
+        const navLinks = document.getElementById('navLinks');
+        const navCta = document.getElementById('navCta');
+
+        function toggleNav(open) {
+            hbgBtn.classList.toggle('on', open);
+            navLinks.classList.toggle('open', open);
+            navCta.classList.toggle('open', open);
+            hbgBtn.setAttribute('aria-expanded', open);
+            document.body.style.overflow = open ? 'hidden' : '';
+        }
+
+        hbgBtn.addEventListener('click', () => toggleNav(!navLinks.classList.contains('open')));
+
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => toggleNav(false));
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') toggleNav(false);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', e => {
+                const target = document.querySelector(anchor.getAttribute('href'));
+                if (!target) return;
+                e.preventDefault();
+                const offset = (document.getElementById('hdr')?.offsetHeight ?? 68) + 16;
+                window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+            });
+        });
+
+        // Scroll reveal
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+            document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+        } else {
+            document.querySelectorAll('.rv').forEach(el => el.classList.add('on'));
+        }
+
+        // Counters
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const counters = document.querySelectorAll('[data-count]');
+            const cObs = new IntersectionObserver(entries => {
+                entries.forEach(e => {
+                    if (!e.isIntersecting) return;
+                    const el = e.target;
+                    const target = parseInt(el.dataset.count, 10);
+                    const start = performance.now();
+                    const ease = t => 1 - Math.pow(1 - t, 3);
+                    (function step(now) {
+                        const p = Math.min((now - start) / 1600, 1);
+                        el.textContent = Math.round(ease(p) * target);
+                        if (p < 1) requestAnimationFrame(step);
+                    })(start);
+                    cObs.unobserve(el);
+                });
+            }, { threshold: 0.5 });
+            counters.forEach(el => cObs.observe(el));
+        }
+
+        // Scrollspy nav
+        const navAnchors = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section[id]');
+        const spyObs = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (!e.isIntersecting) return;
+                const id = e.target.id;
+                navAnchors.forEach(a => a.classList.toggle('on', a.getAttribute('href') === `#${id}`));
+            });
+        }, { rootMargin: '-40% 0px -55% 0px' });
+        sections.forEach(s => spyObs.observe(s));
+    </script>
 </body>
 
 </html>
