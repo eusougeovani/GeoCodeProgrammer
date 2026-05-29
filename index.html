@@ -167,6 +167,10 @@
             transition-delay: 320ms;
         }
 
+        .rv.d5 {
+            transition-delay: 400ms;
+        }
+
         /* Buttons */
         .btn {
             display: inline-flex;
@@ -203,40 +207,6 @@
         .btn-ghost:hover {
             background: rgba(52, 209, 183, 0.06);
             transform: translateY(-2px);
-        }
-
-        /* ═══════════════════════════════════════════
-       WHATSAPP FLOAT
-    ═══════════════════════════════════════════ */
-        .wa-float {
-            position: fixed;
-            bottom: 1.75rem;
-            right: 1.75rem;
-            z-index: 900;
-        }
-
-        .wa-float a {
-            display: flex;
-            align-items: center;
-            gap: 0.55rem;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: #fff;
-            padding: 0.75rem 1.35rem;
-            border-radius: var(--radius-pill);
-            font-size: 0.9rem;
-            font-weight: 700;
-            font-family: var(--font-b);
-            box-shadow: 0 6px 28px rgba(37, 211, 102, 0.4);
-            transition: transform var(--dur), box-shadow var(--dur);
-        }
-
-        .wa-float a:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.58);
-        }
-
-        .wa-float i {
-            font-size: 1.2rem;
         }
 
         /* ═══════════════════════════════════════════
@@ -432,29 +402,6 @@
             position: relative;
             z-index: 2;
             max-width: 780px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(52, 209, 183, 0.08);
-            border: 1px solid rgba(52, 209, 183, 0.22);
-            border-radius: var(--radius-pill);
-            padding: 0.4rem 1rem;
-            font-family: var(--font-m);
-            font-size: 0.75rem;
-            color: var(--mint);
-            margin-bottom: 1.75rem;
-        }
-
-        .hero-badge::before {
-            content: '';
-            width: 7px;
-            height: 7px;
-            background: var(--mint);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
         }
 
         @keyframes pulse {
@@ -1302,15 +1249,6 @@
 
 <body>
 
-    <!-- ═══ WHATSAPP ═══ -->
-    <div class="wa-float">
-        <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vim%20pelo%20seu%20site%20e%20gostaria%20de%20ser%20atendido."
-            target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-            Falar Agora
-        </a>
-    </div>
-
     <!-- ═══ HEADER ═══ -->
     <header id="hdr">
         <nav class="wrap">
@@ -1349,8 +1287,6 @@
 
             <div class="wrap">
                 <div class="hero-inner">
-                    <div class="hero-badge rv on">Disponível para novos projetos · Aracaju, SE</div>
-
                     <h1 class="hero-title rv d1">
                         Sua presença digital,<br />
                         <span class="g-text">construída com código.</span>
@@ -1419,7 +1355,7 @@
                             <span class="tag">Vercel</span>
                         </div>
                         <div class="sol-meta">
-                            <i class="fas fa-clock"></i> Prazo: 3 a 5 semanas
+                            <i class="fas fa-clock"></i> Prazo: 5 a 7 semanas
                         </div>
                     </div>
 
@@ -1472,6 +1408,22 @@
                             <i class="fas fa-infinity"></i> Suporte contínuo
                         </div>
                     </div>
+                    
+                    <!-- Aula Informática -->
+                    <div class="sol-card rv d5">
+                        <div class="sol-icon"><i class="fa-solid fa-computer"></i></div>
+                        <h3 class="sol-title">Aula Informática</h3>
+                        <p class="sol-desc">Aprenda a usar computadores, celulares, Pacote Office e aplicativos do dia a dia. Conquiste sua autonomia digital com
+                        aulas práticas.</p>
+                        <div class="sol-tags">
+                            <span class="tag">Autonomia Digital</span>
+                            <span class="tag">Inclusão Digital</span>
+                            <span class="tag">Pacote Office</span>
+                        </div>
+                        <div class="sol-meta">
+                            <i class="fas fa-clock"></i> Prazo: 8 a 12 semanas
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -1484,8 +1436,7 @@
                     <div class="sec-line"></div>
                     <p class="eyebrow">Investimento</p>
                     <h2 class="sec-title">Combos e planos disponíveis</h2>
-                    <p class="sec-sub">Soluções modulares ou pacotes integrados. Hospedagem em cloud gratuita (Vercel +
-                        Firebase) com custo de domínio de apenas R$ 40/ano.</p>
+                    <p class="sec-sub">Soluções modulares ou pacotes integrados. Hospedagem em cloud <strong>gratuita</strong> (Vercel + Firebase) com custo de domínio de apenas <strong>R$ 40/ano</strong>.</p>
                 </div>
 
                 <!-- Combo Cards -->
@@ -1572,7 +1523,7 @@
                         </div>
                         <div class="table-row">
                             <div class="table-row-name">
-                                Site Institucional
+                                Site Institucional / Landing Page
                                 <small>Design UI + Front-end + Deploy</small>
                             </div>
                             <div class="table-val">R$ 1.500</div>
@@ -1588,11 +1539,27 @@
                         </div>
                         <div class="table-row">
                             <div class="table-row-name">
-                                Sistema Akanni
+                                Sistema Akanni (SaaS e CRM)
                                 <small>Banco de Dados + Back-end + Auth</small>
                             </div>
-                            <div class="table-val">R$ 250</div>
+                            <div class="table-val">R$ 2.500</div>
                             <div class="table-val accent">R$ 139/mês</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-row-name">
+                                SEO (Search Engine Optimization)
+                                <small>On-Page, Técnico, Off-Page e Local</small>
+                            </div>
+                            <div class="table-val">R$ 500</div>
+                            <div class="table-val accent">R$ 50/mês</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-row-name">
+                                Aulas de Informática
+                                <small>Mínimo de 2h por aula mensal</small>
+                            </div>
+                            <div class="table-val">—</div>
+                            <div class="table-val accent">R$ 50/h</div>
                         </div>
                         <div class="table-row">
                             <div class="table-row-name">
@@ -1724,7 +1691,7 @@
 
                     <div class="about-visual rv">
                         <div class="about-card">
-                            <div class="about-avatar">👨‍💻</div>
+                            <div class="about-avatar">👨🏿‍💻</div>
                             <div class="about-name">Geovani Santos</div>
                             <div class="about-role">GeoCODE Programmer · Aracaju, SE</div>
                             <div class="about-tags">
@@ -1736,6 +1703,7 @@
                                 <span class="tag">Linux</span>
                                 <span class="tag">Google GMB</span>
                                 <span class="tag">Digital Signage</span>
+                                <span class="tag">GitHub</span>
                             </div>
                         </div>
                     </div>
