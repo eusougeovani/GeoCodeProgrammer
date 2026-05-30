@@ -216,6 +216,92 @@
         }
 
         /* ═══════════════════════════════════════════
+       CLIENTES
+    ═══════════════════════════════════════════ */
+        .clients-section {
+            padding: clamp(3rem, 6vw, 5rem) 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .clients-track-wrap {
+            overflow: hidden;
+            mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+            -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+            margin-top: 2.5rem;
+        }
+
+        .clients-track {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+            animation: clients-scroll 28s linear infinite;
+        }
+
+        .clients-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes clients-scroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .client-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.1rem 2rem;
+            min-width: 160px;
+            height: 72px;
+            transition: border-color var(--dur), transform var(--dur), box-shadow var(--dur), background var(--dur);
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+
+        .client-logo:hover {
+            border-color: var(--border-h);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 32px rgba(0, 0, 0, 0.3);
+            background: var(--surface-2);
+        }
+
+        .client-logo img {
+            max-height: 36px;
+            max-width: 120px;
+            width: auto;
+            object-fit: contain;
+            filter: brightness(0.75) grayscale(0.3);
+            transition: filter var(--dur);
+        }
+
+        .client-logo:hover img {
+            filter: brightness(1) grayscale(0);
+        }
+
+        /* fallback texto quando não há imagem */
+        .client-logo-text {
+            font-family: var(--font-h);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--muted);
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+            transition: color var(--dur);
+        }
+
+        .client-logo:hover .client-logo-text {
+            color: var(--mint);
+        }
+
+        /* ═══════════════════════════════════════════
        HEADER
     ═══════════════════════════════════════════ */
         #hdr {
@@ -1479,6 +1565,7 @@
                 <li><a href="#planos" class="nav-link">Planos</a></li>
                 <li><a href="#stack" class="nav-link">Stack</a></li>
                 <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="#clientes" class="nav-link">Clientes</a></li>
             </ul>
 
             <div class="nav-cta-wrap" id="navCta">
@@ -1630,7 +1717,8 @@
                     <div class="sol-card rv d5">
                         <div class="sol-icon"><i class="fa-solid fa-computer"></i></div>
                         <h3 class="sol-title">Aula Informática</h3>
-                        <p class="sol-desc">Aprenda a usar computadores, celulares, Pacote Office e aplicativos do dia a dia. Conquiste sua autonomia digital com aulas práticas.</p>
+                        <p class="sol-desc">Aprenda a usar computadores, celulares, Pacote Office e aplicativos do dia a
+                            dia. Conquiste sua autonomia digital com aulas práticas.</p>
                         <div class="sol-tags">
                             <span class="tag">Autonomia Digital</span>
                             <span class="tag">Inclusão Digital</span>
@@ -1653,7 +1741,9 @@
                     <p class="eyebrow">Investimento</p>
                     <h2 class="sec-title">Combos e planos disponíveis</h2>
                     <p class="sec-sub">Soluções modulares ou pacotes integrados. Hospedagem em cloud
-                        <strong>gratuita</strong> (Vercel + Firebase) com custo de domínio de apenas <strong>R$ 40/ano</strong>.</p>
+                        <strong>gratuita</strong> (Vercel + Firebase) com custo de domínio de apenas <strong>R$
+                            40/ano</strong>.
+                    </p>
                 </div>
 
                 <!-- Combo Cards -->
@@ -1670,7 +1760,8 @@
                         <div class="plan-includes-label">Incluso</div>
                         <div class="plan-features">
                             <div class="plan-feat"><i class="fas fa-circle-check"></i> Site Institucional Completo</div>
-                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Domínio e Hospedagem Configurados</div>
+                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Domínio e Hospedagem Configurados
+                            </div>
                             <div class="plan-feat"><i class="fas fa-circle-check"></i> SEO On-Page</div>
                             <div class="plan-feat"><i class="fas fa-circle-check"></i> ChatBot Inteligente</div>
                             <div class="plan-feat"><i class="fas fa-circle-check"></i> Suporte e Manutenção</div>
@@ -1796,7 +1887,8 @@
                         estrutura base · 40% na publicação final.
                         Suporte disponível de segunda a sexta, 8h às 20h. Finais de semana apenas para falhas críticas.
                         Domínio próprio: <strong>R$ 40/ano</strong> (único custo fixo de terceiros).
-                        Sistema Akanni Padrão possui no máximo 6 funcionalidades ativas simultaneamente. Customizações e extras podem ter custos adicionais.
+                        Sistema Akanni Padrão possui no máximo 6 funcionalidades ativas simultaneamente. Customizações e
+                        extras podem ter custos adicionais.
                     </p>
                 </div>
 
@@ -1852,7 +1944,8 @@
                     <div class="sec-line"></div>
                     <p class="eyebrow">Tecnologias</p>
                     <h2 class="sec-title">Stack que uso no dia a dia</h2>
-                    <p class="sec-sub">Ambiente Linux 100% (Ubuntu / Mint). Front-end moderno, integrações de API e cloud de ponta.</p>
+                    <p class="sec-sub">Ambiente Linux 100% (Ubuntu / Mint). Front-end moderno, integrações de API e
+                        cloud de ponta.</p>
                 </div>
 
                 <div class="stack-grid rv">
@@ -1929,18 +2022,48 @@
                         <p class="eyebrow">Sobre mim</p>
                         <h2 class="sec-title">Quem está por trás<br /><span class="g-text">do código</span></h2>
                         <p class="bio">
-                            Tenho 25 anos e trabalho inteiramente sobre <strong>Linux (Ubuntu e Mint)</strong>, construindo interfaces e arquiteturas focadas em performance e acessibilidade financeira. Utilizo <strong>HTML5, CSS3, JavaScript moderno</strong> e consumo avançado de APIs.
+                            Tenho 25 anos e trabalho inteiramente sobre <strong>Linux (Ubuntu e Mint)</strong>,
+                            construindo interfaces e arquiteturas focadas em performance e acessibilidade financeira.
+                            Utilizo <strong>HTML5, CSS3, JavaScript moderno</strong> e consumo avançado de APIs.
                         </p>
                         <p class="bio">
-                            Já atuei como instrutor na <strong>School Vision</strong> ministrando aulas de tecnologia e como Assistente Administrativo na <strong>Primasa Engenharia</strong>. Hoje desenvolvo em tempo integral, sempre buscando entregar a melhor solução possível pelo menor custo de infraestrutura.
+                            Já atuei como instrutor na <strong>School Vision</strong> ministrando aulas de tecnologia e
+                            como Assistente Administrativo na <strong>Primasa Engenharia</strong>. Hoje desenvolvo em
+                            tempo integral, sempre buscando entregar a melhor solução possível pelo menor custo de
+                            infraestrutura.
                         </p>
                         <div style="margin-top:2rem;">
-                            <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                            <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20conversar%20sobre%20um%20projeto."
+                                target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                                 <i class="fab fa-whatsapp"></i> Fale comigo
                             </a>
                         </div>
                     </div>
 
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ CLIENTES ═══ -->
+        <section class="clients-section" id="clientes">
+            <div class="wrap">
+                <div class="sec-head center rv">
+                    <div class="sec-line"></div>
+                    <p class="eyebrow">Quem confia no meu trabalho</p>
+                    <h2 class="sec-title">Clientes <span class="g-text">atendidos</span></h2>
+                    <p class="sec-sub">Empresas e negócios que já levaram sua presença digital a outro nível.</p>
+                </div>
+            </div>
+
+            <div class="clients-track-wrap rv d1">
+                <div class="clients-track">
+                    <a href="https://psimeirefranca.vercel.app/" target="_blank" rel="noopener noreferrer" class="client-logo"
+                        title="Psicóloga Meire França">
+                        <img src="assets/logos/psimf.png" alt="Psicóloga Meire França">
+                    </a>
+                    <a href="https://ff193.vercel.app/" target="_blank" rel="noopener noreferrer" class="client-logo" title="Fundação Fênix 193">
+                        <img src="assets/logos/ff193.png" alt="Fundação Fênix 193">
+                    </a>
                 </div>
             </div>
         </section>
@@ -1956,7 +2079,10 @@
                         De uma landing page rápida a um ecossistema digital completo. Me chame no WhatsApp e
                         estruturamos o projeto ideal para o seu momento.
                     </p>
-                    <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20um%20orçamento." target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size:1.05rem;padding:1rem 2.5rem;"> <i class="fab fa-whatsapp"></i> Solicitar Orçamento Agora
+                    <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20um%20orçamento."
+                        target="_blank" rel="noopener noreferrer" class="btn btn-primary"
+                        style="font-size:1.05rem;padding:1rem 2.5rem;"> <i class="fab fa-whatsapp"></i> Solicitar
+                        Orçamento Agora
                     </a>
                 </div>
             </div>
@@ -1977,7 +2103,8 @@
                             class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.linkedin.com/in/eusougeovani/" target="_blank" rel="noopener noreferrer"
                             class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="mailto:geocodeprogrammer@gmail.com" class="social-link" aria-label="E-mail"><i class="fas fa-envelope"></i></a>
+                        <a href="mailto:geocodeprogrammer@gmail.com" class="social-link" aria-label="E-mail"><i
+                                class="fas fa-envelope"></i></a>
                     </div>
                 </div>
 
@@ -1999,14 +2126,17 @@
                         <li><i class="fas fa-tag"></i><a href="#planos">Planos</a></li>
                         <li><i class="fas fa-code"></i><a href="#stack">Stack</a></li>
                         <li><i class="fas fa-user"></i><a href="#sobre">Sobre</a></li>
+                        <li><i class="fas fa-handshake"></i><a href="#clientes">Clientes</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
                     <h4>Contato</h4>
                     <ul>
-                        <li><i class="fab fa-whatsapp"></i><a href="https://wa.me/+5579988663905" target="_blank" rel="noopener noreferrer">(79) 98866-3905</a></li>
-                        <li><i class="fas fa-envelope"></i><a href="mailto:geocodeprogrammer@gmail.com">geocodeprogrammer@gmail.com</a></li>
+                        <li><i class="fab fa-whatsapp"></i><a href="https://wa.me/+5579988663905" target="_blank"
+                                rel="noopener noreferrer">(79) 98866-3905</a></li>
+                        <li><i class="fas fa-envelope"></i><a
+                                href="mailto:geocodeprogrammer@gmail.com">geocodeprogrammer@gmail.com</a></li>
                         <li><i class="fas fa-map-marker-alt"></i><span>Aracaju, Sergipe — Brasil</span></li>
                     </ul>
                 </div>
@@ -2015,7 +2145,8 @@
             <div class="footer-bottom wrap" style="padding-inline:0;">
                 <p>&copy; <span id="anoAtual"></span> GeoCODE Programmer · Geovani Santos. Todos os direitos reservados.
                 </p>
-                <p>Desenvolvido no Linux com ☕ por <strong>GeoCODE</strong> · <a href="privacidade.html">Privacidade</a> · <a href="termos.html">Termos</a></p>
+                <p>Desenvolvido no Linux com ☕ por <strong>GeoCODE</strong> · <a href="privacidade.html">Privacidade</a>
+                    · <a href="termos.html">Termos</a></p>
             </div>
         </div>
     </footer>
