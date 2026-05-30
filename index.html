@@ -258,12 +258,13 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: 1.1rem 2rem;
+            padding: 0;
             min-width: 160px;
             height: 72px;
             transition: border-color var(--dur), transform var(--dur), box-shadow var(--dur), background var(--dur);
             flex-shrink: 0;
             text-decoration: none;
+            overflow: hidden;
         }
 
         .client-logo:hover {
@@ -274,10 +275,12 @@
         }
 
         .client-logo img {
-            max-height: 36px;
-            max-width: 120px;
+            width: 100%;
+            height: 100%;
+            max-height: none;     /* sobrescreve o max-height: 36px anterior */
+            max-width: none;      /* sobrescreve o max-width: 120px anterior */
             width: auto;
-            object-fit: contain;
+            object-fit: cover;    /* ou "contain" se quiser ver a logo inteira sem cortar */
             filter: brightness(0.75) grayscale(0.3);
             transition: filter var(--dur);
         }
