@@ -145,7 +145,6 @@
             line-height: 1.8;
         }
 
-        /* Reveal */
         .rv {
             opacity: 0;
             transform: translateY(24px);
@@ -177,7 +176,6 @@
             transition-delay: 400ms;
         }
 
-        /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -215,93 +213,35 @@
             transform: translateY(-2px);
         }
 
-        /* ═══════════════════════════════════════════
-       CLIENTES
-    ═══════════════════════════════════════════ */
-        .clients-section {
-            padding: clamp(3rem, 6vw, 5rem) 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .clients-track-wrap {
-            overflow: hidden;
-            mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
-            -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
-            margin-top: 2.5rem;
-        }
-
-        .clients-track {
-            display: flex;
-            gap: 1.5rem;
-            width: max-content;
-            animation: clients-scroll 28s linear infinite;
-        }
-
-        .clients-track:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes clients-scroll {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-50%);
-            }
-        }
-
-        .client-logo {
+        .plan-link {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 0;
-            min-width: 160px;
-            height: 72px;
-            transition: border-color var(--dur), transform var(--dur), box-shadow var(--dur), background var(--dur);
-            flex-shrink: 0;
-            text-decoration: none;
-            overflow: hidden;
-        }
-
-        .client-logo:hover {
-            border-color: var(--border-h);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 32px rgba(0, 0, 0, 0.3);
-            background: var(--surface-2);
-        }
-
-        .client-logo img {
+            gap: 0.5rem;
             width: 100%;
-            height: 100%;
-            max-height: none;     /* sobrescreve o max-height: 36px anterior */
-            max-width: none;      /* sobrescreve o max-width: 120px anterior */
-            width: auto;
-            object-fit: cover;    /* ou "contain" se quiser ver a logo inteira sem cortar */
-            filter: brightness(0.75) grayscale(0.3);
-            transition: filter var(--dur);
-        }
-
-        .client-logo:hover img {
-            filter: brightness(1) grayscale(0);
-        }
-
-        /* fallback texto quando não há imagem */
-        .client-logo-text {
-            font-family: var(--font-h);
-            font-size: 0.95rem;
+            padding: 0.9rem;
+            border-radius: var(--radius-pill);
             font-weight: 700;
-            color: var(--muted);
-            letter-spacing: -0.02em;
-            white-space: nowrap;
-            transition: color var(--dur);
+            font-size: 0.9rem;
+            transition: all var(--dur);
+            border: 1.5px solid var(--border-h);
+            color: var(--mint);
         }
 
-        .client-logo:hover .client-logo-text {
-            color: var(--mint);
+        .plan-link:hover {
+            background: rgba(52, 209, 183, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .plan-link.primary {
+            background: var(--grad-o);
+            border-color: transparent;
+            color: #fff;
+            box-shadow: 0 6px 20px rgba(255, 94, 0, 0.3);
+        }
+
+        .plan-link.primary:hover {
+            box-shadow: 0 12px 32px rgba(255, 94, 0, 0.45);
         }
 
         /* ═══════════════════════════════════════════
@@ -384,7 +324,6 @@
             box-shadow: 0 8px 24px rgba(255, 94, 0, 0.45);
         }
 
-        /* Hamburger */
         .hbg {
             display: none;
             flex-direction: column;
@@ -499,20 +438,6 @@
             max-width: 780px;
         }
 
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 0.5;
-                transform: scale(0.8);
-            }
-        }
-
         .hero-title {
             font-size: clamp(2.4rem, 6vw, 4.2rem);
             font-weight: 800;
@@ -580,7 +505,6 @@
             margin-inline: auto;
         }
 
-        /* Divider line */
         .sec-line {
             width: 48px;
             height: 3px;
@@ -594,344 +518,179 @@
         }
 
         /* ═══════════════════════════════════════════
-       SOLUTIONS
-    ═══════════════════════════════════════════ */
-        .solutions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-            gap: 1.25rem;
-        }
-
-        .sol-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 2rem 1.75rem;
-            transition: border-color var(--dur), transform var(--dur), box-shadow var(--dur);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .sol-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            background: linear-gradient(135deg, rgba(52, 209, 183, 0.04) 0%, transparent 60%);
-            opacity: 0;
-            transition: opacity var(--dur);
-        }
-
-        .sol-card:hover {
-            border-color: var(--border-h);
-            transform: translateY(-4px);
-            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
-        }
-
-        .sol-card:hover::before {
-            opacity: 1;
-        }
-
-        .sol-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            margin-bottom: 1.25rem;
-            background: rgba(52, 209, 183, 0.1);
-            border: 1px solid rgba(52, 209, 183, 0.2);
-            color: var(--mint);
-        }
-
-        .sol-icon.orange {
-            background: rgba(255, 94, 0, 0.1);
-            border-color: rgba(255, 94, 0, 0.2);
-            color: var(--orange);
-        }
-
-        .sol-icon.steel {
-            background: rgba(117, 167, 189, 0.1);
-            border-color: rgba(117, 167, 189, 0.2);
-            color: var(--steel);
-        }
-
-        .sol-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.6rem;
-        }
-
-        .sol-desc {
-            font-size: 0.9rem;
-            color: var(--muted);
-            line-height: 1.75;
-            margin-bottom: 1.25rem;
-        }
-
-        .sol-meta {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-family: var(--font-m);
-            font-size: 0.75rem;
-            color: var(--steel);
-            padding-top: 1.25rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .sol-meta i {
-            color: var(--mint);
-        }
-
-        .sol-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.45rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .tag {
-            font-family: var(--font-m);
-            font-size: 0.72rem;
-            padding: 0.25rem 0.65rem;
-            border-radius: var(--radius-pill);
-            background: rgba(117, 167, 189, 0.1);
-            border: 1px solid rgba(117, 167, 189, 0.18);
-            color: var(--steel);
-        }
-
-        /* ═══════════════════════════════════════════
-       PLANS / PRICING
+       CAROUSEL DE SERVIÇOS
     ═══════════════════════════════════════════ */
         .plans-bg {
             background: var(--surface);
         }
 
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
+        .carousel-wrap {
+            margin: 0 calc(-1 * clamp(1.25rem, 5vw, 2.5rem));
+            /* Avança nas bordas mobile */
+            padding: 0 clamp(1.25rem, 5vw, 2.5rem);
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE 10+ */
+            padding-bottom: 2.5rem;
+            padding-top: 1rem;
         }
 
-        .plan-card {
+        .carousel-wrap::-webkit-scrollbar {
+            display: none;
+            /* Chrome/Safari */
+        }
+
+        .carousel-track {
+            display: inline-flex;
+            gap: 1.5rem;
+            padding-right: clamp(1.25rem, 5vw, 2.5rem);
+            /* Espaço no final do scroll */
+        }
+
+        .c-card {
+            width: 360px;
+            flex-shrink: 0;
+            scroll-snap-align: center;
             background: var(--bg);
             border: 1px solid var(--border);
             border-radius: var(--radius-xl);
-            padding: 2.25rem 2rem;
-            position: relative;
-            transition: border-color var(--dur), box-shadow var(--dur), transform var(--dur);
+            padding: 2.25rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform var(--dur), border-color var(--dur), box-shadow var(--dur);
         }
 
-        .plan-card:hover {
+        .c-card:hover {
             transform: translateY(-4px);
+            border-color: var(--border-h);
             box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
         }
 
-        .plan-card.featured {
-            border-color: rgba(52, 209, 183, 0.45);
-            box-shadow: 0 0 0 1px rgba(52, 209, 183, 0.12), 0 16px 48px rgba(52, 209, 183, 0.1);
+        .c-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius);
+            background: rgba(52, 209, 183, 0.1);
+            color: var(--mint);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.25rem;
         }
 
-        .plan-badge {
-            position: absolute;
-            top: -1px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--grad);
-            color: #0D1520;
-            font-size: 0.7rem;
+        .c-title {
+            font-family: var(--font-h);
+            font-size: 1.25rem;
             font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .c-desc {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            min-height: 65px;
+        }
+
+        .c-price-box {
+            background: var(--surface-2);
+            border-radius: var(--radius-lg);
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .c-price-label {
             font-family: var(--font-m);
-            letter-spacing: 0.08em;
-            padding: 0.3rem 1rem;
-            border-radius: 0 0 var(--radius) var(--radius);
-        }
-
-        .plan-name {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-soft);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
             margin-bottom: 0.25rem;
         }
 
-        .plan-price-setup {
-            display: flex;
-            align-items: baseline;
-            gap: 0.25rem;
-            margin: 1.25rem 0 0.5rem;
-        }
-
-        .plan-price-setup .label {
-            font-size: 0.75rem;
-            color: var(--muted);
-            font-family: var(--font-m);
-        }
-
-        .plan-price-setup .val {
+        .c-price-val {
             font-family: var(--font-h);
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 800;
             background: var(--grad);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 0.5rem;
         }
 
-        .plan-price-setup .val.orange {
-            background: var(--grad-o);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .plan-monthly {
-            font-family: var(--font-m);
+        .c-price-monthly {
             font-size: 0.82rem;
-            color: var(--muted);
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .plan-monthly strong {
             color: var(--text-soft);
-        }
-
-        .plan-includes-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--muted);
-            font-family: var(--font-m);
-            margin-bottom: 1rem;
-        }
-
-        .plan-features {
             display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--font-m);
+        }
+
+        .c-price-monthly i {
+            color: var(--mint);
+            font-size: 0.75rem;
+        }
+
+        .c-includes {
+            flex-grow: 1;
             margin-bottom: 2rem;
         }
 
-        .plan-feat {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.65rem;
-            font-size: 0.9rem;
-            color: var(--text-soft);
+        .c-includes-title {
+            font-family: var(--font-m);
+            font-size: 0.75rem;
+            color: var(--steel);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        .plan-feat i {
+        .c-feat {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.88rem;
+            color: var(--text-soft);
+            margin-bottom: 0.6rem;
+        }
+
+        .c-feat i {
             color: var(--mint);
-            font-size: 0.75rem;
-            margin-top: 0.35rem;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
             flex-shrink: 0;
         }
 
-        .plan-link {
+        .c-footer {
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .c-deadline {
+            font-family: var(--font-m);
+            font-size: 0.75rem;
+            color: var(--muted);
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 0.5rem;
-            width: 100%;
-            padding: 0.9rem;
-            border-radius: var(--radius-pill);
-            font-weight: 700;
-            font-size: 0.9rem;
-            transition: all var(--dur);
-            border: 1.5px solid var(--border-h);
-            color: var(--mint);
         }
 
-        .plan-link:hover {
-            background: rgba(52, 209, 183, 0.08);
-            transform: translateY(-2px);
+        .c-deadline i {
+            color: var(--steel);
         }
 
-        .plan-link.primary {
-            background: var(--grad-o);
-            border-color: transparent;
-            color: #fff;
-            box-shadow: 0 6px 20px rgba(255, 94, 0, 0.3);
-        }
-
-        .plan-link.primary:hover {
-            box-shadow: 0 12px 32px rgba(255, 94, 0, 0.45);
-        }
-
-        /* Modular Table */
-        .modular-table {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-        }
-
-        .table-head {
-            display: grid;
-            grid-template-columns: 1fr auto auto;
-            gap: 1rem;
-            padding: 0.85rem 1.5rem;
-            background: var(--surface-2);
-            font-family: var(--font-m);
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--muted);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .table-row {
-            display: grid;
-            grid-template-columns: 1fr auto auto;
-            gap: 1rem;
-            padding: 1rem 1.5rem;
-            align-items: center;
-            border-bottom: 1px solid var(--border);
-            transition: background var(--dur);
-        }
-
-        .table-row:last-child {
-            border-bottom: none;
-        }
-
-        .table-row:hover {
-            background: rgba(52, 209, 183, 0.03);
-        }
-
-        .table-row-name {
-            font-size: 0.92rem;
-            font-weight: 600;
-        }
-
-        .table-row-name small {
-            display: block;
-            font-size: 0.78rem;
-            color: var(--muted);
-            font-weight: 400;
-            margin-top: 0.15rem;
-            font-family: var(--font-m);
-        }
-
-        .table-val {
-            font-family: var(--font-m);
-            font-size: 0.88rem;
-            color: var(--text-soft);
-            white-space: nowrap;
-            text-align: right;
-        }
-
-        .table-val.accent {
-            color: var(--mint);
-        }
-
-        /* Support note box */
+        /* Support note & Infra badges */
         .support-note {
             display: flex;
             gap: 1rem;
@@ -939,7 +698,7 @@
             border: 1px solid rgba(255, 94, 0, 0.22);
             border-radius: var(--radius-lg);
             padding: 1.5rem 1.75rem;
-            margin-top: 2rem;
+            margin-top: 1rem;
             align-items: flex-start;
         }
 
@@ -960,7 +719,6 @@
             color: var(--text);
         }
 
-        /* Infra badges */
         .infra-row {
             display: flex;
             flex-wrap: wrap;
@@ -1004,7 +762,7 @@
         }
 
         /* ═══════════════════════════════════════════
-       STACK
+       STACK & OTHER SECTIONS (KEPT UNCHANGED)
     ═══════════════════════════════════════════ */
         .stack-grid {
             display: grid;
@@ -1046,21 +804,12 @@
             font-family: var(--font-m);
         }
 
-        /* ═══════════════════════════════════════════
-       ABOUT
-    ═══════════════════════════════════════════ */
+        /* ABOUT */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
-        }
-
-        @media (max-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
         }
 
         .about-visual {
@@ -1119,6 +868,16 @@
             justify-content: center;
         }
 
+        .tag {
+            font-family: var(--font-m);
+            font-size: 0.72rem;
+            padding: 0.25rem 0.65rem;
+            border-radius: var(--radius-pill);
+            background: rgba(117, 167, 189, 0.1);
+            border: 1px solid rgba(117, 167, 189, 0.18);
+            color: var(--steel);
+        }
+
         .about-text .bio {
             font-size: 0.97rem;
             color: var(--text-soft);
@@ -1130,16 +889,77 @@
             color: var(--text);
         }
 
-        .about-skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.45rem;
-            margin-top: 1.5rem;
+        /* CLIENTS */
+        .clients-section {
+            padding: clamp(3rem, 6vw, 5rem) 0;
+            border-top: 1px solid var(--border);
         }
 
-        /* ═══════════════════════════════════════════
-       CTA BANNER
-    ═══════════════════════════════════════════ */
+        .clients-track-wrap {
+            overflow: hidden;
+            mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+            -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+            margin-top: 2.5rem;
+        }
+
+        .clients-track {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+            animation: clients-scroll 28s linear infinite;
+        }
+
+        .clients-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes clients-scroll {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .client-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 0;
+            min-width: 160px;
+            height: 72px;
+            transition: border-color var(--dur), transform var(--dur), box-shadow var(--dur), background var(--dur);
+            flex-shrink: 0;
+            text-decoration: none;
+            overflow: hidden;
+        }
+
+        .client-logo:hover {
+            border-color: var(--border-h);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 32px rgba(0, 0, 0, 0.3);
+            background: var(--surface-2);
+        }
+
+        .client-logo img {
+            width: 100%;
+            height: 100%;
+            width: auto;
+            object-fit: cover;
+            filter: brightness(0.75) grayscale(0.3);
+            transition: filter var(--dur);
+        }
+
+        .client-logo:hover img {
+            filter: brightness(1) grayscale(0);
+        }
+
+        /* CTA BANNER */
         .cta-section {
             padding: clamp(4rem, 8vw, 7rem) 0;
         }
@@ -1152,18 +972,6 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-        }
-
-        .cta-box::before {
-            content: '';
-            position: absolute;
-            top: -40%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 400px;
-            background: radial-gradient(ellipse, rgba(52, 209, 183, 0.08) 0%, transparent 70%);
-            pointer-events: none;
         }
 
         .cta-title {
@@ -1180,9 +988,7 @@
             line-height: 1.8;
         }
 
-        /* ═══════════════════════════════════════════
-       FOOTER
-    ═══════════════════════════════════════════ */
+        /* FOOTER */
         footer {
             background: var(--surface);
             border-top: 1px solid var(--border);
@@ -1193,19 +999,6 @@
             grid-template-columns: 1.4fr 1fr 1fr 1fr;
             gap: 3rem;
             padding: 3.5rem 0;
-        }
-
-        @media (max-width: 860px) {
-            .footer-main {
-                grid-template-columns: 1fr 1fr;
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .footer-main {
-                grid-template-columns: 1fr;
-            }
         }
 
         .footer-brand .tagline {
@@ -1302,24 +1095,15 @@
             color: var(--mint);
         }
 
-        /* ═══════════════════════════════════════════
-       MISC
-    ═══════════════════════════════════════════ */
         .divider {
             width: 1px;
             height: 40px;
             background: var(--border);
         }
 
-        /* ═══════════════════════════════════════════
-           RESPONSIVO — TABLET  (max 860px)
-        ═══════════════════════════════════════════ */
+        /* RESPONSIVO */
         @media (max-width: 860px) {
-
-            /* Hero */
             .hero {
-                padding-top: 68px;
-                min-height: 100svh;
                 align-items: flex-start;
                 padding-bottom: 3rem;
             }
@@ -1339,54 +1123,29 @@
                 display: none;
             }
 
-            /* Seções */
-            section {
-                padding: clamp(3rem, 6vw, 5rem) 0;
-            }
-
-            /* Planos — empilha em 1 coluna */
-            .plans-grid {
-                grid-template-columns: 1fr;
-                max-width: 480px;
-                margin-inline: auto;
-            }
-
-            /* Stack — 2 colunas em tablet */
             .stack-grid {
                 grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             }
 
-            /* Infra badges — 2 por linha */
             .infra-badge {
                 min-width: calc(50% - 0.5rem);
                 flex: 1 1 calc(50% - 0.5rem);
             }
 
-            /* Footer */
             .footer-main {
                 grid-template-columns: 1fr 1fr;
                 gap: 2rem;
             }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
         }
 
-        /* ═══════════════════════════════════════════
-           RESPONSIVO — MOBILE  (max 600px)
-        ═══════════════════════════════════════════ */
         @media (max-width: 600px) {
-
-            /* Hero */
-            .hero {
-                padding-top: 68px;
-                padding-bottom: 3rem;
-            }
-
             .hero-title {
                 font-size: clamp(2rem, 10vw, 2.8rem);
-                letter-spacing: -0.03em;
-            }
-
-            .hero-desc {
-                font-size: 0.95rem;
             }
 
             .hero-btns {
@@ -1408,50 +1167,11 @@
                 display: none;
             }
 
-            .stat-num {
-                font-size: 1.8rem;
+            .c-card {
+                width: 85vw;
+                max-width: 340px;
             }
 
-            /* Seção header */
-            .sec-head {
-                margin-bottom: 2rem;
-            }
-
-            /* Soluções — 1 coluna */
-            .solutions-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* Planos */
-            .plans-grid {
-                grid-template-columns: 1fr;
-                max-width: 100%;
-            }
-
-            .plan-card {
-                padding: 1.75rem 1.25rem;
-            }
-
-            /* Tabela — oculta coluna Mensalidade, mostra só Setup */
-            .table-head,
-            .table-row {
-                grid-template-columns: 1fr auto;
-            }
-
-            .table-head>*:last-child,
-            .table-row>*:last-child {
-                display: none;
-            }
-
-            .table-row {
-                padding: 0.85rem 1rem;
-            }
-
-            .table-head {
-                padding: 0.7rem 1rem;
-            }
-
-            /* Infra badges — 1 por linha */
             .infra-row {
                 flex-direction: column;
             }
@@ -1461,49 +1181,11 @@
                 flex: 1 1 100%;
             }
 
-            /* Stack — 2 colunas compactas */
             .stack-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 0.75rem;
             }
 
-            .stack-item {
-                padding: 1.1rem 0.9rem;
-            }
-
-            .stack-item i {
-                font-size: 1.4rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .stack-item strong {
-                font-size: 0.82rem;
-            }
-
-            .stack-item span {
-                font-size: 0.72rem;
-            }
-
-            /* Sobre */
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .about-card {
-                padding: 1.75rem 1.25rem;
-            }
-
-            /* CTA box */
-            .cta-box {
-                padding: 2.25rem 1.25rem;
-            }
-
-            .cta-title {
-                font-size: clamp(1.6rem, 7vw, 2.2rem);
-            }
-
-            /* Footer */
             .footer-main {
                 grid-template-columns: 1fr;
                 gap: 1.75rem;
@@ -1516,7 +1198,6 @@
                 gap: 0.5rem;
             }
 
-            /* Suporte note */
             .support-note {
                 flex-direction: column;
                 gap: 0.75rem;
@@ -1524,30 +1205,19 @@
             }
         }
 
-        /* ═══════════════════════════════════════════
-           RESPONSIVO — MOBILE PEQUENO  (max 380px)
-        ═══════════════════════════════════════════ */
         @media (max-width: 380px) {
+            .c-card {
+                width: 90vw;
+                padding: 1.5rem 1.25rem;
+            }
+
             .hero-title {
                 font-size: 1.85rem;
-            }
-
-            .btn {
-                font-size: 0.88rem;
-                padding: 0.8rem 1.4rem;
-            }
-
-            .plan-card {
-                padding: 1.5rem 1rem;
             }
 
             .stack-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 0.5rem;
-            }
-
-            .plans-grid {
-                max-width: 100%;
             }
         }
     </style>
@@ -1565,7 +1235,6 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="nav-link">Início</a></li>
                 <li><a href="#solucoes" class="nav-link">Soluções</a></li>
-                <li><a href="#planos" class="nav-link">Planos</a></li>
                 <li><a href="#stack" class="nav-link">Stack</a></li>
                 <li><a href="#sobre" class="nav-link">Sobre</a></li>
                 <li><a href="#clientes" class="nav-link">Clientes</a></li>
@@ -1611,8 +1280,8 @@
                             target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                             <i class="fab fa-whatsapp"></i> Solicitar Orçamento
                         </a>
-                        <a href="#planos" class="btn btn-ghost">
-                            Ver Planos <i class="fas fa-arrow-down"></i>
+                        <a href="#solucoes" class="btn btn-ghost">
+                            Ver Soluções <i class="fas fa-arrow-down"></i>
                         </a>
                     </div>
 
@@ -1636,268 +1305,219 @@
             </div>
         </section>
 
-        <!-- ═══ SOLUÇÕES ═══ -->
-        <section id="solucoes">
-            <div class="wrap">
+        <!-- ═══ SOLUÇÕES & CARROSSEL ═══ -->
+        <section id="solucoes" class="plans-bg">
+            <div class="wrap" style="padding-bottom: 0;">
                 <div class="sec-head center rv">
                     <div class="sec-line"></div>
-                    <p class="eyebrow">O que eu faço</p>
-                    <h2 class="sec-title">Soluções digitais completas</h2>
-                    <p class="sec-sub">Arquitetura modular, deploy em cloud de ponta e integrações via API — do site
-                        institucional ao sistema de gestão.</p>
-                </div>
-
-                <div class="solutions-grid">
-
-                    <!-- Site Institucional -->
-                    <div class="sol-card rv d1">
-                        <div class="sol-icon"><i class="fas fa-globe"></i></div>
-                        <h3 class="sol-title">Site Institucional</h3>
-                        <p class="sol-desc">Presença digital profissional com design responsivo, SEO técnico e
-                            performance otimizada. Layout adaptado para smartphone, tablet e desktop.</p>
-                        <div class="sol-tags">
-                            <span class="tag">HTML5</span>
-                            <span class="tag">CSS3</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">Vercel</span>
-                        </div>
-                        <div class="sol-meta">
-                            <i class="fas fa-clock"></i> Prazo: 5 a 7 semanas
-                        </div>
-                    </div>
-
-                    <!-- Digital Signage -->
-                    <div class="sol-card rv d2">
-                        <div class="sol-icon orange"><i class="fas fa-tv"></i></div>
-                        <h3 class="sol-title">Digital Signage</h3>
-                        <p class="sol-desc">Painéis digitais dinâmicos para salas de espera, vitrines e recepções.
-                            Interface para TV com widgets de clima, notícias e conteúdo personalizado.</p>
-                        <div class="sol-tags">
-                            <span class="tag">Front-end</span>
-                            <span class="tag">API</span>
-                            <span class="tag">OpenWeather</span>
-                            <span class="tag">RSS.app</span>
-                        </div>
-                        <div class="sol-meta">
-                            <i class="fas fa-clock"></i> Prazo: 3 a 5 semanas
-                        </div>
-                    </div>
-
-                    <!-- Akanni -->
-                    <div class="sol-card rv d3">
-                        <div class="sol-icon steel"><i class="fas fa-database"></i></div>
-                        <h3 class="sol-title">Sistema Akanni</h3>
-                        <p class="sol-desc">Gestão integrada em tempo real: agendamentos, área restrita, automações e
-                            portal do paciente. AkanniMED para clínicas, AkanniHUB para empresas.</p>
-                        <div class="sol-tags">
-                            <span class="tag">Firebase</span>
-                            <span class="tag">Firestore</span>
-                            <span class="tag">Auth</span>
-                            <span class="tag">Jitsi</span>
-                        </div>
-                        <div class="sol-meta">
-                            <i class="fas fa-clock"></i> Prazo: 8 a 12 semanas
-                        </div>
-                    </div>
-
-                    <!-- Google Meu Negócio -->
-                    <div class="sol-card rv d4">
-                        <div class="sol-icon"><i class="fab fa-google"></i></div>
-                        <h3 class="sol-title">Google Meu Negócio</h3>
-                        <p class="sol-desc">Configuração, otimização e administração contínua do seu perfil no Google.
-                            Mais visibilidade nas buscas locais e melhor posicionamento no Maps.</p>
-                        <div class="sol-tags">
-                            <span class="tag">Google Cloud</span>
-                            <span class="tag">SEO Local</span>
-                            <span class="tag">Maps API</span>
-                        </div>
-                        <div class="sol-meta">
-                            <i class="fas fa-infinity"></i> Suporte contínuo
-                        </div>
-                    </div>
-
-                    <!-- Aula Informática -->
-                    <div class="sol-card rv d5">
-                        <div class="sol-icon"><i class="fa-solid fa-computer"></i></div>
-                        <h3 class="sol-title">Aula Informática</h3>
-                        <p class="sol-desc">Aprenda a usar computadores, celulares, Pacote Office e aplicativos do dia a
-                            dia. Conquiste sua autonomia digital com aulas práticas.</p>
-                        <div class="sol-tags">
-                            <span class="tag">Autonomia Digital</span>
-                            <span class="tag">Inclusão Digital</span>
-                            <span class="tag">Pacote Office</span>
-                        </div>
-                        <div class="sol-meta">
-                            <i class="fas fa-clock"></i> Prazo: 8 a 12 semanas
-                        </div>
-                    </div>
-
+                    <p class="eyebrow">Serviços e Investimentos</p>
+                    <h2 class="sec-title">Soluções feitas para o seu momento</h2>
+                    <p class="sec-sub">Escolha o serviço ideal para iniciar a digitalização do seu negócio. Explore as
+                        opções, confira os benefícios e encontre o melhor custo-benefício da região.</p>
                 </div>
             </div>
-        </section>
 
-        <!-- ═══ PLANOS ═══ -->
-        <section id="planos" class="plans-bg">
+            <!-- Track do Carrossel (Ocupa largura total na tela) -->
             <div class="wrap">
-                <div class="sec-head rv">
-                    <div class="sec-line"></div>
-                    <p class="eyebrow">Investimento</p>
-                    <h2 class="sec-title">Combos e planos disponíveis</h2>
-                    <p class="sec-sub">Soluções modulares ou pacotes integrados. Hospedagem em cloud
-                        <strong>gratuita</strong> (Vercel + Firebase) com custo de domínio de apenas <strong>R$
-                            40/ano</strong>.
-                    </p>
+                <div class="carousel-wrap rv d1">
+                    <div class="carousel-track">
+
+                        <!-- Card 1: Site Institucional -->
+                        <div class="c-card">
+                            <div class="c-icon"><i class="fas fa-globe"></i></div>
+                            <h3 class="c-title">Site Institucional</h3>
+                            <p class="c-desc">Presença digital de alta performance, com design responsivo para destacar
+                                sua marca em qualquer dispositivo.</p>
+
+                            <div class="c-price-box">
+                                <div class="c-price-label">Setup a partir de</div>
+                                <div class="c-price-val">R$ 1.100</div>
+                                <div class="c-price-monthly"><i class="fas fa-plus"></i> R$ 67/mês (Manutenção)</div>
+                            </div>
+
+                            <div class="c-includes">
+                                <div class="c-includes-title">O que está incluso</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Desenvolvimento front-end customizado
+                                </div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Hospedagem otimizada (SSL)</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Otimização SEO On-Page básico</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Botão inteligente para WhatsApp</div>
+                            </div>
+
+                            <div class="c-footer">
+                                <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 5 a 7 semanas</div>
+                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20um%20Site%20Institucional."
+                                    target="_blank" rel="noopener noreferrer" class="plan-link">
+                                    <i class="fab fa-whatsapp"></i> Orçar Serviço
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Sistema Akanni -->
+                        <div class="c-card">
+                            <div class="c-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i
+                                    class="fas fa-database"></i></div>
+                            <h3 class="c-title">Sistema Akanni</h3>
+                            <p class="c-desc">Gestão integrada e inteligente. Soluções robustas como AkanniMED e
+                                AkanniHUB para digitalizar sua operação.</p>
+
+                            <div class="c-price-box">
+                                <div class="c-price-label">Setup a partir de</div>
+                                <div class="c-price-val"
+                                    style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+                                    R$ 1.700</div>
+                                <div class="c-price-monthly"><i class="fas fa-plus"></i> R$ 147/mês (Cloud e Suporte)
+                                </div>
+                            </div>
+
+                            <div class="c-includes">
+                                <div class="c-includes-title">O que está incluso</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Banco de dados em tempo real</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Gestão de agendamentos e pacientes
+                                </div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Portal exclusivo para o cliente</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Painel administrativo completo</div>
+                            </div>
+
+                            <div class="c-footer">
+                                <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 8 a 12 semanas</div>
+                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Sistema%20Akanni."
+                                    target="_blank" rel="noopener noreferrer" class="plan-link primary">
+                                    <i class="fab fa-whatsapp"></i> Orçar Sistema
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Digital Signage -->
+                        <div class="c-card">
+                            <div class="c-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i
+                                    class="fas fa-tv"></i></div>
+                            <h3 class="c-title">Digital Signage</h3>
+                            <p class="c-desc">Transforme sua sala de espera com painéis digitais dinâmicos e interativos
+                                direto na tela da TV.</p>
+
+                            <div class="c-price-box">
+                                <div class="c-price-label">Setup a partir de</div>
+                                <div class="c-price-val"
+                                    style="background:var(--grad-o);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+                                    R$ 475</div>
+                                <div class="c-price-monthly"><i class="fas fa-plus" style="color:var(--orange)"></i> R$
+                                    97/mês (Integração de APIs)</div>
+                            </div>
+
+                            <div class="c-includes">
+                                <div class="c-includes-title">O que está incluso</div>
+                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Interface
+                                    adaptada para TVs</div>
+                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Clima e
+                                    relógio em tempo real</div>
+                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Feed
+                                    automático de notícias</div>
+                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Espaço para
+                                    vídeos e comunicados</div>
+                            </div>
+
+                            <div class="c-footer">
+                                <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 3 a 5 semanas</div>
+                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Digital%20Signage."
+                                    target="_blank" rel="noopener noreferrer" class="plan-link"
+                                    style="color:var(--orange); border-color:rgba(255,94,0,0.3)">
+                                    <i class="fab fa-whatsapp"></i> Orçar Serviço
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: SEO & Google Meu Negócio -->
+                        <div class="c-card">
+                            <div class="c-icon"><i class="fab fa-google"></i></div>
+                            <h3 class="c-title">SEO & Google Meu Negócio</h3>
+                            <p class="c-desc">Domine as buscas locais e seja a primeira escolha quando procurarem pelos
+                                seus serviços na região.</p>
+
+                            <div class="c-price-box">
+                                <div class="c-price-label">Setup a partir de</div>
+                                <div class="c-price-val">R$ 397</div>
+                                <div class="c-price-monthly"><i class="fas fa-plus"></i> R$ 127/mês (Adm. Contínua)
+                                </div>
+                            </div>
+
+                            <div class="c-includes">
+                                <div class="c-includes-title">O que está incluso</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Criação e otimização do perfil</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Estratégia de SEO Técnico/Local</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Posicionamento no Google Maps</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Relatórios de alcance e acessos</div>
+                            </div>
+
+                            <div class="c-footer">
+                                <div class="c-deadline"><i class="far fa-clock"></i> Prazo: Até 2 semanas</div>
+                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Google%20Meu%20Negócio."
+                                    target="_blank" rel="noopener noreferrer" class="plan-link">
+                                    <i class="fab fa-whatsapp"></i> Orçar Serviço
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: Aulas de Informática -->
+                        <div class="c-card">
+                            <div class="c-icon" style="color:var(--text);background:var(--surface-2);"><i
+                                    class="fa-solid fa-computer"></i></div>
+                            <h3 class="c-title">Aulas de Informática</h3>
+                            <p class="c-desc">Conquiste sua autonomia digital com aulas práticas, focadas no uso de
+                                tecnologias para o seu dia a dia.</p>
+
+                            <div class="c-price-box">
+                                <div class="c-price-label">Valor da aula</div>
+                                <div class="c-price-val"
+                                    style="background:none; color:var(--text); -webkit-text-fill-color:var(--text)">R$
+                                    45<span style="font-size:1rem; color:var(--muted)">/hora</span></div>
+                                <div class="c-price-monthly" style="color:var(--muted)"><i class="fas fa-info-circle"
+                                        style="color:var(--muted)"></i> Mínimo de 2h mensais</div>
+                            </div>
+
+                            <div class="c-includes">
+                                <div class="c-includes-title">O que está incluso</div>
+                                <div class="c-feat"><i class="fas fa-check" style="color:var(--muted)"></i> Uso prático
+                                    de PC e Smartphone</div>
+                                <div class="c-feat"><i class="fas fa-check" style="color:var(--muted)"></i> Domínio do
+                                    Pacote Office</div>
+                                <div class="c-feat"><i class="fas fa-check" style="color:var(--muted)"></i> Navegação
+                                    segura na internet</div>
+                                <div class="c-feat"><i class="fas fa-check" style="color:var(--muted)"></i> Ritmo focado
+                                    100% no aluno</div>
+                            </div>
+
+                            <div class="c-footer">
+                                <div class="c-deadline"><i class="far fa-calendar-alt"></i> Agendamento conforme
+                                    disponibilidade</div>
+                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20agendar%20aulas%20de%20informática."
+                                    target="_blank" rel="noopener noreferrer" class="plan-link"
+                                    style="color:var(--text); border-color:var(--border)">
+                                    <i class="fab fa-whatsapp"></i> Agendar Aulas
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
+            </div>
 
-                <!-- Combo Cards -->
-                <div class="plans-grid">
-
-                    <!-- Combo Básico -->
-                    <div class="plan-card rv d1">
-                        <div class="plan-name">Combo Básico</div>
-                        <div class="plan-price-setup">
-                            <span class="label">setup</span>
-                            <span class="val">R$1.500</span>
-                        </div>
-                        <div class="plan-monthly">Mensalidade: <strong>R$ 125 / mês</strong></div>
-                        <div class="plan-includes-label">Incluso</div>
-                        <div class="plan-features">
-                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Site Institucional Completo</div>
-                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Domínio e Hospedagem Configurados
-                            </div>
-                            <div class="plan-feat"><i class="fas fa-circle-check"></i> SEO On-Page</div>
-                            <div class="plan-feat"><i class="fas fa-circle-check"></i> ChatBot Inteligente</div>
-                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Suporte e Manutenção</div>
-                        </div>
-                        <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20no%20Combo%20Básico."
-                            target="_blank" rel="noopener noreferrer" class="plan-link">
-                            <i class="fab fa-whatsapp"></i> Quero esse plano
-                        </a>
-                    </div>
-
-                    <!-- Combo Padrão -->
-                    <div class="plan-card featured rv d2">
-                        <div class="plan-badge">MAIS PROCURADO</div>
-                        <div class="plan-name">Combo Padrão</div>
-                        <div class="plan-price-setup">
-                            <span class="label">setup</span>
-                            <span class="val">R$2.400</span>
-                        </div>
-                        <div class="plan-monthly">Mensalidade: <strong>R$ 220 / mês</strong></div>
-                        <div class="plan-includes-label">Incluso</div>
-                        <div class="plan-features">
-                            <div class="plan-feat"><i class="far fa-circle-check"></i> Combo Básico</div>
-                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Sistema Akanni Padrão</div>
-                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Portal do Cliente</div>
-                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Blog Integrado</div>
-                            <div class="plan-feat"><i class="fas fa-circle-check"></i> SEO Técnico e Local</div>
-                        </div>
-                        <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20no%20Combo%20Padrão."
-                            target="_blank" rel="noopener noreferrer" class="plan-link primary">
-                            <i class="fab fa-whatsapp"></i> Quero esse plano
-                        </a>
-                    </div>
-
-                    <!-- Ecossistema Completo -->
-                    <div class="plan-card rv d3">
-                        <div class="plan-name">Ecossistema GeoCODE</div>
-                        <div class="plan-price-setup">
-                            <span class="label">setup</span>
-                            <span class="val orange">R$3.300</span>
-                        </div>
-                        <div class="plan-monthly">Mensalidade: <strong>R$ 315 / mês</strong></div>
-                        <div class="plan-includes-label">Incluso</div>
-                        <div class="plan-features">
-                            <div class="plan-feat"><i class="far fa-circle-check"></i> Combo Padrão</div>
-                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Sistema Akanni Completo</div>
-                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Painel de Digital Signage</div>
-                            <div class="plan-feat"><i class="fas fa-circle-check"></i> SEO Completo</div>
-                            <div class="plan-feat"><i class="fas fa-circle-check"></i> Suporte Prioritário</div>
-                        </div>
-                        <a href="https://wa.me/+5579988663905?text=Tenho%20interesse%20no%20Ecossistema%20Completo."
-                            target="_blank" rel="noopener noreferrer" class="plan-link">
-                            <i class="fab fa-whatsapp"></i> Quero esse plano
-                        </a>
-                    </div>
-
-                </div>
-
-                <!-- Módulos Avulsos -->
-                <div class="rv" style="margin-top:3rem;">
-                    <p class="eyebrow" style="margin-bottom:1rem;">Soluções Avulsas</p>
-                    <div class="modular-table">
-                        <div class="table-head">
-                            <span>Serviço</span>
-                            <span>Setup</span>
-                            <span>Mensalidade</span>
-                        </div>
-                        <div class="table-row">
-                            <div class="table-row-name">
-                                Site Institucional / Landing Page
-                                <small>Design UI + Front-end + Deploy</small>
-                            </div>
-                            <div class="table-val">R$ 1.100</div>
-                            <div class="table-val accent">R$ 70/mês</div>
-                        </div>
-                        <div class="table-row">
-                            <div class="table-row-name">
-                                Digital Signage
-                                <small>Interface TV + APIs</small>
-                            </div>
-                            <div class="table-val">R$ 475</div>
-                            <div class="table-val accent">R$ 90/mês</div>
-                        </div>
-                        <div class="table-row">
-                            <div class="table-row-name">
-                                Sistema Akanni (SaaS e CRM)
-                                <small>Banco de Dados + Back-end + Auth</small>
-                            </div>
-                            <div class="table-val">R$ 1.700</div>
-                            <div class="table-val accent">R$ 140/mês</div>
-                        </div>
-                        <div class="table-row">
-                            <div class="table-row-name">
-                                SEO (Search Engine Optimization)
-                                <small>On-Page, Técnico, Off-Page e Local</small>
-                            </div>
-                            <div class="table-val">R$ 397</div>
-                            <div class="table-val accent">R$ 125/mês</div>
-                        </div>
-                        <div class="table-row">
-                            <div class="table-row-name">
-                                Aulas de Informática
-                                <small>Mínimo de 2h por aula mensal</small>
-                            </div>
-                            <div class="table-val">—</div>
-                            <div class="table-val accent">R$ 45/h</div>
-                        </div>
-                        <div class="table-row">
-                            <div class="table-row-name">
-                                Suporte Avulso
-                                <small>Mínimo de R$ 100 por chamado</small>
-                            </div>
-                            <div class="table-val">—</div>
-                            <div class="table-val accent">R$ 100/Chamado</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Condições de Pagamento -->
-                <div class="support-note rv" style="margin-top:1.5rem;">
+            <!-- Informações e Infraestrutura -->
+            <div class="wrap">
+                <div class="support-note rv">
                     <i class="fas fa-circle-info"></i>
                     <p>
-                        <strong>Condições de pagamento:</strong> 30% na assinatura do contrato · 30% na entrega da
+                        <strong>Condições de projeto:</strong> 30% na assinatura do contrato · 30% na entrega da
                         estrutura base · 40% na publicação final.
                         Suporte disponível de segunda a sexta, 8h às 20h. Finais de semana apenas para falhas críticas.
-                        Domínio próprio: <strong>R$ 40/ano</strong> (único custo fixo de terceiros).
-                        Sistema Akanni Padrão possui no máximo 6 funcionalidades ativas simultaneamente. Customizações e
-                        extras podem ter custos adicionais.
+                        No caso de Site Institucional e Sistema Akanni, há o custo do seu domínio próprio (aprox.
+                        <strong>R$ 40/ano</strong>). Customizações modulares podem ter custos adicionais dependendo do
+                        escopo.
                     </p>
                 </div>
 
-                <!-- Infraestrutura -->
                 <div class="rv" style="margin-top:3rem;">
-                    <p class="eyebrow" style="margin-bottom:1rem;">Infraestrutura</p>
+                    <p class="eyebrow" style="margin-bottom:1rem;">Infraestrutura & Deploy</p>
                     <div class="infra-row">
                         <div class="infra-badge">
                             <i class="fas fa-rocket"></i>
@@ -1927,16 +1547,8 @@
                                 <span>Mídias otimizadas</span>
                             </div>
                         </div>
-                        <div class="infra-badge">
-                            <i class="fab fa-google"></i>
-                            <div class="infra-badge-text">
-                                <strong>Google Cloud</strong>
-                                <span>Maps + APIs</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
@@ -2060,31 +1672,32 @@
 
             <div class="clients-track-wrap rv d1">
                 <div class="clients-track">
-                    <a href="https://psimeirefranca.vercel.app/" target="_blank" rel="noopener noreferrer" class="client-logo"
-                        title="Psicóloga Meire França">
-                        <img src="assets/logos/psimf.png" alt="Psicóloga Meire França">
-                    </a>
-                    <a href="https://ff193.vercel.app/" target="_blank" rel="noopener noreferrer" class="client-logo" title="Fundação Fênix 193">
-                        <img src="assets/logos/ff193.png" alt="Fundação Fênix 193">
-                    </a>
-                    <a href="https://psimeirefranca.vercel.app/" target="_blank" rel="noopener noreferrer" class="client-logo"
-                        title="Psicóloga Meire França">
+                    <a href="https://psimeirefranca.vercel.app/" target="_blank" rel="noopener noreferrer"
+                        class="client-logo" title="Psicóloga Meire França">
                         <img src="assets/logos/psimf.png" alt="Psicóloga Meire França">
                     </a>
                     <a href="https://ff193.vercel.app/" target="_blank" rel="noopener noreferrer" class="client-logo"
                         title="Fundação Fênix 193">
                         <img src="assets/logos/ff193.png" alt="Fundação Fênix 193">
                     </a>
-                    <a href="https://psimeirefranca.vercel.app/" target="_blank" rel="noopener noreferrer" class="client-logo"
-                        title="Psicóloga Meire França">
+                    <a href="https://psimeirefranca.vercel.app/" target="_blank" rel="noopener noreferrer"
+                        class="client-logo" title="Psicóloga Meire França">
                         <img src="assets/logos/psimf.png" alt="Psicóloga Meire França">
                     </a>
                     <a href="https://ff193.vercel.app/" target="_blank" rel="noopener noreferrer" class="client-logo"
                         title="Fundação Fênix 193">
                         <img src="assets/logos/ff193.png" alt="Fundação Fênix 193">
                     </a>
-                    <a href="https://psimeirefranca.vercel.app/" target="_blank" rel="noopener noreferrer" class="client-logo"
-                        title="Psicóloga Meire França">
+                    <a href="https://psimeirefranca.vercel.app/" target="_blank" rel="noopener noreferrer"
+                        class="client-logo" title="Psicóloga Meire França">
+                        <img src="assets/logos/psimf.png" alt="Psicóloga Meire França">
+                    </a>
+                    <a href="https://ff193.vercel.app/" target="_blank" rel="noopener noreferrer" class="client-logo"
+                        title="Fundação Fênix 193">
+                        <img src="assets/logos/ff193.png" alt="Fundação Fênix 193">
+                    </a>
+                    <a href="https://psimeirefranca.vercel.app/" target="_blank" rel="noopener noreferrer"
+                        class="client-logo" title="Psicóloga Meire França">
                         <img src="assets/logos/psimf.png" alt="Psicóloga Meire França">
                     </a>
                     <a href="https://ff193.vercel.app/" target="_blank" rel="noopener noreferrer" class="client-logo"
@@ -2150,7 +1763,6 @@
                     <ul>
                         <li><i class="fas fa-house"></i><a href="#home">Início</a></li>
                         <li><i class="fas fa-layer-group"></i><a href="#solucoes">Soluções</a></li>
-                        <li><i class="fas fa-tag"></i><a href="#planos">Planos</a></li>
                         <li><i class="fas fa-code"></i><a href="#stack">Stack</a></li>
                         <li><i class="fas fa-user"></i><a href="#sobre">Sobre</a></li>
                         <li><i class="fas fa-handshake"></i><a href="#clientes">Clientes</a></li>
