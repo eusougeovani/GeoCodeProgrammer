@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/assetes/ui/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/assetes/ui/favicon.svg" />
-    <link rel="shortcut icon" href="/assetes/ui/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assetes/ui/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="/assets/ui/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/ui/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/ui/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/ui/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="GeoCODE" />
-    <link rel="manifest" href="/assetes/ui/site.webmanifest" />
+    <link rel="manifest" href="/assets/ui/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <meta name="author" content="Geovani Santos — GeoCODE Programmer" />
     <meta name="theme-color" content="#0D1520" />
@@ -256,7 +256,6 @@
                 display: flex;
             }
 
-            .nav-cta-wrap,
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -270,7 +269,19 @@
                 z-index: 999;
             }
 
-            .nav-links.open,
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-cta-wrap {
+                display: none;
+                position: fixed;
+                bottom: 2.5rem;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 1000;
+            }
+
             .nav-cta-wrap.open {
                 display: flex;
             }
@@ -726,7 +737,6 @@
                 display: flex;
             }
 
-            .nav-cta-wrap,
             .nav-links {
                 display: none;
                 flex-direction: column;
@@ -740,7 +750,19 @@
                 z-index: 999;
             }
 
-            .nav-links.open,
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-cta-wrap {
+                display: none;
+                position: fixed;
+                bottom: 2.5rem;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 1000;
+            }
+
             .nav-cta-wrap.open {
                 display: flex;
             }
@@ -935,6 +957,41 @@
 
             .mini-card h4 {
                 font-size: 0.88rem;
+            }
+        }
+
+        /* WA FLOAT */
+        .wa-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 900;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: #25D366;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
+            transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+        }
+
+        .wa-float:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 12px 36px rgba(37, 211, 102, 0.55);
+        }
+
+        @media (max-width: 600px) {
+            .wa-float {
+                bottom: 1.25rem;
+                right: 1.25rem;
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -1325,6 +1382,12 @@
             </div>
         </div>
     </footer>
+
+    <!-- ═══ WA FLOAT ═══ -->
+    <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20um%20orçamento." target="_blank"
+        rel="noopener noreferrer" class="wa-float" aria-label="WhatsApp — Solicitar orçamento">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
         'use strict';
