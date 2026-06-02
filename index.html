@@ -719,48 +719,6 @@
             color: var(--text);
         }
 
-        .infra-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2.5rem;
-        }
-
-        .infra-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.7rem;
-            background: var(--surface-2);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 0.9rem 1.25rem;
-            flex: 1;
-            min-width: 140px;
-            transition: border-color var(--dur);
-        }
-
-        .infra-badge:hover {
-            border-color: var(--border-h);
-        }
-
-        .infra-badge i {
-            font-size: 1.1rem;
-            color: var(--mint);
-            flex-shrink: 0;
-        }
-
-        .infra-badge-text strong {
-            display: block;
-            font-size: 0.88rem;
-            font-weight: 700;
-        }
-
-        .infra-badge-text span {
-            font-size: 0.78rem;
-            color: var(--muted);
-            font-family: var(--font-m);
-        }
-
         /* ═══════════════════════════════════════════
        STACK & OTHER SECTIONS (KEPT UNCHANGED)
     ═══════════════════════════════════════════ */
@@ -1127,11 +1085,6 @@
                 grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             }
 
-            .infra-badge {
-                min-width: calc(50% - 0.5rem);
-                flex: 1 1 calc(50% - 0.5rem);
-            }
-
             .footer-main {
                 grid-template-columns: 1fr 1fr;
                 gap: 2rem;
@@ -1170,15 +1123,6 @@
             .c-card {
                 width: 85vw;
                 max-width: 340px;
-            }
-
-            .infra-row {
-                flex-direction: column;
-            }
-
-            .infra-badge {
-                min-width: 100%;
-                flex: 1 1 100%;
             }
 
             .stack-grid {
@@ -1514,40 +1458,6 @@
                         <strong>R$ 40/ano</strong>). Customizações modulares podem ter custos adicionais dependendo do
                         escopo.
                     </p>
-                </div>
-
-                <div class="rv" style="margin-top:3rem;">
-                    <p class="eyebrow" style="margin-bottom:1rem;">Infraestrutura & Deploy</p>
-                    <div class="infra-row">
-                        <div class="infra-badge">
-                            <i class="fas fa-rocket"></i>
-                            <div class="infra-badge-text">
-                                <strong>Vercel</strong>
-                                <span>Deploy front-end</span>
-                            </div>
-                        </div>
-                        <div class="infra-badge">
-                            <i class="fas fa-fire"></i>
-                            <div class="infra-badge-text">
-                                <strong>Firebase</strong>
-                                <span>BD + Auth</span>
-                            </div>
-                        </div>
-                        <div class="infra-badge">
-                            <i class="fab fa-github"></i>
-                            <div class="infra-badge-text">
-                                <strong>GitHub</strong>
-                                <span>Código + Chamados</span>
-                            </div>
-                        </div>
-                        <div class="infra-badge">
-                            <i class="fas fa-image"></i>
-                            <div class="infra-badge-text">
-                                <strong>Cloudinary</strong>
-                                <span>Mídias otimizadas</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
