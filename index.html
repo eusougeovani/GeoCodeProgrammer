@@ -330,6 +330,12 @@
             box-shadow: 0 8px 24px rgba(255, 94, 0, 0.45);
         }
 
+        /* Desktop: wrapper visível inline no nav */
+        .nav-cta-wrap {
+            display: flex;
+            align-items: center;
+        }
+
         .hbg {
             display: none;
             flex-direction: column;
@@ -365,6 +371,12 @@
         @media (max-width: 860px) {
             .hbg {
                 display: flex;
+                margin-left: auto;
+            }
+
+            /* Esconde o botão de orçamento do header no mobile (aparece no menu) */
+            nav>.nav-cta-wrap {
+                display: none !important;
             }
 
             .nav-links {
@@ -374,23 +386,28 @@
                 inset: 68px 0 0 0;
                 background: rgba(13, 21, 32, 0.98);
                 backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
                 align-items: center;
                 justify-content: center;
-                gap: 1.5rem;
+                gap: 1.75rem;
                 z-index: 999;
+                padding-bottom: 6rem;
+                /* espaço para o botão fixo */
             }
 
             .nav-links.open {
                 display: flex;
             }
 
+            /* Botão de orçamento fixo no rodapé do menu mobile */
             .nav-cta-wrap {
                 display: none;
                 position: fixed;
                 bottom: 2.5rem;
                 left: 50%;
                 transform: translateX(-50%);
-                z-index: 1000;
+                z-index: 1001;
+                white-space: nowrap;
             }
 
             .nav-cta-wrap.open {
@@ -398,12 +415,13 @@
             }
 
             .nav-links a {
-                font-size: 1.25rem;
+                font-size: 1.3rem;
+                font-weight: 600;
             }
 
             .nav-cta {
                 font-size: 1rem;
-                padding: 0.8rem 2rem;
+                padding: 0.85rem 2.25rem;
             }
 
             nav {
