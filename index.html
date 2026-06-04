@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="/assets/ui/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/ui/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="GeoCODE" />
-    <link rel="manifest" href="site.webmanifest" />
+    <link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22GeoCODE+Programmer%22%2C%22short_name%22%3A%22GeoCODE%22%2C%22start_url%22%3A%22%2F%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%230D1520%22%2C%22theme_color%22%3A%22%230D1520%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22%2Fassets%2Fui%2Ffavicon-96x96.png%22%2C%22sizes%22%3A%2296x96%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <meta name="author" content="Geovani Santos — GeoCODE Programmer" />
     <meta name="theme-color" content="#0D1520" />
@@ -295,6 +295,12 @@
             margin-left: auto;
         }
 
+        /* Mobile nav elements: hidden by default, shown only on mobile */
+        .nav-links-mobile,
+        .nav-cta-mobile {
+            display: none;
+        }
+
         .nav-links a {
             font-size: 0.88rem;
             font-weight: 500;
@@ -372,51 +378,61 @@
             .hbg {
                 display: flex;
                 margin-left: auto;
+                flex-shrink: 0;
             }
 
-            /* Esconde o botão de orçamento do header no mobile (aparece no menu) */
-            nav>.nav-cta-wrap {
+            /* Esconde nav desktop no mobile */
+            .nav-links-desktop,
+            .nav-cta-desktop {
                 display: none !important;
             }
 
-            .nav-links {
-                display: none;
+            /* Menu mobile: tela cheia abaixo do header, fundo sólido */
+            .nav-links-mobile {
                 flex-direction: column;
                 position: fixed;
-                inset: 68px 0 0 0;
-                background: rgba(13, 21, 32, 0.98);
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
+                top: 68px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: #0D1520;
                 align-items: center;
                 justify-content: center;
-                gap: 1.75rem;
-                z-index: 999;
-                padding-bottom: 6rem;
-                /* espaço para o botão fixo */
+                gap: 2rem;
+                z-index: 1100;
+                padding-bottom: 7rem;
+                list-style: none;
             }
 
-            .nav-links.open {
+            .nav-links-mobile.open {
                 display: flex;
             }
 
+            .nav-links-mobile a {
+                font-size: 1.35rem;
+                font-weight: 600;
+                color: var(--text-soft);
+                padding: 0.5rem 1.5rem;
+            }
+
+            .nav-links-mobile a:hover,
+            .nav-links-mobile a.on {
+                color: var(--mint);
+                background: transparent;
+            }
+
             /* Botão de orçamento fixo no rodapé do menu mobile */
-            .nav-cta-wrap {
-                display: none;
+            .nav-cta-mobile {
                 position: fixed;
                 bottom: 2.5rem;
                 left: 50%;
                 transform: translateX(-50%);
-                z-index: 1001;
+                z-index: 1101;
                 white-space: nowrap;
             }
 
-            .nav-cta-wrap.open {
+            .nav-cta-mobile.open {
                 display: flex;
-            }
-
-            .nav-links a {
-                font-size: 1.3rem;
-                font-weight: 600;
             }
 
             .nav-cta {
@@ -1260,7 +1276,6 @@
                 font-size: 1.85rem;
             }
         }
-
         /* ═══════════════════════════════════════════
            COMBOS — GRID DESKTOP / CARROSSEL MOBILE
         ═══════════════════════════════════════════ */
@@ -1276,9 +1291,7 @@
             padding-top: 1rem;
         }
 
-        .combos-wrap::-webkit-scrollbar {
-            display: none;
-        }
+        .combos-wrap::-webkit-scrollbar { display: none; }
 
         .combos-track {
             display: inline-flex;
@@ -1378,9 +1391,7 @@
             transition: opacity var(--dur);
         }
 
-        .stack-item:hover::before {
-            opacity: 1;
-        }
+        .stack-item:hover::before { opacity: 1; }
 
         .stack-item:hover {
             border-color: var(--border-h);
@@ -1410,25 +1421,11 @@
         }
 
         /* Cores por categoria */
-        .stack-item.cat-front i {
-            color: #E67E22;
-        }
-
-        .stack-item.cat-cloud i {
-            color: #4FC3F7;
-        }
-
-        .stack-item.cat-tools i {
-            color: var(--mint);
-        }
-
-        .stack-item.cat-libs i {
-            color: #A78BFA;
-        }
-
-        .stack-item.cat-os i {
-            color: var(--steel);
-        }
+        .stack-item.cat-front i   { color: #E67E22; }
+        .stack-item.cat-cloud i   { color: #4FC3F7; }
+        .stack-item.cat-tools i   { color: var(--mint); }
+        .stack-item.cat-libs i    { color: #A78BFA; }
+        .stack-item.cat-os i      { color: var(--steel); }
 
         @media (max-width: 860px) {
             .stack-grid {
@@ -1449,7 +1446,6 @@
                 gap: 0.5rem;
             }
         }
-
         /* ═══════════════════════════════════════════
            MINI-CARDS GRID
         ═══════════════════════════════════════════ */
@@ -1466,23 +1462,13 @@
         }
 
         @media (max-width: 860px) {
-            .mini-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .mini-grid-combos {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .mini-grid { grid-template-columns: repeat(2, 1fr); }
+            .mini-grid-combos { grid-template-columns: repeat(2, 1fr); }
         }
 
         @media (max-width: 480px) {
-            .mini-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .mini-grid-combos {
-                grid-template-columns: 1fr;
-            }
+            .mini-grid { grid-template-columns: 1fr; }
+            .mini-grid-combos { grid-template-columns: 1fr; }
         }
 
         .mini-card {
@@ -1503,13 +1489,13 @@
         .mini-card:hover {
             border-color: var(--border-h);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
             background: var(--surface);
         }
 
         .mini-card-combo {
             background: var(--surface);
-            border-color: rgba(52, 209, 183, 0.18);
+            border-color: rgba(52,209,183,0.18);
         }
 
         .mini-card-combo:hover {
@@ -1581,7 +1567,7 @@
         .drawer-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0,0,0,0.6);
             backdrop-filter: blur(4px);
             z-index: 1100;
             opacity: 0;
@@ -1630,7 +1616,7 @@
             height: 48px;
             min-width: 48px;
             border-radius: var(--radius);
-            background: rgba(52, 209, 183, 0.1);
+            background: rgba(52,209,183,0.1);
             color: var(--mint);
             display: flex;
             align-items: center;
@@ -1721,10 +1707,7 @@
             font-family: var(--font-m);
         }
 
-        .drawer-price-monthly i {
-            color: var(--mint);
-            font-size: 0.72rem;
-        }
+        .drawer-price-monthly i { color: var(--mint); font-size: 0.72rem; }
 
         .drawer-includes-title {
             font-family: var(--font-m);
@@ -1776,14 +1759,11 @@
             gap: 0.5rem;
         }
 
-        .drawer-deadline i {
-            color: var(--steel);
-        }
+        .drawer-deadline i { color: var(--steel); }
 
         /* Lock body scroll when drawer is open */
-        body.drawer-open {
-            overflow: hidden;
-        }
+        body.drawer-open { overflow: hidden; }
+
     </style>
 </head>
 
@@ -1796,7 +1776,8 @@
                 Geo<span>CODE</span>
             </a>
 
-            <ul class="nav-links" id="navLinks">
+            <!-- Desktop nav (hidden on mobile via CSS) -->
+            <ul class="nav-links nav-links-desktop" id="navLinksDesktop">
                 <li><a href="#home" class="nav-link">Início</a></li>
                 <li><a href="#solucoes" class="nav-link">Soluções</a></li>
                 <li><a href="#stack" class="nav-link">Stack</a></li>
@@ -1804,18 +1785,33 @@
                 <li><a href="#clientes" class="nav-link">Clientes</a></li>
             </ul>
 
-            <div class="nav-cta-wrap" id="navCta">
+            <div class="nav-cta-wrap nav-cta-desktop">
                 <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20um%20orçamento."
                     target="_blank" rel="noopener noreferrer" class="nav-cta">
                     <i class="fab fa-whatsapp"></i> Orçamento
                 </a>
             </div>
 
-            <button class="hbg" id="hbgBtn" aria-label="Abrir menu" aria-expanded="false" style="order:10;">
+            <button class="hbg" id="hbgBtn" aria-label="Abrir menu" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
         </nav>
     </header>
+
+    <!-- Mobile nav — FORA do header para escapar do backdrop-filter stacking context -->
+    <ul class="nav-links nav-links-mobile" id="navLinks">
+        <li><a href="#home" class="nav-link">Início</a></li>
+        <li><a href="#solucoes" class="nav-link">Soluções</a></li>
+        <li><a href="#stack" class="nav-link">Stack</a></li>
+        <li><a href="#sobre" class="nav-link">Sobre</a></li>
+        <li><a href="#clientes" class="nav-link">Clientes</a></li>
+    </ul>
+    <div class="nav-cta-wrap nav-cta-mobile" id="navCta">
+        <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20um%20orçamento."
+            target="_blank" rel="noopener noreferrer" class="nav-cta">
+            <i class="fab fa-whatsapp"></i> Orçamento
+        </a>
+    </div>
 
     <main>
 
@@ -1883,8 +1879,7 @@
                 <div class="mini-grid rv">
 
                     <button class="mini-card" data-drawer="landing">
-                        <div class="mini-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i
-                                class="fas fa-bullseye"></i></div>
+                        <div class="mini-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i class="fas fa-bullseye"></i></div>
                         <div class="mini-body">
                             <strong>Landing Page</strong>
                             <span>a partir de <em>R$ 600</em></span>
@@ -1902,8 +1897,7 @@
                     </button>
 
                     <button class="mini-card" data-drawer="sistema">
-                        <div class="mini-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i
-                                class="fas fa-database"></i></div>
+                        <div class="mini-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i class="fas fa-database"></i></div>
                         <div class="mini-body">
                             <strong>Sistema Web Dinâmico</strong>
                             <span>a partir de <em>R$ 1.700</em></span>
@@ -1912,8 +1906,7 @@
                     </button>
 
                     <button class="mini-card" data-drawer="loja">
-                        <div class="mini-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
-                                class="fas fa-cart-shopping"></i></div>
+                        <div class="mini-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i class="fas fa-cart-shopping"></i></div>
                         <div class="mini-body">
                             <strong>Loja Virtual (E-commerce)</strong>
                             <span>a partir de <em>R$ 2.500</em></span>
@@ -1922,8 +1915,7 @@
                     </button>
 
                     <button class="mini-card" data-drawer="catalogo">
-                        <div class="mini-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
-                                class="fas fa-store"></i></div>
+                        <div class="mini-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i class="fas fa-store"></i></div>
                         <div class="mini-body">
                             <strong>Catálogo Virtual</strong>
                             <span>a partir de <em>R$ 800</em></span>
@@ -1932,8 +1924,7 @@
                     </button>
 
                     <button class="mini-card" data-drawer="microsite">
-                        <div class="mini-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i
-                                class="fas fa-mobile-screen-button"></i></div>
+                        <div class="mini-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i class="fas fa-mobile-screen-button"></i></div>
                         <div class="mini-body">
                             <strong>Micro-Site (Link na Bio)</strong>
                             <span>a partir de <em>R$ 250</em></span>
@@ -1942,8 +1933,7 @@
                     </button>
 
                     <button class="mini-card" data-drawer="blog">
-                        <div class="mini-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
-                                class="fas fa-newspaper"></i></div>
+                        <div class="mini-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i class="fas fa-newspaper"></i></div>
                         <div class="mini-body">
                             <strong>Blog / Portal de Conteúdo</strong>
                             <span>a partir de <em>R$ 1.500</em></span>
@@ -1961,8 +1951,7 @@
                     </button>
 
                     <button class="mini-card" data-drawer="signage">
-                        <div class="mini-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i
-                                class="fas fa-tv"></i></div>
+                        <div class="mini-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i class="fas fa-tv"></i></div>
                         <div class="mini-body">
                             <strong>Digital Signage</strong>
                             <span>a partir de <em>R$ 475</em></span>
@@ -1976,18 +1965,15 @@
                 <div class="combos-divider rv">
                     <div class="sec-line" style="margin-bottom:1rem;"></div>
                     <p class="eyebrow">Combos</p>
-                    <h2 class="sec-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-bottom:0.5rem;">Soluções muito
-                        mais completas</h2>
-                    <p class="sec-sub" style="margin-bottom:0;">Pacotes que combinam múltiplos serviços com desconto.
-                        Clique para ver detalhes.</p>
+                    <h2 class="sec-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-bottom:0.5rem;">Soluções muito mais completas</h2>
+                    <p class="sec-sub" style="margin-bottom:0;">Pacotes que combinam múltiplos serviços com desconto. Clique para ver detalhes.</p>
                 </div>
 
                 <!-- Grid de mini-cards: Combos -->
                 <div class="mini-grid mini-grid-combos rv d1">
 
                     <button class="mini-card mini-card-combo" data-drawer="combo-essencial">
-                        <div class="mini-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i
-                                class="fas fa-bullseye"></i></div>
+                        <div class="mini-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i class="fas fa-bullseye"></i></div>
                         <div class="mini-body">
                             <strong>Combo Essencial</strong>
                             <span>a partir de <em>R$ 1.350</em></span>
@@ -2005,8 +1991,7 @@
                     </button>
 
                     <button class="mini-card mini-card-combo" data-drawer="combo-clinico">
-                        <div class="mini-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i
-                                class="fas fa-database"></i></div>
+                        <div class="mini-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i class="fas fa-database"></i></div>
                         <div class="mini-body">
                             <strong>Combo Clínico</strong>
                             <span>a partir de <em>R$ 3.100</em></span>
@@ -2015,8 +2000,7 @@
                     </button>
 
                     <button class="mini-card mini-card-combo" data-drawer="combo-enterprise">
-                        <div class="mini-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
-                                class="fas fa-cart-shopping"></i></div>
+                        <div class="mini-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i class="fas fa-cart-shopping"></i></div>
                         <div class="mini-body">
                             <strong>Combo Enterprise</strong>
                             <span>a partir de <em>R$ 5.900</em></span>
@@ -2047,38 +2031,29 @@
         <!-- DRAWERS: Serviços -->
         <aside class="drawer" id="drawer-landing" role="dialog" aria-modal="true" aria-label="Landing Page">
             <div class="drawer-header">
-                <div class="drawer-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i
-                        class="fas fa-bullseye"></i></div>
+                <div class="drawer-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i class="fas fa-bullseye"></i></div>
                 <div>
                     <h3 class="drawer-title">Landing Page</h3>
                     <p class="drawer-tag">Conversão & Captação de Leads</p>
                 </div>
                 <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
             </div>
-            <p class="drawer-desc">Página única focada 100% em converter visitantes em clientes. Ideal para campanhas de
-                marketing, captação de leads ou lançamento de infoprodutos.</p>
+            <p class="drawer-desc">Página única focada 100% em converter visitantes em clientes. Ideal para campanhas de marketing, captação de leads ou lançamento de infoprodutos.</p>
             <div class="drawer-price-box" style="border-color:rgba(255,94,0,0.25);">
                 <div class="drawer-price-label">Setup a partir de</div>
-                <div class="drawer-price-val"
-                    style="background:var(--grad-o);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
-                    R$ 600</div>
-                <div class="drawer-price-monthly"><i class="fas fa-plus" style="color:var(--orange)"></i> R$ 47/mês
-                    (Hospedagem e Manutenção)</div>
+                <div class="drawer-price-val" style="background:var(--grad-o);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">R$ 600</div>
+                <div class="drawer-price-monthly"><i class="fas fa-plus" style="color:var(--orange)"></i> R$ 47/mês (Hospedagem e Manutenção)</div>
             </div>
             <div class="drawer-includes-title">O que está incluso</div>
             <ul class="drawer-feats">
-                <li><i class="fas fa-check" style="color:var(--orange)"></i> Design de alta conversão (UX/UI voltado
-                    para o clique)</li>
+                <li><i class="fas fa-check" style="color:var(--orange)"></i> Design de alta conversão (UX/UI voltado para o clique)</li>
                 <li><i class="fas fa-check" style="color:var(--orange)"></i> Gatilhos mentais e quebra de objeções</li>
                 <li><i class="fas fa-check" style="color:var(--orange)"></i> Integração com Pixel (Meta/Google)</li>
                 <li><i class="fas fa-check" style="color:var(--orange)"></i> Botão flutuante para WhatsApp</li>
             </ul>
             <div class="drawer-footer">
                 <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 2 a 4 semanas</div>
-                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20uma%20Landing%20Page."
-                    target="_blank" rel="noopener noreferrer" class="plan-link"
-                    style="color:var(--orange);border-color:rgba(255,94,0,0.3)"><i class="fab fa-whatsapp"></i> Orçar
-                    Serviço</a>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20uma%20Landing%20Page." target="_blank" rel="noopener noreferrer" class="plan-link" style="color:var(--orange);border-color:rgba(255,94,0,0.3)"><i class="fab fa-whatsapp"></i> Orçar Serviço</a>
             </div>
         </aside>
 
@@ -2091,8 +2066,7 @@
                 </div>
                 <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
             </div>
-            <p class="drawer-desc">Presença digital de alta performance, com design responsivo para destacar sua marca
-                em qualquer dispositivo. Múltiplas seções para construir autoridade.</p>
+            <p class="drawer-desc">Presença digital de alta performance, com design responsivo para destacar sua marca em qualquer dispositivo. Múltiplas seções para construir autoridade.</p>
             <div class="drawer-price-box">
                 <div class="drawer-price-label">Setup a partir de</div>
                 <div class="drawer-price-val">R$ 1.100</div>
@@ -2107,29 +2081,23 @@
             </ul>
             <div class="drawer-footer">
                 <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 5 a 7 semanas</div>
-                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20um%20Site%20Institucional."
-                    target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar
-                    Serviço</a>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20um%20Site%20Institucional." target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar Serviço</a>
             </div>
         </aside>
 
         <aside class="drawer" id="drawer-sistema" role="dialog" aria-modal="true" aria-label="Sistema Web Dinâmico">
             <div class="drawer-header">
-                <div class="drawer-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i
-                        class="fas fa-database"></i></div>
+                <div class="drawer-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i class="fas fa-database"></i></div>
                 <div>
                     <h3 class="drawer-title">Sistema Web Dinâmico</h3>
                     <p class="drawer-tag">SaaS & Gestão em Nuvem</p>
                 </div>
                 <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
             </div>
-            <p class="drawer-desc">Gestão integrada e inteligente. Soluções robustas de software em nuvem (AkanniMED e
-                AkanniHUB) para digitalizar e automatizar sua operação.</p>
+            <p class="drawer-desc">Gestão integrada e inteligente. Soluções robustas de software em nuvem (AkanniMED e AkanniHUB) para digitalizar e automatizar sua operação.</p>
             <div class="drawer-price-box">
                 <div class="drawer-price-label">Setup a partir de</div>
-                <div class="drawer-price-val"
-                    style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
-                    R$ 1.700</div>
+                <div class="drawer-price-val" style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">R$ 1.700</div>
                 <div class="drawer-price-monthly"><i class="fas fa-plus"></i> R$ 147/mês (Cloud e Suporte)</div>
             </div>
             <div class="drawer-includes-title">O que está incluso</div>
@@ -2141,24 +2109,20 @@
             </ul>
             <div class="drawer-footer">
                 <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 8 a 12 semanas</div>
-                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Sistema%20Akanni."
-                    target="_blank" rel="noopener noreferrer" class="plan-link primary"><i class="fab fa-whatsapp"></i>
-                    Orçar Sistema</a>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Sistema%20Akanni." target="_blank" rel="noopener noreferrer" class="plan-link primary"><i class="fab fa-whatsapp"></i> Orçar Sistema</a>
             </div>
         </aside>
 
         <aside class="drawer" id="drawer-loja" role="dialog" aria-modal="true" aria-label="Loja Virtual">
             <div class="drawer-header">
-                <div class="drawer-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
-                        class="fas fa-cart-shopping"></i></div>
+                <div class="drawer-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i class="fas fa-cart-shopping"></i></div>
                 <div>
                     <h3 class="drawer-title">Loja Virtual (E-commerce)</h3>
                     <p class="drawer-tag">Vendas Online Completas</p>
                 </div>
                 <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
             </div>
-            <p class="drawer-desc">Plataforma completa de vendas online. O cliente entra, escolhe o produto, coloca no
-                carrinho, calcula o frete e paga diretamente pelo site.</p>
+            <p class="drawer-desc">Plataforma completa de vendas online. O cliente entra, escolhe o produto, coloca no carrinho, calcula o frete e paga diretamente pelo site.</p>
             <div class="drawer-price-box">
                 <div class="drawer-price-label">Setup a partir de</div>
                 <div class="drawer-price-val">R$ 2.500</div>
@@ -2173,24 +2137,20 @@
             </ul>
             <div class="drawer-footer">
                 <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 6 a 10 semanas</div>
-                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20uma%20Loja%20Virtual."
-                    target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar
-                    Serviço</a>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20uma%20Loja%20Virtual." target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar Serviço</a>
             </div>
         </aside>
 
         <aside class="drawer" id="drawer-catalogo" role="dialog" aria-modal="true" aria-label="Catálogo Virtual">
             <div class="drawer-header">
-                <div class="drawer-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
-                        class="fas fa-store"></i></div>
+                <div class="drawer-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i class="fas fa-store"></i></div>
                 <div>
                     <h3 class="drawer-title">Catálogo Virtual</h3>
                     <p class="drawer-tag">Vitrine Digital com WhatsApp</p>
                 </div>
                 <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
             </div>
-            <p class="drawer-desc">O "irmão mais novo" do e-commerce. Exibe produtos, fotos e preços. Ao clicar em
-                "Comprar", o cliente é enviado ao WhatsApp com a mensagem pronta.</p>
+            <p class="drawer-desc">O "irmão mais novo" do e-commerce. Exibe produtos, fotos e preços. Ao clicar em "Comprar", o cliente é enviado ao WhatsApp com a mensagem pronta.</p>
             <div class="drawer-price-box">
                 <div class="drawer-price-label">Setup a partir de</div>
                 <div class="drawer-price-val">R$ 800</div>
@@ -2205,24 +2165,20 @@
             </ul>
             <div class="drawer-footer">
                 <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 3 a 5 semanas</div>
-                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20um%20Catálogo%20Virtual."
-                    target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar
-                    Serviço</a>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20um%20Catálogo%20Virtual." target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar Serviço</a>
             </div>
         </aside>
 
         <aside class="drawer" id="drawer-microsite" role="dialog" aria-modal="true" aria-label="Micro-Site">
             <div class="drawer-header">
-                <div class="drawer-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i
-                        class="fas fa-mobile-screen-button"></i></div>
+                <div class="drawer-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i class="fas fa-mobile-screen-button"></i></div>
                 <div>
                     <h3 class="drawer-title">Micro-Site (Link na Bio)</h3>
                     <p class="drawer-tag">Mobile First · Alternativa ao Linktree</p>
                 </div>
                 <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
             </div>
-            <p class="drawer-desc">Página leve e rápida, 100% mobile first. Substitui ferramentas como Linktree
-                centralizando todos os seus links com o design da própria marca.</p>
+            <p class="drawer-desc">Página leve e rápida, 100% mobile first. Substitui ferramentas como Linktree centralizando todos os seus links com o design da própria marca.</p>
             <div class="drawer-price-box">
                 <div class="drawer-price-label">Setup a partir de</div>
                 <div class="drawer-price-val">R$ 250</div>
@@ -2237,24 +2193,20 @@
             </ul>
             <div class="drawer-footer">
                 <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 1 semana</div>
-                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20um%20Micro-Site."
-                    target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar
-                    Serviço</a>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20um%20Micro-Site." target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar Serviço</a>
             </div>
         </aside>
 
         <aside class="drawer" id="drawer-blog" role="dialog" aria-modal="true" aria-label="Blog / Portal">
             <div class="drawer-header">
-                <div class="drawer-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
-                        class="fas fa-newspaper"></i></div>
+                <div class="drawer-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i class="fas fa-newspaper"></i></div>
                 <div>
                     <h3 class="drawer-title">Blog / Portal de Conteúdo</h3>
                     <p class="drawer-tag">Marketing de Conteúdo Dinâmico</p>
                 </div>
                 <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
             </div>
-            <p class="drawer-desc">Site dinâmico focado em postagens frequentes (artigos, notícias, dicas). Com painel
-                de controle para o cliente publicar textos sem depender de você.</p>
+            <p class="drawer-desc">Site dinâmico focado em postagens frequentes (artigos, notícias, dicas). Com painel de controle para o cliente publicar textos sem depender de você.</p>
             <div class="drawer-price-box">
                 <div class="drawer-price-label">Setup a partir de</div>
                 <div class="drawer-price-val">R$ 1.500</div>
@@ -2269,9 +2221,7 @@
             </ul>
             <div class="drawer-footer">
                 <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 4 a 6 semanas</div>
-                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20um%20Blog%20ou%20Portal%20de%20Conteúdo."
-                    target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar
-                    Serviço</a>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20um%20Blog%20ou%20Portal%20de%20Conteúdo." target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar Serviço</a>
             </div>
         </aside>
 
@@ -2284,8 +2234,7 @@
                 </div>
                 <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
             </div>
-            <p class="drawer-desc">Domine as buscas locais e seja a primeira escolha quando procurarem pelos seus
-                serviços na região.</p>
+            <p class="drawer-desc">Domine as buscas locais e seja a primeira escolha quando procurarem pelos seus serviços na região.</p>
             <div class="drawer-price-box">
                 <div class="drawer-price-label">Setup a partir de</div>
                 <div class="drawer-price-val">R$ 397</div>
@@ -2300,31 +2249,24 @@
             </ul>
             <div class="drawer-footer">
                 <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: Até 2 semanas</div>
-                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Google%20Meu%20Negócio."
-                    target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar
-                    Serviço</a>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Google%20Meu%20Negócio." target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar Serviço</a>
             </div>
         </aside>
 
         <aside class="drawer" id="drawer-signage" role="dialog" aria-modal="true" aria-label="Digital Signage">
             <div class="drawer-header">
-                <div class="drawer-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i
-                        class="fas fa-tv"></i></div>
+                <div class="drawer-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i class="fas fa-tv"></i></div>
                 <div>
                     <h3 class="drawer-title">Digital Signage</h3>
                     <p class="drawer-tag">Mídia Indoor para TVs e Painéis</p>
                 </div>
                 <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
             </div>
-            <p class="drawer-desc">Transforme sua sala de espera com painéis digitais dinâmicos e interativos direto na
-                tela da TV.</p>
+            <p class="drawer-desc">Transforme sua sala de espera com painéis digitais dinâmicos e interativos direto na tela da TV.</p>
             <div class="drawer-price-box" style="border-color:rgba(255,94,0,0.25);">
                 <div class="drawer-price-label">Setup a partir de</div>
-                <div class="drawer-price-val"
-                    style="background:var(--grad-o);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
-                    R$ 475</div>
-                <div class="drawer-price-monthly"><i class="fas fa-plus" style="color:var(--orange)"></i> R$ 97/mês
-                    (Integração de APIs)</div>
+                <div class="drawer-price-val" style="background:var(--grad-o);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">R$ 475</div>
+                <div class="drawer-price-monthly"><i class="fas fa-plus" style="color:var(--orange)"></i> R$ 97/mês (Integração de APIs)</div>
             </div>
             <div class="drawer-includes-title">O que está incluso</div>
             <ul class="drawer-feats">
@@ -2335,51 +2277,36 @@
             </ul>
             <div class="drawer-footer">
                 <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 3 a 5 semanas</div>
-                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Digital%20Signage."
-                    target="_blank" rel="noopener noreferrer" class="plan-link"
-                    style="color:var(--orange);border-color:rgba(255,94,0,0.3)"><i class="fab fa-whatsapp"></i> Orçar
-                    Serviço</a>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Digital%20Signage." target="_blank" rel="noopener noreferrer" class="plan-link" style="color:var(--orange);border-color:rgba(255,94,0,0.3)"><i class="fab fa-whatsapp"></i> Orçar Serviço</a>
             </div>
         </aside>
 
         <!-- DRAWERS: Combos -->
         <aside class="drawer" id="drawer-combo-essencial" role="dialog" aria-modal="true" aria-label="Combo Essencial">
             <div class="drawer-header">
-                <div class="drawer-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i
-                        class="fas fa-bullseye"></i></div>
+                <div class="drawer-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i class="fas fa-bullseye"></i></div>
                 <div>
                     <h3 class="drawer-title">Combo Essencial</h3>
                     <p class="drawer-tag">Site Institucional + SEO Local</p>
                 </div>
                 <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
             </div>
-            <p class="drawer-desc">A fundação perfeita para empresas locais. Construímos sua autoridade com um site
-                profissional e garantimos que sua marca seja a primeira a aparecer nas buscas do Google e no Maps na sua
-                região.</p>
+            <p class="drawer-desc">A fundação perfeita para empresas locais. Construímos sua autoridade com um site profissional e garantimos que sua marca seja a primeira a aparecer nas buscas do Google e no Maps na sua região.</p>
             <div class="drawer-price-box" style="border-color:rgba(255,94,0,0.25);">
                 <div class="drawer-price-label">Setup a partir de</div>
-                <div class="drawer-price-val"
-                    style="background:var(--grad-o);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
-                    R$ 1.350</div>
-                <div class="drawer-price-monthly"><i class="fas fa-plus" style="color:var(--orange)"></i> R$ 170/mês
-                    (Manutenção + Adm. SEO)</div>
+                <div class="drawer-price-val" style="background:var(--grad-o);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">R$ 1.350</div>
+                <div class="drawer-price-monthly"><i class="fas fa-plus" style="color:var(--orange)"></i> R$ 170/mês (Manutenção + Adm. SEO)</div>
             </div>
             <div class="drawer-includes-title">O que está incluso</div>
             <ul class="drawer-feats">
-                <li><i class="fas fa-check" style="color:var(--orange)"></i> Desenvolvimento de Site Institucional
-                    responsivo (até 5 seções)</li>
-                <li><i class="fas fa-check" style="color:var(--orange)"></i> Criação e otimização do perfil no Google
-                    Meu Negócio</li>
-                <li><i class="fas fa-check" style="color:var(--orange)"></i> Estratégia de SEO Local para ranqueamento
-                </li>
+                <li><i class="fas fa-check" style="color:var(--orange)"></i> Desenvolvimento de Site Institucional responsivo (até 5 seções)</li>
+                <li><i class="fas fa-check" style="color:var(--orange)"></i> Criação e otimização do perfil no Google Meu Negócio</li>
+                <li><i class="fas fa-check" style="color:var(--orange)"></i> Estratégia de SEO Local para ranqueamento</li>
                 <li><i class="fas fa-check" style="color:var(--orange)"></i> Hospedagem, SSL e Botão de WhatsApp</li>
             </ul>
             <div class="drawer-footer">
                 <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 5 a 7 semanas</div>
-                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20Essencial."
-                    target="_blank" rel="noopener noreferrer" class="plan-link"
-                    style="color:var(--orange);border-color:rgba(255,94,0,0.3)"><i class="fab fa-whatsapp"></i> Orçar
-                    Combo</a>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20Essencial." target="_blank" rel="noopener noreferrer" class="plan-link" style="color:var(--orange);border-color:rgba(255,94,0,0.3)"><i class="fab fa-whatsapp"></i> Orçar Combo</a>
             </div>
         </aside>
 
@@ -2392,9 +2319,7 @@
                 </div>
                 <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
             </div>
-            <p class="drawer-desc">O ecossistema ideal para quem vende pelas redes sociais. Um link otimizado para a bio
-                do seu Instagram, direcionando clientes para uma página de vendas persuasiva ou para um catálogo prático
-                conectado direto ao seu WhatsApp.</p>
+            <p class="drawer-desc">O ecossistema ideal para quem vende pelas redes sociais. Um link otimizado para a bio do seu Instagram, direcionando clientes para uma página de vendas persuasiva ou para um catálogo prático conectado direto ao seu WhatsApp.</p>
             <div class="drawer-price-box">
                 <div class="drawer-price-label">Setup a partir de</div>
                 <div class="drawer-price-val">R$ 1.450</div>
@@ -2409,32 +2334,24 @@
             </ul>
             <div class="drawer-footer">
                 <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 4 a 6 semanas</div>
-                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20de%20Vendas."
-                    target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar
-                    Combo</a>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20de%20Vendas." target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar Combo</a>
             </div>
         </aside>
 
         <aside class="drawer" id="drawer-combo-clinico" role="dialog" aria-modal="true" aria-label="Combo Clínico">
             <div class="drawer-header">
-                <div class="drawer-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i
-                        class="fas fa-database"></i></div>
+                <div class="drawer-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i class="fas fa-database"></i></div>
                 <div>
                     <h3 class="drawer-title">Combo Clínico</h3>
                     <p class="drawer-tag">Site + Akanni + Signage + SEO</p>
                 </div>
                 <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
             </div>
-            <p class="drawer-desc">A digitalização total do seu atendimento. Desde o paciente te encontrar no Google,
-                conhecer sua estrutura no site, aguardar na recepção com painéis interativos, até a gestão completa de
-                prontuários e agendamentos no sistema interno.</p>
+            <p class="drawer-desc">A digitalização total do seu atendimento. Desde o paciente te encontrar no Google, conhecer sua estrutura no site, aguardar na recepção com painéis interativos, até a gestão completa de prontuários e agendamentos no sistema interno.</p>
             <div class="drawer-price-box">
                 <div class="drawer-price-label">Setup a partir de</div>
-                <div class="drawer-price-val"
-                    style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
-                    R$ 3.100</div>
-                <div class="drawer-price-monthly"><i class="fas fa-plus"></i> R$ 380/mês (Cloud + Suporte + Integrações)
-                </div>
+                <div class="drawer-price-val" style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">R$ 3.100</div>
+                <div class="drawer-price-monthly"><i class="fas fa-plus"></i> R$ 380/mês (Cloud + Suporte + Integrações)</div>
             </div>
             <div class="drawer-includes-title">O que está incluso</div>
             <ul class="drawer-feats">
@@ -2445,26 +2362,20 @@
             </ul>
             <div class="drawer-footer">
                 <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 8 a 12 semanas</div>
-                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20Clínico."
-                    target="_blank" rel="noopener noreferrer" class="plan-link primary"><i class="fab fa-whatsapp"></i>
-                    Orçar Combo</a>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20Clínico." target="_blank" rel="noopener noreferrer" class="plan-link primary"><i class="fab fa-whatsapp"></i> Orçar Combo</a>
             </div>
         </aside>
 
-        <aside class="drawer" id="drawer-combo-enterprise" role="dialog" aria-modal="true"
-            aria-label="Combo Enterprise">
+        <aside class="drawer" id="drawer-combo-enterprise" role="dialog" aria-modal="true" aria-label="Combo Enterprise">
             <div class="drawer-header">
-                <div class="drawer-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
-                        class="fas fa-cart-shopping"></i></div>
+                <div class="drawer-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i class="fas fa-cart-shopping"></i></div>
                 <div>
                     <h3 class="drawer-title">Combo Enterprise</h3>
                     <p class="drawer-tag">Infraestrutura Digital Completa</p>
                 </div>
                 <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
             </div>
-            <p class="drawer-desc">O pacote Enterprise definitivo. Assumimos toda a infraestrutura tecnológica do seu
-                negócio. Plataforma de vendas robusta, blog com CMS, landing pages de marketing, Digital Signage
-                corporativo e SEO completo.</p>
+            <p class="drawer-desc">O pacote Enterprise definitivo. Assumimos toda a infraestrutura tecnológica do seu negócio. Plataforma de vendas robusta, blog com CMS, landing pages de marketing, Digital Signage corporativo e SEO completo.</p>
             <div class="drawer-price-box">
                 <div class="drawer-price-label">Setup a partir de</div>
                 <div class="drawer-price-val">R$ 5.900</div>
@@ -2472,8 +2383,7 @@
             </div>
             <div class="drawer-includes-title">O que está incluso</div>
             <ul class="drawer-feats">
-                <li><i class="fas fa-check"></i> Plataforma principal complexa (Loja Virtual robusta ou Sistema Web)
-                </li>
+                <li><i class="fas fa-check"></i> Plataforma principal complexa (Loja Virtual robusta ou Sistema Web)</li>
                 <li><i class="fas fa-check"></i> Site Institucional integrado com Blog Dinâmico e CMS</li>
                 <li><i class="fas fa-check"></i> Criação de Landing Pages sob demanda para o marketing</li>
                 <li><i class="fas fa-check"></i> Digital Signage corporativo para comunicação interna/clientes</li>
@@ -2481,9 +2391,7 @@
             </ul>
             <div class="drawer-footer">
                 <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 12 a 16 semanas</div>
-                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20Enterprise."
-                    target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar
-                    Combo</a>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20Enterprise." target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar Combo</a>
             </div>
         </aside>
 
