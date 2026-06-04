@@ -405,6 +405,10 @@
                 font-size: 1rem;
                 padding: 0.8rem 2rem;
             }
+
+            nav {
+                justify-content: space-between;
+            }
         }
 
         /* ═══════════════════════════════════════════
@@ -1169,10 +1173,6 @@
                 display: none;
             }
 
-            .stack-grid {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            }
-
             .footer-main {
                 grid-template-columns: 1fr 1fr;
                 gap: 2rem;
@@ -1213,11 +1213,6 @@
                 max-width: 340px;
             }
 
-            .stack-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.75rem;
-            }
-
             .footer-main {
                 grid-template-columns: 1fr;
                 gap: 1.75rem;
@@ -1246,7 +1241,191 @@
             .hero-title {
                 font-size: 1.85rem;
             }
+        }
 
+        /* ═══════════════════════════════════════════
+           COMBOS — GRID DESKTOP / CARROSSEL MOBILE
+        ═══════════════════════════════════════════ */
+        .combos-wrap {
+            /* Mobile: carrossel igual ao de serviços */
+            margin: 0 calc(-1 * clamp(1.25rem, 5vw, 2.5rem));
+            padding: 0 clamp(1.25rem, 5vw, 2.5rem);
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-bottom: 2.5rem;
+            padding-top: 1rem;
+        }
+
+        .combos-wrap::-webkit-scrollbar {
+            display: none;
+        }
+
+        .combos-track {
+            display: inline-flex;
+            gap: 1.5rem;
+            padding-right: clamp(1.25rem, 5vw, 2.5rem);
+        }
+
+        .combos-hint {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-m);
+            font-size: 0.72rem;
+            color: var(--muted);
+            margin-top: 0.5rem;
+            justify-content: center;
+        }
+
+        /* Desktop: grid 4 colunas */
+        @media (min-width: 861px) {
+            .combos-wrap {
+                overflow: visible;
+                margin: 0;
+                padding: 1rem 0 2.5rem;
+            }
+
+            .combos-track {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.5rem;
+                padding-right: 0;
+                width: 100%;
+            }
+
+            .combos-track .c-card {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .combos-hint {
+                display: none;
+            }
+        }
+
+        @media (min-width: 861px) and (max-width: 1100px) {
+            .combos-track {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+           STACK — VISUAL APRIMORADO
+        ═══════════════════════════════════════════ */
+        .stack-section-bg {
+            background: var(--surface);
+        }
+
+        /* Categorias da stack */
+        .stack-category {
+            margin-bottom: 2.5rem;
+        }
+
+        .stack-cat-label {
+            font-family: var(--font-m);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--muted);
+            border-left: 3px solid var(--border-h);
+            padding-left: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 155px), 1fr));
+            gap: 1rem;
+        }
+
+        .stack-item {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.4rem 1rem 1.2rem;
+            text-align: center;
+            transition: border-color var(--dur), transform var(--dur), box-shadow var(--dur);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stack-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--item-glow, rgba(52, 209, 183, 0.04));
+            opacity: 0;
+            transition: opacity var(--dur);
+        }
+
+        .stack-item:hover::before {
+            opacity: 1;
+        }
+
+        .stack-item:hover {
+            border-color: var(--border-h);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .stack-item i {
+            font-size: 1.9rem;
+            margin-bottom: 0.65rem;
+            display: block;
+        }
+
+        .stack-item strong {
+            font-size: 0.88rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.2rem;
+            color: var(--text);
+        }
+
+        .stack-item span {
+            font-size: 0.72rem;
+            color: var(--muted);
+            font-family: var(--font-m);
+            line-height: 1.4;
+        }
+
+        /* Cores por categoria */
+        .stack-item.cat-front i {
+            color: #E67E22;
+        }
+
+        .stack-item.cat-cloud i {
+            color: #4FC3F7;
+        }
+
+        .stack-item.cat-tools i {
+            color: var(--mint);
+        }
+
+        .stack-item.cat-libs i {
+            color: #A78BFA;
+        }
+
+        .stack-item.cat-os i {
+            color: var(--steel);
+        }
+
+        @media (max-width: 860px) {
+            .stack-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            }
+        }
+
+        @media (max-width: 600px) {
+            .stack-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+        }
+
+        @media (max-width: 380px) {
             .stack-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 0.5rem;
@@ -1279,7 +1458,7 @@
                 </a>
             </div>
 
-            <button class="hbg" id="hbgBtn" aria-label="Abrir menu" aria-expanded="false">
+            <button class="hbg" id="hbgBtn" aria-label="Abrir menu" aria-expanded="false" style="order:10;">
                 <span></span><span></span><span></span>
             </button>
         </nav>
@@ -1674,19 +1853,20 @@
                 </div>
             </div>
 
-            <!-- Track do Carrossel (Ocupa largura total na tela) -->
+            <!-- Combos Grid -->
             <div class="wrap">
-                <div class="carousel-wrap rv d1">
-                    <div class="carousel-track">
-            
+                <div class="combos-wrap rv d1">
+                    <div class="combos-track">
+
                         <!-- Combo 1: O Essencial Local (Unindo 2 serviços) -->
                         <div class="c-card">
                             <div class="c-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i
                                     class="fas fa-bullseye"></i></div>
                             <h3 class="c-title">Combo Essencial</h3>
-                            <p class="c-desc">A fundação perfeita para empresas locais. Construímos sua autoridade com um site profissional e garantimos que sua marca
-                            seja a primeira a aparecer nas buscas do Google e no Maps na sua região.</p>
-            
+                            <p class="c-desc">A fundação perfeita para empresas locais. Construímos sua autoridade com
+                                um site profissional e garantimos que sua marca
+                                seja a primeira a aparecer nas buscas do Google e no Maps na sua região.</p>
+
                             <div class="c-price-box">
                                 <div class="c-price-label">Setup a partir de</div>
                                 <div class="c-price-val"
@@ -1695,15 +1875,19 @@
                                 <div class="c-price-monthly"><i class="fas fa-plus" style="color:var(--orange)"></i> R$
                                     170/mês (Manutenção + Adm. SEO)</div>
                             </div>
-            
+
                             <div class="c-includes">
                                 <div class="c-includes-title">O que está incluso</div>
-                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Desenvolvimento de Site Institucional responsivo (até 5 seções)</div>
-                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Criação e otimização do perfil no Google Meu Negócio</div>
-                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Estratégia de SEO Local para ranqueamento</div>
-                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Hospedagem, SSL e Botão de WhatsApp</div>
+                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i>
+                                    Desenvolvimento de Site Institucional responsivo (até 5 seções)</div>
+                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Criação e
+                                    otimização do perfil no Google Meu Negócio</div>
+                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Estratégia
+                                    de SEO Local para ranqueamento</div>
+                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Hospedagem,
+                                    SSL e Botão de WhatsApp</div>
                             </div>
-            
+
                             <div class="c-footer">
                                 <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 5 a 7 semanas</div>
                                 <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20Essencial."
@@ -1713,29 +1897,35 @@
                                 </a>
                             </div>
                         </div>
-            
+
                         <!-- Combo 2: Máquina de Vendas Express (Unindo 3 serviços) -->
                         <div class="c-card">
                             <div class="c-icon"><i class="fas fa-globe"></i></div>
                             <h3 class="c-title">Combo de Vendas</h3>
-                            <p class="c-desc">O ecossistema ideal para quem vende pelas redes sociais. Um link otimizado para a bio do seu Instagram, direcionando
-                            clientes para uma página de vendas persuasiva ou para um catálogo prático conectado direto ao seu WhatsApp.</p>
-            
+                            <p class="c-desc">O ecossistema ideal para quem vende pelas redes sociais. Um link otimizado
+                                para a bio do seu Instagram, direcionando
+                                clientes para uma página de vendas persuasiva ou para um catálogo prático conectado
+                                direto ao seu WhatsApp.</p>
+
                             <div class="c-price-box">
                                 <div class="c-price-label">Setup a partir de</div>
                                 <div class="c-price-val">R$ 1.450</div>
                                 <div class="c-price-monthly"><i class="fas fa-plus"></i> R$ 90/mês (Hospedagem)</div>
                             </div>
-            
+
                             <div class="c-includes">
                                 <div class="c-includes-title">O que está incluso</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> 1 Micro-site (Link na Bio) personalizado com a identidade da marca
+                                <div class="c-feat"><i class="fas fa-check"></i> 1 Micro-site (Link na Bio)
+                                    personalizado com a identidade da marca
                                 </div>
-                                <div class="c-feat"><i class="fas fa-check"></i> 1 Landing Page de alta conversão para o serviço principal</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> 1 Catálogo Virtual para exposição de produtos/serviços</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Integração de Pixel (Meta/Google) para anúncios</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> 1 Landing Page de alta conversão para o
+                                    serviço principal</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> 1 Catálogo Virtual para exposição de
+                                    produtos/serviços</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Integração de Pixel (Meta/Google) para
+                                    anúncios</div>
                             </div>
-            
+
                             <div class="c-footer">
                                 <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 4 a 6 semanas</div>
                                 <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20de%20Vendas."
@@ -1744,32 +1934,39 @@
                                 </a>
                             </div>
                         </div>
-            
+
                         <!-- Combo 3: Consultório/Clínica Inteligente (Unindo 4 serviços) -->
                         <div class="c-card">
                             <div class="c-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i
                                     class="fas fa-database"></i></div>
                             <h3 class="c-title">Combo Clínico</h3>
-                            <p class="c-desc">A digitalização total do seu atendimento. Desde o paciente te encontrar no Google, conhecer sua estrutura no site,
-                            aguardar na recepção com painéis interativos, até a gestão completa de prontuários e agendamentos no sistema interno.</p>
-            
+                            <p class="c-desc">A digitalização total do seu atendimento. Desde o paciente te encontrar no
+                                Google, conhecer sua estrutura no site,
+                                aguardar na recepção com painéis interativos, até a gestão completa de prontuários e
+                                agendamentos no sistema interno.</p>
+
                             <div class="c-price-box">
                                 <div class="c-price-label">Setup a partir de</div>
                                 <div class="c-price-val"
                                     style="background:var(--grad); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;">
                                     R$ 3.100</div>
-                                <div class="c-price-monthly"><i class="fas fa-plus"></i> R$ 380/mês (Cloud + Suporte + Integrações)
+                                <div class="c-price-monthly"><i class="fas fa-plus"></i> R$ 380/mês (Cloud + Suporte +
+                                    Integrações)
                                 </div>
                             </div>
-            
+
                             <div class="c-includes">
                                 <div class="c-includes-title">O que está incluso</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Sistema em nuvem para gestão de pacientes e agenda</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Site Institucional integrado ao painel do cliente</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Software de Digital Signage (Mídia Indoor) para a TV da recepção</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Posicionamento no Google Maps (SEO Local)</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Sistema em nuvem para gestão de
+                                    pacientes e agenda</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Site Institucional integrado ao painel
+                                    do cliente</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Software de Digital Signage (Mídia
+                                    Indoor) para a TV da recepção</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Posicionamento no Google Maps (SEO
+                                    Local)</div>
                             </div>
-            
+
                             <div class="c-footer">
                                 <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 8 a 12 semanas</div>
                                 <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20Clínico."
@@ -1778,32 +1975,41 @@
                                 </a>
                             </div>
                         </div>
-            
+
                         <!-- Combo 4: Transformação Digital 360º (A Solução "Tudo em Um") -->
                         <div class="c-card">
                             <div class="c-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
                                     class="fas fa-cart-shopping"></i></div>
                             <h3 class="c-title">Combo Enterprise</h3>
-                            <p class="c-desc">O pacote Enterprise definitivo. Assumimos toda a infraestrutura tecnológica do seu negócio. Seu cliente terá acesso a
-                            uma plataforma de vendas/gestão robusta, enquanto sua marca ganha autoridade com artigos no blog, captura leads com
-                            landing pages dedicadas e moderniza o espaço físico da matriz com painéis inteligentes.</p>
-            
+                            <p class="c-desc">O pacote Enterprise definitivo. Assumimos toda a infraestrutura
+                                tecnológica do seu negócio. Seu cliente terá acesso a
+                                uma plataforma de vendas/gestão robusta, enquanto sua marca ganha autoridade com artigos
+                                no blog, captura leads com
+                                landing pages dedicadas e moderniza o espaço físico da matriz com painéis inteligentes.
+                            </p>
+
                             <div class="c-price-box">
                                 <div class="c-price-label">Setup a partir de</div>
                                 <div class="c-price-val">R$ 5.900</div>
-                                <div class="c-price-monthly"><i class="fas fa-plus"></i> R$ 550/mês (Infraestrutura Completa)
+                                <div class="c-price-monthly"><i class="fas fa-plus"></i> R$ 550/mês (Infraestrutura
+                                    Completa)
                                 </div>
                             </div>
-            
+
                             <div class="c-includes">
                                 <div class="c-includes-title">O que está incluso</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Plataforma principal complexa (Loja Virtual robusta ou Sistema Web)</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Site Institucional integrado com Blog Dinâmico e CMS</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Criação de Landing Pages sob demanda para o marketing</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Digital Signage corporativo para comunicação interna/clientes</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> SEO completo e Micro-site para redes sociais</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Plataforma principal complexa (Loja
+                                    Virtual robusta ou Sistema Web)</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Site Institucional integrado com Blog
+                                    Dinâmico e CMS</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Criação de Landing Pages sob demanda
+                                    para o marketing</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> Digital Signage corporativo para
+                                    comunicação interna/clientes</div>
+                                <div class="c-feat"><i class="fas fa-check"></i> SEO completo e Micro-site para redes
+                                    sociais</div>
                             </div>
-            
+
                             <div class="c-footer">
                                 <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 12 a 16 semanas</div>
                                 <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20Enterprise."
@@ -1812,10 +2018,10 @@
                                 </a>
                             </div>
                         </div>
-            
-                    </div><!-- /carousel-track -->
-                </div><!-- /carousel-wrap -->
-                <p class="carousel-hint"><i class="fas fa-arrow-right"></i> Deslize para ver mais serviços</p>
+
+                    </div><!-- /combos-track -->
+                </div><!-- /combos-wrap -->
+                <p class="carousel-hint combos-hint"><i class="fas fa-arrow-right"></i> Deslize para ver mais combos</p>
             </div><!-- /wrap -->
 
             <div class="wrap">
@@ -1844,88 +2050,114 @@
                         cloud de ponta.</p>
                 </div>
 
-                <div class="stack-grid rv">
-                    <div class="stack-item">
-                        <i class="fab fa-html5"></i>
-                        <strong>HTML5</strong>
-                        <span>Semântica & SEO</span>
-                    </div>
-                    <div class="stack-item">
-                        <i class="fab fa-css3-alt"></i>
-                        <strong>CSS3</strong>
-                        <span>Layout & Animações</span>
-                    </div>
-                    <div class="stack-item">
-                        <i class="fab fa-js"></i>
-                        <strong>JavaScript ES6+</strong>
-                        <span>Vanilla & APIs</span>
-                    </div>
-                    <div class="stack-item">
-                        <i class="fas fa-fire"></i>
-                        <strong>Firebase</strong>
-                        <span>Segurança, Banco de dados & Auth</span>
-                    </div>
-                    <div class="stack-item">
-                        <i class="fas fa-sort-up"></i>
-                        <strong>Vercel</strong>
-                        <span>Hospedagem, Deploy & CDN</span>
-                    </div>
-                    <div class="stack-item">
-                        <i class="fab fa-github"></i>
-                        <strong>GitHub</strong>
-                        <span>Versionamento</span>
-                    </div>
-                    <div class="stack-item">
-                        <i class="fab fa-google"></i>
-                        <strong>Google</strong>
-                        <span>Fonts, Calendar, Maps & Workspace</span>
-                    </div>
-                    <div class="stack-item">
-                        <i class="fab fa-linux"></i>
-                        <strong>Linux</strong>
-                        <span>Ubuntu & Mint</span>
-                    </div>
-                    <div class="stack-item">
-                        <i class="fas fa-cloud"></i>
-                        <strong>Cloudinary</strong>
-                        <span>Mídias</span>
-                    </div>
-                    <div class="stack-item">
-                        <i class="fas fa-chart-area"></i>
-                        <strong>Chart.js</strong>
-                        <span>Gráficos</span>
-                    </div>
-                    <div class="stack-item">
-                        <i class="fas fa-file-pdf"></i>
-                        <strong>jsPDF</strong>
-                        <span>PDFs</span>
-                    </div>
-                    <div class="stack-item">
-                        <i class="fas fa-qrcode"></i>
-                        <strong>QRCode.js</strong>
-                        <span>QR Code PIX</span>
-                    </div>
-                    <div class="stack-item">
-                        <i class="fas fa-left-right"></i>
-                        <strong>Swiper.js</strong>
-                        <span>Carrossel</span>
-                    </div>
-                    <div class="stack-item">
-                        <i class="fa-solid fa-video"></i>
-                        <strong>Jitsi Meet</strong>
-                        <span>Videoconferência</span>
-                    </div>
-                    <div class="stack-item">
-                        <i class="fas fa-font-awesome"></i>
-                        <strong>Font Awesome</strong>
-                        <span>Ícones</span>
-                    </div>
-                    <div class="stack-item">
-                        <i class="fas fa-cloud-sun"></i>
-                        <strong>OpenWeatherMap</strong>
-                        <span>Clima</span>
+                <!-- Front-end -->
+                <div class="stack-category rv d1">
+                    <div class="stack-cat-label">Front-end</div>
+                    <div class="stack-grid">
+                        <div class="stack-item cat-front">
+                            <i class="fab fa-html5"></i>
+                            <strong>HTML5</strong>
+                            <span>Semântica & SEO</span>
+                        </div>
+                        <div class="stack-item cat-front">
+                            <i class="fab fa-css3-alt"></i>
+                            <strong>CSS3</strong>
+                            <span>Layout & Animações</span>
+                        </div>
+                        <div class="stack-item cat-front">
+                            <i class="fab fa-js"></i>
+                            <strong>JavaScript ES6+</strong>
+                            <span>Vanilla & APIs</span>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Cloud & Infra -->
+                <div class="stack-category rv d2">
+                    <div class="stack-cat-label">Cloud & Infra</div>
+                    <div class="stack-grid">
+                        <div class="stack-item cat-cloud">
+                            <i class="fas fa-fire"></i>
+                            <strong>Firebase</strong>
+                            <span>Auth, Firestore & Storage</span>
+                        </div>
+                        <div class="stack-item cat-cloud">
+                            <i class="fas fa-sort-up"></i>
+                            <strong>Vercel</strong>
+                            <span>Deploy & CDN</span>
+                        </div>
+                        <div class="stack-item cat-cloud">
+                            <i class="fas fa-cloud"></i>
+                            <strong>Cloudinary</strong>
+                            <span>Mídias & CDN de imagens</span>
+                        </div>
+                        <div class="stack-item cat-cloud">
+                            <i class="fab fa-google"></i>
+                            <strong>Google APIs</strong>
+                            <span>Fonts, Maps, Calendar & Workspace</span>
+                        </div>
+                        <div class="stack-item cat-cloud">
+                            <i class="fas fa-cloud-sun"></i>
+                            <strong>OpenWeatherMap</strong>
+                            <span>Clima em tempo real</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ferramentas -->
+                <div class="stack-category rv d3">
+                    <div class="stack-cat-label">Ferramentas</div>
+                    <div class="stack-grid">
+                        <div class="stack-item cat-tools">
+                            <i class="fab fa-github"></i>
+                            <strong>GitHub</strong>
+                            <span>Versionamento</span>
+                        </div>
+                        <div class="stack-item cat-tools">
+                            <i class="fab fa-linux"></i>
+                            <strong>Linux</strong>
+                            <span>Ubuntu & Mint</span>
+                        </div>
+                        <div class="stack-item cat-tools">
+                            <i class="fas fa-font-awesome"></i>
+                            <strong>Font Awesome</strong>
+                            <span>Ícones</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bibliotecas JS -->
+                <div class="stack-category rv d4">
+                    <div class="stack-cat-label">Bibliotecas JS</div>
+                    <div class="stack-grid">
+                        <div class="stack-item cat-libs">
+                            <i class="fas fa-chart-area"></i>
+                            <strong>Chart.js</strong>
+                            <span>Gráficos interativos</span>
+                        </div>
+                        <div class="stack-item cat-libs">
+                            <i class="fas fa-file-pdf"></i>
+                            <strong>jsPDF</strong>
+                            <span>Geração de PDFs</span>
+                        </div>
+                        <div class="stack-item cat-libs">
+                            <i class="fas fa-qrcode"></i>
+                            <strong>QRCode.js</strong>
+                            <span>QR Code & PIX</span>
+                        </div>
+                        <div class="stack-item cat-libs">
+                            <i class="fas fa-left-right"></i>
+                            <strong>Swiper.js</strong>
+                            <span>Carrossel touch</span>
+                        </div>
+                        <div class="stack-item cat-libs">
+                            <i class="fa-solid fa-video"></i>
+                            <strong>Jitsi Meet</strong>
+                            <span>Videoconferência</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
