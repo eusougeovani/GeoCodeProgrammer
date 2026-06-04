@@ -1431,6 +1431,341 @@
                 gap: 0.5rem;
             }
         }
+
+        /* ═══════════════════════════════════════════
+           MINI-CARDS GRID
+        ═══════════════════════════════════════════ */
+        .mini-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.85rem;
+            margin-bottom: 2rem;
+        }
+
+        .mini-grid-combos {
+            grid-template-columns: repeat(4, 1fr);
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 860px) {
+            .mini-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mini-grid-combos {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mini-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mini-grid-combos {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mini-card {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 0.9rem 1rem;
+            cursor: pointer;
+            text-align: left;
+            width: 100%;
+            transition: border-color var(--dur), transform var(--dur), box-shadow var(--dur), background var(--dur);
+            font-family: var(--font-b);
+        }
+
+        .mini-card:hover {
+            border-color: var(--border-h);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            background: var(--surface);
+        }
+
+        .mini-card-combo {
+            background: var(--surface);
+            border-color: rgba(52, 209, 183, 0.18);
+        }
+
+        .mini-card-combo:hover {
+            background: var(--surface-2);
+        }
+
+        .mini-icon {
+            width: 40px;
+            height: 40px;
+            min-width: 40px;
+            border-radius: var(--radius);
+            background: rgba(52, 209, 183, 0.1);
+            color: var(--mint);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .mini-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .mini-body strong {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .mini-body span {
+            font-size: 0.76rem;
+            color: var(--muted);
+            font-family: var(--font-m);
+        }
+
+        .mini-body em {
+            font-style: normal;
+            color: var(--mint);
+            font-weight: 600;
+        }
+
+        .mini-arrow {
+            color: var(--muted);
+            font-size: 0.72rem;
+            flex-shrink: 0;
+            transition: transform var(--dur), color var(--dur);
+        }
+
+        .mini-card:hover .mini-arrow {
+            transform: translateX(3px);
+            color: var(--mint);
+        }
+
+        .combos-divider {
+            padding: 2rem 0 1.5rem;
+            border-top: 1px solid var(--border);
+            margin-top: 1rem;
+        }
+
+        /* ═══════════════════════════════════════════
+           DRAWER SYSTEM
+        ═══════════════════════════════════════════ */
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--dur) var(--ease);
+        }
+
+        .drawer-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: min(480px, 100vw);
+            background: var(--surface);
+            border-left: 1px solid var(--border);
+            z-index: 1200;
+            overflow-y: auto;
+            padding: 2rem 1.75rem 3rem;
+            transform: translateX(100%);
+            transition: transform 0.38s var(--ease);
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .drawer.open {
+            transform: translateX(0);
+        }
+
+        .drawer-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .drawer-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            border-radius: var(--radius);
+            background: rgba(52, 209, 183, 0.1);
+            color: var(--mint);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .drawer-title {
+            font-family: var(--font-h);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.2;
+            margin-bottom: 0.2rem;
+        }
+
+        .drawer-tag {
+            font-family: var(--font-m);
+            font-size: 0.72rem;
+            color: var(--steel);
+            letter-spacing: 0.04em;
+        }
+
+        .drawer-close {
+            margin-left: auto;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--muted);
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: color var(--dur), border-color var(--dur);
+        }
+
+        .drawer-close:hover {
+            color: var(--text);
+            border-color: var(--border-h);
+        }
+
+        .drawer-desc {
+            font-size: 0.9rem;
+            color: var(--text-soft);
+            line-height: 1.75;
+            margin-bottom: 1.5rem;
+        }
+
+        .drawer-price-box {
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.1rem 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .drawer-price-label {
+            font-family: var(--font-m);
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            margin-bottom: 0.2rem;
+        }
+
+        .drawer-price-val {
+            font-family: var(--font-h);
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--grad);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.4rem;
+            line-height: 1.1;
+        }
+
+        .drawer-price-monthly {
+            font-size: 0.8rem;
+            color: var(--text-soft);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--font-m);
+        }
+
+        .drawer-price-monthly i {
+            color: var(--mint);
+            font-size: 0.72rem;
+        }
+
+        .drawer-includes-title {
+            font-family: var(--font-m);
+            font-size: 0.72rem;
+            color: var(--steel);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.85rem;
+        }
+
+        .drawer-feats {
+            list-style: none;
+            margin-bottom: 1.75rem;
+            flex-grow: 1;
+        }
+
+        .drawer-feats li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.88rem;
+            color: var(--text-soft);
+            margin-bottom: 0.65rem;
+            line-height: 1.5;
+        }
+
+        .drawer-feats li i {
+            color: var(--mint);
+            font-size: 0.8rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+
+        .drawer-footer {
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            margin-top: auto;
+        }
+
+        .drawer-deadline {
+            font-family: var(--font-m);
+            font-size: 0.75rem;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .drawer-deadline i {
+            color: var(--steel);
+        }
+
+        /* Lock body scroll when drawer is open */
+        body.drawer-open {
+            overflow: hidden;
+        }
     </style>
 </head>
 
@@ -1516,516 +1851,164 @@
             </div>
         </section>
 
-        <!-- ═══ SOLUÇÕES & CARROSSEL ═══ -->
+        <!-- ═══ SOLUÇÕES ═══ -->
         <section id="solucoes" class="plans-bg">
-            <div class="wrap" style="padding-bottom: 0;">
+            <div class="wrap">
                 <div class="sec-head center rv">
                     <div class="sec-line"></div>
                     <p class="eyebrow">Serviços e Investimentos</p>
                     <h2 class="sec-title">Soluções feitas para o seu momento</h2>
-                    <p class="sec-sub">Escolha o serviço ideal para iniciar a digitalização do seu negócio. Explore as
-                        opções, confira os benefícios e encontre o melhor custo-benefício da região.</p>
+                    <p class="sec-sub">Clique em qualquer serviço para ver detalhes, inclusos e orçamento.</p>
                 </div>
-            </div>
 
-            <!-- Track do Carrossel (Ocupa largura total na tela) -->
-            <div class="wrap">
-                <div class="carousel-wrap rv d1">
-                    <div class="carousel-track">
+                <!-- Grid de mini-cards: Serviços -->
+                <div class="mini-grid rv">
 
-                        <!-- Card 1: Landing Page -->
-                        <div class="c-card">
-                            <div class="c-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i
-                                    class="fas fa-bullseye"></i></div>
-                            <h3 class="c-title">Landing Page</h3>
-                            <p class="c-desc">Página única focada 100% em converter visitantes em clientes. Ideal para
-                                campanhas de marketing, captação de leads ou lançamento de infoprodutos.</p>
-
-                            <div class="c-price-box">
-                                <div class="c-price-label">Setup a partir de</div>
-                                <div class="c-price-val"
-                                    style="background:var(--grad-o); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;">
-                                    R$ 600</div>
-                                <div class="c-price-monthly"><i class="fas fa-plus" style="color:var(--orange)"></i> R$
-                                    47/mês (Hospedagem e Manutenção)</div>
-                            </div>
-
-                            <div class="c-includes">
-                                <div class="c-includes-title">O que está incluso</div>
-                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Design de
-                                    alta conversão (UX/UI voltado para o clique)</div>
-                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Gatilhos
-                                    mentais e quebra de objeções</div>
-                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Integração
-                                    com Pixel (Meta/Google)</div>
-                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Botão
-                                    flutuante para WhatsApp</div>
-                            </div>
-
-                            <div class="c-footer">
-                                <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 2 a 4 semanas</div>
-                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20uma%20Landing%20Page."
-                                    target="_blank" rel="noopener noreferrer" class="plan-link"
-                                    style="color:var(--orange); border-color:rgba(255,94,0,0.3)">
-                                    <i class="fab fa-whatsapp"></i> Orçar Serviço
-                                </a>
-                            </div>
+                    <button class="mini-card" data-drawer="landing">
+                        <div class="mini-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i
+                                class="fas fa-bullseye"></i></div>
+                        <div class="mini-body">
+                            <strong>Landing Page</strong>
+                            <span>a partir de <em>R$ 600</em></span>
                         </div>
+                        <i class="fas fa-chevron-right mini-arrow"></i>
+                    </button>
 
-                        <!-- Card 2: Site Institucional -->
-                        <div class="c-card">
-                            <div class="c-icon"><i class="fas fa-globe"></i></div>
-                            <h3 class="c-title">Site Institucional</h3>
-                            <p class="c-desc">Presença digital de alta performance, com design responsivo para destacar
-                                sua marca em qualquer dispositivo. Múltiplas seções para construir autoridade.</p>
-
-                            <div class="c-price-box">
-                                <div class="c-price-label">Setup a partir de</div>
-                                <div class="c-price-val">R$ 1.100</div>
-                                <div class="c-price-monthly"><i class="fas fa-plus"></i> R$ 67/mês (Manutenção)</div>
-                            </div>
-
-                            <div class="c-includes">
-                                <div class="c-includes-title">O que está incluso</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Desenvolvimento front-end customizado
-                                </div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Hospedagem otimizada (SSL)</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Otimização SEO On-Page básico</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Botão inteligente para WhatsApp</div>
-                            </div>
-
-                            <div class="c-footer">
-                                <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 5 a 7 semanas</div>
-                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20um%20Site%20Institucional."
-                                    target="_blank" rel="noopener noreferrer" class="plan-link">
-                                    <i class="fab fa-whatsapp"></i> Orçar Serviço
-                                </a>
-                            </div>
+                    <button class="mini-card" data-drawer="site">
+                        <div class="mini-icon"><i class="fas fa-globe"></i></div>
+                        <div class="mini-body">
+                            <strong>Site Institucional</strong>
+                            <span>a partir de <em>R$ 1.100</em></span>
                         </div>
+                        <i class="fas fa-chevron-right mini-arrow"></i>
+                    </button>
 
-                        <!-- Card 3: Sistema Web Dinâmico -->
-                        <div class="c-card">
-                            <div class="c-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i
-                                    class="fas fa-database"></i></div>
-                            <h3 class="c-title">Sistema Web Dinâmico</h3>
-                            <p class="c-desc">Gestão integrada e inteligente. Soluções robustas de software em nuvem
-                                (AkanniMED e AkanniHUB) para digitalizar e automatizar sua operação.</p>
-
-                            <div class="c-price-box">
-                                <div class="c-price-label">Setup a partir de</div>
-                                <div class="c-price-val"
-                                    style="background:var(--grad); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;">
-                                    R$ 1.700</div>
-                                <div class="c-price-monthly"><i class="fas fa-plus"></i> R$ 147/mês (Cloud e Suporte)
-                                </div>
-                            </div>
-
-                            <div class="c-includes">
-                                <div class="c-includes-title">O que está incluso</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Banco de dados em tempo real</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Gestão de agendamentos e pacientes
-                                </div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Portal exclusivo para o cliente
-                                    (Login/Senha)</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Painel administrativo completo</div>
-                            </div>
-
-                            <div class="c-footer">
-                                <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 8 a 12 semanas</div>
-                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Sistema%20Akanni."
-                                    target="_blank" rel="noopener noreferrer" class="plan-link primary">
-                                    <i class="fab fa-whatsapp"></i> Orçar Sistema
-                                </a>
-                            </div>
+                    <button class="mini-card" data-drawer="sistema">
+                        <div class="mini-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i
+                                class="fas fa-database"></i></div>
+                        <div class="mini-body">
+                            <strong>Sistema Web Dinâmico</strong>
+                            <span>a partir de <em>R$ 1.700</em></span>
                         </div>
+                        <i class="fas fa-chevron-right mini-arrow"></i>
+                    </button>
 
-                        <!-- Card 4: Loja Virtual -->
-                        <div class="c-card">
-                            <div class="c-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
-                                    class="fas fa-cart-shopping"></i></div>
-                            <h3 class="c-title">Loja Virtual (E-commerce)</h3>
-                            <p class="c-desc">Plataforma completa de vendas online. O cliente entra, escolhe o produto,
-                                coloca no carrinho, calcula o frete e paga diretamente pelo site.</p>
-
-                            <div class="c-price-box">
-                                <div class="c-price-label">Setup a partir de</div>
-                                <div class="c-price-val">R$ 2.500</div>
-                                <div class="c-price-monthly"><i class="fas fa-plus"></i> Manutenção robusta inclusa
-                                </div>
-                            </div>
-
-                            <div class="c-includes">
-                                <div class="c-includes-title">O que está incluso</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Gateway de pagamento (Mercado Pago /
-                                    Stripe)</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Cálculo de frete (Correios / Melhor
-                                    Envio)</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Painel de controle de estoque</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Relatórios de vendas</div>
-                            </div>
-
-                            <div class="c-footer">
-                                <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 6 a 10 semanas</div>
-                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20uma%20Loja%20Virtual."
-                                    target="_blank" rel="noopener noreferrer" class="plan-link">
-                                    <i class="fab fa-whatsapp"></i> Orçar Serviço
-                                </a>
-                            </div>
+                    <button class="mini-card" data-drawer="loja">
+                        <div class="mini-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
+                                class="fas fa-cart-shopping"></i></div>
+                        <div class="mini-body">
+                            <strong>Loja Virtual (E-commerce)</strong>
+                            <span>a partir de <em>R$ 2.500</em></span>
                         </div>
+                        <i class="fas fa-chevron-right mini-arrow"></i>
+                    </button>
 
-                        <!-- Card 5: Catálogo Virtual -->
-                        <div class="c-card">
-                            <div class="c-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
-                                    class="fas fa-store"></i></div>
-                            <h3 class="c-title">Catálogo Virtual</h3>
-                            <p class="c-desc">O "irmão mais novo" do e-commerce. Exibe produtos, fotos e preços. Ao
-                                clicar em "Comprar", o cliente é enviado ao WhatsApp com a mensagem pronta.</p>
-
-                            <div class="c-price-box">
-                                <div class="c-price-label">Setup a partir de</div>
-                                <div class="c-price-val">R$ 800</div>
-                                <div class="c-price-monthly"><i class="fas fa-plus"></i> R$ 57/mês</div>
-                            </div>
-
-                            <div class="c-includes">
-                                <div class="c-includes-title">O que está incluso</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Listagem de produtos e categorias</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Campo de busca</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Integração direta com WhatsApp</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Design responsivo mobile-first</div>
-                            </div>
-
-                            <div class="c-footer">
-                                <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 3 a 5 semanas</div>
-                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20um%20Catálogo%20Virtual."
-                                    target="_blank" rel="noopener noreferrer" class="plan-link">
-                                    <i class="fab fa-whatsapp"></i> Orçar Serviço
-                                </a>
-                            </div>
+                    <button class="mini-card" data-drawer="catalogo">
+                        <div class="mini-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
+                                class="fas fa-store"></i></div>
+                        <div class="mini-body">
+                            <strong>Catálogo Virtual</strong>
+                            <span>a partir de <em>R$ 800</em></span>
                         </div>
+                        <i class="fas fa-chevron-right mini-arrow"></i>
+                    </button>
 
-                        <!-- Card 6: Micro-Site -->
-                        <div class="c-card">
-                            <div class="c-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i
-                                    class="fas fa-mobile-screen-button"></i></div>
-                            <h3 class="c-title">Micro-Site (Link na Bio)</h3>
-                            <p class="c-desc">Página leve e rápida, 100% mobile first. Substitui ferramentas como
-                                Linktree centralizando todos os seus links com o design da própria marca.</p>
-
-                            <div class="c-price-box">
-                                <div class="c-price-label">Setup a partir de</div>
-                                <div class="c-price-val">R$ 250</div>
-                                <div class="c-price-monthly"><i class="fas fa-plus"></i> Hospedagem anual inclusa</div>
-                            </div>
-
-                            <div class="c-includes">
-                                <div class="c-includes-title">O que está incluso</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Design responsivo com identidade visual
-                                </div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Botões para redes sociais</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Métricas de cliques básicas</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Entrega ultra-rápida</div>
-                            </div>
-
-                            <div class="c-footer">
-                                <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 1 semana</div>
-                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20um%20Micro-Site."
-                                    target="_blank" rel="noopener noreferrer" class="plan-link">
-                                    <i class="fab fa-whatsapp"></i> Orçar Serviço
-                                </a>
-                            </div>
+                    <button class="mini-card" data-drawer="microsite">
+                        <div class="mini-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i
+                                class="fas fa-mobile-screen-button"></i></div>
+                        <div class="mini-body">
+                            <strong>Micro-Site (Link na Bio)</strong>
+                            <span>a partir de <em>R$ 250</em></span>
                         </div>
+                        <i class="fas fa-chevron-right mini-arrow"></i>
+                    </button>
 
-                        <!-- Card 7: Blog / Portal de Conteúdo -->
-                        <div class="c-card">
-                            <div class="c-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
-                                    class="fas fa-newspaper"></i></div>
-                            <h3 class="c-title">Blog / Portal de Conteúdo</h3>
-                            <p class="c-desc">Site dinâmico focado em postagens frequentes (artigos, notícias, dicas).
-                                Com painel de controle para o cliente publicar textos sem depender de você.</p>
-
-                            <div class="c-price-box">
-                                <div class="c-price-label">Setup a partir de</div>
-                                <div class="c-price-val">R$ 1.500</div>
-                                <div class="c-price-monthly"><i class="fas fa-plus"></i> R$ 97/mês</div>
-                            </div>
-
-                            <div class="c-includes">
-                                <div class="c-includes-title">O que está incluso</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Categorização de postagens</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Sistema de busca por palavras-chave
-                                </div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Espaço para banners de anúncios</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Otimização para leitura</div>
-                            </div>
-
-                            <div class="c-footer">
-                                <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 4 a 6 semanas</div>
-                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20um%20Blog%20ou%20Portal%20de%20Conteúdo."
-                                    target="_blank" rel="noopener noreferrer" class="plan-link">
-                                    <i class="fab fa-whatsapp"></i> Orçar Serviço
-                                </a>
-                            </div>
+                    <button class="mini-card" data-drawer="blog">
+                        <div class="mini-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
+                                class="fas fa-newspaper"></i></div>
+                        <div class="mini-body">
+                            <strong>Blog / Portal de Conteúdo</strong>
+                            <span>a partir de <em>R$ 1.500</em></span>
                         </div>
+                        <i class="fas fa-chevron-right mini-arrow"></i>
+                    </button>
 
-                        <!-- Card 8: SEO & Google Meu Negócio -->
-                        <div class="c-card">
-                            <div class="c-icon"><i class="fab fa-google"></i></div>
-                            <h3 class="c-title">SEO & Google Meu Negócio</h3>
-                            <p class="c-desc">Domine as buscas locais e seja a primeira escolha quando procurarem pelos
-                                seus serviços na região.</p>
-
-                            <div class="c-price-box">
-                                <div class="c-price-label">Setup a partir de</div>
-                                <div class="c-price-val">R$ 397</div>
-                                <div class="c-price-monthly"><i class="fas fa-plus"></i> R$ 127/mês (Adm. Contínua)
-                                </div>
-                            </div>
-
-                            <div class="c-includes">
-                                <div class="c-includes-title">O que está incluso</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Criação e otimização do perfil</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Estratégia de SEO Técnico/Local</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Posicionamento no Google Maps</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Relatórios de alcance e acessos</div>
-                            </div>
-
-                            <div class="c-footer">
-                                <div class="c-deadline"><i class="far fa-clock"></i> Prazo: Até 2 semanas</div>
-                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Google%20Meu%20Negócio."
-                                    target="_blank" rel="noopener noreferrer" class="plan-link">
-                                    <i class="fab fa-whatsapp"></i> Orçar Serviço
-                                </a>
-                            </div>
+                    <button class="mini-card" data-drawer="seo">
+                        <div class="mini-icon"><i class="fab fa-google"></i></div>
+                        <div class="mini-body">
+                            <strong>SEO & Google Meu Negócio</strong>
+                            <span>a partir de <em>R$ 397</em></span>
                         </div>
+                        <i class="fas fa-chevron-right mini-arrow"></i>
+                    </button>
 
-                        <!-- Card 9: Digital Signage -->
-                        <div class="c-card">
-                            <div class="c-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i
-                                    class="fas fa-tv"></i></div>
-                            <h3 class="c-title">Digital Signage</h3>
-                            <p class="c-desc">Transforme sua sala de espera com painéis digitais dinâmicos e interativos
-                                direto na tela da TV.</p>
-
-                            <div class="c-price-box">
-                                <div class="c-price-label">Setup a partir de</div>
-                                <div class="c-price-val"
-                                    style="background:var(--grad-o); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;">
-                                    R$ 475</div>
-                                <div class="c-price-monthly"><i class="fas fa-plus" style="color:var(--orange)"></i> R$
-                                    97/mês (Integração de APIs)</div>
-                            </div>
-
-                            <div class="c-includes">
-                                <div class="c-includes-title">O que está incluso</div>
-                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Interface
-                                    adaptada para TVs</div>
-                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Clima e
-                                    relógio em tempo real</div>
-                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Feed
-                                    automático de notícias</div>
-                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Espaço para
-                                    vídeos e comunicados</div>
-                            </div>
-
-                            <div class="c-footer">
-                                <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 3 a 5 semanas</div>
-                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Digital%20Signage."
-                                    target="_blank" rel="noopener noreferrer" class="plan-link"
-                                    style="color:var(--orange); border-color:rgba(255,94,0,0.3)">
-                                    <i class="fab fa-whatsapp"></i> Orçar Serviço
-                                </a>
-                            </div>
+                    <button class="mini-card" data-drawer="signage">
+                        <div class="mini-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i
+                                class="fas fa-tv"></i></div>
+                        <div class="mini-body">
+                            <strong>Digital Signage</strong>
+                            <span>a partir de <em>R$ 475</em></span>
                         </div>
+                        <i class="fas fa-chevron-right mini-arrow"></i>
+                    </button>
 
-                    </div><!-- /carousel-track -->
-                </div><!-- /carousel-wrap -->
-                <p class="carousel-hint"><i class="fas fa-arrow-right"></i> Deslize para ver mais serviços</p>
-            </div><!-- /wrap -->
+                </div><!-- /mini-grid -->
 
-            <div class="wrap" style="padding-bottom: 0;">
-                <div class="sec-head center rv">
-                    <div class="sec-line"></div>
+                <!-- Divisor Combos -->
+                <div class="combos-divider rv">
+                    <div class="sec-line" style="margin-bottom:1rem;"></div>
                     <p class="eyebrow">Combos</p>
-                    <h2 class="sec-title">Soluções muito mais completas</h2>
-                    <p class="sec-sub">Escolha o combo ideal para iniciar a digitalização do seu negócio. Explore as
-                        opções, confira os benefícios e encontre o melhor custo-benefício da região.</p>
+                    <h2 class="sec-title" style="font-size:clamp(1.4rem,3vw,2rem);margin-bottom:0.5rem;">Soluções muito
+                        mais completas</h2>
+                    <p class="sec-sub" style="margin-bottom:0;">Pacotes que combinam múltiplos serviços com desconto.
+                        Clique para ver detalhes.</p>
                 </div>
-            </div>
 
-            <!-- Combos Grid -->
-            <div class="wrap">
-                <div class="combos-wrap rv d1">
-                    <div class="combos-track">
+                <!-- Grid de mini-cards: Combos -->
+                <div class="mini-grid mini-grid-combos rv d1">
 
-                        <!-- Combo 1: O Essencial Local (Unindo 2 serviços) -->
-                        <div class="c-card">
-                            <div class="c-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i
-                                    class="fas fa-bullseye"></i></div>
-                            <h3 class="c-title">Combo Essencial</h3>
-                            <p class="c-desc">A fundação perfeita para empresas locais. Construímos sua autoridade com
-                                um site profissional e garantimos que sua marca
-                                seja a primeira a aparecer nas buscas do Google e no Maps na sua região.</p>
-
-                            <div class="c-price-box">
-                                <div class="c-price-label">Setup a partir de</div>
-                                <div class="c-price-val"
-                                    style="background:var(--grad-o); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;">
-                                    R$ 1.350</div>
-                                <div class="c-price-monthly"><i class="fas fa-plus" style="color:var(--orange)"></i> R$
-                                    170/mês (Manutenção + Adm. SEO)</div>
-                            </div>
-
-                            <div class="c-includes">
-                                <div class="c-includes-title">O que está incluso</div>
-                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i>
-                                    Desenvolvimento de Site Institucional responsivo (até 5 seções)</div>
-                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Criação e
-                                    otimização do perfil no Google Meu Negócio</div>
-                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Estratégia
-                                    de SEO Local para ranqueamento</div>
-                                <div class="c-feat"><i class="fas fa-check" style="color:var(--orange)"></i> Hospedagem,
-                                    SSL e Botão de WhatsApp</div>
-                            </div>
-
-                            <div class="c-footer">
-                                <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 5 a 7 semanas</div>
-                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20Essencial."
-                                    target="_blank" rel="noopener noreferrer" class="plan-link"
-                                    style="color:var(--orange); border-color:rgba(255,94,0,0.3)">
-                                    <i class="fab fa-whatsapp"></i> Orçar Combo
-                                </a>
-                            </div>
+                    <button class="mini-card mini-card-combo" data-drawer="combo-essencial">
+                        <div class="mini-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i
+                                class="fas fa-bullseye"></i></div>
+                        <div class="mini-body">
+                            <strong>Combo Essencial</strong>
+                            <span>a partir de <em>R$ 1.350</em></span>
                         </div>
+                        <i class="fas fa-chevron-right mini-arrow"></i>
+                    </button>
 
-                        <!-- Combo 2: Máquina de Vendas Express (Unindo 3 serviços) -->
-                        <div class="c-card">
-                            <div class="c-icon"><i class="fas fa-globe"></i></div>
-                            <h3 class="c-title">Combo de Vendas</h3>
-                            <p class="c-desc">O ecossistema ideal para quem vende pelas redes sociais. Um link otimizado
-                                para a bio do seu Instagram, direcionando
-                                clientes para uma página de vendas persuasiva ou para um catálogo prático conectado
-                                direto ao seu WhatsApp.</p>
-
-                            <div class="c-price-box">
-                                <div class="c-price-label">Setup a partir de</div>
-                                <div class="c-price-val">R$ 1.450</div>
-                                <div class="c-price-monthly"><i class="fas fa-plus"></i> R$ 90/mês (Hospedagem)</div>
-                            </div>
-
-                            <div class="c-includes">
-                                <div class="c-includes-title">O que está incluso</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> 1 Micro-site (Link na Bio)
-                                    personalizado com a identidade da marca
-                                </div>
-                                <div class="c-feat"><i class="fas fa-check"></i> 1 Landing Page de alta conversão para o
-                                    serviço principal</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> 1 Catálogo Virtual para exposição de
-                                    produtos/serviços</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Integração de Pixel (Meta/Google) para
-                                    anúncios</div>
-                            </div>
-
-                            <div class="c-footer">
-                                <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 4 a 6 semanas</div>
-                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20de%20Vendas."
-                                    target="_blank" rel="noopener noreferrer" class="plan-link">
-                                    <i class="fab fa-whatsapp"></i> Orçar Combo
-                                </a>
-                            </div>
+                    <button class="mini-card mini-card-combo" data-drawer="combo-vendas">
+                        <div class="mini-icon"><i class="fas fa-globe"></i></div>
+                        <div class="mini-body">
+                            <strong>Combo de Vendas</strong>
+                            <span>a partir de <em>R$ 1.450</em></span>
                         </div>
+                        <i class="fas fa-chevron-right mini-arrow"></i>
+                    </button>
 
-                        <!-- Combo 3: Consultório/Clínica Inteligente (Unindo 4 serviços) -->
-                        <div class="c-card">
-                            <div class="c-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i
-                                    class="fas fa-database"></i></div>
-                            <h3 class="c-title">Combo Clínico</h3>
-                            <p class="c-desc">A digitalização total do seu atendimento. Desde o paciente te encontrar no
-                                Google, conhecer sua estrutura no site,
-                                aguardar na recepção com painéis interativos, até a gestão completa de prontuários e
-                                agendamentos no sistema interno.</p>
-
-                            <div class="c-price-box">
-                                <div class="c-price-label">Setup a partir de</div>
-                                <div class="c-price-val"
-                                    style="background:var(--grad); background-clip:text; -webkit-background-clip:text; -webkit-text-fill-color:transparent;">
-                                    R$ 3.100</div>
-                                <div class="c-price-monthly"><i class="fas fa-plus"></i> R$ 380/mês (Cloud + Suporte +
-                                    Integrações)
-                                </div>
-                            </div>
-
-                            <div class="c-includes">
-                                <div class="c-includes-title">O que está incluso</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Sistema em nuvem para gestão de
-                                    pacientes e agenda</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Site Institucional integrado ao painel
-                                    do cliente</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Software de Digital Signage (Mídia
-                                    Indoor) para a TV da recepção</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Posicionamento no Google Maps (SEO
-                                    Local)</div>
-                            </div>
-
-                            <div class="c-footer">
-                                <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 8 a 12 semanas</div>
-                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20Clínico."
-                                    target="_blank" rel="noopener noreferrer" class="plan-link primary">
-                                    <i class="fab fa-whatsapp"></i> Orçar Combo
-                                </a>
-                            </div>
+                    <button class="mini-card mini-card-combo" data-drawer="combo-clinico">
+                        <div class="mini-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i
+                                class="fas fa-database"></i></div>
+                        <div class="mini-body">
+                            <strong>Combo Clínico</strong>
+                            <span>a partir de <em>R$ 3.100</em></span>
                         </div>
+                        <i class="fas fa-chevron-right mini-arrow"></i>
+                    </button>
 
-                        <!-- Combo 4: Transformação Digital 360º (A Solução "Tudo em Um") -->
-                        <div class="c-card">
-                            <div class="c-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
-                                    class="fas fa-cart-shopping"></i></div>
-                            <h3 class="c-title">Combo Enterprise</h3>
-                            <p class="c-desc">O pacote Enterprise definitivo. Assumimos toda a infraestrutura
-                                tecnológica do seu negócio. Seu cliente terá acesso a
-                                uma plataforma de vendas/gestão robusta, enquanto sua marca ganha autoridade com artigos
-                                no blog, captura leads com
-                                landing pages dedicadas e moderniza o espaço físico da matriz com painéis inteligentes.
-                            </p>
-
-                            <div class="c-price-box">
-                                <div class="c-price-label">Setup a partir de</div>
-                                <div class="c-price-val">R$ 5.900</div>
-                                <div class="c-price-monthly"><i class="fas fa-plus"></i> R$ 550/mês (Infraestrutura
-                                    Completa)
-                                </div>
-                            </div>
-
-                            <div class="c-includes">
-                                <div class="c-includes-title">O que está incluso</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Plataforma principal complexa (Loja
-                                    Virtual robusta ou Sistema Web)</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Site Institucional integrado com Blog
-                                    Dinâmico e CMS</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Criação de Landing Pages sob demanda
-                                    para o marketing</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> Digital Signage corporativo para
-                                    comunicação interna/clientes</div>
-                                <div class="c-feat"><i class="fas fa-check"></i> SEO completo e Micro-site para redes
-                                    sociais</div>
-                            </div>
-
-                            <div class="c-footer">
-                                <div class="c-deadline"><i class="far fa-clock"></i> Prazo: 12 a 16 semanas</div>
-                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20Enterprise."
-                                    target="_blank" rel="noopener noreferrer" class="plan-link">
-                                    <i class="fab fa-whatsapp"></i> Orçar Combo
-                                </a>
-                            </div>
+                    <button class="mini-card mini-card-combo" data-drawer="combo-enterprise">
+                        <div class="mini-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
+                                class="fas fa-cart-shopping"></i></div>
+                        <div class="mini-body">
+                            <strong>Combo Enterprise</strong>
+                            <span>a partir de <em>R$ 5.900</em></span>
                         </div>
+                        <i class="fas fa-chevron-right mini-arrow"></i>
+                    </button>
 
-                    </div><!-- /combos-track -->
-                </div><!-- /combos-wrap -->
-                <p class="carousel-hint combos-hint"><i class="fas fa-arrow-right"></i> Deslize para ver mais combos</p>
-            </div><!-- /wrap -->
+                </div><!-- /mini-grid-combos -->
 
-            <div class="wrap">
-                <div class="support-note rv">
+                <div class="support-note rv" style="margin-top:2rem;">
                     <i class="fas fa-circle-info"></i>
                     <p>
                         <strong>Condições de projeto:</strong> 30% na assinatura do contrato · 30% na entrega da
@@ -2036,8 +2019,456 @@
                         escopo.
                     </p>
                 </div>
-            </div>
+
+            </div><!-- /wrap -->
         </section>
+
+        <!-- ═══ DRAWER OVERLAY ═══ -->
+        <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+
+        <!-- DRAWERS: Serviços -->
+        <aside class="drawer" id="drawer-landing" role="dialog" aria-modal="true" aria-label="Landing Page">
+            <div class="drawer-header">
+                <div class="drawer-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i
+                        class="fas fa-bullseye"></i></div>
+                <div>
+                    <h3 class="drawer-title">Landing Page</h3>
+                    <p class="drawer-tag">Conversão & Captação de Leads</p>
+                </div>
+                <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
+            </div>
+            <p class="drawer-desc">Página única focada 100% em converter visitantes em clientes. Ideal para campanhas de
+                marketing, captação de leads ou lançamento de infoprodutos.</p>
+            <div class="drawer-price-box" style="border-color:rgba(255,94,0,0.25);">
+                <div class="drawer-price-label">Setup a partir de</div>
+                <div class="drawer-price-val"
+                    style="background:var(--grad-o);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+                    R$ 600</div>
+                <div class="drawer-price-monthly"><i class="fas fa-plus" style="color:var(--orange)"></i> R$ 47/mês
+                    (Hospedagem e Manutenção)</div>
+            </div>
+            <div class="drawer-includes-title">O que está incluso</div>
+            <ul class="drawer-feats">
+                <li><i class="fas fa-check" style="color:var(--orange)"></i> Design de alta conversão (UX/UI voltado
+                    para o clique)</li>
+                <li><i class="fas fa-check" style="color:var(--orange)"></i> Gatilhos mentais e quebra de objeções</li>
+                <li><i class="fas fa-check" style="color:var(--orange)"></i> Integração com Pixel (Meta/Google)</li>
+                <li><i class="fas fa-check" style="color:var(--orange)"></i> Botão flutuante para WhatsApp</li>
+            </ul>
+            <div class="drawer-footer">
+                <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 2 a 4 semanas</div>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20uma%20Landing%20Page."
+                    target="_blank" rel="noopener noreferrer" class="plan-link"
+                    style="color:var(--orange);border-color:rgba(255,94,0,0.3)"><i class="fab fa-whatsapp"></i> Orçar
+                    Serviço</a>
+            </div>
+        </aside>
+
+        <aside class="drawer" id="drawer-site" role="dialog" aria-modal="true" aria-label="Site Institucional">
+            <div class="drawer-header">
+                <div class="drawer-icon"><i class="fas fa-globe"></i></div>
+                <div>
+                    <h3 class="drawer-title">Site Institucional</h3>
+                    <p class="drawer-tag">Presença Digital Profissional</p>
+                </div>
+                <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
+            </div>
+            <p class="drawer-desc">Presença digital de alta performance, com design responsivo para destacar sua marca
+                em qualquer dispositivo. Múltiplas seções para construir autoridade.</p>
+            <div class="drawer-price-box">
+                <div class="drawer-price-label">Setup a partir de</div>
+                <div class="drawer-price-val">R$ 1.100</div>
+                <div class="drawer-price-monthly"><i class="fas fa-plus"></i> R$ 67/mês (Manutenção)</div>
+            </div>
+            <div class="drawer-includes-title">O que está incluso</div>
+            <ul class="drawer-feats">
+                <li><i class="fas fa-check"></i> Desenvolvimento front-end customizado</li>
+                <li><i class="fas fa-check"></i> Hospedagem otimizada (SSL)</li>
+                <li><i class="fas fa-check"></i> Otimização SEO On-Page básico</li>
+                <li><i class="fas fa-check"></i> Botão inteligente para WhatsApp</li>
+            </ul>
+            <div class="drawer-footer">
+                <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 5 a 7 semanas</div>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20um%20Site%20Institucional."
+                    target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar
+                    Serviço</a>
+            </div>
+        </aside>
+
+        <aside class="drawer" id="drawer-sistema" role="dialog" aria-modal="true" aria-label="Sistema Web Dinâmico">
+            <div class="drawer-header">
+                <div class="drawer-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i
+                        class="fas fa-database"></i></div>
+                <div>
+                    <h3 class="drawer-title">Sistema Web Dinâmico</h3>
+                    <p class="drawer-tag">SaaS & Gestão em Nuvem</p>
+                </div>
+                <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
+            </div>
+            <p class="drawer-desc">Gestão integrada e inteligente. Soluções robustas de software em nuvem (AkanniMED e
+                AkanniHUB) para digitalizar e automatizar sua operação.</p>
+            <div class="drawer-price-box">
+                <div class="drawer-price-label">Setup a partir de</div>
+                <div class="drawer-price-val"
+                    style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+                    R$ 1.700</div>
+                <div class="drawer-price-monthly"><i class="fas fa-plus"></i> R$ 147/mês (Cloud e Suporte)</div>
+            </div>
+            <div class="drawer-includes-title">O que está incluso</div>
+            <ul class="drawer-feats">
+                <li><i class="fas fa-check"></i> Banco de dados em tempo real</li>
+                <li><i class="fas fa-check"></i> Gestão de agendamentos e pacientes</li>
+                <li><i class="fas fa-check"></i> Portal exclusivo para o cliente (Login/Senha)</li>
+                <li><i class="fas fa-check"></i> Painel administrativo completo</li>
+            </ul>
+            <div class="drawer-footer">
+                <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 8 a 12 semanas</div>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Sistema%20Akanni."
+                    target="_blank" rel="noopener noreferrer" class="plan-link primary"><i class="fab fa-whatsapp"></i>
+                    Orçar Sistema</a>
+            </div>
+        </aside>
+
+        <aside class="drawer" id="drawer-loja" role="dialog" aria-modal="true" aria-label="Loja Virtual">
+            <div class="drawer-header">
+                <div class="drawer-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
+                        class="fas fa-cart-shopping"></i></div>
+                <div>
+                    <h3 class="drawer-title">Loja Virtual (E-commerce)</h3>
+                    <p class="drawer-tag">Vendas Online Completas</p>
+                </div>
+                <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
+            </div>
+            <p class="drawer-desc">Plataforma completa de vendas online. O cliente entra, escolhe o produto, coloca no
+                carrinho, calcula o frete e paga diretamente pelo site.</p>
+            <div class="drawer-price-box">
+                <div class="drawer-price-label">Setup a partir de</div>
+                <div class="drawer-price-val">R$ 2.500</div>
+                <div class="drawer-price-monthly"><i class="fas fa-plus"></i> Manutenção robusta inclusa</div>
+            </div>
+            <div class="drawer-includes-title">O que está incluso</div>
+            <ul class="drawer-feats">
+                <li><i class="fas fa-check"></i> Gateway de pagamento (Mercado Pago / Stripe)</li>
+                <li><i class="fas fa-check"></i> Cálculo de frete (Correios / Melhor Envio)</li>
+                <li><i class="fas fa-check"></i> Painel de controle de estoque</li>
+                <li><i class="fas fa-check"></i> Relatórios de vendas</li>
+            </ul>
+            <div class="drawer-footer">
+                <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 6 a 10 semanas</div>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20uma%20Loja%20Virtual."
+                    target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar
+                    Serviço</a>
+            </div>
+        </aside>
+
+        <aside class="drawer" id="drawer-catalogo" role="dialog" aria-modal="true" aria-label="Catálogo Virtual">
+            <div class="drawer-header">
+                <div class="drawer-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
+                        class="fas fa-store"></i></div>
+                <div>
+                    <h3 class="drawer-title">Catálogo Virtual</h3>
+                    <p class="drawer-tag">Vitrine Digital com WhatsApp</p>
+                </div>
+                <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
+            </div>
+            <p class="drawer-desc">O "irmão mais novo" do e-commerce. Exibe produtos, fotos e preços. Ao clicar em
+                "Comprar", o cliente é enviado ao WhatsApp com a mensagem pronta.</p>
+            <div class="drawer-price-box">
+                <div class="drawer-price-label">Setup a partir de</div>
+                <div class="drawer-price-val">R$ 800</div>
+                <div class="drawer-price-monthly"><i class="fas fa-plus"></i> R$ 57/mês</div>
+            </div>
+            <div class="drawer-includes-title">O que está incluso</div>
+            <ul class="drawer-feats">
+                <li><i class="fas fa-check"></i> Listagem de produtos e categorias</li>
+                <li><i class="fas fa-check"></i> Campo de busca</li>
+                <li><i class="fas fa-check"></i> Integração direta com WhatsApp</li>
+                <li><i class="fas fa-check"></i> Design responsivo mobile-first</li>
+            </ul>
+            <div class="drawer-footer">
+                <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 3 a 5 semanas</div>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20um%20Catálogo%20Virtual."
+                    target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar
+                    Serviço</a>
+            </div>
+        </aside>
+
+        <aside class="drawer" id="drawer-microsite" role="dialog" aria-modal="true" aria-label="Micro-Site">
+            <div class="drawer-header">
+                <div class="drawer-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i
+                        class="fas fa-mobile-screen-button"></i></div>
+                <div>
+                    <h3 class="drawer-title">Micro-Site (Link na Bio)</h3>
+                    <p class="drawer-tag">Mobile First · Alternativa ao Linktree</p>
+                </div>
+                <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
+            </div>
+            <p class="drawer-desc">Página leve e rápida, 100% mobile first. Substitui ferramentas como Linktree
+                centralizando todos os seus links com o design da própria marca.</p>
+            <div class="drawer-price-box">
+                <div class="drawer-price-label">Setup a partir de</div>
+                <div class="drawer-price-val">R$ 250</div>
+                <div class="drawer-price-monthly"><i class="fas fa-plus"></i> Hospedagem anual inclusa</div>
+            </div>
+            <div class="drawer-includes-title">O que está incluso</div>
+            <ul class="drawer-feats">
+                <li><i class="fas fa-check"></i> Design responsivo com identidade visual</li>
+                <li><i class="fas fa-check"></i> Botões para redes sociais</li>
+                <li><i class="fas fa-check"></i> Métricas de cliques básicas</li>
+                <li><i class="fas fa-check"></i> Entrega ultra-rápida</li>
+            </ul>
+            <div class="drawer-footer">
+                <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 1 semana</div>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20um%20Micro-Site."
+                    target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar
+                    Serviço</a>
+            </div>
+        </aside>
+
+        <aside class="drawer" id="drawer-blog" role="dialog" aria-modal="true" aria-label="Blog / Portal">
+            <div class="drawer-header">
+                <div class="drawer-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
+                        class="fas fa-newspaper"></i></div>
+                <div>
+                    <h3 class="drawer-title">Blog / Portal de Conteúdo</h3>
+                    <p class="drawer-tag">Marketing de Conteúdo Dinâmico</p>
+                </div>
+                <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
+            </div>
+            <p class="drawer-desc">Site dinâmico focado em postagens frequentes (artigos, notícias, dicas). Com painel
+                de controle para o cliente publicar textos sem depender de você.</p>
+            <div class="drawer-price-box">
+                <div class="drawer-price-label">Setup a partir de</div>
+                <div class="drawer-price-val">R$ 1.500</div>
+                <div class="drawer-price-monthly"><i class="fas fa-plus"></i> R$ 97/mês</div>
+            </div>
+            <div class="drawer-includes-title">O que está incluso</div>
+            <ul class="drawer-feats">
+                <li><i class="fas fa-check"></i> Categorização de postagens</li>
+                <li><i class="fas fa-check"></i> Sistema de busca por palavras-chave</li>
+                <li><i class="fas fa-check"></i> Espaço para banners de anúncios</li>
+                <li><i class="fas fa-check"></i> Otimização para leitura</li>
+            </ul>
+            <div class="drawer-footer">
+                <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 4 a 6 semanas</div>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20um%20Blog%20ou%20Portal%20de%20Conteúdo."
+                    target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar
+                    Serviço</a>
+            </div>
+        </aside>
+
+        <aside class="drawer" id="drawer-seo" role="dialog" aria-modal="true" aria-label="SEO Google">
+            <div class="drawer-header">
+                <div class="drawer-icon"><i class="fab fa-google"></i></div>
+                <div>
+                    <h3 class="drawer-title">SEO & Google Meu Negócio</h3>
+                    <p class="drawer-tag">Visibilidade Local no Google</p>
+                </div>
+                <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
+            </div>
+            <p class="drawer-desc">Domine as buscas locais e seja a primeira escolha quando procurarem pelos seus
+                serviços na região.</p>
+            <div class="drawer-price-box">
+                <div class="drawer-price-label">Setup a partir de</div>
+                <div class="drawer-price-val">R$ 397</div>
+                <div class="drawer-price-monthly"><i class="fas fa-plus"></i> R$ 127/mês (Adm. Contínua)</div>
+            </div>
+            <div class="drawer-includes-title">O que está incluso</div>
+            <ul class="drawer-feats">
+                <li><i class="fas fa-check"></i> Criação e otimização do perfil</li>
+                <li><i class="fas fa-check"></i> Estratégia de SEO Técnico/Local</li>
+                <li><i class="fas fa-check"></i> Posicionamento no Google Maps</li>
+                <li><i class="fas fa-check"></i> Relatórios de alcance e acessos</li>
+            </ul>
+            <div class="drawer-footer">
+                <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: Até 2 semanas</div>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Google%20Meu%20Negócio."
+                    target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar
+                    Serviço</a>
+            </div>
+        </aside>
+
+        <aside class="drawer" id="drawer-signage" role="dialog" aria-modal="true" aria-label="Digital Signage">
+            <div class="drawer-header">
+                <div class="drawer-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i
+                        class="fas fa-tv"></i></div>
+                <div>
+                    <h3 class="drawer-title">Digital Signage</h3>
+                    <p class="drawer-tag">Mídia Indoor para TVs e Painéis</p>
+                </div>
+                <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
+            </div>
+            <p class="drawer-desc">Transforme sua sala de espera com painéis digitais dinâmicos e interativos direto na
+                tela da TV.</p>
+            <div class="drawer-price-box" style="border-color:rgba(255,94,0,0.25);">
+                <div class="drawer-price-label">Setup a partir de</div>
+                <div class="drawer-price-val"
+                    style="background:var(--grad-o);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+                    R$ 475</div>
+                <div class="drawer-price-monthly"><i class="fas fa-plus" style="color:var(--orange)"></i> R$ 97/mês
+                    (Integração de APIs)</div>
+            </div>
+            <div class="drawer-includes-title">O que está incluso</div>
+            <ul class="drawer-feats">
+                <li><i class="fas fa-check" style="color:var(--orange)"></i> Interface adaptada para TVs</li>
+                <li><i class="fas fa-check" style="color:var(--orange)"></i> Clima e relógio em tempo real</li>
+                <li><i class="fas fa-check" style="color:var(--orange)"></i> Feed automático de notícias</li>
+                <li><i class="fas fa-check" style="color:var(--orange)"></i> Espaço para vídeos e comunicados</li>
+            </ul>
+            <div class="drawer-footer">
+                <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 3 a 5 semanas</div>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Digital%20Signage."
+                    target="_blank" rel="noopener noreferrer" class="plan-link"
+                    style="color:var(--orange);border-color:rgba(255,94,0,0.3)"><i class="fab fa-whatsapp"></i> Orçar
+                    Serviço</a>
+            </div>
+        </aside>
+
+        <!-- DRAWERS: Combos -->
+        <aside class="drawer" id="drawer-combo-essencial" role="dialog" aria-modal="true" aria-label="Combo Essencial">
+            <div class="drawer-header">
+                <div class="drawer-icon" style="color:var(--orange);background:rgba(255,94,0,0.1);"><i
+                        class="fas fa-bullseye"></i></div>
+                <div>
+                    <h3 class="drawer-title">Combo Essencial</h3>
+                    <p class="drawer-tag">Site Institucional + SEO Local</p>
+                </div>
+                <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
+            </div>
+            <p class="drawer-desc">A fundação perfeita para empresas locais. Construímos sua autoridade com um site
+                profissional e garantimos que sua marca seja a primeira a aparecer nas buscas do Google e no Maps na sua
+                região.</p>
+            <div class="drawer-price-box" style="border-color:rgba(255,94,0,0.25);">
+                <div class="drawer-price-label">Setup a partir de</div>
+                <div class="drawer-price-val"
+                    style="background:var(--grad-o);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+                    R$ 1.350</div>
+                <div class="drawer-price-monthly"><i class="fas fa-plus" style="color:var(--orange)"></i> R$ 170/mês
+                    (Manutenção + Adm. SEO)</div>
+            </div>
+            <div class="drawer-includes-title">O que está incluso</div>
+            <ul class="drawer-feats">
+                <li><i class="fas fa-check" style="color:var(--orange)"></i> Desenvolvimento de Site Institucional
+                    responsivo (até 5 seções)</li>
+                <li><i class="fas fa-check" style="color:var(--orange)"></i> Criação e otimização do perfil no Google
+                    Meu Negócio</li>
+                <li><i class="fas fa-check" style="color:var(--orange)"></i> Estratégia de SEO Local para ranqueamento
+                </li>
+                <li><i class="fas fa-check" style="color:var(--orange)"></i> Hospedagem, SSL e Botão de WhatsApp</li>
+            </ul>
+            <div class="drawer-footer">
+                <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 5 a 7 semanas</div>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20Essencial."
+                    target="_blank" rel="noopener noreferrer" class="plan-link"
+                    style="color:var(--orange);border-color:rgba(255,94,0,0.3)"><i class="fab fa-whatsapp"></i> Orçar
+                    Combo</a>
+            </div>
+        </aside>
+
+        <aside class="drawer" id="drawer-combo-vendas" role="dialog" aria-modal="true" aria-label="Combo de Vendas">
+            <div class="drawer-header">
+                <div class="drawer-icon"><i class="fas fa-globe"></i></div>
+                <div>
+                    <h3 class="drawer-title">Combo de Vendas</h3>
+                    <p class="drawer-tag">Micro-site + Landing Page + Catálogo</p>
+                </div>
+                <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
+            </div>
+            <p class="drawer-desc">O ecossistema ideal para quem vende pelas redes sociais. Um link otimizado para a bio
+                do seu Instagram, direcionando clientes para uma página de vendas persuasiva ou para um catálogo prático
+                conectado direto ao seu WhatsApp.</p>
+            <div class="drawer-price-box">
+                <div class="drawer-price-label">Setup a partir de</div>
+                <div class="drawer-price-val">R$ 1.450</div>
+                <div class="drawer-price-monthly"><i class="fas fa-plus"></i> R$ 90/mês (Hospedagem)</div>
+            </div>
+            <div class="drawer-includes-title">O que está incluso</div>
+            <ul class="drawer-feats">
+                <li><i class="fas fa-check"></i> 1 Micro-site (Link na Bio) personalizado com a identidade da marca</li>
+                <li><i class="fas fa-check"></i> 1 Landing Page de alta conversão para o serviço principal</li>
+                <li><i class="fas fa-check"></i> 1 Catálogo Virtual para exposição de produtos/serviços</li>
+                <li><i class="fas fa-check"></i> Integração de Pixel (Meta/Google) para anúncios</li>
+            </ul>
+            <div class="drawer-footer">
+                <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 4 a 6 semanas</div>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20de%20Vendas."
+                    target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar
+                    Combo</a>
+            </div>
+        </aside>
+
+        <aside class="drawer" id="drawer-combo-clinico" role="dialog" aria-modal="true" aria-label="Combo Clínico">
+            <div class="drawer-header">
+                <div class="drawer-icon" style="color:var(--steel);background:rgba(117,167,189,0.1);"><i
+                        class="fas fa-database"></i></div>
+                <div>
+                    <h3 class="drawer-title">Combo Clínico</h3>
+                    <p class="drawer-tag">Site + Akanni + Signage + SEO</p>
+                </div>
+                <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
+            </div>
+            <p class="drawer-desc">A digitalização total do seu atendimento. Desde o paciente te encontrar no Google,
+                conhecer sua estrutura no site, aguardar na recepção com painéis interativos, até a gestão completa de
+                prontuários e agendamentos no sistema interno.</p>
+            <div class="drawer-price-box">
+                <div class="drawer-price-label">Setup a partir de</div>
+                <div class="drawer-price-val"
+                    style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+                    R$ 3.100</div>
+                <div class="drawer-price-monthly"><i class="fas fa-plus"></i> R$ 380/mês (Cloud + Suporte + Integrações)
+                </div>
+            </div>
+            <div class="drawer-includes-title">O que está incluso</div>
+            <ul class="drawer-feats">
+                <li><i class="fas fa-check"></i> Sistema em nuvem para gestão de pacientes e agenda</li>
+                <li><i class="fas fa-check"></i> Site Institucional integrado ao painel do cliente</li>
+                <li><i class="fas fa-check"></i> Software de Digital Signage (Mídia Indoor) para a TV da recepção</li>
+                <li><i class="fas fa-check"></i> Posicionamento no Google Maps (SEO Local)</li>
+            </ul>
+            <div class="drawer-footer">
+                <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 8 a 12 semanas</div>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20Clínico."
+                    target="_blank" rel="noopener noreferrer" class="plan-link primary"><i class="fab fa-whatsapp"></i>
+                    Orçar Combo</a>
+            </div>
+        </aside>
+
+        <aside class="drawer" id="drawer-combo-enterprise" role="dialog" aria-modal="true"
+            aria-label="Combo Enterprise">
+            <div class="drawer-header">
+                <div class="drawer-icon" style="color:var(--mint);background:rgba(52,209,183,0.1);"><i
+                        class="fas fa-cart-shopping"></i></div>
+                <div>
+                    <h3 class="drawer-title">Combo Enterprise</h3>
+                    <p class="drawer-tag">Infraestrutura Digital Completa</p>
+                </div>
+                <button class="drawer-close" aria-label="Fechar"><i class="fas fa-xmark"></i></button>
+            </div>
+            <p class="drawer-desc">O pacote Enterprise definitivo. Assumimos toda a infraestrutura tecnológica do seu
+                negócio. Plataforma de vendas robusta, blog com CMS, landing pages de marketing, Digital Signage
+                corporativo e SEO completo.</p>
+            <div class="drawer-price-box">
+                <div class="drawer-price-label">Setup a partir de</div>
+                <div class="drawer-price-val">R$ 5.900</div>
+                <div class="drawer-price-monthly"><i class="fas fa-plus"></i> R$ 550/mês (Infraestrutura Completa)</div>
+            </div>
+            <div class="drawer-includes-title">O que está incluso</div>
+            <ul class="drawer-feats">
+                <li><i class="fas fa-check"></i> Plataforma principal complexa (Loja Virtual robusta ou Sistema Web)
+                </li>
+                <li><i class="fas fa-check"></i> Site Institucional integrado com Blog Dinâmico e CMS</li>
+                <li><i class="fas fa-check"></i> Criação de Landing Pages sob demanda para o marketing</li>
+                <li><i class="fas fa-check"></i> Digital Signage corporativo para comunicação interna/clientes</li>
+                <li><i class="fas fa-check"></i> SEO completo e Micro-site para redes sociais</li>
+            </ul>
+            <div class="drawer-footer">
+                <div class="drawer-deadline"><i class="far fa-clock"></i> Prazo: 12 a 16 semanas</div>
+                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20orçar%20o%20Combo%20Enterprise."
+                    target="_blank" rel="noopener noreferrer" class="plan-link"><i class="fab fa-whatsapp"></i> Orçar
+                    Combo</a>
+            </div>
+        </aside>
+
 
         <!-- ═══ STACK ═══ -->
         <section id="stack">
@@ -2437,6 +2868,45 @@
             });
         }, { rootMargin: '-40% 0px -55% 0px' });
         sections.forEach(s => spyObs.observe(s));
+
+        // ─── Drawer System ───────────────────────────
+        const overlay = document.getElementById('drawerOverlay');
+        let activeDrawer = null;
+
+        function openDrawer(id) {
+            if (activeDrawer) closeDrawer(activeDrawer, false);
+            const el = document.getElementById('drawer-' + id);
+            if (!el) return;
+            el.classList.add('open');
+            overlay.classList.add('open');
+            overlay.removeAttribute('aria-hidden');
+            document.body.classList.add('drawer-open');
+            el.focus();
+            activeDrawer = el;
+        }
+
+        function closeDrawer(el, clearActive = true) {
+            if (!el) return;
+            el.classList.remove('open');
+            overlay.classList.remove('open');
+            overlay.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('drawer-open');
+            if (clearActive) activeDrawer = null;
+        }
+
+        document.querySelectorAll('[data-drawer]').forEach(btn => {
+            btn.addEventListener('click', () => openDrawer(btn.dataset.drawer));
+        });
+
+        document.querySelectorAll('.drawer-close').forEach(btn => {
+            btn.addEventListener('click', () => closeDrawer(activeDrawer));
+        });
+
+        overlay.addEventListener('click', () => closeDrawer(activeDrawer));
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && activeDrawer) closeDrawer(activeDrawer);
+        });
     </script>
 </body>
 
