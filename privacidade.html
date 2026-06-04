@@ -219,6 +219,18 @@
             box-shadow: 0 8px 24px rgba(255, 94, 0, 0.45);
         }
 
+        /* Mobile nav elements: ocultos por padrão */
+        .nav-links-mobile,
+        .nav-cta-mobile {
+            display: none;
+        }
+
+        /* Desktop nav-cta-wrap: visível inline */
+        .nav-cta-wrap {
+            display: flex;
+            align-items: center;
+        }
+
         .hbg {
             display: none;
             flex-direction: column;
@@ -254,40 +266,71 @@
         @media (max-width: 860px) {
             .hbg {
                 display: flex;
+                margin-left: auto;
+                flex-shrink: 0;
             }
 
-            .nav-links {
-                display: none;
+            /* Esconde nav desktop no mobile */
+            .nav-links-desktop,
+            .nav-cta-desktop {
+                display: none !important;
+            }
+
+            /* Menu mobile: tela cheia abaixo do header, fundo sólido */
+            .nav-links-mobile {
                 flex-direction: column;
                 position: fixed;
-                inset: 68px 0 0 0;
-                background: rgba(13, 21, 32, 0.98);
-                backdrop-filter: blur(20px);
+                top: 68px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: #0D1520;
                 align-items: center;
                 justify-content: center;
-                gap: 1.5rem;
-                z-index: 999;
+                gap: 2rem;
+                z-index: 1100;
+                padding-bottom: 7rem;
+                list-style: none;
             }
 
-            .nav-links.open {
+            .nav-links-mobile.open {
                 display: flex;
             }
 
-            .nav-cta-wrap {
-                display: none;
+            .nav-links-mobile a {
+                font-size: 1.35rem;
+                font-weight: 600;
+                color: var(--text-soft, #a0aec0);
+                padding: 0.5rem 1.5rem;
+            }
+
+            .nav-links-mobile a:hover,
+            .nav-links-mobile a.on {
+                color: var(--mint, #34d1b7);
+                background: transparent;
+            }
+
+            /* Botão de orçamento fixo no rodapé do menu mobile */
+            .nav-cta-mobile {
                 position: fixed;
                 bottom: 2.5rem;
                 left: 50%;
                 transform: translateX(-50%);
-                z-index: 1000;
+                z-index: 1101;
+                white-space: nowrap;
             }
 
-            .nav-cta-wrap.open {
+            .nav-cta-mobile.open {
                 display: flex;
             }
 
-            .nav-links a {
-                font-size: 1.25rem;
+            .nav-cta {
+                font-size: 1rem;
+                padding: 0.85rem 2.25rem;
+            }
+
+            nav {
+                justify-content: space-between;
             }
         }
 
@@ -735,40 +778,71 @@
             /* Header */
             .hbg {
                 display: flex;
+                margin-left: auto;
+                flex-shrink: 0;
             }
 
-            .nav-links {
-                display: none;
+            /* Esconde nav desktop no mobile */
+            .nav-links-desktop,
+            .nav-cta-desktop {
+                display: none !important;
+            }
+
+            /* Menu mobile: tela cheia abaixo do header, fundo sólido */
+            .nav-links-mobile {
                 flex-direction: column;
                 position: fixed;
-                inset: 68px 0 0 0;
-                background: rgba(13, 21, 32, 0.98);
-                backdrop-filter: blur(20px);
+                top: 68px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: #0D1520;
                 align-items: center;
                 justify-content: center;
-                gap: 1.5rem;
-                z-index: 999;
+                gap: 2rem;
+                z-index: 1100;
+                padding-bottom: 7rem;
+                list-style: none;
             }
 
-            .nav-links.open {
+            .nav-links-mobile.open {
                 display: flex;
             }
 
-            .nav-cta-wrap {
-                display: none;
+            .nav-links-mobile a {
+                font-size: 1.35rem;
+                font-weight: 600;
+                color: var(--text-soft, #a0aec0);
+                padding: 0.5rem 1.5rem;
+            }
+
+            .nav-links-mobile a:hover,
+            .nav-links-mobile a.on {
+                color: var(--mint, #34d1b7);
+                background: transparent;
+            }
+
+            /* Botão de orçamento fixo no rodapé do menu mobile */
+            .nav-cta-mobile {
                 position: fixed;
                 bottom: 2.5rem;
                 left: 50%;
                 transform: translateX(-50%);
-                z-index: 1000;
+                z-index: 1101;
+                white-space: nowrap;
             }
 
-            .nav-cta-wrap.open {
+            .nav-cta-mobile.open {
                 display: flex;
             }
 
-            .nav-links a {
-                font-size: 1.25rem;
+            .nav-cta {
+                font-size: 1rem;
+                padding: 0.85rem 2.25rem;
+            }
+
+            nav {
+                justify-content: space-between;
             }
 
             /* Page hero */
@@ -1003,24 +1077,42 @@
     <header id="hdr">
         <nav class="wrap">
             <a href="index.html" class="logo-text" aria-label="GeoCODE — início">Geo<span>CODE</span></a>
-            <ul class="nav-links" id="navLinks">
+
+            <!-- Desktop nav -->
+            <ul class="nav-links nav-links-desktop" id="navLinksDesktop">
                 <li><a href="index.html#home">Início</a></li>
                 <li><a href="index.html#solucoes">Soluções</a></li>
                 <li><a href="index.html#planos">Planos</a></li>
                 <li><a href="index.html#stack">Stack</a></li>
                 <li><a href="index.html#sobre">Sobre</a></li>
             </ul>
-            <div class="nav-cta-wrap" id="navCta">
+            <div class="nav-cta-wrap nav-cta-desktop">
                 <a href="https://wa.me/+5579988663905?text=Olá%20GeoCODE,%20gostaria%20de%20suporte%20técnico."
                     target="_blank" rel="noopener noreferrer" class="nav-cta">
                     <i class="fas fa-headset"></i> Suporte
                 </a>
             </div>
+
             <button class="hbg" id="hbgBtn" aria-label="Abrir menu" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
         </nav>
     </header>
+
+    <!-- Mobile nav — FORA do header para escapar do backdrop-filter stacking context -->
+    <ul class="nav-links nav-links-mobile" id="navLinks">
+        <li><a href="index.html#home">Início</a></li>
+        <li><a href="index.html#solucoes">Soluções</a></li>
+        <li><a href="index.html#planos">Planos</a></li>
+        <li><a href="index.html#stack">Stack</a></li>
+        <li><a href="index.html#sobre">Sobre</a></li>
+    </ul>
+    <div class="nav-cta-wrap nav-cta-mobile" id="navCta">
+        <a href="https://wa.me/+5579988663905?text=Olá%20GeoCODE,%20gostaria%20de%20suporte%20técnico." target="_blank"
+            rel="noopener noreferrer" class="nav-cta">
+            <i class="fas fa-headset"></i> Suporte
+        </a>
+    </div>
 
     <main>
 
