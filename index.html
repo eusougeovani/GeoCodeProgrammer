@@ -482,30 +482,6 @@
             padding-block: 4rem;
         }
 
-        .hero-eyebrow {
-            font-family: var(--font-m);
-            font-size: .75rem;
-            font-weight: 500;
-            letter-spacing: .14em;
-            text-transform: uppercase;
-            color: var(--mint);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: .5rem;
-        }
-
-        .hero-eyebrow::before {
-            content: '';
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--mint);
-            box-shadow: 0 0 8px var(--mint);
-            animation: pulse-dot 2s infinite;
-        }
-
         @keyframes pulse-dot {
 
             0%,
@@ -539,37 +515,6 @@
             flex-wrap: wrap;
             gap: 1rem;
             margin-bottom: 3.5rem;
-        }
-
-        .hero-stats {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            padding-top: 2.5rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .stat-num {
-            font-family: var(--font-h);
-            font-size: 2.2rem;
-            font-weight: 800;
-            line-height: 1;
-            background: var(--grad);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .stat-label {
-            font-size: .83rem;
-            color: var(--muted);
-            margin-top: .3rem;
-        }
-
-        .stat-div {
-            width: 1px;
-            background: var(--border);
-            align-self: stretch;
         }
 
         /* Hero visual */
@@ -670,10 +615,6 @@
                 justify-content: center;
             }
 
-            .hero-stats {
-                justify-content: center;
-            }
-
             .hero-photo-wrap {
                 width: min(300px, 80vw);
             }
@@ -684,10 +625,6 @@
 
             .hero-badge-2 {
                 right: -5%;
-            }
-
-            .hero-eyebrow {
-                justify-content: center;
             }
         }
 
@@ -1358,8 +1295,6 @@
 
                     <!-- Texto -->
                     <div class="hero-inner">
-                        <p class="hero-eyebrow rv">Desenvolvedor Web · Aracaju, SE</p>
-
                         <h1 class="hero-title rv d1">
                             Desde 2021<br>
                             <span class="g-text">construindo o digital</span><br>
@@ -1382,23 +1317,6 @@
                                 Ver Serviços <i class="fas fa-arrow-down"></i>
                             </a>
                         </div>
-
-                        <div class="hero-stats rv d4">
-                            <div>
-                                <div class="stat-num"><span data-count="15">0</span>+</div>
-                                <div class="stat-label">Projetos entregues</div>
-                            </div>
-                            <div class="stat-div"></div>
-                            <div>
-                                <div class="stat-num"><span data-count="4">0</span>+</div>
-                                <div class="stat-label">Anos de experiência</div>
-                            </div>
-                            <div class="stat-div"></div>
-                            <div>
-                                <div class="stat-num">100%</div>
-                                <div class="stat-label">Foco em resultados</div>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Foto -->
@@ -1409,7 +1327,7 @@
                                 <span>Projetos<br>entregues</span>
                             </div>
 
-                            <img src="assets/ui/geovani.jpg" alt="Geovani Santos — GeoCODE Programmer"
+                            <img src="assets/logos/perfil.png" alt="Geovani Santos — GeoCODE Programmer"
                                 class="hero-photo" loading="eager" />
 
                             <div class="hero-badge hero-badge-2">
@@ -1426,7 +1344,7 @@
         <!-- ═══ CLIENTES ═══ -->
         <section class="clients-section" id="clientes">
             <div class="wrap">
-                <p class="clients-label rv">Empresas que confiam no meu trabalho</p>
+                <p class="clients-label rv">Quem confia no meu trabalho</p>
                 <div class="clients-flex rv d1">
                     <a href="https://psimeirefranca.vercel.app/" target="_blank" rel="noopener noreferrer"
                         class="client-logo" title="Psicóloga Meire França">
@@ -1784,8 +1702,7 @@
                             </div>
                             <div class="focus-card-body">
                                 <h4>Preço Acessível</h4>
-                                <p>Qualidade de grande agência com preço justo para pequenas e médias empresas em
-                                    Sergipe.</p>
+                                <p>Qualidade de grande agência com preço justo para pequenas e médias empresas.</p>
                             </div>
                         </div>
                     </div>
@@ -1799,13 +1716,12 @@
                             <span class="g-text">GeoCODE</span>
                         </h2>
                         <p class="bio">
-                            Tenho 25 anos e trabalho inteiramente sobre <strong>Linux (Ubuntu e Mint)</strong>,
+                            Trabalho inteiramente sobre <strong>Linux (Ubuntu e Mint)</strong>,
                             construindo interfaces e arquiteturas focadas em performance e acessibilidade financeira.
                             Utilizo <strong>HTML5, CSS3, JavaScript moderno</strong> e consumo avançado de APIs.
                         </p>
                         <p class="bio">
-                            Já atuei como instrutor na <strong>School Vision</strong> e como Assistente Administrativo
-                            na <strong>Primasa Engenharia</strong>. Hoje desenvolvo em tempo integral, sempre buscando
+                            Já atuei como instrutor de <strong>T.I</strong> e como <strong>Assistente Administrativo</strong>. Hoje desenvolvo em tempo integral, sempre buscando
                             entregar a melhor solução possível pelo menor custo de infraestrutura.
                         </p>
                         <p class="bio">
@@ -1833,7 +1749,7 @@
 
                 <div class="footer-brand">
                     <div class="logo-text">Geo<span>CODE</span></div>
-                    <p class="footer-tagline">Soluções digitais inteligentes<br>e acessíveis em Sergipe.</p>
+                    <p class="footer-tagline">Soluções digitais inteligentes<br>e acessíveis.</p>
                     <div class="socials">
                         <a href="https://instagram.com/geovanikeeper" target="_blank" rel="noopener noreferrer"
                             class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
