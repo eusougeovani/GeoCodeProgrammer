@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/assets/ui/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/ui/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/ui/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/ui/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="author" content="Geovani Santos — GeoCODE Programmer" />
+    <meta name="theme-color" content="#0D1520" />
+    <meta name="description"
+        content="Catálogo de Serviços GeoCODE — Sites, Digital Signage, Sistemas Akanni, SEO e muito mais. Conheça valores, inclusos e solicite orçamento direto pelo WhatsApp." />
+    <title>Catálogo de Serviços · GeoCODE Programmer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Figtree:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0D1520;
+            --surface: #131F30;
+            --surface-2: #1C2B40;
+            --surface-3: #243448;
+            --border: rgba(100, 160, 190, .13);
+            --border-h: rgba(52, 209, 183, .32);
+
+            --mint: #34D1B7;
+            --mint-d: #29A893;
+            --steel: #75A7BD;
+            --orange: #FF5E00;
+            --gold: #F0A500;
+
+            --text: #F0F6FA;
+            --text-soft: #C8D8E8;
+            --muted: #6B8CA8;
+
+            --grad: linear-gradient(135deg, var(--steel) 0%, var(--mint) 100%);
+            --grad-o: linear-gradient(135deg, var(--orange) 0%, #FF8C42 100%);
+            --grad-g: linear-gradient(135deg, var(--gold) 0%, #FFD166 100%);
+
+            --font-h: 'Syne', sans-serif;
+            --font-b: 'Figtree', sans-serif;
+            --font-m: 'JetBrains Mono', monospace;
+
+            --r: 14px;
+            --r-lg: 22px;
+            --r-xl: 30px;
+            --r-pill: 999px;
+            --ease: cubic-bezier(.16, 1, .3, 1);
+            --dur: 300ms;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-b);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-h);
+            line-height: 1.15;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        .wrap {
+            width: 100%;
+            max-width: 1280px;
+            margin-inline: auto;
+            padding-inline: clamp(1.25rem, 5vw, 2.5rem);
+        }
+
+        .g-text {
+            background: var(--grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .g-text-o {
+            background: var(--grad-o);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Reveal */
+        .rv {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity .5s var(--ease), transform .5s var(--ease);
+        }
+
+        .rv.on {
+            opacity: 1;
+            transform: none;
+        }
+
+        .rv.d1 {
+            transition-delay: 70ms;
+        }
+
+        .rv.d2 {
+            transition-delay: 140ms;
+        }
+
+        .rv.d3 {
+            transition-delay: 210ms;
+        }
+
+        .rv.d4 {
+            transition-delay: 280ms;
+        }
+
+        /* ─── HEADER ─── */
+        #hdr {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 1000;
+            background: rgba(13, 21, 32, .72);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: background var(--dur), box-shadow var(--dur);
+        }
+
+        #hdr.scrolled {
+            background: rgba(13, 21, 32, .97);
+            box-shadow: 0 4px 32px rgba(0, 0, 0, .5);
+        }
+
+        nav {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            height: 68px;
+            gap: 1rem;
+        }
+
+        .logo-text {
+            font-family: var(--font-h);
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: -.02em;
+            white-space: nowrap;
+        }
+
+        .logo-text span {
+            color: var(--mint);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: .25rem;
+            justify-content: center;
+        }
+
+        .nav-links a {
+            font-size: .88rem;
+            font-weight: 500;
+            color: var(--muted);
+            padding: .45rem .75rem;
+            border-radius: var(--r);
+            transition: color var(--dur), background var(--dur);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text);
+            background: rgba(255, 255, 255, .05);
+        }
+
+        .nav-cta-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: .45rem;
+            padding: .5rem 1.2rem;
+            border-radius: var(--r-pill);
+            background: var(--grad-o);
+            color: #fff;
+            font-size: .87rem;
+            font-weight: 700;
+            box-shadow: 0 4px 16px rgba(255, 94, 0, .28);
+            transition: transform var(--dur), box-shadow var(--dur);
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255, 94, 0, .45);
+        }
+
+        .nav-links-mobile,
+        .nav-cta-mobile {
+            display: none;
+        }
+
+        .hbg {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+            margin-left: auto;
+        }
+
+        .hbg span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: all var(--dur);
+        }
+
+        .hbg.on span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hbg.on span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hbg.on span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        @media (max-width: 860px) {
+            .hbg {
+                display: flex;
+                flex-shrink: 0;
+            }
+
+            .nav-links-desktop,
+            .nav-cta-desktop {
+                display: none !important;
+            }
+
+            nav {
+                display: flex;
+                justify-content: space-between;
+                grid-template-columns: none;
+            }
+
+            .nav-links-mobile {
+                flex-direction: column;
+                position: fixed;
+                top: 68px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: #0D1520;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                z-index: 1100;
+                padding-bottom: 7rem;
+            }
+
+            .nav-links-mobile.open {
+                display: flex;
+            }
+
+            .nav-links-mobile a {
+                font-size: 1.35rem;
+                font-weight: 600;
+                color: var(--text-soft);
+                padding: .5rem 1.5rem;
+            }
+
+            .nav-links-mobile a:hover {
+                color: var(--mint);
+                background: transparent;
+            }
+
+            .nav-cta-mobile {
+                position: fixed;
+                bottom: 2.5rem;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 1101;
+                white-space: nowrap;
+            }
+
+            .nav-cta-mobile.open {
+                display: flex;
+            }
+        }
+
+        /* ─── PAGE HERO ─── */
+        .page-hero {
+            padding: 8rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(52, 209, 183, .04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(52, 209, 183, .04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 100%);
+        }
+
+        .hero-glow-1 {
+            position: absolute;
+            top: -20%;
+            right: -5%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(ellipse, rgba(52, 209, 183, .1) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .hero-glow-2 {
+            position: absolute;
+            bottom: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(ellipse, rgba(255, 94, 0, .07) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            font-family: var(--font-m);
+            font-size: .75rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .breadcrumb i {
+            font-size: .6rem;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--mint);
+        }
+
+        .page-title {
+            font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+            font-weight: 800;
+            letter-spacing: -.04em;
+            margin-bottom: 1rem;
+            line-height: 1.08;
+        }
+
+        .page-desc {
+            font-size: 1.05rem;
+            color: var(--text-soft);
+            max-width: 580px;
+            line-height: 1.85;
+            margin-bottom: 2rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: .45rem;
+            padding: .38rem .95rem;
+            border-radius: var(--r-pill);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            font-family: var(--font-m);
+            font-size: .72rem;
+            color: var(--muted);
+        }
+
+        .meta-pill i {
+            color: var(--mint);
+            font-size: .7rem;
+        }
+
+        /* ─── FILTER BAR ─── */
+        .filter-section {
+            padding: 2rem 0 3rem;
+            position: sticky;
+            top: 68px;
+            z-index: 100;
+            background: rgba(13, 21, 32, .95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .filter-wrap {
+            display: flex;
+            align-items: center;
+            gap: .65rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: .45rem;
+            padding: .5rem 1.1rem;
+            border-radius: var(--r-pill);
+            background: var(--surface);
+            border: 1.5px solid var(--border);
+            font-family: var(--font-b);
+            font-size: .82rem;
+            font-weight: 500;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all var(--dur);
+            white-space: nowrap;
+        }
+
+        .filter-chip i {
+            font-size: .8rem;
+        }
+
+        .filter-chip:hover {
+            border-color: var(--border-h);
+            color: var(--mint);
+        }
+
+        .filter-chip.on {
+            background: rgba(52, 209, 183, .1);
+            border-color: var(--mint);
+            color: var(--mint);
+        }
+
+        .filter-chip.on-o {
+            background: rgba(255, 94, 0, .1);
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        /* ─── CATALOG GRID ─── */
+        .catalog-section {
+            padding: 4rem 0 6rem;
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
+            gap: 1.75rem;
+        }
+
+        /* ─── SERVICE CARD ─── */
+        .svc-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r-xl);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: border-color var(--dur), transform var(--dur), box-shadow var(--dur);
+            cursor: pointer;
+        }
+
+        .svc-card:hover {
+            border-color: var(--border-h);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+        }
+
+        .svc-card.featured {
+            border-color: rgba(52, 209, 183, .3);
+        }
+
+        .svc-card.hidden {
+            display: none;
+        }
+
+        /* Card visual banner */
+        .svc-banner {
+            position: relative;
+            height: 180px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding: 1.25rem 1.5rem;
+            overflow: hidden;
+        }
+
+        .svc-banner-bg {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .svc-banner-bg-icon {
+            font-size: 10rem;
+            opacity: .06;
+            color: #fff;
+            pointer-events: none;
+            transform: rotate(-12deg) translateX(20%);
+        }
+
+        .svc-banner-icon {
+            position: relative;
+            z-index: 1;
+            width: 52px;
+            height: 52px;
+            border-radius: var(--r);
+            background: rgba(255, 255, 255, .12);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, .18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: #fff;
+        }
+
+        .badge-featured {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            padding: .3rem .8rem;
+            border-radius: var(--r-pill);
+            background: rgba(255, 255, 255, .15);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, .22);
+            font-family: var(--font-m);
+            font-size: .68rem;
+            font-weight: 500;
+            color: #fff;
+            letter-spacing: .05em;
+        }
+
+        .badge-featured i {
+            font-size: .6rem;
+        }
+
+        .badge-tag {
+            position: absolute;
+            top: 1rem;
+            left: 1.25rem;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            padding: .28rem .75rem;
+            border-radius: var(--r-pill);
+            font-family: var(--font-m);
+            font-size: .65rem;
+            font-weight: 500;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        /* Card body */
+        .svc-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .svc-name {
+            font-family: var(--font-h);
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: .3rem;
+        }
+
+        .svc-tagline {
+            font-size: .83rem;
+            color: var(--muted);
+            margin-bottom: 1.1rem;
+        }
+
+        .svc-desc {
+            font-size: .88rem;
+            color: var(--text-soft);
+            line-height: 1.75;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Features list */
+        .svc-feats {
+            display: flex;
+            flex-direction: column;
+            gap: .4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .svc-feats li {
+            display: flex;
+            align-items: flex-start;
+            gap: .55rem;
+            font-size: .82rem;
+            color: var(--text-soft);
+            line-height: 1.6;
+        }
+
+        .svc-feats li i {
+            font-size: .65rem;
+            margin-top: .38rem;
+            flex-shrink: 0;
+        }
+
+        /* Prazo + entregáveis row */
+        .svc-meta-row {
+            display: flex;
+            gap: .75rem;
+            flex-wrap: wrap;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.25rem;
+        }
+
+        .svc-meta-item {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            font-family: var(--font-m);
+            font-size: .72rem;
+            color: var(--muted);
+        }
+
+        .svc-meta-item i {
+            font-size: .68rem;
+            color: var(--steel);
+        }
+
+        /* Price + CTA */
+        .svc-footer {
+            margin-top: auto;
+        }
+
+        .svc-price-block {
+            margin-bottom: 1rem;
+        }
+
+        .svc-price-label {
+            font-family: var(--font-m);
+            font-size: .68rem;
+            color: var(--muted);
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: .25rem;
+        }
+
+        .svc-price-row {
+            display: flex;
+            align-items: baseline;
+            gap: .5rem;
+            flex-wrap: wrap;
+        }
+
+        .svc-price-val {
+            font-family: var(--font-h);
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .svc-price-suffix {
+            font-size: .83rem;
+            color: var(--muted);
+        }
+
+        .svc-price-monthly {
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            padding: .25rem .7rem;
+            border-radius: var(--r-pill);
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            font-family: var(--font-m);
+            font-size: .7rem;
+            color: var(--muted);
+            margin-top: .3rem;
+        }
+
+        .svc-price-monthly i {
+            font-size: .65rem;
+            color: var(--steel);
+        }
+
+        .svc-cta-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .55rem;
+            width: 100%;
+            padding: .9rem;
+            border-radius: var(--r);
+            font-family: var(--font-b);
+            font-size: .9rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: transform var(--dur), box-shadow var(--dur), opacity var(--dur);
+        }
+
+        .svc-cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .svc-cta-btn.wa {
+            background: #25D366;
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, .3);
+        }
+
+        .svc-cta-btn.wa:hover {
+            box-shadow: 0 8px 28px rgba(37, 211, 102, .5);
+        }
+
+        /* ─── COMPARATIVO / INFO SECTION ─── */
+        .info-section {
+            padding: 4rem 0;
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .info-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: 1.5rem 1.25rem;
+            transition: border-color var(--dur), transform var(--dur);
+        }
+
+        .info-card:hover {
+            border-color: var(--border-h);
+            transform: translateY(-3px);
+        }
+
+        .info-card-icon {
+            font-size: 1.3rem;
+            margin-bottom: .75rem;
+        }
+
+        .info-card h4 {
+            font-family: var(--font-h);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: .4rem;
+        }
+
+        .info-card p {
+            font-size: .83rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* Cronograma */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-top: 2rem;
+        }
+
+        .tl-item {
+            display: flex;
+            gap: 1.25rem;
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .tl-item:last-child {
+            border-bottom: none;
+        }
+
+        .tl-num {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            border-radius: 50%;
+            border: 1.5px solid var(--border-h);
+            background: rgba(52, 209, 183, .08);
+            color: var(--mint);
+            font-family: var(--font-h);
+            font-weight: 800;
+            font-size: .88rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tl-text h4 {
+            font-size: .95rem;
+            font-weight: 700;
+            margin-bottom: .2rem;
+        }
+
+        .tl-text p {
+            font-size: .83rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* Section head */
+        .sec-head {
+            text-align: center;
+        }
+
+        .eyebrow {
+            font-family: var(--font-m);
+            font-size: .73rem;
+            font-weight: 500;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--steel);
+            display: inline-block;
+            margin-bottom: .75rem;
+        }
+
+        .sec-title {
+            font-size: clamp(1.8rem, 3.8vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: -.03em;
+            margin-bottom: 1rem;
+        }
+
+        .sec-sub {
+            font-size: .97rem;
+            color: var(--muted);
+            max-width: 520px;
+            margin-inline: auto;
+            line-height: 1.8;
+        }
+
+        .sec-line {
+            width: 48px;
+            height: 3px;
+            background: var(--grad);
+            border-radius: 2px;
+            margin: 0 auto 1.5rem;
+        }
+
+        /* ─── CTA FINAL ─── */
+        .cta-section {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r-xl);
+            padding: clamp(2.5rem, 5vw, 4rem);
+            max-width: 680px;
+            margin-inline: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(52, 209, 183, .07) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta-title {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -.03em;
+            margin-bottom: .75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-desc {
+            font-size: .97rem;
+            color: var(--muted);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .55rem;
+            padding: .9rem 2.1rem;
+            border-radius: var(--r-pill);
+            font-family: var(--font-b);
+            font-size: .95rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: transform var(--dur), box-shadow var(--dur);
+        }
+
+        .btn-primary {
+            background: var(--grad-o);
+            color: #fff;
+            box-shadow: 0 6px 24px rgba(255, 94, 0, .3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 36px rgba(255, 94, 0, .48);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--mint);
+            border: 1.5px solid var(--border-h);
+        }
+
+        .btn-ghost:hover {
+            background: rgba(52, 209, 183, .06);
+            transform: translateY(-2px);
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: #0A1018;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-bottom {
+            padding: 1.25rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: .75rem;
+            font-size: .8rem;
+            color: var(--muted);
+        }
+
+        .footer-bottom a {
+            color: var(--muted);
+            transition: color var(--dur);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--mint);
+        }
+
+        /* WA float */
+        .wa-float {
+            position: fixed;
+            bottom: 1.75rem;
+            right: 1.75rem;
+            z-index: 900;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: #25D366;
+            color: #fff;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 24px rgba(37, 211, 102, .4);
+            transition: transform var(--dur), box-shadow var(--dur);
+        }
+
+        .wa-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 32px rgba(37, 211, 102, .55);
+        }
+
+        /* ─── EMPTY STATE ─── */
+        .empty-state {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            text-align: center;
+            gap: 1rem;
+        }
+
+        .empty-state.show {
+            display: flex;
+        }
+
+        .empty-state i {
+            font-size: 2.5rem;
+            color: var(--muted);
+        }
+
+        .empty-state p {
+            color: var(--muted);
+            font-size: .95rem;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 680px) {
+            .catalog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-wrap {
+                gap: .45rem;
+            }
+
+            .filter-chip {
+                font-size: .78rem;
+                padding: .45rem .9rem;
+            }
+
+            .svc-banner {
+                height: 150px;
+            }
+
+            .cta-btns {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .filter-section {
+                padding: 1.25rem 0 1.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══ HEADER ═══ -->
+    <header id="hdr">
+        <div class="wrap">
+            <nav>
+                <a href="index.html" class="logo-text">Geo<span>CODE</span></a>
+
+                <ul class="nav-links nav-links-desktop">
+                    <li><a href="index.html#home">Início</a></li>
+                    <li><a href="index.html#servicos">Serviços</a></li>
+                    <li><a href="catalogo.html" class="active">Catálogo</a></li>
+                    <li><a href="index.html#foco">Sobre</a></li>
+                </ul>
+
+                <div class="nav-cta-wrap nav-cta-desktop">
+                    <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20um%20orçamento."
+                        target="_blank" rel="noopener noreferrer" class="nav-cta">
+                        <i class="fab fa-whatsapp"></i> Orçamento
+                    </a>
+                </div>
+
+                <button class="hbg" id="hbgBtn" aria-label="Abrir menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <ul class="nav-links nav-links-mobile" id="navLinks">
+        <li><a href="index.html#home">Início</a></li>
+        <li><a href="index.html#servicos">Serviços</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="index.html#foco">Sobre</a></li>
+    </ul>
+    <div class="nav-cta-wrap nav-cta-mobile" id="navCta">
+        <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20um%20orçamento." target="_blank"
+            rel="noopener noreferrer" class="nav-cta">
+            <i class="fab fa-whatsapp"></i> Orçamento
+        </a>
+    </div>
+
+    <main>
+
+        <!-- ═══ PAGE HERO ═══ -->
+        <section class="page-hero">
+            <div class="hero-grid" aria-hidden="true"></div>
+            <div class="hero-glow-1" aria-hidden="true"></div>
+            <div class="hero-glow-2" aria-hidden="true"></div>
+            <div class="wrap">
+                <div class="hero-inner">
+                    <div class="breadcrumb rv">
+                        <a href="index.html">GeoCODE</a>
+                        <i class="fas fa-chevron-right"></i>
+                        <span>Catálogo de Serviços</span>
+                    </div>
+                    <h1 class="page-title rv d1">
+                        Catálogo de<br>
+                        <span class="g-text">Serviços</span> GeoCODE
+                    </h1>
+                    <p class="page-desc rv d2">
+                        Tudo que você precisa para crescer no digital em um só lugar.
+                        Explore soluções com valores transparentes, detalhes técnicos e orçamento direto pelo WhatsApp.
+                    </p>
+                    <div class="hero-meta rv d3">
+                        <span class="meta-pill"><i class="fas fa-tag"></i> Preços transparentes</span>
+                        <span class="meta-pill"><i class="fab fa-whatsapp"></i> Orçamento via WhatsApp</span>
+                        <span class="meta-pill"><i class="fas fa-map-marker-alt"></i> Aracaju, Sergipe</span>
+                        <span class="meta-pill"><i class="fas fa-shield-halved"></i> 30% · 30% · 40%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ FILTER BAR ═══ -->
+        <div class="filter-section" id="filterBar">
+            <div class="wrap">
+                <div class="filter-wrap">
+                    <button class="filter-chip on" data-filter="all">
+                        <i class="fas fa-border-all"></i> Todos
+                    </button>
+                    <button class="filter-chip" data-filter="site">
+                        <i class="fas fa-globe"></i> Sites
+                    </button>
+                    <button class="filter-chip" data-filter="sistema">
+                        <i class="fas fa-database"></i> Sistemas
+                    </button>
+                    <button class="filter-chip" data-filter="signage">
+                        <i class="fas fa-tv"></i> Digital Signage
+                    </button>
+                    <button class="filter-chip" data-filter="marketing">
+                        <i class="fas fa-chart-line"></i> Marketing
+                    </button>
+                    <button class="filter-chip" data-filter="ecommerce">
+                        <i class="fas fa-cart-shopping"></i> E-commerce
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ CATALOG GRID ═══ -->
+        <section class="catalog-section" id="catalogo">
+            <div class="wrap">
+                <div class="catalog-grid" id="catalogGrid">
+
+                    <!-- ── 1. Landing Page ── -->
+                    <article class="svc-card rv" data-cat="site">
+                        <div class="svc-banner"
+                            style="background: linear-gradient(135deg, #1a1040 0%, #2d1a5c 50%, #3d1a6c 100%);">
+                            <div class="svc-banner-bg"><i class="fas fa-bullseye svc-banner-bg-icon"></i></div>
+                            <div class="badge-tag"
+                                style="background:rgba(255,94,0,.2);color:#FF8C42;border:1px solid rgba(255,94,0,.3);">
+                                <i class="fas fa-fire"></i> Mais vendido
+                            </div>
+                            <div class="svc-banner-icon"><i class="fas fa-bullseye"></i></div>
+                            <div class="badge-featured"><i class="fas fa-star"></i> Destaque</div>
+                        </div>
+                        <div class="svc-body">
+                            <div class="svc-name">Landing Page</div>
+                            <div class="svc-tagline">Conversão & Captação de Leads</div>
+                            <p class="svc-desc">Página de alta conversão focada em transformar visitantes em clientes.
+                                Design persuasivo com gatilhos mentais, provas sociais e chamadas à ação estratégicas.
+                            </p>
+                            <ul class="svc-feats">
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Design de alta conversão
+                                    (UX/UI focado no clique)</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Gatilhos mentais e quebra de
+                                    objeções</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Integração com Pixel
+                                    (Meta/Google Ads)</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Formulário de captura
+                                    integrado</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Botão flutuante para WhatsApp
+                                </li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> SSL + Hospedagem + Domínio
+                                    próprio</li>
+                            </ul>
+                            <div class="svc-meta-row">
+                                <div class="svc-meta-item"><i class="far fa-clock"></i> 2 a 4 semanas</div>
+                                <div class="svc-meta-item"><i class="fas fa-mobile-screen"></i> 100% responsivo</div>
+                                <div class="svc-meta-item"><i class="fas fa-gauge-high"></i> SEO básico</div>
+                            </div>
+                            <div class="svc-footer">
+                                <div class="svc-price-block">
+                                    <div class="svc-price-label">Investimento</div>
+                                    <div class="svc-price-row">
+                                        <span class="svc-price-val g-text-o">R$ 600</span>
+                                        <span class="svc-price-suffix">setup</span>
+                                    </div>
+                                    <div class="svc-price-monthly"><i class="fas fa-rotate"></i> + R$ 47/mês manutenção
+                                    </div>
+                                </div>
+                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20tenho%20interesse%20na%20Landing%20Page.%20Podemos%20conversar?"
+                                    target="_blank" rel="noopener noreferrer" class="svc-cta-btn wa">
+                                    <i class="fab fa-whatsapp"></i> Solicitar orçamento
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ── 2. Site Institucional ── -->
+                    <article class="svc-card rv d1" data-cat="site">
+                        <div class="svc-banner"
+                            style="background: linear-gradient(135deg, #0a2030 0%, #0d3050 50%, #0f3d68 100%);">
+                            <div class="svc-banner-bg"><i class="fas fa-globe svc-banner-bg-icon"></i></div>
+                            <div class="badge-tag"
+                                style="background:rgba(52,209,183,.15);color:var(--mint);border:1px solid rgba(52,209,183,.3);">
+                                <i class="fas fa-award"></i> Popular
+                            </div>
+                            <div class="svc-banner-icon"><i class="fas fa-globe"></i></div>
+                        </div>
+                        <div class="svc-body">
+                            <div class="svc-name">Site Institucional</div>
+                            <div class="svc-tagline">Presença Digital Profissional Completa</div>
+                            <p class="svc-desc">Site multisseções de alta performance para destacar sua marca, serviços
+                                e diferenciais. Design responsivo, moderno e otimizado para SEO local.</p>
+                            <ul class="svc-feats">
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Desenvolvimento front-end
+                                    100% customizado</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Header, Hero, Sobre,
+                                    Serviços, Contato</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Hospedagem Vercel + SSL
+                                    gratuito</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Otimização SEO On-Page básico
+                                </li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Integração com Google Meu
+                                    Negócio</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Botão inteligente para
+                                    WhatsApp</li>
+                            </ul>
+                            <div class="svc-meta-row">
+                                <div class="svc-meta-item"><i class="far fa-clock"></i> 5 a 7 semanas</div>
+                                <div class="svc-meta-item"><i class="fas fa-mobile-screen"></i> Responsivo</div>
+                                <div class="svc-meta-item"><i class="fas fa-code"></i> Vanilla JS</div>
+                            </div>
+                            <div class="svc-footer">
+                                <div class="svc-price-block">
+                                    <div class="svc-price-label">Investimento</div>
+                                    <div class="svc-price-row">
+                                        <span class="svc-price-val g-text">R$ 1.100</span>
+                                        <span class="svc-price-suffix">setup</span>
+                                    </div>
+                                    <div class="svc-price-monthly"><i class="fas fa-rotate"></i> + R$ 67/mês manutenção
+                                    </div>
+                                </div>
+                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20tenho%20interesse%20em%20um%20Site%20Institucional.%20Podemos%20conversar?"
+                                    target="_blank" rel="noopener noreferrer" class="svc-cta-btn wa">
+                                    <i class="fab fa-whatsapp"></i> Solicitar orçamento
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ── 3. Micro-Site / Link na Bio ── -->
+                    <article class="svc-card rv d2" data-cat="site">
+                        <div class="svc-banner"
+                            style="background: linear-gradient(135deg, #0f1f1a 0%, #143326 50%, #1a4433 100%);">
+                            <div class="svc-banner-bg"><i class="fas fa-mobile-screen-button svc-banner-bg-icon"></i>
+                            </div>
+                            <div class="badge-tag"
+                                style="background:rgba(52,209,183,.12);color:var(--mint);border:1px solid rgba(52,209,183,.25);">
+                                <i class="fas fa-bolt"></i> Entrega rápida
+                            </div>
+                            <div class="svc-banner-icon"><i class="fas fa-mobile-screen-button"></i></div>
+                        </div>
+                        <div class="svc-body">
+                            <div class="svc-name">Micro-Site (Link na Bio)</div>
+                            <div class="svc-tagline">Presença Compacta & Profissional</div>
+                            <p class="svc-desc">Hub de links personalizado que substitui o Linktree com muito mais
+                                identidade e personalidade. Perfeito para criadores, profissionais liberais e pequenos
+                                negócios.</p>
+                            <ul class="svc-feats">
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Design 100% personalizado com
+                                    sua identidade</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Links ilimitados organizados
+                                    por categoria</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Integração com WhatsApp e
+                                    redes sociais</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Otimizado para carregamento
+                                    rápido no mobile</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Analytics básico de cliques
+                                </li>
+                            </ul>
+                            <div class="svc-meta-row">
+                                <div class="svc-meta-item"><i class="far fa-clock"></i> 1 a 2 semanas</div>
+                                <div class="svc-meta-item"><i class="fas fa-mobile-screen"></i> Mobile-first</div>
+                                <div class="svc-meta-item"><i class="fas fa-gauge-high"></i> Ultra rápido</div>
+                            </div>
+                            <div class="svc-footer">
+                                <div class="svc-price-block">
+                                    <div class="svc-price-label">Investimento</div>
+                                    <div class="svc-price-row">
+                                        <span class="svc-price-val g-text">R$ 250</span>
+                                        <span class="svc-price-suffix">setup</span>
+                                    </div>
+                                    <div class="svc-price-monthly"><i class="fas fa-rotate"></i> + R$ 27/mês manutenção
+                                    </div>
+                                </div>
+                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20tenho%20interesse%20em%20um%20Micro-Site.%20Podemos%20conversar?"
+                                    target="_blank" rel="noopener noreferrer" class="svc-cta-btn wa">
+                                    <i class="fab fa-whatsapp"></i> Solicitar orçamento
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ── 4. Digital Signage ── -->
+                    <article class="svc-card rv" data-cat="signage">
+                        <div class="svc-banner"
+                            style="background: linear-gradient(135deg, #1a1200 0%, #2d2000 50%, #3d2d00 100%);">
+                            <div class="svc-banner-bg"><i class="fas fa-tv svc-banner-bg-icon"></i></div>
+                            <div class="badge-tag"
+                                style="background:rgba(240,165,0,.15);color:var(--gold);border:1px solid rgba(240,165,0,.3);">
+                                <i class="fas fa-display"></i> Corporativo
+                            </div>
+                            <div class="svc-banner-icon"
+                                style="background:rgba(240,165,0,.15);border-color:rgba(240,165,0,.25);color:var(--gold);">
+                                <i class="fas fa-tv"></i>
+                            </div>
+                        </div>
+                        <div class="svc-body">
+                            <div class="svc-name">Digital Signage</div>
+                            <div class="svc-tagline">Painéis Digitais Inteligentes</div>
+                            <p class="svc-desc">Dashboard web para TVs e painéis corporativos. Conteúdo atualizado
+                                remotamente em tempo real com clima, notícias e mídias. Perfeito para recepções,
+                                clínicas e comércios.</p>
+                            <ul class="svc-feats">
+                                <li><i class="fas fa-check" style="color:var(--gold)"></i> Layout 100% personalizado
+                                    para TV (16:9)</li>
+                                <li><i class="fas fa-check" style="color:var(--gold)"></i> Clima em tempo real
+                                    (OpenWeatherMap)</li>
+                                <li><i class="fas fa-check" style="color:var(--gold)"></i> Player de mídia — áudio e
+                                    vídeo nativo</li>
+                                <li><i class="fas fa-check" style="color:var(--gold)"></i> Gerenciamento remoto de
+                                    conteúdo via Firebase</li>
+                                <li><i class="fas fa-check" style="color:var(--gold)"></i> Relógio, data e avisos em
+                                    tempo real</li>
+                                <li><i class="fas fa-check" style="color:var(--gold)"></i> Suporte para múltiplos
+                                    painéis</li>
+                            </ul>
+                            <div class="svc-meta-row">
+                                <div class="svc-meta-item"><i class="far fa-clock"></i> 3 a 5 semanas</div>
+                                <div class="svc-meta-item"><i class="fas fa-tv"></i> TV + Browser</div>
+                                <div class="svc-meta-item"><i class="fas fa-wifi"></i> Online/Offline</div>
+                            </div>
+                            <div class="svc-footer">
+                                <div class="svc-price-block">
+                                    <div class="svc-price-label">Investimento</div>
+                                    <div class="svc-price-row">
+                                        <span class="svc-price-val"
+                                            style="background:var(--grad-g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">R$
+                                            475</span>
+                                        <span class="svc-price-suffix">setup</span>
+                                    </div>
+                                    <div class="svc-price-monthly"><i class="fas fa-rotate"></i> + R$ 97/mês manutenção
+                                    </div>
+                                </div>
+                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20tenho%20interesse%20em%20Digital%20Signage.%20Podemos%20conversar?"
+                                    target="_blank" rel="noopener noreferrer" class="svc-cta-btn wa">
+                                    <i class="fab fa-whatsapp"></i> Solicitar orçamento
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ── 5. AkanniMED ── -->
+                    <article class="svc-card rv d1" data-cat="sistema">
+                        <div class="svc-banner"
+                            style="background: linear-gradient(135deg, #0a1f1a 0%, #0f3028 50%, #124038 100%);">
+                            <div class="svc-banner-bg"><i class="fas fa-stethoscope svc-banner-bg-icon"></i></div>
+                            <div class="badge-tag"
+                                style="background:rgba(52,209,183,.15);color:var(--mint);border:1px solid rgba(52,209,183,.3);">
+                                <i class="fas fa-hospital"></i> Clínicas
+                            </div>
+                            <div class="svc-banner-icon"><i class="fas fa-stethoscope"></i></div>
+                            <div class="badge-featured"><i class="fas fa-shield-halved"></i> LGPD</div>
+                        </div>
+                        <div class="svc-body">
+                            <div class="svc-name">AkanniMED</div>
+                            <div class="svc-tagline">Sistema de Gestão para Clínicas</div>
+                            <p class="svc-desc">Sistema web completo para clínicas e consultórios. Agendamentos,
+                                prontuários, cadastro de pacientes e dashboard administrativo — tudo na nuvem, seguro e
+                                acessível.</p>
+                            <ul class="svc-feats">
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Dashboard administrativo
+                                    completo</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Módulo de agendamento online
+                                </li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Cadastro e histórico de
+                                    pacientes</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Firebase Firestore +
+                                    Authentication</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Relatórios e exportação de
+                                    dados</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Conformidade LGPD + suporte
+                                    incluso</li>
+                            </ul>
+                            <div class="svc-meta-row">
+                                <div class="svc-meta-item"><i class="far fa-clock"></i> 8 a 12 semanas</div>
+                                <div class="svc-meta-item"><i class="fas fa-cloud"></i> Cloud Firebase</div>
+                                <div class="svc-meta-item"><i class="fas fa-lock"></i> Auth + LGPD</div>
+                            </div>
+                            <div class="svc-footer">
+                                <div class="svc-price-block">
+                                    <div class="svc-price-label">Investimento</div>
+                                    <div class="svc-price-row">
+                                        <span class="svc-price-val g-text">R$ 1.700</span>
+                                        <span class="svc-price-suffix">setup</span>
+                                    </div>
+                                    <div class="svc-price-monthly"><i class="fas fa-rotate"></i> + R$ 147/mês manutenção
+                                    </div>
+                                </div>
+                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20tenho%20interesse%20no%20AkanniMED.%20Podemos%20conversar?"
+                                    target="_blank" rel="noopener noreferrer" class="svc-cta-btn wa">
+                                    <i class="fab fa-whatsapp"></i> Solicitar orçamento
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ── 6. AkanniHUB ── -->
+                    <article class="svc-card rv d2" data-cat="sistema">
+                        <div class="svc-banner"
+                            style="background: linear-gradient(135deg, #0d1a30 0%, #122540 50%, #183258 100%);">
+                            <div class="svc-banner-bg"><i class="fas fa-building svc-banner-bg-icon"></i></div>
+                            <div class="badge-tag"
+                                style="background:rgba(117,167,189,.12);color:var(--steel);border:1px solid rgba(117,167,189,.25);">
+                                <i class="fas fa-briefcase"></i> Empresas
+                            </div>
+                            <div class="svc-banner-icon"
+                                style="color:var(--steel);background:rgba(117,167,189,.15);border-color:rgba(117,167,189,.25);">
+                                <i class="fas fa-building"></i>
+                            </div>
+                        </div>
+                        <div class="svc-body">
+                            <div class="svc-name">AkanniHUB</div>
+                            <div class="svc-tagline">Sistema de Gestão para Empresas</div>
+                            <p class="svc-desc">Hub de gestão empresarial completo — clientes, pedidos, estoque,
+                                financeiro e relatórios. Digitalize e automatize sua operação com uma solução sob
+                                medida.</p>
+                            <ul class="svc-feats">
+                                <li><i class="fas fa-check" style="color:var(--steel)"></i> Dashboard operacional em
+                                    tempo real</li>
+                                <li><i class="fas fa-check" style="color:var(--steel)"></i> Módulos de clientes, pedidos
+                                    e estoque</li>
+                                <li><i class="fas fa-check" style="color:var(--steel)"></i> Controle financeiro e fluxo
+                                    de caixa</li>
+                                <li><i class="fas fa-check" style="color:var(--steel)"></i> Firebase Firestore + Auth
+                                    multi-usuário</li>
+                                <li><i class="fas fa-check" style="color:var(--steel)"></i> Exportação de relatórios
+                                    (PDF/CSV)</li>
+                                <li><i class="fas fa-check" style="color:var(--steel)"></i> Suporte técnico seg–sex
+                                    8h–20h</li>
+                            </ul>
+                            <div class="svc-meta-row">
+                                <div class="svc-meta-item"><i class="far fa-clock"></i> 8 a 12 semanas</div>
+                                <div class="svc-meta-item"><i class="fas fa-cloud"></i> Cloud Firebase</div>
+                                <div class="svc-meta-item"><i class="fas fa-users"></i> Multi-usuário</div>
+                            </div>
+                            <div class="svc-footer">
+                                <div class="svc-price-block">
+                                    <div class="svc-price-label">Investimento</div>
+                                    <div class="svc-price-row">
+                                        <span class="svc-price-val"
+                                            style="background:linear-gradient(135deg,var(--steel),var(--mint));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">R$
+                                            1.700</span>
+                                        <span class="svc-price-suffix">setup</span>
+                                    </div>
+                                    <div class="svc-price-monthly"><i class="fas fa-rotate"></i> + R$ 147/mês manutenção
+                                    </div>
+                                </div>
+                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20tenho%20interesse%20no%20AkanniHUB.%20Podemos%20conversar?"
+                                    target="_blank" rel="noopener noreferrer" class="svc-cta-btn wa">
+                                    <i class="fab fa-whatsapp"></i> Solicitar orçamento
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ── 7. SEO & Google Meu Negócio ── -->
+                    <article class="svc-card rv" data-cat="marketing">
+                        <div class="svc-banner"
+                            style="background: linear-gradient(135deg, #1a0d00 0%, #2d1a00 50%, #3d2400 100%);">
+                            <div class="svc-banner-bg"><i class="fab fa-google svc-banner-bg-icon"></i></div>
+                            <div class="badge-tag"
+                                style="background:rgba(255,94,0,.15);color:var(--orange);border:1px solid rgba(255,94,0,.3);">
+                                <i class="fas fa-search"></i> SEO Local
+                            </div>
+                            <div class="svc-banner-icon"
+                                style="color:var(--orange);background:rgba(255,94,0,.15);border-color:rgba(255,94,0,.25);">
+                                <i class="fab fa-google"></i>
+                            </div>
+                        </div>
+                        <div class="svc-body">
+                            <div class="svc-name">SEO & Google Meu Negócio</div>
+                            <div class="svc-tagline">Visibilidade Local no Google</div>
+                            <p class="svc-desc">Gestão profissional do seu perfil Google, otimização para buscas locais
+                                e estratégia de presença orgânica. Seja encontrado pelos clientes certos, na hora certa.
+                            </p>
+                            <ul class="svc-feats">
+                                <li><i class="fas fa-check" style="color:var(--orange)"></i> Configuração e otimização
+                                    completa do perfil GMB</li>
+                                <li><i class="fas fa-check" style="color:var(--orange)"></i> Postagens semanais com
+                                    palavras-chave locais</li>
+                                <li><i class="fas fa-check" style="color:var(--orange)"></i> Gestão de avaliações e
+                                    respostas (Q&A)</li>
+                                <li><i class="fas fa-check" style="color:var(--orange)"></i> SEO On-Page no site
+                                    existente</li>
+                                <li><i class="fas fa-check" style="color:var(--orange)"></i> Relatório mensal de
+                                    impressões e cliques</li>
+                                <li><i class="fas fa-check" style="color:var(--orange)"></i> Integração com Google
+                                    Analytics/Search Console</li>
+                            </ul>
+                            <div class="svc-meta-row">
+                                <div class="svc-meta-item"><i class="far fa-clock"></i> Ativo em até 1 semana</div>
+                                <div class="svc-meta-item"><i class="fas fa-chart-line"></i> Mensal</div>
+                                <div class="svc-meta-item"><i class="fas fa-map-marker-alt"></i> SEO Local</div>
+                            </div>
+                            <div class="svc-footer">
+                                <div class="svc-price-block">
+                                    <div class="svc-price-label">Investimento</div>
+                                    <div class="svc-price-row">
+                                        <span class="svc-price-val g-text-o">R$ 397</span>
+                                        <span class="svc-price-suffix">setup</span>
+                                    </div>
+                                    <div class="svc-price-monthly"><i class="fas fa-rotate"></i> Manutenção mensal a
+                                        consultar</div>
+                                </div>
+                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20tenho%20interesse%20em%20SEO%20e%20Google%20Meu%20Negócio.%20Podemos%20conversar?"
+                                    target="_blank" rel="noopener noreferrer" class="svc-cta-btn wa">
+                                    <i class="fab fa-whatsapp"></i> Solicitar orçamento
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- ── 8. Loja Virtual ── -->
+                    <article class="svc-card rv d1" data-cat="ecommerce">
+                        <div class="svc-banner"
+                            style="background: linear-gradient(135deg, #0f1a10 0%, #172a1a 50%, #1f3a22 100%);">
+                            <div class="svc-banner-bg"><i class="fas fa-cart-shopping svc-banner-bg-icon"></i></div>
+                            <div class="badge-tag"
+                                style="background:rgba(52,209,183,.12);color:var(--mint);border:1px solid rgba(52,209,183,.25);">
+                                <i class="fas fa-store"></i> E-commerce
+                            </div>
+                            <div class="svc-banner-icon"><i class="fas fa-cart-shopping"></i></div>
+                        </div>
+                        <div class="svc-body">
+                            <div class="svc-name">Loja Virtual</div>
+                            <div class="svc-tagline">Venda Online 24 horas por dia</div>
+                            <p class="svc-desc">Loja completa com catálogo dinâmico, carrinho, gateway de pagamento e
+                                painel de gestão. Sua vitrine digital sempre aberta, integrada ao WhatsApp para fechar
+                                pedidos.</p>
+                            <ul class="svc-feats">
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Catálogo de produtos dinâmico
+                                    (Firebase)</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Carrinho e checkout otimizado
+                                </li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Integração com gateway de
+                                    pagamento</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Painel admin para gerenciar
+                                    pedidos</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> Notificações automáticas via
+                                    WhatsApp</li>
+                                <li><i class="fas fa-check" style="color:var(--mint)"></i> SEO para produtos +
+                                    relatórios de vendas</li>
+                            </ul>
+                            <div class="svc-meta-row">
+                                <div class="svc-meta-item"><i class="far fa-clock"></i> 8 a 10 semanas</div>
+                                <div class="svc-meta-item"><i class="fas fa-credit-card"></i> Pagamentos</div>
+                                <div class="svc-meta-item"><i class="fas fa-mobile-screen"></i> Responsivo</div>
+                            </div>
+                            <div class="svc-footer">
+                                <div class="svc-price-block">
+                                    <div class="svc-price-label">Investimento</div>
+                                    <div class="svc-price-row">
+                                        <span class="svc-price-val g-text">R$ 2.500</span>
+                                        <span class="svc-price-suffix">setup</span>
+                                    </div>
+                                    <div class="svc-price-monthly"><i class="fas fa-rotate"></i> + R$ 197/mês manutenção
+                                    </div>
+                                </div>
+                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20tenho%20interesse%20em%20uma%20Loja%20Virtual.%20Podemos%20conversar?"
+                                    target="_blank" rel="noopener noreferrer" class="svc-cta-btn wa">
+                                    <i class="fab fa-whatsapp"></i> Solicitar orçamento
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div><!-- /catalog-grid -->
+
+                <!-- Empty State -->
+                <div class="empty-state" id="emptyState">
+                    <i class="fas fa-search-minus"></i>
+                    <p>Nenhum serviço encontrado para este filtro.<br>Tente outra categoria.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ═══ INFO SECTION ═══ -->
+        <section class="info-section">
+            <div class="wrap">
+                <div class="sec-head rv">
+                    <div class="sec-line"></div>
+                    <p class="eyebrow">Como funciona</p>
+                    <h2 class="sec-title">Do orçamento à<br><span class="g-text">entrega do projeto</span></h2>
+                    <p class="sec-sub">Processo transparente e organizado em etapas claras, do primeiro contato até a
+                        publicação.</p>
+                </div>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:3.5rem;align-items:start;">
+
+                    <!-- Timeline -->
+                    <div class="rv d1">
+                        <div class="timeline">
+                            <div class="tl-item">
+                                <div class="tl-num">1</div>
+                                <div class="tl-text">
+                                    <h4>Contato & Briefing</h4>
+                                    <p>Enviamos um briefing simples pelo WhatsApp para entender seu projeto, objetivos e
+                                        público-alvo.</p>
+                                </div>
+                            </div>
+                            <div class="tl-item">
+                                <div class="tl-num">2</div>
+                                <div class="tl-text">
+                                    <h4>Proposta & Contrato</h4>
+                                    <p>Apresentamos proposta detalhada com escopo, prazo e cronograma de pagamento
+                                        (30/30/40%).</p>
+                                </div>
+                            </div>
+                            <div class="tl-item">
+                                <div class="tl-num">3</div>
+                                <div class="tl-text">
+                                    <h4>Desenvolvimento</h4>
+                                    <p>Início do projeto com atualizações semanais. Você acompanha cada etapa em tempo
+                                        real.</p>
+                                </div>
+                            </div>
+                            <div class="tl-item">
+                                <div class="tl-num">4</div>
+                                <div class="tl-text">
+                                    <h4>Revisão & Aprovação</h4>
+                                    <p>Período de ajustes e refinamentos até aprovação total. Sem custo extra para
+                                        revisões previstas.</p>
+                                </div>
+                            </div>
+                            <div class="tl-item">
+                                <div class="tl-num">5</div>
+                                <div class="tl-text">
+                                    <h4>Publicação & Suporte</h4>
+                                    <p>Deploy, configuração final e treinamento. Suporte contínuo seg–sex das 8h às 20h.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info cards -->
+                    <div class="rv d2">
+                        <div class="info-grid" style="grid-template-columns:1fr 1fr;margin-top:0;">
+                            <div class="info-card">
+                                <div class="info-card-icon" style="color:var(--mint)"><i
+                                        class="fas fa-shield-halved"></i></div>
+                                <h4>SSL Grátis</h4>
+                                <p>Todos os projetos incluem certificado SSL e hospedagem na Vercel sem custo adicional.
+                                </p>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-icon" style="color:var(--orange)"><i
+                                        class="fas fa-code-branch"></i></div>
+                                <h4>Código no GitHub</h4>
+                                <p>Versionamento completo no GitHub. Rastreabilidade total de todas as alterações
+                                    realizadas.</p>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-icon" style="color:var(--steel)"><i class="fas fa-headset"></i>
+                                </div>
+                                <h4>Suporte Humano</h4>
+                                <p>Atendimento direto com Geovani. Sem tickets automatizados — resposta real e rápida.
+                                </p>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-icon" style="color:var(--mint)"><i class="fas fa-wallet"></i>
+                                </div>
+                                <h4>Preço Acessível</h4>
+                                <p>Free tier sempre que possível. Único custo fixo de terceiros: R$ 40/ano de domínio.
+                                </p>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-icon" style="color:var(--orange)"><i class="fab fa-linux"></i>
+                                </div>
+                                <h4>100% Linux</h4>
+                                <p>Desenvolvimento em Ubuntu/Mint com stack Vanilla JS + Firebase + Vercel. Zero
+                                    dependência desnecessária.</p>
+                            </div>
+                            <div class="info-card">
+                                <div class="info-card-icon" style="color:var(--steel)"><i
+                                        class="fas fa-file-contract"></i></div>
+                                <h4>LGPD Compliant</h4>
+                                <p>Todos os sistemas seguem a Lei Geral de Proteção de Dados brasileira. Documentação
+                                    inclusa.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ CTA FINAL ═══ -->
+        <section class="cta-section">
+            <div class="wrap">
+                <div class="cta-box rv">
+                    <p class="eyebrow" style="margin-bottom:.75rem;">Pronto para começar?</p>
+                    <h2 class="cta-title">
+                        Vamos construir<br>
+                        <span class="g-text">seu projeto juntos.</span>
+                    </h2>
+                    <p class="cta-desc">
+                        De uma landing page rápida a um sistema completo. Enviamos o briefing pelo WhatsApp,
+                        você responde no seu tempo e montamos a proposta ideal.
+                    </p>
+                    <div class="cta-btns">
+                        <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20vi%20o%20catálogo%20e%20gostaria%20de%20um%20orçamento."
+                            target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                            <i class="fab fa-whatsapp"></i> Falar pelo WhatsApp
+                        </a>
+                        <a href="index.html" class="btn btn-ghost">
+                            <i class="fas fa-house"></i> Voltar ao início
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="wrap">
+            <div class="footer-bottom">
+                <p>&copy; <span id="anoAtual"></span> GeoCODE Programmer · Geovani Santos. Todos os direitos reservados.
+                </p>
+                <p>
+                    <a href="index.html">Início</a> ·
+                    <a href="privacidade.html">Privacidade</a> ·
+                    <a href="termos.html">Termos</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WA float -->
+    <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20um%20orçamento." target="_blank"
+        rel="noopener noreferrer" class="wa-float" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        'use strict';
+        document.getElementById('anoAtual').textContent = new Date().getFullYear();
+
+        // Header scroll
+        const hdr = document.getElementById('hdr');
+        window.addEventListener('scroll', () => {
+            hdr.classList.toggle('scrolled', window.scrollY > 50);
+        }, { passive: true });
+
+        // Mobile nav
+        const hbgBtn = document.getElementById('hbgBtn');
+        const navLinks = document.getElementById('navLinks');
+        const navCta = document.getElementById('navCta');
+        function toggleNav(open) {
+            hbgBtn.classList.toggle('on', open);
+            navLinks.classList.toggle('open', open);
+            navCta.classList.toggle('open', open);
+            hbgBtn.setAttribute('aria-expanded', open);
+            document.body.style.overflow = open ? 'hidden' : '';
+        }
+        hbgBtn.addEventListener('click', () => toggleNav(!navLinks.classList.contains('open')));
+        navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleNav(false)));
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleNav(false); });
+
+        // Scroll reveal
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const obs = new IntersectionObserver(entries => {
+                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } });
+            }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+            document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+        } else {
+            document.querySelectorAll('.rv').forEach(el => el.classList.add('on'));
+        }
+
+        // ─── Filter chips ─────────────────────────────
+        const chips = document.querySelectorAll('.filter-chip');
+        const cards = document.querySelectorAll('.svc-card');
+        const emptyState = document.getElementById('emptyState');
+
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                // Toggle active state
+                chips.forEach(c => c.classList.remove('on'));
+                chip.classList.add('on');
+
+                const filter = chip.dataset.filter;
+                let visible = 0;
+
+                cards.forEach(card => {
+                    const cat = card.dataset.cat;
+                    const show = filter === 'all' || cat === filter;
+                    card.classList.toggle('hidden', !show);
+                    if (show) visible++;
+                });
+
+                emptyState.classList.toggle('show', visible === 0);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -7,17 +7,11 @@
     <link rel="icon" type="image/svg+xml" href="/assets/ui/favicon.svg" />
     <link rel="shortcut icon" href="/assets/ui/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/ui/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="GeoCODE" />
-    <link rel="manifest" href="site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <meta name="author" content="Geovani Santos — GeoCODE Programmer" />
     <meta name="theme-color" content="#0D1520" />
     <meta name="description"
-        content="Termos de Uso da GeoCODE Programmer — Regras, responsabilidades e condições para utilização de todos os serviços, sistemas e plataformas fornecidos, incluindo o ecossistema Akanni e Digital Signage." />
-    <meta property="og:title" content="Termos de Uso — GeoCODE Programmer" />
-    <meta property="og:description"
-        content="Regras e responsabilidades para utilização dos serviços, sistemas e plataformas da GeoCODE Programmer." />
-    <meta property="og:type" content="website" />
+        content="Termos de Uso da GeoCODE Programmer — regras, direitos e responsabilidades que regem todos os serviços e plataformas fornecidos, incluindo Akanni e Digital Signage." />
     <title>Termos de Uso · GeoCODE Programmer</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -40,8 +34,8 @@
             --bg: #0D1520;
             --surface: #131F30;
             --surface-2: #1C2B40;
-            --border: rgba(100, 160, 190, 0.14);
-            --border-h: rgba(52, 209, 183, 0.32);
+            --border: rgba(100, 160, 190, .14);
+            --border-h: rgba(52, 209, 183, .32);
             --mint: #34D1B7;
             --steel: #75A7BD;
             --orange: #FF5E00;
@@ -53,11 +47,11 @@
             --font-h: 'Syne', sans-serif;
             --font-b: 'Figtree', sans-serif;
             --font-m: 'JetBrains Mono', monospace;
-            --radius: 12px;
-            --radius-lg: 20px;
-            --radius-xl: 28px;
-            --radius-pill: 999px;
-            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --r: 12px;
+            --r-lg: 20px;
+            --r-xl: 28px;
+            --r-pill: 999px;
+            --ease: cubic-bezier(.16, 1, .3, 1);
             --dur: 320ms;
         }
 
@@ -98,13 +92,6 @@
             padding-inline: clamp(1.25rem, 5vw, 2.5rem);
         }
 
-        .wrap-narrow {
-            width: 100%;
-            max-width: 860px;
-            margin-inline: auto;
-            padding-inline: clamp(1.25rem, 5vw, 2.5rem);
-        }
-
         .g-text {
             background: var(--grad);
             -webkit-background-clip: text;
@@ -115,7 +102,7 @@
         .rv {
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+            transition: opacity .5s var(--ease), transform .5s var(--ease);
         }
 
         .rv.on {
@@ -131,12 +118,12 @@
             transition-delay: 160ms;
         }
 
-        /* ── Header ── */
+        /* ─── HEADER ─── */
         #hdr {
             position: fixed;
             inset: 0 0 auto 0;
             z-index: 1000;
-            background: rgba(13, 21, 32, 0.72);
+            background: rgba(13, 21, 32, .72);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
@@ -144,22 +131,23 @@
         }
 
         #hdr.scrolled {
-            background: rgba(13, 21, 32, 0.97);
-            box-shadow: 0 4px 32px rgba(0, 0, 0, 0.5);
+            background: rgba(13, 21, 32, .97);
+            box-shadow: 0 4px 32px rgba(0, 0, 0, .5);
         }
 
         nav {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
             align-items: center;
-            gap: 1.5rem;
             height: 68px;
+            gap: 1rem;
         }
 
         .logo-text {
             font-family: var(--font-h);
             font-weight: 800;
             font-size: 1.2rem;
-            letter-spacing: -0.02em;
+            letter-spacing: -.02em;
             white-space: nowrap;
         }
 
@@ -170,54 +158,53 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 0.25rem;
-            margin-left: auto;
+            gap: .25rem;
+            justify-content: center;
         }
 
         .nav-links a {
-            font-size: 0.88rem;
+            font-size: .88rem;
             font-weight: 500;
             color: var(--muted);
-            padding: 0.45rem 0.75rem;
-            border-radius: var(--radius);
+            padding: .45rem .75rem;
+            border-radius: var(--r);
             transition: color var(--dur), background var(--dur);
         }
 
         .nav-links a:hover {
             color: var(--text);
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, .05);
+        }
+
+        .nav-cta-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
         }
 
         .nav-cta {
             display: inline-flex;
             align-items: center;
-            gap: 0.45rem;
-            padding: 0.5rem 1.2rem;
-            border-radius: var(--radius-pill);
+            gap: .45rem;
+            padding: .5rem 1.2rem;
+            border-radius: var(--r-pill);
             background: var(--grad-o);
             color: #fff;
-            font-size: 0.87rem;
+            font-size: .87rem;
             font-weight: 700;
-            box-shadow: 0 4px 16px rgba(255, 94, 0, 0.28);
+            box-shadow: 0 4px 16px rgba(255, 94, 0, .28);
             transition: transform var(--dur), box-shadow var(--dur);
             white-space: nowrap;
         }
 
         .nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(255, 94, 0, 0.45);
+            box-shadow: 0 8px 24px rgba(255, 94, 0, .45);
         }
 
-        /* Mobile nav elements: ocultos por padrão */
         .nav-links-mobile,
         .nav-cta-mobile {
             display: none;
-        }
-
-        /* Desktop nav-cta-wrap: visível inline */
-        .nav-cta-wrap {
-            display: flex;
-            align-items: center;
         }
 
         .hbg {
@@ -255,17 +242,20 @@
         @media (max-width: 860px) {
             .hbg {
                 display: flex;
-                margin-left: auto;
                 flex-shrink: 0;
             }
 
-            /* Esconde nav desktop no mobile */
             .nav-links-desktop,
             .nav-cta-desktop {
                 display: none !important;
             }
 
-            /* Menu mobile: tela cheia abaixo do header, fundo sólido */
+            nav {
+                display: flex;
+                justify-content: space-between;
+                grid-template-columns: none;
+            }
+
             .nav-links-mobile {
                 flex-direction: column;
                 position: fixed;
@@ -279,7 +269,6 @@
                 gap: 2rem;
                 z-index: 1100;
                 padding-bottom: 7rem;
-                list-style: none;
             }
 
             .nav-links-mobile.open {
@@ -289,17 +278,15 @@
             .nav-links-mobile a {
                 font-size: 1.35rem;
                 font-weight: 600;
-                color: var(--text-soft, #a0aec0);
-                padding: 0.5rem 1.5rem;
+                color: var(--text-soft);
+                padding: .5rem 1.5rem;
             }
 
-            .nav-links-mobile a:hover,
-            .nav-links-mobile a.on {
-                color: var(--mint, #34d1b7);
+            .nav-links-mobile a:hover {
+                color: var(--mint);
                 background: transparent;
             }
 
-            /* Botão de orçamento fixo no rodapé do menu mobile */
             .nav-cta-mobile {
                 position: fixed;
                 bottom: 2.5rem;
@@ -312,20 +299,11 @@
             .nav-cta-mobile.open {
                 display: flex;
             }
-
-            .nav-cta {
-                font-size: 1rem;
-                padding: 0.85rem 2.25rem;
-            }
-
-            nav {
-                justify-content: space-between;
-            }
         }
 
-        /* ── Page Hero ── */
+        /* ─── PAGE HERO ─── */
         .page-hero {
-            padding: 8rem 0 5rem;
+            padding: 8rem 0 4.5rem;
             position: relative;
             overflow: hidden;
             border-bottom: 1px solid var(--border);
@@ -334,7 +312,7 @@
         .page-hero-grid {
             position: absolute;
             inset: 0;
-            background-image: linear-gradient(rgba(255, 94, 0, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 94, 0, 0.03) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(52, 209, 183, .04) 1px, transparent 1px), linear-gradient(90deg, rgba(52, 209, 183, .04) 1px, transparent 1px);
             background-size: 60px 60px;
             mask-image: radial-gradient(ellipse 80% 80% at 50% 100%, black 30%, transparent 100%);
         }
@@ -345,7 +323,7 @@
             right: -5%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(ellipse, rgba(255, 94, 0, 0.08) 0%, transparent 65%);
+            background: radial-gradient(ellipse, rgba(255, 94, 0, .08) 0%, transparent 65%);
             pointer-events: none;
         }
 
@@ -354,127 +332,197 @@
             z-index: 2;
         }
 
-        .page-breadcrumb {
+        .breadcrumb {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: .5rem;
             font-family: var(--font-m);
-            font-size: 0.78rem;
+            font-size: .75rem;
             color: var(--muted);
             margin-bottom: 1.5rem;
         }
 
-        .page-breadcrumb a:hover {
-            color: var(--mint);
+        .breadcrumb i {
+            font-size: .6rem;
         }
 
-        .page-breadcrumb i {
-            font-size: 0.65rem;
+        .breadcrumb a:hover {
+            color: var(--mint);
         }
 
         .page-title {
             font-size: clamp(2rem, 5vw, 3.2rem);
             font-weight: 800;
-            letter-spacing: -0.04em;
-            margin-bottom: 1.25rem;
+            letter-spacing: -.04em;
+            margin-bottom: 1rem;
         }
 
         .page-desc {
             font-size: 1rem;
             color: var(--text-soft);
-            max-width: 640px;
+            max-width: 600px;
             line-height: 1.85;
-            margin-bottom: 2rem;
+            margin-bottom: 1.75rem;
         }
 
         .page-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: .75rem;
         }
 
         .meta-pill {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            background: var(--surface-2);
+            gap: .45rem;
+            padding: .35rem .9rem;
+            border-radius: var(--r-pill);
+            background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: var(--radius-pill);
-            padding: 0.4rem 1rem;
             font-family: var(--font-m);
-            font-size: 0.75rem;
-            color: var(--steel);
+            font-size: .72rem;
+            color: var(--muted);
         }
 
         .meta-pill i {
             color: var(--orange);
-            font-size: 0.8rem;
+            font-size: .7rem;
         }
 
-        /* ── Doc Body ── */
-        .doc-body {
+        /* ─── DOC LAYOUT ─── */
+        .doc-layout {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 3.5rem;
             padding: 4rem 0 6rem;
+            align-items: start;
         }
 
-        .doc-section {
-            margin-bottom: 4rem;
+        /* Sidebar */
+        .doc-sidebar {
+            position: sticky;
+            top: calc(68px + 2rem);
         }
 
-        .doc-section:last-child {
-            margin-bottom: 0;
+        .sidebar-label {
+            font-family: var(--font-m);
+            font-size: .68rem;
+            font-weight: 500;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 1rem;
+            padding-left: .25rem;
         }
 
-        .doc-section-header {
-            margin-bottom: 2rem;
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: .15rem;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            padding: .55rem .75rem;
+            border-radius: var(--r);
+            font-size: .83rem;
+            color: var(--muted);
+            border-left: 2px solid transparent;
+            transition: color var(--dur), background var(--dur), border-color var(--dur);
+        }
+
+        .sidebar-nav a i {
+            width: 14px;
+            font-size: .75rem;
+            color: var(--steel);
+            flex-shrink: 0;
+        }
+
+        .sidebar-nav a:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, .04);
+            border-left-color: var(--border-h);
+        }
+
+        .sidebar-nav a.active {
+            color: var(--orange);
+            background: rgba(255, 94, 0, .07);
+            border-left-color: var(--orange);
+        }
+
+        .sidebar-nav a.active i {
+            color: var(--orange);
+        }
+
+        /* Doc body */
+        .doc-body {
+            display: flex;
+            flex-direction: column;
+            gap: 3.5rem;
+        }
+
+        .sec-header {
+            margin-bottom: 1.5rem;
             padding-bottom: 1.25rem;
             border-bottom: 1px solid var(--border);
         }
 
-        .doc-section-title {
-            display: flex;
-            align-items: center;
-            gap: 0.85rem;
-            font-size: clamp(1.15rem, 2.5vw, 1.4rem);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
+        .sec-num {
+            font-family: var(--font-m);
+            font-size: .7rem;
+            color: var(--muted);
+            letter-spacing: .1em;
+            margin-bottom: .5rem;
         }
 
-        .doc-section-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: var(--radius);
+        .sec-title-row {
+            display: flex;
+            align-items: center;
+            gap: .85rem;
+        }
+
+        .sec-icon {
+            width: 38px;
+            height: 38px;
+            min-width: 38px;
+            border-radius: var(--r);
+            background: rgba(52, 209, 183, .1);
+            color: var(--mint);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
-            flex-shrink: 0;
-            background: rgba(52, 209, 183, 0.1);
-            border: 1px solid rgba(52, 209, 183, 0.2);
-            color: var(--mint);
+            font-size: .95rem;
         }
 
-        .doc-section-icon.orange {
-            background: rgba(255, 94, 0, 0.1);
-            border-color: rgba(255, 94, 0, 0.2);
+        .sec-icon.orange {
+            background: rgba(255, 94, 0, .1);
             color: var(--orange);
         }
 
-        .doc-section-sub {
-            font-size: 0.9rem;
+        .sec-icon.steel {
+            background: rgba(117, 167, 189, .1);
+            color: var(--steel);
+        }
+
+        .sec-title-h {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .sec-sub {
+            font-size: .88rem;
             color: var(--muted);
-            margin-left: 3.3rem;
+            line-height: 1.65;
+            margin-top: .6rem;
         }
 
         .doc-p {
-            font-size: 0.95rem;
+            font-size: .93rem;
             color: var(--text-soft);
-            line-height: 1.9;
-            margin-bottom: 1rem;
-        }
-
-        .doc-p strong {
-            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
         }
 
         .doc-p:last-child {
@@ -484,31 +532,31 @@
         /* Banners */
         .info-banner {
             display: flex;
-            gap: 1rem;
-            background: rgba(52, 209, 183, 0.05);
-            border: 1px solid rgba(52, 209, 183, 0.2);
-            border-radius: var(--radius-lg);
-            padding: 1.5rem 1.75rem;
-            margin-bottom: 2rem;
+            gap: .85rem;
+            background: rgba(52, 209, 183, .05);
+            border: 1px solid rgba(52, 209, 183, .2);
+            border-radius: var(--r-lg);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .info-banner i {
             color: var(--mint);
-            font-size: 1.1rem;
-            margin-top: 0.15rem;
+            font-size: 1rem;
+            margin-top: .15rem;
             flex-shrink: 0;
         }
 
         .info-banner-title {
             font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 0.4rem;
+            font-size: .9rem;
+            margin-bottom: .3rem;
         }
 
         .info-banner-text {
-            font-size: 0.88rem;
+            font-size: .85rem;
             color: var(--muted);
-            line-height: 1.75;
+            line-height: 1.7;
         }
 
         .info-banner-text strong {
@@ -517,31 +565,31 @@
 
         .warn-banner {
             display: flex;
-            gap: 1rem;
-            background: rgba(255, 94, 0, 0.05);
-            border: 1px solid rgba(255, 94, 0, 0.22);
-            border-radius: var(--radius-lg);
-            padding: 1.5rem 1.75rem;
-            margin-bottom: 2rem;
+            gap: .85rem;
+            background: rgba(255, 94, 0, .05);
+            border: 1px solid rgba(255, 94, 0, .22);
+            border-radius: var(--r-lg);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .warn-banner i {
             color: var(--orange);
-            font-size: 1.1rem;
-            margin-top: 0.15rem;
+            font-size: 1rem;
+            margin-top: .15rem;
             flex-shrink: 0;
         }
 
         .warn-banner-title {
             font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 0.4rem;
+            font-size: .9rem;
+            margin-bottom: .3rem;
         }
 
         .warn-banner-text {
-            font-size: 0.88rem;
+            font-size: .85rem;
             color: var(--muted);
-            line-height: 1.75;
+            line-height: 1.7;
         }
 
         .warn-banner-text strong {
@@ -551,28 +599,28 @@
         /* Cards grid */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+            gap: .85rem;
+            margin-bottom: 1.25rem;
         }
 
         .mini-card {
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 1.5rem 1.25rem;
+            border-radius: var(--r-lg);
+            padding: 1.25rem 1.1rem;
             transition: border-color var(--dur), transform var(--dur);
         }
 
         .mini-card:hover {
             border-color: var(--border-h);
-            transform: translateY(-3px);
+            transform: translateY(-2px);
         }
 
         .mini-card-icon {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: var(--mint);
-            margin-bottom: 0.75rem;
+            margin-bottom: .6rem;
         }
 
         .mini-card-icon.orange {
@@ -584,38 +632,38 @@
         }
 
         .mini-card h4 {
-            font-size: 0.95rem;
+            font-size: .9rem;
             font-weight: 700;
-            margin-bottom: 0.4rem;
+            margin-bottom: .3rem;
         }
 
         .mini-card p {
-            font-size: 0.83rem;
+            font-size: .8rem;
             color: var(--muted);
-            line-height: 1.7;
+            line-height: 1.65;
         }
 
         /* Doc list */
         .doc-list {
             display: flex;
             flex-direction: column;
-            gap: 0.6rem;
-            margin-bottom: 1.5rem;
+            gap: .55rem;
+            margin-bottom: 1.25rem;
         }
 
         .doc-list li {
             display: flex;
             align-items: flex-start;
-            gap: 0.7rem;
-            font-size: 0.93rem;
+            gap: .65rem;
+            font-size: .9rem;
             color: var(--text-soft);
             line-height: 1.7;
         }
 
         .doc-list li i {
             color: var(--mint);
-            font-size: 0.75rem;
-            margin-top: 0.4rem;
+            font-size: .7rem;
+            margin-top: .42rem;
             flex-shrink: 0;
         }
 
@@ -623,50 +671,53 @@
             color: var(--orange);
         }
 
-        /* Numbered steps */
+        /* Steps (cronograma / fluxo) */
         .steps-list {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0;
             margin-bottom: 1.5rem;
-            counter-reset: steps;
         }
 
         .step-item {
             display: flex;
-            gap: 1rem;
             align-items: flex-start;
-            counter-increment: steps;
+            gap: 1rem;
+            padding: 1.1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .step-item:last-child {
+            border-bottom: none;
         }
 
         .step-num {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            background: rgba(52, 209, 183, 0.1);
-            border: 1px solid rgba(52, 209, 183, 0.25);
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
+            border-radius: var(--r);
+            border: 1.5px solid rgba(52, 209, 183, .25);
+            background: rgba(52, 209, 183, .08);
             color: var(--mint);
-            font-family: var(--font-m);
-            font-size: 0.8rem;
-            font-weight: 700;
+            font-family: var(--font-h);
+            font-weight: 800;
+            font-size: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-            margin-top: 0.1rem;
         }
 
         .step-num.orange {
-            background: rgba(255, 94, 0, 0.1);
-            border-color: rgba(255, 94, 0, 0.25);
+            border-color: rgba(255, 94, 0, .3);
+            background: rgba(255, 94, 0, .08);
             color: var(--orange);
         }
 
         .step-text {
-            font-size: 0.93rem;
+            font-size: .9rem;
             color: var(--text-soft);
-            line-height: 1.75;
-            padding-top: 0.3rem;
+            line-height: 1.7;
+            padding-top: .6rem;
         }
 
         .step-text strong {
@@ -677,25 +728,26 @@
         .version-bar {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
-            background: var(--surface-2);
+            gap: .75rem;
+            background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 1.25rem 1.5rem;
-            margin-bottom: 2rem;
+            border-radius: var(--r-lg);
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
         }
 
         .version-bar-item {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: .45rem;
             font-family: var(--font-m);
-            font-size: 0.78rem;
+            font-size: .75rem;
             color: var(--muted);
         }
 
         .version-bar-item i {
-            color: var(--mint);
+            color: var(--orange);
+            font-size: .72rem;
         }
 
         .version-bar-item strong {
@@ -708,36 +760,36 @@
             gap: 1.25rem;
             background: var(--surface);
             border: 1px solid var(--border);
-            border-radius: var(--radius-xl);
-            padding: 2rem 1.75rem;
+            border-radius: var(--r-xl);
+            padding: 1.75rem 1.5rem;
             align-items: flex-start;
         }
 
         .contact-card-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: var(--radius);
-            background: rgba(52, 209, 183, 0.1);
-            border: 1px solid rgba(52, 209, 183, 0.2);
-            color: var(--mint);
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            border-radius: var(--r);
+            background: rgba(255, 94, 0, .1);
+            border: 1px solid rgba(255, 94, 0, .2);
+            color: var(--orange);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            flex-shrink: 0;
+            font-size: 1.1rem;
         }
 
         .contact-card-name {
             font-weight: 800;
-            font-size: 1rem;
-            margin-bottom: 0.35rem;
+            font-size: .95rem;
+            margin-bottom: .3rem;
         }
 
         .contact-card-text {
-            font-size: 0.88rem;
+            font-size: .85rem;
             color: var(--muted);
             line-height: 1.75;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
 
         .contact-card-text strong {
@@ -747,18 +799,18 @@
         .contact-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.65rem;
+            gap: .55rem;
         }
 
         .contact-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1.1rem;
-            border-radius: var(--radius-pill);
+            gap: .45rem;
+            padding: .45rem 1rem;
+            border-radius: var(--r-pill);
             background: var(--surface-2);
             border: 1px solid var(--border);
-            font-size: 0.85rem;
+            font-size: .82rem;
             color: var(--text-soft);
             transition: all var(--dur);
         }
@@ -770,12 +822,12 @@
 
         .contact-link i {
             color: var(--mint);
-            font-size: 0.85rem;
+            font-size: .82rem;
         }
 
-        /* ── Footer ── */
+        /* ─── FOOTER ─── */
         footer {
-            background: var(--surface);
+            background: #0A1018;
             border-top: 1px solid var(--border);
         }
 
@@ -785,16 +837,13 @@
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 0.75rem;
-        }
-
-        .footer-bottom p {
-            font-size: 0.82rem;
+            gap: .75rem;
+            font-size: .8rem;
             color: var(--muted);
         }
 
         .footer-bottom a {
-            color: var(--steel);
+            color: var(--muted);
             transition: color var(--dur);
         }
 
@@ -802,327 +851,65 @@
             color: var(--mint);
         }
 
+        /* WA float */
+        .wa-float {
+            position: fixed;
+            bottom: 1.75rem;
+            right: 1.75rem;
+            z-index: 900;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #25D366;
+            color: #fff;
+            font-size: 1.45rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 24px rgba(37, 211, 102, .4);
+            transition: transform var(--dur), box-shadow var(--dur);
+        }
+
+        .wa-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 32px rgba(37, 211, 102, .55);
+        }
+
+        /* ─── RESPONSIVE ─── */
         @media (max-width: 860px) {
-
-            /* Header */
-            .hbg {
-                display: flex;
-                margin-left: auto;
-                flex-shrink: 0;
-            }
-
-            /* Esconde nav desktop no mobile */
-            .nav-links-desktop,
-            .nav-cta-desktop {
-                display: none !important;
-            }
-
-            /* Menu mobile: tela cheia abaixo do header, fundo sólido */
-            .nav-links-mobile {
-                flex-direction: column;
-                position: fixed;
-                top: 68px;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: #0D1520;
-                align-items: center;
-                justify-content: center;
+            .doc-layout {
+                grid-template-columns: 1fr;
                 gap: 2rem;
-                z-index: 1100;
-                padding-bottom: 7rem;
-                list-style: none;
             }
 
-            .nav-links-mobile.open {
-                display: flex;
-            }
-
-            .nav-links-mobile a {
-                font-size: 1.35rem;
-                font-weight: 600;
-                color: var(--text-soft, #a0aec0);
-                padding: 0.5rem 1.5rem;
-            }
-
-            .nav-links-mobile a:hover,
-            .nav-links-mobile a.on {
-                color: var(--mint, #34d1b7);
-                background: transparent;
-            }
-
-            /* Botão de orçamento fixo no rodapé do menu mobile */
-            .nav-cta-mobile {
-                position: fixed;
-                bottom: 2.5rem;
-                left: 50%;
-                transform: translateX(-50%);
-                z-index: 1101;
-                white-space: nowrap;
-            }
-
-            .nav-cta-mobile.open {
-                display: flex;
-            }
-
-            .nav-cta {
-                font-size: 1rem;
-                padding: 0.85rem 2.25rem;
-            }
-
-            nav {
-                justify-content: space-between;
-            }
-
-            /* Page hero */
-            .page-title {
-                font-size: clamp(1.7rem, 5vw, 2.4rem);
-            }
-
-            .page-meta {
-                flex-wrap: wrap;
-                gap: 0.65rem;
-            }
-
-            /* Doc sections */
-            .doc-section-title {
-                font-size: 1.15rem;
-            }
-
-            .doc-section-sub {
-                margin-left: 0;
-                margin-top: 0.5rem;
-            }
-
-            /* Cards */
-            .cards-grid {
-                grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
-            }
-
-            /* Steps */
-            .steps-list {
-                gap: 0.85rem;
-            }
-
-            /* Version bar */
-            .version-bar {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            /* Contact card */
-            .contact-card {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .contact-links {
-                flex-direction: column;
-            }
-
-            .contact-link {
-                justify-content: center;
+            .doc-sidebar {
+                display: none;
             }
         }
 
         @media (max-width: 600px) {
-
-            /* Page hero */
             .page-hero {
                 padding: 6rem 0 3rem;
             }
 
-            .page-title {
-                font-size: clamp(1.5rem, 8vw, 1.9rem);
-                line-height: 1.2;
-            }
-
-            .page-breadcrumb {
-                font-size: 0.72rem;
-            }
-
-            .page-meta {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .meta-pill {
-                font-size: 0.7rem;
-            }
-
-            /* Doc body */
-            .doc-body {
-                padding: 2.5rem 0 4rem;
-            }
-
-            .doc-section {
-                margin-bottom: 3rem;
-            }
-
-            .doc-section-header {
-                padding-bottom: 1rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .doc-section-title {
-                font-size: 1rem;
-                flex-direction: row;
-                align-items: flex-start;
-                gap: 0.65rem;
-            }
-
-            .doc-section-icon {
-                width: 36px;
-                height: 36px;
-                font-size: 0.9rem;
-                flex-shrink: 0;
-            }
-
-            .doc-section-sub {
-                margin-left: 0;
-                font-size: 0.85rem;
-            }
-
-            /* Banners */
-            .info-banner,
-            .warn-banner {
-                flex-direction: column;
-                gap: 0.65rem;
-                padding: 1.1rem;
-            }
-
-            .info-banner-text,
-            .warn-banner-text {
-                font-size: 0.84rem;
-            }
-
-            /* Cards grid — 1 coluna */
             .cards-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
             }
 
-            .mini-card {
-                padding: 1.25rem 1rem;
-            }
-
-            /* Doc list */
-            .doc-list li {
-                font-size: 0.88rem;
-            }
-
-            /* Steps */
-            .step-item {
-                gap: 0.75rem;
-            }
-
-            .step-num {
-                width: 28px;
-                height: 28px;
-                font-size: 0.75rem;
-            }
-
-            .step-text {
-                font-size: 0.88rem;
-            }
-
-            /* Version bar */
-            .version-bar {
-                flex-direction: column;
-                gap: 0.4rem;
-                padding: 1rem;
-            }
-
-            .version-bar-item {
-                font-size: 0.75rem;
-            }
-
-            /* Contact card */
             .contact-card {
                 flex-direction: column;
-                gap: 0.85rem;
-                padding: 1.25rem 1rem;
+                gap: .85rem;
             }
 
-            .contact-card-icon {
-                width: 44px;
-                height: 44px;
-                font-size: 1rem;
-            }
-
-            .contact-links {
-                flex-direction: column;
-            }
-
-            .contact-link {
-                justify-content: center;
-                font-size: 0.82rem;
-            }
-
-            /* Footer */
             .footer-bottom {
                 flex-direction: column;
                 text-align: center;
             }
-
-            .page-meta {
-                flex-direction: column;
-            }
         }
 
-        @media (max-width: 380px) {
-            .page-title {
-                font-size: 1.35rem;
-            }
-
-            .doc-section-title {
-                font-size: 0.92rem;
-            }
-
-            .doc-p {
-                font-size: 0.86rem;
-            }
-
-            .mini-card h4 {
-                font-size: 0.88rem;
-            }
-
-            .step-text {
-                font-size: 0.84rem;
-            }
-        }
-
-        /* WA FLOAT */
-        .wa-float {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 900;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: #25D366;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.4);
-            transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 320ms cubic-bezier(0.16, 1, 0.3, 1);
-            text-decoration: none;
-        }
-
-        .wa-float:hover {
-            transform: scale(1.1) translateY(-2px);
-            box-shadow: 0 12px 36px rgba(37, 211, 102, 0.55);
-        }
-
-        @media (max-width: 600px) {
-            .wa-float {
-                bottom: 1.25rem;
-                right: 1.25rem;
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
+        @media (max-width: 400px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1132,41 +919,39 @@
 
     <!-- ═══ HEADER ═══ -->
     <header id="hdr">
-        <nav class="wrap">
-            <a href="index.html" class="logo-text" aria-label="GeoCODE — início">Geo<span>CODE</span></a>
+        <div class="wrap">
+            <nav>
+                <a href="index.html" class="logo-text">Geo<span>CODE</span></a>
 
-            <!-- Desktop nav -->
-            <ul class="nav-links nav-links-desktop" id="navLinksDesktop">
-                <li><a href="index.html#home">Início</a></li>
-                <li><a href="index.html#solucoes">Soluções</a></li>
-                <li><a href="index.html#planos">Planos</a></li>
-                <li><a href="index.html#stack">Stack</a></li>
-                <li><a href="index.html#sobre">Sobre</a></li>
-            </ul>
-            <div class="nav-cta-wrap nav-cta-desktop">
-                <a href="https://wa.me/+5579988663905?text=Olá%20GeoCODE,%20gostaria%20de%20suporte%20técnico."
-                    target="_blank" rel="noopener noreferrer" class="nav-cta">
-                    <i class="fas fa-headset"></i> Suporte
-                </a>
-            </div>
+                <ul class="nav-links nav-links-desktop">
+                    <li><a href="index.html#home">Início</a></li>
+                    <li><a href="index.html#servicos">Serviços</a></li>
+                    <li><a href="catalogo.html">Catálogo</a></li>
+                    <li><a href="index.html#foco">Sobre</a></li>
+                </ul>
 
-            <button class="hbg" id="hbgBtn" aria-label="Abrir menu" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-        </nav>
+                <div class="nav-cta-wrap nav-cta-desktop">
+                    <a href="https://wa.me/+5579988663905?text=Olá%20GeoCODE,%20gostaria%20de%20suporte."
+                        target="_blank" rel="noopener noreferrer" class="nav-cta">
+                        <i class="fas fa-headset"></i> Suporte
+                    </a>
+                </div>
+
+                <button class="hbg" id="hbgBtn" aria-label="Abrir menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </nav>
+        </div>
     </header>
 
-    <!-- Mobile nav — FORA do header para escapar do backdrop-filter stacking context -->
     <ul class="nav-links nav-links-mobile" id="navLinks">
         <li><a href="index.html#home">Início</a></li>
-        <li><a href="index.html#solucoes">Soluções</a></li>
-        <li><a href="index.html#planos">Planos</a></li>
-        <li><a href="index.html#stack">Stack</a></li>
-        <li><a href="index.html#sobre">Sobre</a></li>
+        <li><a href="index.html#servicos">Serviços</a></li>
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="index.html#foco">Sobre</a></li>
     </ul>
     <div class="nav-cta-wrap nav-cta-mobile" id="navCta">
-        <a href="https://wa.me/+5579988663905?text=Olá%20GeoCODE,%20gostaria%20de%20suporte%20técnico." target="_blank"
-            rel="noopener noreferrer" class="nav-cta">
+        <a href="https://wa.me/+5579988663905" target="_blank" rel="noopener noreferrer" class="nav-cta">
             <i class="fas fa-headset"></i> Suporte
         </a>
     </div>
@@ -1179,23 +964,23 @@
             <div class="page-hero-glow" aria-hidden="true"></div>
             <div class="wrap">
                 <div class="page-hero-inner rv">
-                    <div class="page-breadcrumb">
+                    <div class="breadcrumb">
                         <a href="index.html">GeoCODE</a>
                         <i class="fas fa-chevron-right"></i>
                         <span>Termos de Uso</span>
                     </div>
                     <h1 class="page-title">
-                        Termos de Uso — <span class="g-text">Regras</span><br />e Responsabilidades
+                        Termos de <span class="g-text">Uso</span>
                     </h1>
                     <p class="page-desc">
-                        Este documento estabelece as regras, direitos e responsabilidades que regem o uso de todos os
-                        serviços e plataformas fornecidos pela <strong>GeoCODE Programmer</strong>, incluindo sites
-                        institucionais, Digital Signage, PWAs e o ecossistema <strong>Akanni</strong>. A contratação ou
-                        uso de qualquer produto implica aceitação integral destes termos.
+                        Regras, direitos e responsabilidades que regem o uso de todos os serviços e plataformas
+                        fornecidos pela
+                        <strong>GeoCODE Programmer</strong> — sites, Digital Signage, PWAs e ecossistema
+                        <strong>Akanni</strong>.
+                        A contratação implica aceitação integral destes termos.
                     </p>
                     <div class="page-meta">
-                        <span class="meta-pill"><i class="fas fa-calendar-alt"></i> Vigência a partir de Janeiro de
-                            2025</span>
+                        <span class="meta-pill"><i class="fas fa-calendar-alt"></i> Vigência: Janeiro de 2025</span>
                         <span class="meta-pill"><i class="fas fa-scale-balanced"></i> Foro: Comarca de Aracaju/SE</span>
                         <span class="meta-pill"><i class="fas fa-envelope"></i> geocodeprogrammer@gmail.com</span>
                     </div>
@@ -1203,355 +988,371 @@
             </div>
         </section>
 
-        <!-- ═══ DOC BODY ═══ -->
-        <div class="doc-body">
-            <div class="wrap-narrow">
+        <!-- ═══ DOC LAYOUT ═══ -->
+        <div class="wrap">
+            <div class="doc-layout">
 
-                <!-- 1. Aceitação -->
-                <div class="doc-section rv">
-                    <div class="doc-section-header">
-                        <div class="doc-section-title">
-                            <div class="doc-section-icon orange"><i class="fas fa-circle-check"></i></div>
-                            Aceitação e Âmbito de Aplicação
-                        </div>
-                        <p class="doc-section-sub">Ao contratar, acessar ou utilizar qualquer serviço GeoCODE, você
-                            declara ter lido e aceito todos os termos aqui dispostos.</p>
-                    </div>
+                <!-- Sidebar -->
+                <aside class="doc-sidebar">
+                    <div class="sidebar-label">Nesta página</div>
+                    <nav class="sidebar-nav">
+                        <a href="#s1"><i class="fas fa-circle-check"></i> Aceitação</a>
+                        <a href="#s2"><i class="fas fa-file-signature"></i> Obrigações do Contratante</a>
+                        <a href="#s3"><i class="fas fa-code"></i> Obrigações da GeoCODE</a>
+                        <a href="#s4"><i class="fas fa-copyright"></i> Propriedade Intelectual</a>
+                        <a href="#s5"><i class="fas fa-server"></i> SLA & Infraestrutura</a>
+                        <a href="#s6"><i class="fas fa-credit-card"></i> Pagamentos & Cancelamento</a>
+                        <a href="#s7"><i class="fas fa-shield-halved"></i> Limitação de Responsabilidade</a>
+                        <a href="#s8"><i class="fas fa-arrows-rotate"></i> Política de Atualizações</a>
+                        <a href="#s9"><i class="fas fa-headset"></i> Suporte & Foro</a>
+                    </nav>
+                </aside>
 
-                    <div class="warn-banner">
-                        <i class="fas fa-triangle-exclamation"></i>
-                        <div>
-                            <div class="warn-banner-title">Leia com atenção antes de usar os serviços</div>
-                            <p class="warn-banner-text">Estes Termos constituem um <strong>contrato legalmente
-                                    vinculante</strong> entre o usuário/contratante e a GeoCODE Programmer. Aplicam-se a
-                                todos os serviços contratados, plataformas acessadas e sistemas utilizados. Caso não
-                                concorde com algum item, entre em contato antes de prosseguir. A continuidade do uso
-                                implica aceitação tácita e integral.</p>
-                        </div>
-                    </div>
+                <!-- Conteúdo -->
+                <div class="doc-body">
 
-                    <div class="cards-grid">
-                        <div class="mini-card">
-                            <div class="mini-card-icon"><i class="fas fa-users"></i></div>
-                            <h4>Usuários Contemplados</h4>
-                            <p>Pessoas físicas ou jurídicas que contratam, acessam ou utilizam qualquer produto ou
-                                serviço GeoCODE, seja diretamente ou por terceiros autorizados.</p>
+                    <!-- 1. Aceitação -->
+                    <div class="doc-section rv" id="s1">
+                        <div class="sec-header">
+                            <div class="sec-num">01 —</div>
+                            <div class="sec-title-row">
+                                <div class="sec-icon orange"><i class="fas fa-circle-check"></i></div>
+                                <h2 class="sec-title-h">Aceitação e Âmbito de Aplicação</h2>
+                            </div>
+                            <p class="sec-sub">Ao contratar, acessar ou utilizar qualquer serviço GeoCODE, você declara
+                                ter lido e aceito todos os termos aqui dispostos.</p>
                         </div>
-                        <div class="mini-card">
-                            <div class="mini-card-icon orange"><i class="fas fa-layer-group"></i></div>
-                            <h4>Serviços Abrangidos</h4>
-                            <p>Sites institucionais, Digital Signage, sistema Akanni (AkanniMED e AkanniHUB), portais,
-                                PWAs e qualquer produto desenvolvido sob medida pela GeoCODE.</p>
-                        </div>
-                        <div class="mini-card">
-                            <div class="mini-card-icon steel"><i class="fas fa-rotate"></i></div>
-                            <h4>Atualizações dos Termos</h4>
-                            <p>Estes termos podem ser atualizados a qualquer momento. Mudanças significativas serão
-                                comunicadas com antecedência mínima de 15 dias via e-mail ou sistema.</p>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- 2. Obrigações do Contratante -->
-                <div class="doc-section rv">
-                    <div class="doc-section-header">
-                        <div class="doc-section-title">
-                            <div class="doc-section-icon"><i class="fas fa-file-signature"></i></div>
-                            Obrigações do Contratante
+                        <div class="warn-banner">
+                            <i class="fas fa-triangle-exclamation"></i>
+                            <div>
+                                <div class="warn-banner-title">Leia com atenção antes de usar os serviços</div>
+                                <p class="warn-banner-text">Estes Termos constituem um <strong>contrato legalmente
+                                        vinculante</strong> entre o usuário/contratante e a GeoCODE Programmer. A
+                                    continuidade do uso implica aceitação tácita e integral. Caso não concorde com algum
+                                    item, entre em contato antes de prosseguir.</p>
+                            </div>
                         </div>
-                        <p class="doc-section-sub">Responsabilidades assumidas pelo contratante ao firmar qualquer
-                            serviço com a GeoCODE Programmer.</p>
-                    </div>
 
-                    <ul class="doc-list">
-                        <li><i class="fas fa-circle-check"></i> <span>Fornecer informações verdadeiras, atualizadas e
-                                completas necessárias à execução dos serviços contratados.</span></li>
-                        <li><i class="fas fa-circle-check"></i> <span>Manter dados de acesso (login e senha) em sigilo,
-                                sendo responsável por qualquer ação realizada com suas credenciais.</span></li>
-                        <li><i class="fas fa-circle-check"></i> <span>Realizar os pagamentos nos prazos acordados em
-                                contrato, observando o cronograma de desembolso (30% / 30% / 40%).</span></li>
-                        <li><i class="fas fa-circle-check"></i> <span>Comunicar imediatamente qualquer falha, suspeita
-                                de acesso indevido ou incidente de segurança identificado nos sistemas.</span></li>
-                        <li><i class="fas fa-circle-check"></i> <span>Garantir que o uso dos sistemas e conteúdos
-                                inseridos esteja em conformidade com a legislação brasileira vigente.</span></li>
-                        <li><i class="fas fa-circle-check"></i> <span>Manter a infraestrutura local (internet,
-                                dispositivos, rede interna) necessária ao funcionamento dos serviços contratados.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- 3. Obrigações da GeoCODE -->
-                <div class="doc-section rv">
-                    <div class="doc-section-header">
-                        <div class="doc-section-title">
-                            <div class="doc-section-icon"><i class="fas fa-code"></i></div>
-                            Obrigações da GeoCODE Programmer
-                        </div>
-                        <p class="doc-section-sub">Compromissos assumidos pela GeoCODE na prestação de todos os
-                            serviços.</p>
-                    </div>
-
-                    <ul class="doc-list">
-                        <li><i class="fas fa-circle-check"></i> <span>Entregar os serviços contratados dentro dos prazos
-                                estimados (3 a 5 semanas para sites e Digital Signage; 8 a 12 semanas para sistemas
-                                integrados).</span></li>
-                        <li><i class="fas fa-circle-check"></i> <span>Manter os sistemas hospedados com disponibilidade
-                                contínua, monitorando a infraestrutura em cloud (Vercel, Firebase) e certificados
-                                SSL.</span></li>
-                        <li><i class="fas fa-circle-check"></i> <span>Prestar suporte técnico dentro dos canais e
-                                horários oficiais: segunda a sexta, das 8h às 20h.</span></li>
-                        <li><i class="fas fa-circle-check"></i> <span>Comunicar previamente qualquer custo adicional de
-                                infraestrutura antes de repassá-lo ao contratante.</span></li>
-                        <li><i class="fas fa-circle-check"></i> <span>Manter o código-fonte versionado no GitHub,
-                                garantindo rastreabilidade de todas as alterações realizadas.</span></li>
-                        <li><i class="fas fa-circle-check"></i> <span>Tratar os dados do contratante em conformidade com
-                                a LGPD e com a Política de Privacidade vigente.</span></li>
-                    </ul>
-                </div>
-
-                <!-- 4. Propriedade Intelectual -->
-                <div class="doc-section rv">
-                    <div class="doc-section-header">
-                        <div class="doc-section-title">
-                            <div class="doc-section-icon orange"><i class="fas fa-copyright"></i></div>
-                            Propriedade Intelectual
-                        </div>
-                        <p class="doc-section-sub">Direitos sobre o código, design e sistemas desenvolvidos pela
-                            GeoCODE.</p>
-                    </div>
-
-                    <p class="doc-p">Todo o código-fonte, design, interfaces e arquitetura desenvolvidos pela GeoCODE
-                        Programmer são de <strong>propriedade intelectual da GeoCODE</strong>, exceto quando
-                        expressamente cedido por contrato específico de cessão de direitos.</p>
-
-                    <div class="cards-grid">
-                        <div class="mini-card">
-                            <div class="mini-card-icon"><i class="fas fa-unlock"></i></div>
-                            <h4>Licença de Uso</h4>
-                            <p>O contratante recebe uma licença de uso não exclusiva e intransferível sobre os sistemas
-                                entregues, válida enquanto o contrato de manutenção estiver ativo.</p>
-                        </div>
-                        <div class="mini-card">
-                            <div class="mini-card-icon orange"><i class="fas fa-ban"></i></div>
-                            <h4>Restrições</h4>
-                            <p>É vedado copiar, redistribuir, revender, sublicenciar ou fazer engenharia reversa de
-                                qualquer sistema, código ou interface desenvolvido pela GeoCODE sem autorização escrita.
-                            </p>
-                        </div>
-                        <div class="mini-card">
-                            <div class="mini-card-icon steel"><i class="fas fa-image"></i></div>
-                            <h4>Conteúdo do Contratante</h4>
-                            <p>Textos, imagens, logotipos e mídias inseridos pelo contratante permanecem de sua
-                                propriedade. A GeoCODE não reivindica direitos sobre o conteúdo editorial dos clientes.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 5. SLA e Infraestrutura -->
-                <div class="doc-section rv">
-                    <div class="doc-section-header">
-                        <div class="doc-section-title">
-                            <div class="doc-section-icon"><i class="fas fa-server"></i></div>
-                            SLA, Infraestrutura e Limites de Plataforma
-                        </div>
-                        <p class="doc-section-sub">Disponibilidade dos serviços, custos de infraestrutura e
-                            responsabilidades sobre falhas de terceiros.</p>
-                    </div>
-
-                    <div class="info-banner">
-                        <i class="fas fa-circle-info"></i>
-                        <div>
-                            <div class="info-banner-title">Infraestrutura em Camada Gratuita (Free Tier)</div>
-                            <p class="info-banner-text">Os projetos GeoCODE operam sobre <strong>Vercel, Firebase,
-                                    GitHub e Cloudinary</strong> em seus planos gratuitos. O custo fixo de terceiros ao
-                                contratante é de <strong>R$ 40,00/ano</strong> (domínio próprio). Caso os limites
-                                gratuitos sejam ultrapassados, os custos excedentes são repassados mediante aviso
-                                prévio.</p>
-                        </div>
-                    </div>
-
-                    <p class="doc-p">O suporte técnico é prestado de <strong>segunda a sexta, das 8h às 20h</strong>.
-                        Finais de semana e feriados são reservados exclusivamente para falhas críticas — sistemas
-                        indisponíveis, erros que impeçam operações essenciais ou extrema lentidão generalizada.</p>
-
-                    <div class="warn-banner" style="margin-top:1.5rem;">
-                        <i class="fas fa-display"></i>
-                        <div>
-                            <div class="warn-banner-title">Digital Signage — Infraestrutura Local</div>
-                            <p class="warn-banner-text">Sistemas de Digital Signage dependem da infraestrutura local do
-                                cliente (televisores, players, rede interna, internet). Instabilidades de internet,
-                                quedas de energia ou falhas em dispositivos de exibição <strong>não são cobertas pelo
-                                    SLA da GeoCODE</strong>. Recomendamos o uso de conexões redundantes e nobreaks para
-                                ambientes críticos.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 6. Pagamentos e Cancelamento -->
-                <div class="doc-section rv">
-                    <div class="doc-section-header">
-                        <div class="doc-section-title">
-                            <div class="doc-section-icon orange"><i class="fas fa-credit-card"></i></div>
-                            Pagamentos, Reajustes e Cancelamento
-                        </div>
-                        <p class="doc-section-sub">Condições financeiras, prazos de pagamento e procedimentos para
-                            encerramento de contrato.</p>
-                    </div>
-
-                    <div class="steps-list">
-                        <div class="step-item">
-                            <div class="step-num">30%</div>
-                            <div class="step-text"><strong>Na assinatura do contrato oficial</strong> — valor devido
-                                para início imediato do desenvolvimento.</div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-num">30%</div>
-                            <div class="step-text"><strong>Na entrega e validação da estrutura base e layout</strong> —
-                                após aprovação do protótipo ou versão intermediária.</div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-num">40%</div>
-                            <div class="step-text"><strong>Na entrega final e publicação pública do projeto</strong> —
-                                após homologação completa pelo contratante.</div>
-                        </div>
-                    </div>
-
-                    <ul class="doc-list">
-                        <li><i class="fas fa-circle-check"></i> <span>Mensalidades de manutenção são cobradas
-                                mensalmente a partir da publicação do projeto, com vencimento acordado em
-                                contrato.</span></li>
-                        <li><i class="fas fa-circle-check"></i> <span>O suporte avulso possui faturamento mínimo de
-                                <strong>R$ 100,00</strong>, cobrado à razão de R$ 50,00/hora técnica.</span></li>
-                        <li><i class="fas fa-circle-check"></i> <span>Atrasos no pagamento superior a 15 dias podem
-                                resultar na suspensão temporária dos serviços de suporte e monitoramento.</span></li>
-                        <li><i class="fas fa-circle-check"></i> <span>O cancelamento de contrato deve ser comunicado com
-                                antecedência mínima de 30 dias. Valores já pagos por serviços entregues não são
-                                reembolsáveis.</span></li>
-                    </ul>
-                </div>
-
-                <!-- 7. Limitação de Responsabilidade -->
-                <div class="doc-section rv">
-                    <div class="doc-section-header">
-                        <div class="doc-section-title">
-                            <div class="doc-section-icon"><i class="fas fa-shield-halved"></i></div>
-                            Limitação de Responsabilidade
-                        </div>
-                    </div>
-
-                    <p class="doc-p">A GeoCODE Programmer não se responsabiliza por danos indiretos, lucros cessantes ou
-                        prejuízos decorrentes de:</p>
-
-                    <ul class="doc-list">
-                        <li><i class="fas fa-circle-check orange"></i> <span>Indisponibilidade ou falhas nas plataformas
-                                de terceiros (Vercel, Firebase, Google Cloud), que possuem seus próprios Termos de
-                                Serviço e SLAs independentes.</span></li>
-                        <li><i class="fas fa-circle-check orange"></i> <span>Falhas de infraestrutura local do
-                                contratante — internet, energia elétrica, dispositivos físicos ou configurações de rede
-                                interna.</span></li>
-                        <li><i class="fas fa-circle-check orange"></i> <span>Uso indevido dos sistemas por parte do
-                                contratante, seus colaboradores ou usuários não autorizados.</span></li>
-                        <li><i class="fas fa-circle-check orange"></i> <span>Conteúdo inserido pelo contratante que
-                                viole direitos de terceiros, leis de propriedade intelectual ou normas vigentes.</span>
-                        </li>
-                        <li><i class="fas fa-circle-check orange"></i> <span>Ultrapassagem dos limites gratuitos das
-                                plataformas de infraestrutura, gerando custos excedentes não previstos.</span></li>
-                    </ul>
-                </div>
-
-                <!-- 8. Atualizações dos Sistemas -->
-                <div class="doc-section rv">
-                    <div class="doc-section-header">
-                        <div class="doc-section-title">
-                            <div class="doc-section-icon"><i class="fas fa-arrows-rotate"></i></div>
-                            Política de Atualizações dos Sistemas
-                        </div>
-                        <p class="doc-section-sub">Como são gerenciadas as atualizações de segurança, melhorias e novas
-                            funcionalidades.</p>
-                    </div>
-
-                    <div class="steps-list">
-                        <div class="step-item">
-                            <div class="step-num"
-                                style="background:rgba(52,209,183,0.1);border-color:rgba(52,209,183,0.25);color:var(--mint);">
-                                1</div>
-                            <div class="step-text"><strong>Atualizações de segurança</strong> são aplicadas
-                                automaticamente, sem necessidade de aprovação prévia do contratante.</div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-num"
-                                style="background:rgba(52,209,183,0.1);border-color:rgba(52,209,183,0.25);color:var(--mint);">
-                                2</div>
-                            <div class="step-text"><strong>Novas funcionalidades</strong> são comunicadas via changelog
-                                e e-mail ao contratante antes da implantação.</div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-num"
-                                style="background:rgba(52,209,183,0.1);border-color:rgba(52,209,183,0.25);color:var(--mint);">
-                                3</div>
-                            <div class="step-text"><strong>Mudanças que alterem fluxos existentes</strong> são
-                                comunicadas com mínimo de 7 dias de antecedência para adaptação do contratante.</div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-num"
-                                style="background:rgba(52,209,183,0.1);border-color:rgba(52,209,183,0.25);color:var(--mint);">
-                                4</div>
-                            <div class="step-text"><strong>Versões legadas</strong> podem ser mantidas por prazo
-                                acordado em contrato para sistemas críticos que não podem ser interrompidos.</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 9. Suporte e Foro -->
-                <div class="doc-section rv">
-                    <div class="doc-section-header">
-                        <div class="doc-section-title">
-                            <div class="doc-section-icon orange"><i class="fas fa-headset"></i></div>
-                            Suporte, Contato e Foro Competente
-                        </div>
-                        <p class="doc-section-sub">Canais oficiais para suporte técnico, dúvidas jurídicas e resolução
-                            de conflitos relacionados a estes Termos.</p>
-                    </div>
-
-                    <div class="version-bar">
-                        <div class="version-bar-item"><i class="fas fa-file-lines"></i><span>Versão:
-                                <strong>1.0</strong></span></div>
-                        <div class="version-bar-item"><i class="fas fa-calendar-check"></i><span>Vigência:
-                                <strong>Janeiro de 2025</strong></span></div>
-                        <div class="version-bar-item"><i class="fas fa-rotate"></i><span>Última revisão: <strong>Janeiro
-                                    de 2025</strong></span></div>
-                        <div class="version-bar-item"><i class="fas fa-scale-balanced"></i><span>Foro: <strong>Aracaju /
-                                    SE</strong></span></div>
-                    </div>
-
-                    <div class="contact-card">
-                        <div class="contact-card-icon"><i class="fas fa-handshake-angle"></i></div>
-                        <div>
-                            <div class="contact-card-name">Geovani Santos — GeoCODE Programmer</div>
-                            <p class="contact-card-text">
-                                Para questões relacionadas a estes Termos de Uso, dúvidas sobre contratos ou reporte de
-                                violações, entre em contato pelos canais oficiais abaixo. Comprometemo-nos a responder
-                                em até <strong>2 dias úteis</strong> para questões contratuais e jurídicas, e dentro dos
-                                prazos de SLA para chamados técnicos. Caso não seja possível resolver amigavelmente, as
-                                partes elegem o <strong>Foro da Comarca de Aracaju/SE</strong> como competente, com
-                                renúncia expressa a qualquer outro foro, por mais privilegiado que seja.
-                            </p>
-                            <div class="contact-links">
-                                <a href="mailto:geocodeprogrammer@gmail.com" class="contact-link"><i
-                                        class="fas fa-envelope"></i> geocodeprogrammer@gmail.com</a>
-                                <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20tenho%20uma%20dúvida%20sobre%20os%20termos%20de%20uso."
-                                    target="_blank" rel="noopener noreferrer" class="contact-link"><i
-                                        class="fab fa-whatsapp"></i> WhatsApp</a>
-                                <a href="privacidade.html" class="contact-link"><i class="fas fa-shield-halved"></i>
-                                    Política de Privacidade</a>
+                        <div class="cards-grid">
+                            <div class="mini-card">
+                                <div class="mini-card-icon"><i class="fas fa-users"></i></div>
+                                <h4>Usuários Contemplados</h4>
+                                <p>Pessoas físicas ou jurídicas que contratam, acessam ou utilizam qualquer produto
+                                    GeoCODE, diretamente ou por terceiros autorizados.</p>
+                            </div>
+                            <div class="mini-card">
+                                <div class="mini-card-icon orange"><i class="fas fa-layer-group"></i></div>
+                                <h4>Serviços Abrangidos</h4>
+                                <p>Sites institucionais, Digital Signage, Akanni (AkanniMED e AkanniHUB), portais, PWAs
+                                    e qualquer produto desenvolvido sob medida.</p>
+                            </div>
+                            <div class="mini-card">
+                                <div class="mini-card-icon steel"><i class="fas fa-rotate"></i></div>
+                                <h4>Atualizações dos Termos</h4>
+                                <p>Mudanças significativas são comunicadas com antecedência mínima de 15 dias via e-mail
+                                    ou sistema.</p>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </div>
-        </div>
+                    <!-- 2. Obrigações do Contratante -->
+                    <div class="doc-section rv" id="s2">
+                        <div class="sec-header">
+                            <div class="sec-num">02 —</div>
+                            <div class="sec-title-row">
+                                <div class="sec-icon"><i class="fas fa-file-signature"></i></div>
+                                <h2 class="sec-title-h">Obrigações do Contratante</h2>
+                            </div>
+                            <p class="sec-sub">Responsabilidades assumidas ao firmar qualquer serviço com a GeoCODE
+                                Programmer.</p>
+                        </div>
+
+                        <ul class="doc-list">
+                            <li><i class="fas fa-circle-check"></i><span>Fornecer informações verdadeiras, atualizadas e
+                                    completas necessárias à execução dos serviços contratados.</span></li>
+                            <li><i class="fas fa-circle-check"></i><span>Manter dados de acesso em sigilo, sendo
+                                    responsável por qualquer ação realizada com suas credenciais.</span></li>
+                            <li><i class="fas fa-circle-check"></i><span>Realizar os pagamentos nos prazos acordados,
+                                    observando o cronograma de desembolso (30% / 30% / 40%).</span></li>
+                            <li><i class="fas fa-circle-check"></i><span>Comunicar imediatamente qualquer falha,
+                                    suspeita de acesso indevido ou incidente de segurança identificado.</span></li>
+                            <li><i class="fas fa-circle-check"></i><span>Garantir que o uso dos sistemas e conteúdos
+                                    inseridos esteja em conformidade com a legislação brasileira vigente.</span></li>
+                            <li><i class="fas fa-circle-check"></i><span>Manter a infraestrutura local (internet,
+                                    dispositivos, rede interna) necessária ao funcionamento dos serviços.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- 3. Obrigações da GeoCODE -->
+                    <div class="doc-section rv" id="s3">
+                        <div class="sec-header">
+                            <div class="sec-num">03 —</div>
+                            <div class="sec-title-row">
+                                <div class="sec-icon"><i class="fas fa-code"></i></div>
+                                <h2 class="sec-title-h">Obrigações da GeoCODE Programmer</h2>
+                            </div>
+                            <p class="sec-sub">Compromissos assumidos pela GeoCODE na prestação de todos os serviços.
+                            </p>
+                        </div>
+
+                        <ul class="doc-list">
+                            <li><i class="fas fa-circle-check"></i><span>Entregar os serviços dentro dos prazos
+                                    estimados — 3 a 5 semanas para sites e Digital Signage; 8 a 12 semanas para sistemas
+                                    integrados.</span></li>
+                            <li><i class="fas fa-circle-check"></i><span>Manter os sistemas hospedados com
+                                    disponibilidade contínua, monitorando infraestrutura em cloud e certificados
+                                    SSL.</span></li>
+                            <li><i class="fas fa-circle-check"></i><span>Prestar suporte técnico dentro dos canais e
+                                    horários oficiais: segunda a sexta, das 8h às 20h.</span></li>
+                            <li><i class="fas fa-circle-check"></i><span>Comunicar previamente qualquer custo adicional
+                                    de infraestrutura antes de repassá-lo ao contratante.</span></li>
+                            <li><i class="fas fa-circle-check"></i><span>Manter o código-fonte versionado no GitHub,
+                                    garantindo rastreabilidade de todas as alterações realizadas.</span></li>
+                            <li><i class="fas fa-circle-check"></i><span>Tratar os dados do contratante em conformidade
+                                    com a LGPD e com a Política de Privacidade vigente.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- 4. Propriedade Intelectual -->
+                    <div class="doc-section rv" id="s4">
+                        <div class="sec-header">
+                            <div class="sec-num">04 —</div>
+                            <div class="sec-title-row">
+                                <div class="sec-icon orange"><i class="fas fa-copyright"></i></div>
+                                <h2 class="sec-title-h">Propriedade Intelectual</h2>
+                            </div>
+                            <p class="sec-sub">Direitos sobre código, design e sistemas desenvolvidos pela GeoCODE.</p>
+                        </div>
+
+                        <p class="doc-p">Todo o código-fonte, design, interfaces e arquitetura desenvolvidos pela
+                            GeoCODE Programmer são de <strong>propriedade intelectual da GeoCODE</strong>, exceto quando
+                            expressamente cedido por contrato específico de cessão de direitos.</p>
+
+                        <div class="cards-grid">
+                            <div class="mini-card">
+                                <div class="mini-card-icon"><i class="fas fa-unlock"></i></div>
+                                <h4>Licença de Uso</h4>
+                                <p>O contratante recebe licença de uso não exclusiva e intransferível, válida enquanto o
+                                    contrato de manutenção estiver ativo.</p>
+                            </div>
+                            <div class="mini-card">
+                                <div class="mini-card-icon orange"><i class="fas fa-ban"></i></div>
+                                <h4>Restrições</h4>
+                                <p>É vedado copiar, redistribuir, revender, sublicenciar ou fazer engenharia reversa de
+                                    qualquer sistema sem autorização escrita.</p>
+                            </div>
+                            <div class="mini-card">
+                                <div class="mini-card-icon steel"><i class="fas fa-image"></i></div>
+                                <h4>Conteúdo do Contratante</h4>
+                                <p>Textos, imagens e mídias inseridos pelo contratante permanecem de sua propriedade. A
+                                    GeoCODE não reivindica direitos sobre o conteúdo editorial.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. SLA e Infraestrutura -->
+                    <div class="doc-section rv" id="s5">
+                        <div class="sec-header">
+                            <div class="sec-num">05 —</div>
+                            <div class="sec-title-row">
+                                <div class="sec-icon"><i class="fas fa-server"></i></div>
+                                <h2 class="sec-title-h">SLA, Infraestrutura e Limites de Plataforma</h2>
+                            </div>
+                            <p class="sec-sub">Disponibilidade dos serviços, custos de infraestrutura e
+                                responsabilidades sobre falhas de terceiros.</p>
+                        </div>
+
+                        <div class="info-banner">
+                            <i class="fas fa-circle-info"></i>
+                            <div>
+                                <div class="info-banner-title">Infraestrutura em Camada Gratuita (Free Tier)</div>
+                                <p class="info-banner-text">Os projetos GeoCODE operam sobre <strong>Vercel, Firebase,
+                                        GitHub e Cloudinary</strong> em seus planos gratuitos. O único custo fixo de
+                                    terceiros é de <strong>R$ 40,00/ano</strong> (domínio próprio). Custos excedentes
+                                    são repassados mediante aviso prévio.</p>
+                            </div>
+                        </div>
+
+                        <p class="doc-p">O suporte técnico é prestado de <strong>segunda a sexta, das 8h às
+                                20h</strong>. Fins de semana e feriados são reservados para falhas críticas — sistemas
+                            indisponíveis ou erros que impeçam operações essenciais.</p>
+
+                        <div class="warn-banner">
+                            <i class="fas fa-display"></i>
+                            <div>
+                                <div class="warn-banner-title">Digital Signage — Infraestrutura Local</div>
+                                <p class="warn-banner-text">Sistemas de Digital Signage dependem da infraestrutura local
+                                    do cliente (televisores, players, rede, internet). Instabilidades de internet ou
+                                    falhas em dispositivos físicos <strong>não são cobertas pelo SLA da
+                                        GeoCODE</strong>. Recomendamos conexões redundantes e nobreaks para ambientes
+                                    críticos.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Pagamentos e Cancelamento -->
+                    <div class="doc-section rv" id="s6">
+                        <div class="sec-header">
+                            <div class="sec-num">06 —</div>
+                            <div class="sec-title-row">
+                                <div class="sec-icon orange"><i class="fas fa-credit-card"></i></div>
+                                <h2 class="sec-title-h">Pagamentos, Reajustes e Cancelamento</h2>
+                            </div>
+                            <p class="sec-sub">Cronograma financeiro, prazos e procedimentos para encerramento de
+                                contrato.</p>
+                        </div>
+
+                        <div class="steps-list">
+                            <div class="step-item">
+                                <div class="step-num orange">30%</div>
+                                <div class="step-text"><strong>Na assinatura do contrato</strong> — valor devido para
+                                    início imediato do desenvolvimento.</div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num orange">30%</div>
+                                <div class="step-text"><strong>Na entrega da estrutura base e layout</strong> — após
+                                    aprovação do protótipo ou versão intermediária.</div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num orange">40%</div>
+                                <div class="step-text"><strong>Na entrega final e publicação pública</strong> — após
+                                    homologação completa pelo contratante.</div>
+                            </div>
+                        </div>
+
+                        <ul class="doc-list">
+                            <li><i class="fas fa-circle-check"></i><span>Mensalidades de manutenção são cobradas a
+                                    partir da publicação, com vencimento acordado em contrato.</span></li>
+                            <li><i class="fas fa-circle-check"></i><span>Suporte avulso possui faturamento mínimo de
+                                    <strong>R$ 100,00</strong>, à razão de R$ 50,00/hora técnica.</span></li>
+                            <li><i class="fas fa-circle-check"></i><span>Atrasos no pagamento superior a 15 dias podem
+                                    resultar na suspensão temporária do suporte e monitoramento.</span></li>
+                            <li><i class="fas fa-circle-check"></i><span>Cancelamento deve ser comunicado com mínimo de
+                                    30 dias. Valores já pagos por serviços entregues não são reembolsáveis.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- 7. Limitação de Responsabilidade -->
+                    <div class="doc-section rv" id="s7">
+                        <div class="sec-header">
+                            <div class="sec-num">07 —</div>
+                            <div class="sec-title-row">
+                                <div class="sec-icon"><i class="fas fa-shield-halved"></i></div>
+                                <h2 class="sec-title-h">Limitação de Responsabilidade</h2>
+                            </div>
+                        </div>
+
+                        <p class="doc-p">A GeoCODE Programmer não se responsabiliza por danos indiretos, lucros
+                            cessantes ou prejuízos decorrentes de:</p>
+
+                        <ul class="doc-list">
+                            <li><i class="fas fa-circle-check orange"></i><span>Indisponibilidade ou falhas nas
+                                    plataformas de terceiros (Vercel, Firebase, Google Cloud), que possuem seus próprios
+                                    SLAs independentes.</span></li>
+                            <li><i class="fas fa-circle-check orange"></i><span>Falhas de infraestrutura local —
+                                    internet, energia elétrica, dispositivos físicos ou configurações de rede
+                                    interna.</span></li>
+                            <li><i class="fas fa-circle-check orange"></i><span>Uso indevido dos sistemas pelo
+                                    contratante, seus colaboradores ou usuários não autorizados.</span></li>
+                            <li><i class="fas fa-circle-check orange"></i><span>Conteúdo inserido pelo contratante que
+                                    viole direitos de terceiros, leis de propriedade intelectual ou normas
+                                    vigentes.</span></li>
+                            <li><i class="fas fa-circle-check orange"></i><span>Ultrapassagem dos limites gratuitos das
+                                    plataformas de infraestrutura, gerando custos excedentes não previstos.</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- 8. Política de Atualizações -->
+                    <div class="doc-section rv" id="s8">
+                        <div class="sec-header">
+                            <div class="sec-num">08 —</div>
+                            <div class="sec-title-row">
+                                <div class="sec-icon"><i class="fas fa-arrows-rotate"></i></div>
+                                <h2 class="sec-title-h">Política de Atualizações dos Sistemas</h2>
+                            </div>
+                            <p class="sec-sub">Como são gerenciadas as atualizações de segurança, melhorias e novas
+                                funcionalidades.</p>
+                        </div>
+
+                        <div class="steps-list">
+                            <div class="step-item">
+                                <div class="step-num">1</div>
+                                <div class="step-text"><strong>Atualizações de segurança</strong> são aplicadas
+                                    automaticamente, sem necessidade de aprovação prévia do contratante.</div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num">2</div>
+                                <div class="step-text"><strong>Novas funcionalidades</strong> são comunicadas via
+                                    changelog e e-mail ao contratante antes da implantação.</div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num">3</div>
+                                <div class="step-text"><strong>Mudanças que alterem fluxos existentes</strong> são
+                                    comunicadas com mínimo de 7 dias de antecedência para adaptação.</div>
+                            </div>
+                            <div class="step-item">
+                                <div class="step-num">4</div>
+                                <div class="step-text"><strong>Versões legadas</strong> podem ser mantidas por prazo
+                                    acordado para sistemas críticos que não podem ser interrompidos.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 9. Suporte e Foro -->
+                    <div class="doc-section rv" id="s9">
+                        <div class="sec-header">
+                            <div class="sec-num">09 —</div>
+                            <div class="sec-title-row">
+                                <div class="sec-icon orange"><i class="fas fa-headset"></i></div>
+                                <h2 class="sec-title-h">Suporte, Contato e Foro Competente</h2>
+                            </div>
+                            <p class="sec-sub">Canais oficiais para suporte técnico, dúvidas jurídicas e resolução de
+                                conflitos.</p>
+                        </div>
+
+                        <div class="version-bar">
+                            <div class="version-bar-item"><i class="fas fa-file-lines"></i><span>Versão:
+                                    <strong>1.0</strong></span></div>
+                            <div class="version-bar-item"><i class="fas fa-calendar-check"></i><span>Vigência:
+                                    <strong>Janeiro de 2025</strong></span></div>
+                            <div class="version-bar-item"><i class="fas fa-rotate"></i><span>Revisão: <strong>Janeiro de
+                                        2025</strong></span></div>
+                            <div class="version-bar-item"><i class="fas fa-scale-balanced"></i><span>Foro:
+                                    <strong>Aracaju / SE</strong></span></div>
+                        </div>
+
+                        <div class="contact-card">
+                            <div class="contact-card-icon"><i class="fas fa-handshake-angle"></i></div>
+                            <div>
+                                <div class="contact-card-name">Geovani Santos — GeoCODE Programmer</div>
+                                <p class="contact-card-text">
+                                    Para questões relacionadas a estes Termos, dúvidas contratuais ou reporte de
+                                    violações, respondemos em até
+                                    <strong>2 dias úteis</strong>. Caso não seja possível resolver amigavelmente, as
+                                    partes elegem o
+                                    <strong>Foro da Comarca de Aracaju/SE</strong> como competente, com renúncia
+                                    expressa a qualquer outro foro.
+                                </p>
+                                <div class="contact-links">
+                                    <a href="mailto:geocodeprogrammer@gmail.com" class="contact-link">
+                                        <i class="fas fa-envelope"></i> geocodeprogrammer@gmail.com
+                                    </a>
+                                    <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20tenho%20uma%20dúvida%20sobre%20os%20termos%20de%20uso."
+                                        target="_blank" rel="noopener noreferrer" class="contact-link">
+                                        <i class="fab fa-whatsapp"></i> WhatsApp
+                                    </a>
+                                    <a href="privacidade.html" class="contact-link">
+                                        <i class="fas fa-shield-halved"></i> Política de Privacidade
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /doc-body -->
+            </div><!-- /doc-layout -->
+        </div><!-- /wrap -->
 
     </main>
 
@@ -1561,15 +1362,18 @@
             <div class="footer-bottom">
                 <p>&copy; <span id="anoAtual"></span> GeoCODE Programmer · Geovani Santos. Todos os direitos reservados.
                 </p>
-                <p>Desenvolvido no Linux com ☕ por <strong>GeoCODE</strong> · <a href="privacidade.html">Privacidade</a>
-                    · <a href="termos.html">Termos</a></p>
+                <p>
+                    <a href="index.html">Início</a> ·
+                    <a href="privacidade.html">Privacidade</a> ·
+                    <a href="termos.html">Termos</a>
+                </p>
             </div>
         </div>
     </footer>
 
-    <!-- ═══ WA FLOAT ═══ -->
+    <!-- WA float -->
     <a href="https://wa.me/+5579988663905?text=Olá%20Geovani,%20gostaria%20de%20um%20orçamento." target="_blank"
-        rel="noopener noreferrer" class="wa-float" aria-label="WhatsApp — Solicitar orçamento">
+        rel="noopener noreferrer" class="wa-float" aria-label="WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1578,7 +1382,9 @@
         document.getElementById('anoAtual').textContent = new Date().getFullYear();
 
         const hdr = document.getElementById('hdr');
-        window.addEventListener('scroll', () => { hdr.classList.toggle('scrolled', window.scrollY > 50); }, { passive: true });
+        window.addEventListener('scroll', () => {
+            hdr.classList.toggle('scrolled', window.scrollY > 50);
+        }, { passive: true });
 
         const hbgBtn = document.getElementById('hbgBtn');
         const navLinks = document.getElementById('navLinks');
@@ -1601,6 +1407,27 @@
         } else {
             document.querySelectorAll('.rv').forEach(el => el.classList.add('on'));
         }
+
+        // Sidebar spy
+        const sections = document.querySelectorAll('.doc-section[id]');
+        const sideLinks = document.querySelectorAll('.sidebar-nav a');
+        const spy = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (!e.isIntersecting) return;
+                sideLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${e.target.id}`));
+            });
+        }, { rootMargin: '-30% 0px -65% 0px' });
+        sections.forEach(s => spy.observe(s));
+
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const t = document.querySelector(a.getAttribute('href'));
+                if (!t) return;
+                e.preventDefault();
+                const off = (hdr?.offsetHeight ?? 68) + 24;
+                window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - off, behavior: 'smooth' });
+            });
+        });
     </script>
 </body>
 
