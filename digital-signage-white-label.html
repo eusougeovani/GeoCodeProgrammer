@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1366" />
+  <title>Digital Signage — [[Nome do Painel]]</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Google Fonts — Barlow para legibilidade a distância -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Firebase SDK (modo compat — mais simples para CDN) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <style>
+    /* ════════════════════════════════════
+       TOKENS — edite para rebrand
+    ════════════════════════════════════ */
+    :root {
+      --bg:         #070B14;
+      --bg2:        #0D1220;
+      --surface:    #111827;
+      --surface2:   #1E2A3A;
+      --blue:       #0EA5E9;
+      --blue-d:     #0284C7;
+      --blue-glow:  rgba(14,165,233,.2);
+      --cyan:       #22D3EE;
+      --green:      #10B981;
+      --amber:      #F59E0B;
+      --red:        #EF4444;
+      --white:      #F0F6FF;
+      --muted:      #64748B;
+      --border:     rgba(14,165,233,.15);
+
+      --font-d: 'Barlow Condensed', sans-serif;
+      --font-b: 'Barlow', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 1366px;     /* base 720p/HD — escala via transform para outras res */
+      height: 768px;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-b);
+    }
+
+    /* ── Escala automática para a tela real ── */
+    #scaler {
+      width: 1366px;
+      height: 768px;
+      transform-origin: top left;
+      position: absolute;
+      top: 0; left: 0;
+    }
+
+    /* ═══════════════════════════════════
+       LAYOUT PRINCIPAL — 3 zonas
+       ┌──────────┬────────────────────┐
+       │  LEFT    │     MAIN           │
+       │  clock   │     slides/mídia   │
+       │  weather │                    │
+       │  panel   │                    │
+       ├──────────┴────────────────────┤
+       │  TICKER — avisos scrolling    │
+       └───────────────────────────────┘
+    ═══════════════════════════════════ */
+    #layout {
+      width: 1366px;
+      height: 768px;
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      grid-template-rows: 1fr 80px;
+      grid-template-areas:
+        "left  main"
+        "ticker ticker";
+      position: relative;
+      background:
+        radial-gradient(ellipse 40% 60% at 0% 50%, rgba(14,165,233,.06) 0%, transparent 60%),
+        var(--bg);
+    }
+
+    /* ════════════════════════════════════
+       COLUNA ESQUERDA
+    ════════════════════════════════════ */
+    #left-col {
+      grid-area: left;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+      background: linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%);
+      padding: 28px 24px 20px;
+      gap: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #left-col::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+    }
+
+    /* ── LOGO / MARCA ── */
+    #brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    #brand-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-family: var(--font-d);
+      font-weight: 900;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    #brand-name {
+      font-family: var(--font-d);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -.01em;
+      line-height: 1.1;
+    }
+    #brand-sub {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    /* ── RELÓGIO ── */
+    #clock-wrap {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    #clock-time {
+      font-family: var(--font-d);
+      font-size: 96px;
+      font-weight: 900;
+      letter-spacing: -.02em;
+      line-height: 1;
+      color: var(--white);
+      text-shadow: 0 0 40px var(--blue-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    #clock-sep {
+      animation: blink 1s step-end infinite;
+      color: var(--blue);
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+
+    #clock-seconds {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2px;
+      margin-top: 4px;
+    }
+    .sec-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--muted);
+      transition: background .3s, box-shadow .3s;
+    }
+    .sec-dot.active {
+      background: var(--blue);
+      box-shadow: 0 0 8px var(--blue);
+    }
+
+    #clock-date {
+      font-family: var(--font-d);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    /* ── SEPARADOR ── */
+    .sep {
+      height: 1px;
+      background: var(--border);
+      margin: 16px 0;
+      flex-shrink: 0;
+    }
+
+    /* ── CLIMA ── */
+    #weather-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    #weather-city {
+      font-family: var(--font-d);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    #weather-main {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    #weather-icon-wrap { font-size: 52px; line-height: 1; }
+    #weather-temp {
+      font-family: var(--font-d);
+      font-size: 72px;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--white);
+    }
+    #weather-temp sup {
+      font-size: 28px;
+      font-weight: 600;
+      vertical-align: super;
+      color: var(--blue);
+    }
+    #weather-desc {
+      font-family: var(--font-d);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--cyan);
+      text-transform: capitalize;
+      margin-bottom: 12px;
+      letter-spacing: .02em;
+    }
+    #weather-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .wd-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 12px;
+    }
+    .wd-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+    .wd-value {
+      font-family: var(--font-d);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    /* ── STATUS DO PAINEL ── */
+    #panel-status {
+      margin-top: auto;
+      padding-top: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .status-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+      animation: statusPulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes statusPulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+    #panel-id-tag {
+      font-family: var(--font-d);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .06em;
+    }
+
+    /* ════════════════════════════════════
+       ÁREA PRINCIPAL — SLIDES
+    ════════════════════════════════════ */
+    #main-area {
+      grid-area: main;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ── Slides container ── */
+    #slides-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .8s ease;
+      pointer-events: none;
+    }
+    .slide.active { opacity: 1; pointer-events: all; }
+
+    /* Tipos de slide */
+    .slide-image {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .slide-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,.5) 0%, transparent 50%);
+    }
+
+    .slide-text {
+      background: var(--bg2);
+      padding: 60px 72px;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 16px;
+    }
+    .slide-text .s-eyebrow {
+      font-family: var(--font-d);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+    .slide-text .s-title {
+      font-family: var(--font-d);
+      font-size: 80px;
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -.02em;
+      color: var(--white);
+      max-width: 800px;
+    }
+    .slide-text .s-body {
+      font-size: 26px;
+      color: rgba(240,246,255,.75);
+      line-height: 1.5;
+      max-width: 700px;
+    }
+    .slide-text .s-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--blue);
+      color: #fff;
+      font-family: var(--font-d);
+      font-size: 22px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 8px;
+      margin-top: 8px;
+      letter-spacing: .02em;
+    }
+
+    .slide-media {
+      background: #000;
+      align-items: stretch;
+      justify-content: stretch;
+    }
+    .slide-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Slide de aviso urgente */
+    .slide-alert {
+      background: linear-gradient(135deg, #1a0505, #2d0808);
+      border: 3px solid var(--red);
+      flex-direction: column;
+      gap: 16px;
+    }
+    .slide-alert .alert-icon { font-size: 80px; }
+    .slide-alert .alert-title {
+      font-family: var(--font-d);
+      font-size: 72px;
+      font-weight: 900;
+      color: var(--red);
+      text-align: center;
+    }
+    .slide-alert .alert-body {
+      font-size: 32px;
+      color: rgba(240,246,255,.85);
+      text-align: center;
+      max-width: 700px;
+    }
+
+    /* Slide de QR Code / CTA digital */
+    .slide-qr {
+      background: var(--surface);
+      flex-direction: row;
+      gap: 60px;
+      padding: 40px 72px;
+    }
+    .qr-text { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+    .qr-text .s-eyebrow { font-family: var(--font-d); font-size: 16px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--cyan); }
+    .qr-text .s-title { font-family: var(--font-d); font-size: 64px; font-weight: 900; line-height: 1.05; color: var(--white); }
+    .qr-text .s-body { font-size: 24px; color: rgba(240,246,255,.7); }
+    .qr-box {
+      width: 220px; height: 220px;
+      background: #fff;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 140px;
+      flex-shrink: 0;
+      box-shadow: 0 0 40px rgba(14,165,233,.3);
+    }
+
+    /* ── Barra de progresso dos slides ── */
+    #slide-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: rgba(255,255,255,.08);
+      z-index: 10;
+    }
+    #slide-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--blue), var(--cyan));
+      width: 0%;
+      transition: width linear;
+    }
+
+    /* ── Indicadores de slide ── */
+    #slide-dots {
+      position: absolute;
+      bottom: 14px;
+      right: 16px;
+      display: flex;
+      gap: 6px;
+      z-index: 10;
+    }
+    .slide-dot {
+      width: 6px; height: 6px;
+      border-radius: 3px;
+      background: rgba(255,255,255,.25);
+      transition: width .3s, background .3s;
+    }
+    .slide-dot.active {
+      width: 20px;
+      background: var(--blue);
+    }
+
+    /* ── Número do slide ── */
+    #slide-counter {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-family: var(--font-d);
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255,255,255,.3);
+      z-index: 10;
+      letter-spacing: .06em;
+    }
+
+    /* ════════════════════════════════════
+       TICKER — rodapé
+    ════════════════════════════════════ */
+    #ticker-bar {
+      grid-area: ticker;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+    #ticker-bar::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--blue), var(--cyan), transparent);
+    }
+
+    #ticker-label {
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      color: #fff;
+      font-family: var(--font-d);
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 0 20px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+      gap: 8px;
+    }
+
+    #ticker-track {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+      height: 100%;
+    }
+    #ticker-inner {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      white-space: nowrap;
+      animation: tickerScroll 40s linear infinite;
+    }
+    #ticker-inner:hover { animation-play-state: paused; }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-d);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: .01em;
+      color: var(--white);
+      padding: 0 48px 0 0;
+    }
+    .ticker-item .ti-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--blue);
+      flex-shrink: 0;
+    }
+    .ticker-item.urgent { color: var(--red); }
+    .ticker-item.urgent .ti-dot { background: var(--red); box-shadow: 0 0 6px var(--red); }
+    .ticker-item.highlight { color: var(--amber); }
+    .ticker-item.highlight .ti-dot { background: var(--amber); }
+
+    @keyframes tickerScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    #ticker-time {
+      padding: 0 20px;
+      font-family: var(--font-d);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--muted);
+      white-space: nowrap;
+      border-left: 1px solid var(--border);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    /* ════════════════════════════════════
+       PLAYER DE ÁUDIO (overlay discreto)
+    ════════════════════════════════════ */
+    #audio-indicator {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(14,165,233,.15);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 12px;
+      display: none;
+      align-items: center;
+      gap: 8px;
+      z-index: 20;
+    }
+    #audio-indicator.visible { display: flex; }
+    .audio-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 16px;
+    }
+    .audio-bar {
+      width: 3px;
+      background: var(--cyan);
+      border-radius: 2px;
+      animation: audioBar .8s ease-in-out infinite alternate;
+    }
+    .audio-bar:nth-child(2) { animation-delay: .15s; }
+    .audio-bar:nth-child(3) { animation-delay: .3s; }
+    .audio-bar:nth-child(4) { animation-delay: .1s; }
+    @keyframes audioBar { from { height: 3px; } to { height: 14px; } }
+    #audio-label { font-family: var(--font-d); font-size: 13px; font-weight: 600; color: var(--cyan); }
+
+    /* ════════════════════════════════════
+       OVERLAY DE CONEXÃO / STATUS
+    ════════════════════════════════════ */
+    #status-overlay {
+      position: fixed;
+      bottom: 90px;
+      right: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 100;
+    }
+    .status-toast {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-family: var(--font-d);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transform: translateX(20px);
+      transition: opacity .3s, transform .3s;
+    }
+    .status-toast.show { opacity: 1; transform: translateX(0); }
+    .status-toast.ok  { border-color: rgba(16,185,129,.3); color: var(--green); }
+    .status-toast.err { border-color: rgba(239,68,68,.3); color: var(--red); }
+
+    /* ════════════════════════════════════
+       PAINEL DE ADMINISTRAÇÃO
+       (acesso por ?admin=1 na URL)
+    ════════════════════════════════════ */
+    #admin-panel {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.85);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+    }
+    #admin-panel.open { display: flex; }
+    #admin-inner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      width: 700px;
+      max-height: 600px;
+      overflow-y: auto;
+      padding: 32px;
+    }
+    #admin-inner h2 {
+      font-family: var(--font-d);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .admin-section { margin-bottom: 24px; }
+    .admin-section h3 { font-family: var(--font-d); font-size: 16px; font-weight: 700; color: var(--cyan); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 12px; }
+    .admin-field { display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; }
+    .admin-field label { font-size: 12px; font-weight: 600; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+    .admin-field input, .admin-field select, .admin-field textarea {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-family: var(--font-b);
+      font-size: 15px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      outline: none;
+    }
+    .admin-field input:focus, .admin-field select:focus, .admin-field textarea:focus {
+      border-color: var(--blue);
+    }
+    .admin-field textarea { resize: vertical; min-height: 80px; }
+    .admin-btn {
+      background: var(--blue);
+      color: #fff;
+      font-family: var(--font-d);
+      font-size: 16px;
+      font-weight: 700;
+      padding: 11px 24px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .admin-btn:hover { background: var(--blue-d); }
+    .admin-btn.secondary { background: var(--surface2); color: var(--muted); }
+    .admin-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    #admin-close { margin-left: auto; }
+
+    /* Slide editor list */
+    #slide-editor-list { display: flex; flex-direction: column; gap: 8px; }
+    .slide-editor-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 14px;
+    }
+    .ser-type {
+      font-family: var(--font-d);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      flex-shrink: 0;
+      min-width: 60px;
+    }
+    .ser-label { flex: 1; color: var(--white); }
+    .ser-del { background: none; border: none; color: var(--red); cursor: pointer; font-size: 18px; padding: 0 4px; }
+  </style>
+</head>
+<body>
+
+<div id="scaler">
+<div id="layout">
+
+  <!-- ═══════════════ COLUNA ESQUERDA ═══════════════ -->
+  <aside id="left-col">
+    <div id="left-col-top-line"></div>
+
+    <!-- Marca / Logo -->
+    <div id="brand">
+      <div id="brand-icon" id="brandIcon">[[G]]</div>
+      <div>
+        <div id="brand-name">[[Nome da Empresa]]</div>
+        <div id="brand-sub">[[Subtítulo / Unidade]]</div>
+      </div>
+    </div>
+
+    <!-- Relógio -->
+    <div id="clock-wrap">
+      <div id="clock-time">
+        <span id="clock-h">00</span><span id="clock-sep">:</span><span id="clock-m">00</span>
+      </div>
+      <div id="clock-seconds"><!-- preenchido por JS --></div>
+      <div id="clock-date">Carregando...</div>
+    </div>
+
+    <div class="sep"></div>
+
+    <!-- Clima -->
+    <div id="weather-wrap">
+      <div id="weather-city">📍 <span id="weather-city-name">[[Cidade, UF]]</span></div>
+      <div id="weather-main">
+        <div id="weather-icon-wrap" id="weatherIcon">⏳</div>
+        <div id="weather-temp">--<sup>°C</sup></div>
+      </div>
+      <div id="weather-desc">Carregando clima...</div>
+      <div id="weather-details">
+        <div class="wd-item">
+          <div class="wd-label">Sensação</div>
+          <div class="wd-value" id="wd-feels">--°</div>
+        </div>
+        <div class="wd-item">
+          <div class="wd-label">Umidade</div>
+          <div class="wd-value" id="wd-humidity">--%</div>
+        </div>
+        <div class="wd-item">
+          <div class="wd-label">Vento</div>
+          <div class="wd-value" id="wd-wind">-- km/h</div>
+        </div>
+        <div class="wd-item">
+          <div class="wd-label">Pressão</div>
+          <div class="wd-value" id="wd-pressure">-- hPa</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status do painel -->
+    <div id="panel-status">
+      <div style="display:flex;align-items:center;gap:6px">
+        <div class="status-dot" id="statusDot"></div>
+        <span id="statusText">Online</span>
+      </div>
+      <span id="panel-id-tag">PAINEL-<span id="panelIdDisplay">01</span></span>
+    </div>
+
+  </aside>
+
+  <!-- ═══════════════ ÁREA PRINCIPAL ═══════════════ -->
+  <main id="main-area">
+
+    <div id="slides-container">
+      <!-- Slides injetados por JS -->
+    </div>
+
+    <!-- Indicador de áudio -->
+    <div id="audio-indicator">
+      <div class="audio-bars">
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+        <div class="audio-bar"></div>
+      </div>
+      <span id="audio-label">Reproduzindo áudio</span>
+    </div>
+
+    <!-- Player de vídeo/áudio oculto -->
+    <video id="mediaPlayer" style="display:none" preload="auto" playsinline></video>
+    <audio id="audioPlayer" preload="auto"></audio>
+
+    <!-- Barra de progresso -->
+    <div id="slide-progress"><div id="slide-progress-fill"></div></div>
+
+    <!-- Dots indicadores -->
+    <div id="slide-dots"></div>
+
+    <!-- Contador de slide -->
+    <div id="slide-counter"></div>
+
+  </main>
+
+  <!-- ═══════════════ TICKER ═══════════════ -->
+  <footer id="ticker-bar">
+    <div id="ticker-label">📢 Avisos</div>
+    <div id="ticker-track">
+      <div id="ticker-inner"><!-- preenchido por JS --></div>
+    </div>
+    <div id="ticker-time">
+      🕐 <span id="ticker-clock-val">--:--</span>
+    </div>
+  </footer>
+
+</div><!-- /layout -->
+</div><!-- /scaler -->
+
+<!-- Status toasts -->
+<div id="status-overlay"></div>
+
+<!-- Painel Admin -->
+<div id="admin-panel">
+  <div id="admin-inner">
+    <h2>⚙️ Gerenciar Painel <span id="adminPanelTitle"></span>
+      <button class="admin-btn secondary" id="admin-close" onclick="closeAdmin()">✕ Fechar</button>
+    </h2>
+
+    <!-- Identidade -->
+    <div class="admin-section">
+      <h3>🏷️ Identidade</h3>
+      <div class="admin-field">
+        <label>Nome / Marca</label>
+        <input type="text" id="a-brand-name" placeholder="Nome da empresa" />
+      </div>
+      <div class="admin-field">
+        <label>Subtítulo / Unidade</label>
+        <input type="text" id="a-brand-sub" placeholder="Recepção · Andar 2" />
+      </div>
+      <div class="admin-field">
+        <label>Ícone / Letra do logo</label>
+        <input type="text" id="a-brand-icon" placeholder="G" maxlength="2" />
+      </div>
+    </div>
+
+    <!-- Clima -->
+    <div class="admin-section">
+      <h3>🌤️ Clima</h3>
+      <div class="admin-field">
+        <label>Cidade (para OpenWeatherMap)</label>
+        <input type="text" id="a-weather-city" placeholder="Aracaju,BR" />
+      </div>
+      <div class="admin-field">
+        <label>API Key OpenWeatherMap</label>
+        <input type="text" id="a-weather-key" placeholder="sua_api_key_aqui" />
+      </div>
+    </div>
+
+    <!-- Ticker -->
+    <div class="admin-section">
+      <h3>📢 Avisos do Ticker</h3>
+      <div id="ticker-editor-list"></div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <input type="text" id="a-ticker-new" placeholder="Novo aviso..." style="flex:1;background:var(--surface2);border:1px solid var(--border);color:var(--white);font-family:var(--font-b);font-size:14px;padding:8px 12px;border-radius:8px;outline:none;" />
+        <select id="a-ticker-type" style="background:var(--surface2);border:1px solid var(--border);color:var(--white);padding:8px 10px;border-radius:8px;outline:none;font-family:var(--font-b)">
+          <option value="normal">Normal</option>
+          <option value="highlight">Destaque</option>
+          <option value="urgent">Urgente</option>
+        </select>
+        <button class="admin-btn" onclick="addTickerItem()">+ Adicionar</button>
+      </div>
+    </div>
+
+    <!-- Slides -->
+    <div class="admin-section">
+      <h3>🖼️ Slides</h3>
+      <div id="slide-editor-list"></div>
+      <div style="margin-top:12px">
+        <div class="admin-field">
+          <label>Tipo de slide</label>
+          <select id="a-slide-type">
+            <option value="text">Texto / Mensagem</option>
+            <option value="image">Imagem (URL)</option>
+            <option value="video">Vídeo (URL)</option>
+            <option value="alert">Aviso Urgente</option>
+            <option value="qr">QR Code / CTA</option>
+          </select>
+        </div>
+        <div class="admin-field">
+          <label>Título / Conteúdo principal</label>
+          <input type="text" id="a-slide-title" placeholder="Título do slide" />
+        </div>
+        <div class="admin-field">
+          <label>Subtítulo / URL da mídia</label>
+          <input type="text" id="a-slide-sub" placeholder="Subtítulo ou URL de imagem/vídeo" />
+        </div>
+        <div class="admin-field">
+          <label>Duração (segundos)</label>
+          <input type="number" id="a-slide-dur" value="8" min="3" max="120" />
+        </div>
+        <button class="admin-btn" onclick="addSlide()">+ Adicionar Slide</button>
+      </div>
+    </div>
+
+    <!-- Áudio de fundo -->
+    <div class="admin-section">
+      <h3>🎵 Áudio de Fundo</h3>
+      <div class="admin-field">
+        <label>URL do arquivo de áudio (MP3/OGG)</label>
+        <input type="text" id="a-audio-url" placeholder="https://..." />
+      </div>
+      <div class="admin-btn-row" style="display:flex;gap:8px">
+        <button class="admin-btn" onclick="playBgAudio()">▶ Reproduzir</button>
+        <button class="admin-btn secondary" onclick="stopBgAudio()">⏹ Parar</button>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid var(--border);padding-top:20px;margin-top:8px">
+      <div class="admin-btns">
+        <button class="admin-btn" onclick="saveToFirebase()">💾 Salvar no Firebase</button>
+        <button class="admin-btn" onclick="saveToLocal()">💾 Salvar Localmente</button>
+        <button class="admin-btn secondary" onclick="exportConfig()">📤 Exportar JSON</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+/* ════════════════════════════════════
+   CONFIGURAÇÃO — edite aqui ou use o painel Admin
+════════════════════════════════════ */
+const CONFIG = {
+  // ── Identificação do painel
+  panelId: getQueryParam('panel') || 'PAINEL-01',
+
+  // ── Marca
+  brandName:  '[[Nome da Empresa]]',
+  brandSub:   '[[Recepção · Unidade]]',
+  brandIcon:  '[[G]]',
+
+  // ── Clima — OpenWeatherMap
+  weatherCity: '[[Aracaju,BR]]',   // city,countryCode
+  weatherKey:  '[[SUA_API_KEY]]',  // openweathermap.org/api
+
+  // ── Firebase (opcional — remoto)
+  firebaseConfig: {
+    apiKey:            '[[firebase-api-key]]',
+    authDomain:        '[[projeto]].firebaseapp.com',
+    projectId:         '[[projeto]]',
+    storageBucket:     '[[projeto]].appspot.com',
+    messagingSenderId: '[[sender-id]]',
+    appId:             '[[app-id]]',
+  },
+
+  // ── Slides iniciais (substituídos pelo Firebase se configurado)
+  slides: [
+    {
+      type: 'text',
+      eyebrow: 'Bem-vindo',
+      title: 'Seja bem-vindo à [[Nome da Empresa]]',
+      body: 'Nosso atendimento está disponível para ajudar você.',
+      cta: '',
+      duration: 8,
+    },
+    {
+      type: 'text',
+      eyebrow: 'Nossos serviços',
+      title: '[[Serviço principal]]',
+      body: '[[Descrição curta e legível a distância — máximo 2 linhas]]',
+      cta: '💬 WhatsApp: ([[DDD]]) XXXXX-XXXX',
+      duration: 10,
+    },
+    {
+      type: 'qr',
+      title: 'Escaneie e fale conosco',
+      body: 'Atendimento pelo WhatsApp ou pelo nosso site',
+      qrEmoji: '📱',
+      duration: 12,
+    },
+  ],
+
+  // ── Ticker inicial
+  tickerItems: [
+    { text: '[[Aviso 1 — Ex: Horário de funcionamento: Seg–Sex 08h–18h · Sab 09h–13h]]', type: 'normal' },
+    { text: '[[Aviso 2 — Ex: Wi-Fi disponível para clientes — Senha: ]][[SENHA]]',         type: 'highlight' },
+    { text: '[[Aviso 3 — Ex: Acompanhe nossas novidades no Instagram @handle]]',           type: 'normal' },
+    { text: '[[Aviso 4 — Ex: Pagamentos: Pix · Cartão · Dinheiro]]',                      type: 'normal' },
+  ],
+
+  // ── Intervalos
+  weatherInterval:  600,   // segundos entre atualização do clima
+  slideTransition:  800,   // ms da transição entre slides
+};
+
+/* ════════════════════════════════════
+   ESTADO GLOBAL
+════════════════════════════════════ */
+let slides       = [...CONFIG.slides];
+let tickerItems  = [...CONFIG.tickerItems];
+let currentSlide = 0;
+let slideTimer   = null;
+let progressTimer = null;
+let firebaseDB   = null;
+let isAdmin      = getQueryParam('admin') === '1';
+
+/* ════════════════════════════════════
+   INIT
+════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  scaleLayout();
+  window.addEventListener('resize', scaleLayout);
+
+  applyBrand();
+  startClock();
+  buildSecondsDots();
+  buildTicker();
+  buildSlides();
+  startSlideShow();
+  fetchWeather();
+
+  // Clima: atualiza a cada N segundos
+  setInterval(fetchWeather, CONFIG.weatherInterval * 1000);
+
+  // Firebase
+  initFirebase();
+
+  // Admin
+  if (isAdmin) openAdmin();
+
+  // Atalho teclado: A = abrir admin, F = fullscreen
+  document.addEventListener('keydown', e => {
+    if (e.key === 'a' || e.key === 'A') toggleAdmin();
+    if (e.key === 'f' || e.key === 'F') toggleFullscreen();
+    if (e.key === 'Escape') closeAdmin();
+  });
+});
+
+/* ════════════════════════════════════
+   ESCALA AUTOMÁTICA
+════════════════════════════════════ */
+function scaleLayout() {
+  const scaler = document.getElementById('scaler');
+  const scaleX = window.innerWidth  / 1366;
+  const scaleY = window.innerHeight / 768;
+  const scale  = Math.min(scaleX, scaleY);
+  scaler.style.transform = `scale(${scale})`;
+  scaler.style.marginLeft = ((window.innerWidth  - 1366 * scale) / 2) + 'px';
+  scaler.style.marginTop  = ((window.innerHeight - 768  * scale) / 2) + 'px';
+}
+
+/* ════════════════════════════════════
+   IDENTIDADE
+════════════════════════════════════ */
+function applyBrand() {
+  document.getElementById('brand-name').textContent   = CONFIG.brandName;
+  document.getElementById('brand-sub').textContent    = CONFIG.brandSub;
+  document.getElementById('brand-icon').textContent   = CONFIG.brandIcon;
+  document.getElementById('panelIdDisplay').textContent = CONFIG.panelId.replace('PAINEL-','');
+  document.title = `Signage — ${CONFIG.brandName}`;
+}
+
+/* ════════════════════════════════════
+   RELÓGIO
+════════════════════════════════════ */
+const DAYS  = ['Domingo','Segunda-feira','Terça-feira','Quarta-feira','Quinta-feira','Sexta-feira','Sábado'];
+const MONTHS= ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+
+function startClock() {
+  updateClock();
+  setInterval(updateClock, 1000);
+}
+
+function updateClock() {
+  const now = new Date();
+  const h = String(now.getHours()).padStart(2,'0');
+  const m = String(now.getMinutes()).padStart(2,'0');
+  const s = now.getSeconds();
+
+  document.getElementById('clock-h').textContent = h;
+  document.getElementById('clock-m').textContent = m;
+
+  // Dots dos segundos
+  document.querySelectorAll('.sec-dot').forEach((dot, i) => {
+    dot.classList.toggle('active', i < Math.floor(s / 2));
+  });
+
+  const dateStr = `${DAYS[now.getDay()]} · ${now.getDate()} ${MONTHS[now.getMonth()]}`;
+  document.getElementById('clock-date').textContent = dateStr;
+  document.getElementById('ticker-clock-val').textContent = h + ':' + m;
+}
+
+function buildSecondsDots() {
+  const wrap = document.getElementById('clock-seconds');
+  for (let i = 0; i < 30; i++) {
+    const d = document.createElement('div');
+    d.className = 'sec-dot';
+    wrap.appendChild(d);
+  }
+}
+
+/* ════════════════════════════════════
+   CLIMA — OpenWeatherMap
+════════════════════════════════════ */
+const WEATHER_ICONS = {
+  '01d':'☀️','01n':'🌙','02d':'⛅','02n':'🌥️','03d':'☁️','03n':'☁️',
+  '04d':'☁️','04n':'☁️','09d':'🌧️','09n':'🌧️','10d':'🌦️','10n':'🌧️',
+  '11d':'⛈️','11n':'⛈️','13d':'❄️','13n':'❄️','50d':'🌫️','50n':'🌫️',
+};
+
+async function fetchWeather() {
+  const key  = CONFIG.weatherKey.trim();
+  const city = CONFIG.weatherCity.trim();
+  if (!key || key.includes('[[')) return showWeatherOffline();
+
+  try {
+    const r = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${key}&units=metric&lang=pt_br`
+    );
+    if (!r.ok) throw new Error(r.status);
+    const d = await r.json();
+
+    document.getElementById('weather-icon-wrap').textContent =
+      WEATHER_ICONS[d.weather[0].icon] || '🌡️';
+    document.getElementById('weather-temp').innerHTML =
+      `${Math.round(d.main.temp)}<sup>°C</sup>`;
+    document.getElementById('weather-desc').textContent = d.weather[0].description;
+    document.getElementById('wd-feels').textContent    = `${Math.round(d.main.feels_like)}°`;
+    document.getElementById('wd-humidity').textContent = `${d.main.humidity}%`;
+    document.getElementById('wd-wind').textContent     = `${Math.round(d.wind.speed * 3.6)} km/h`;
+    document.getElementById('wd-pressure').textContent = `${d.main.pressure} hPa`;
+    document.getElementById('weather-city-name').textContent = `${d.name}, ${d.sys.country}`;
+
+    showToast('Clima atualizado', 'ok', 2000);
+  } catch(e) {
+    showWeatherOffline();
+    showToast('Clima indisponível', 'err', 3000);
+  }
+}
+
+function showWeatherOffline() {
+  document.getElementById('weather-icon-wrap').textContent = '🌡️';
+  document.getElementById('weather-temp').innerHTML = '--<sup>°C</sup>';
+  document.getElementById('weather-desc').textContent = 'Dados indisponíveis';
+}
+
+/* ════════════════════════════════════
+   TICKER
+════════════════════════════════════ */
+function buildTicker() {
+  const inner = document.getElementById('ticker-inner');
+  const items = [...tickerItems, ...tickerItems]; // duplica para scroll contínuo
+  inner.innerHTML = items.map(it => `
+    <span class="ticker-item ${it.type || ''}">
+      <span class="ti-dot"></span>
+      ${escapeHtml(it.text)}
+    </span>
+  `).join('');
+
+  // Ajusta duração da animação baseado no conteúdo
+  const totalChars = tickerItems.reduce((s, i) => s + i.text.length, 0);
+  const dur = Math.max(20, Math.min(80, totalChars * 0.4));
+  inner.style.animationDuration = dur + 's';
+}
+
+/* ════════════════════════════════════
+   SLIDESHOW
+════════════════════════════════════ */
+function buildSlides() {
+  const container = document.getElementById('slides-container');
+  const dotsEl    = document.getElementById('slide-dots');
+
+  container.innerHTML = '';
+  dotsEl.innerHTML    = '';
+
+  slides.forEach((slide, i) => {
+    const el = document.createElement('div');
+    el.className = 'slide ' + getSlideClass(slide.type);
+    el.dataset.index = i;
+    el.innerHTML = renderSlideContent(slide);
+    container.appendChild(el);
+
+    const dot = document.createElement('div');
+    dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+    dotsEl.appendChild(dot);
+  });
+
+  updateSlideCounter();
+}
+
+function getSlideClass(type) {
+  const map = { text:'slide-text', image:'slide-image', video:'slide-media',
+                alert:'slide-alert', qr:'slide-qr' };
+  return map[type] || 'slide-text';
+}
+
+function renderSlideContent(slide) {
+  switch (slide.type) {
+    case 'text':
+      return `
+        ${slide.eyebrow ? `<div class="s-eyebrow">${escapeHtml(slide.eyebrow)}</div>` : ''}
+        <div class="s-title">${escapeHtml(slide.title || '')}</div>
+        ${slide.body ? `<div class="s-body">${escapeHtml(slide.body)}</div>` : ''}
+        ${slide.cta  ? `<div class="s-cta">${escapeHtml(slide.cta)}</div>` : ''}
+      `;
+
+    case 'image':
+      return ''; // background-image via JS abaixo
+
+    case 'video':
+      return `<video src="${slide.url || ''}" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;"></video>`;
+
+    case 'alert':
+      return `
+        <div class="alert-icon">⚠️</div>
+        <div class="alert-title">${escapeHtml(slide.title || 'AVISO')}</div>
+        ${slide.body ? `<div class="alert-body">${escapeHtml(slide.body)}</div>` : ''}
+      `;
+
+    case 'qr':
+      return `
+        <div class="qr-text">
+          <div class="s-eyebrow">Digital · Rápido · Fácil</div>
+          <div class="s-title">${escapeHtml(slide.title || 'Escaneie o QR Code')}</div>
+          ${slide.body ? `<div class="s-body">${escapeHtml(slide.body)}</div>` : ''}
+        </div>
+        <div class="qr-box">${slide.qrEmoji || '📱'}</div>
+      `;
+
+    default: return '';
+  }
+}
+
+function startSlideShow() {
+  if (slides.length === 0) return;
+  showSlide(0);
+}
+
+function showSlide(index) {
+  clearTimeout(slideTimer);
+  clearInterval(progressTimer);
+
+  const all = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.slide-dot');
+
+  all.forEach((s, i) => {
+    s.classList.toggle('active', i === index);
+    if (i === index && slides[i].type === 'image' && slides[i].url) {
+      s.style.backgroundImage = `url('${slides[i].url}')`;
+    }
+  });
+  dots.forEach((d, i) => d.classList.toggle('active', i === index));
+
+  currentSlide = index;
+  updateSlideCounter();
+
+  // Progress bar
+  const dur = (slides[index].duration || 8) * 1000;
+  const fill = document.getElementById('slide-progress-fill');
+  fill.style.transition = 'none';
+  fill.style.width = '0%';
+
+  requestAnimationFrame(() => {
+    fill.style.transition = `width ${dur}ms linear`;
+    fill.style.width = '100%';
+  });
+
+  slideTimer = setTimeout(() => {
+    const next = (index + 1) % slides.length;
+    showSlide(next);
+  }, dur);
+}
+
+function updateSlideCounter() {
+  document.getElementById('slide-counter').textContent =
+    slides.length > 1 ? `${currentSlide + 1} / ${slides.length}` : '';
+}
+
+/* ════════════════════════════════════
+   FIREBASE
+════════════════════════════════════ */
+function initFirebase() {
+  const cfg = CONFIG.firebaseConfig;
+  if (!cfg.projectId || cfg.projectId.includes('[[')) {
+    showToast('Firebase não configurado — modo local', 'ok', 3000);
+    return;
+  }
+  try {
+    firebase.initializeApp(cfg);
+    firebaseDB = firebase.firestore();
+    listenFirebase();
+    showToast('Firebase conectado', 'ok', 2000);
+  } catch(e) {
+    console.warn('Firebase:', e);
+    showToast('Erro Firebase — usando local', 'err', 3000);
+  }
+}
+
+function listenFirebase() {
+  if (!firebaseDB) return;
+  const panelRef = firebaseDB.collection('panels').doc(CONFIG.panelId);
+
+  panelRef.onSnapshot(doc => {
+    if (!doc.exists) return;
+    const data = doc.data();
+
+    if (data.slides && Array.isArray(data.slides)) {
+      slides = data.slides;
+      buildSlides();
+      showSlide(0);
+      showToast('Slides atualizados', 'ok', 2000);
+    }
+    if (data.tickerItems && Array.isArray(data.tickerItems)) {
+      tickerItems = data.tickerItems;
+      buildTicker();
+    }
+    if (data.brandName) {
+      CONFIG.brandName = data.brandName;
+      CONFIG.brandSub  = data.brandSub  || CONFIG.brandSub;
+      CONFIG.brandIcon = data.brandIcon || CONFIG.brandIcon;
+      applyBrand();
+    }
+    if (data.weatherCity) CONFIG.weatherCity = data.weatherCity;
+    if (data.weatherKey)  CONFIG.weatherKey  = data.weatherKey;
+
+    document.getElementById('statusDot').style.background = 'var(--green)';
+    document.getElementById('statusText').textContent = 'Firebase ativo';
+  }, err => {
+    document.getElementById('statusDot').style.background = 'var(--amber)';
+    document.getElementById('statusText').textContent = 'Reconectando...';
+  });
+}
+
+async function saveToFirebase() {
+  if (!firebaseDB) { alert('Firebase não conectado.'); return; }
+  const payload = buildPayload();
+  try {
+    await firebaseDB.collection('panels').doc(CONFIG.panelId).set(payload, { merge: true });
+    showToast('Salvo no Firebase!', 'ok', 3000);
+  } catch(e) {
+    showToast('Erro ao salvar: ' + e.message, 'err', 4000);
+  }
+}
+
+function saveToLocal() {
+  const payload = buildPayload();
+  try {
+    localStorage.setItem(`signage_${CONFIG.panelId}`, JSON.stringify(payload));
+    applyPayload(payload);
+    showToast('Configuração salva localmente', 'ok', 2500);
+    closeAdmin();
+  } catch(e) {
+    showToast('Erro ao salvar', 'err', 3000);
+  }
+}
+
+function buildPayload() {
+  return {
+    panelId: CONFIG.panelId,
+    brandName: document.getElementById('a-brand-name').value || CONFIG.brandName,
+    brandSub:  document.getElementById('a-brand-sub').value  || CONFIG.brandSub,
+    brandIcon: document.getElementById('a-brand-icon').value || CONFIG.brandIcon,
+    weatherCity: document.getElementById('a-weather-city').value || CONFIG.weatherCity,
+    weatherKey:  document.getElementById('a-weather-key').value  || CONFIG.weatherKey,
+    slides: slides,
+    tickerItems: tickerItems,
+    updatedAt: new Date().toISOString(),
+  };
+}
+
+function applyPayload(data) {
+  Object.assign(CONFIG, data);
+  applyBrand();
+  buildTicker();
+  buildSlides();
+  showSlide(0);
+  fetchWeather();
+}
+
+function loadFromLocal() {
+  try {
+    const raw = localStorage.getItem(`signage_${CONFIG.panelId}`);
+    if (raw) applyPayload(JSON.parse(raw));
+  } catch {}
+}
+
+function exportConfig() {
+  const payload = buildPayload();
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `signage-${CONFIG.panelId}-config.json`;
+  a.click();
+}
+
+/* ════════════════════════════════════
+   ÁUDIO
+════════════════════════════════════ */
+function playBgAudio() {
+  const url = document.getElementById('a-audio-url').value.trim();
+  if (!url) return;
+  const player = document.getElementById('audioPlayer');
+  player.src = url;
+  player.loop = true;
+  player.volume = 0.35;
+  player.play().then(() => {
+    document.getElementById('audio-indicator').classList.add('visible');
+    document.getElementById('audio-label').textContent = 'Áudio em reprodução';
+  }).catch(() => showToast('Autoplay bloqueado — clique na tela', 'err', 4000));
+}
+
+function stopBgAudio() {
+  const player = document.getElementById('audioPlayer');
+  player.pause();
+  player.src = '';
+  document.getElementById('audio-indicator').classList.remove('visible');
+}
+
+/* ════════════════════════════════════
+   PAINEL ADMIN
+════════════════════════════════════ */
+function openAdmin() {
+  document.getElementById('admin-panel').classList.add('open');
+  document.getElementById('adminPanelTitle').textContent = `— ${CONFIG.panelId}`;
+
+  // Preenche campos
+  document.getElementById('a-brand-name').value  = CONFIG.brandName;
+  document.getElementById('a-brand-sub').value   = CONFIG.brandSub;
+  document.getElementById('a-brand-icon').value  = CONFIG.brandIcon;
+  document.getElementById('a-weather-city').value= CONFIG.weatherCity;
+  document.getElementById('a-weather-key').value = CONFIG.weatherKey;
+
+  renderTickerEditor();
+  renderSlideEditor();
+}
+
+function closeAdmin() { document.getElementById('admin-panel').classList.remove('open'); }
+function toggleAdmin() { document.getElementById('admin-panel').classList.toggle('open'); if(document.getElementById('admin-panel').classList.contains('open')) openAdmin(); }
+
+function renderTickerEditor() {
+  const list = document.getElementById('ticker-editor-list');
+  list.innerHTML = tickerItems.map((it, i) => `
+    <div class="slide-editor-row">
+      <span class="ser-type">${it.type||'normal'}</span>
+      <span class="ser-label">${escapeHtml(it.text)}</span>
+      <button class="ser-del" onclick="removeTickerItem(${i})">✕</button>
+    </div>
+  `).join('') || '<p style="font-size:13px;color:var(--muted);padding:8px 0">Nenhum aviso.</p>';
+}
+
+function addTickerItem() {
+  const txt  = document.getElementById('a-ticker-new').value.trim();
+  const type = document.getElementById('a-ticker-type').value;
+  if (!txt) return;
+  tickerItems.push({ text: txt, type });
+  document.getElementById('a-ticker-new').value = '';
+  buildTicker();
+  renderTickerEditor();
+}
+
+function removeTickerItem(i) {
+  tickerItems.splice(i, 1);
+  buildTicker();
+  renderTickerEditor();
+}
+
+function renderSlideEditor() {
+  const list = document.getElementById('slide-editor-list');
+  list.innerHTML = slides.map((s, i) => `
+    <div class="slide-editor-row">
+      <span class="ser-type">${s.type}</span>
+      <span class="ser-label">${escapeHtml(s.title || s.url || '—')}</span>
+      <button class="ser-del" onclick="removeSlide(${i})">✕</button>
+    </div>
+  `).join('') || '<p style="font-size:13px;color:var(--muted);padding:8px 0">Nenhum slide.</p>';
+}
+
+function addSlide() {
+  const type = document.getElementById('a-slide-type').value;
+  const title= document.getElementById('a-slide-title').value.trim();
+  const sub  = document.getElementById('a-slide-sub').value.trim();
+  const dur  = parseInt(document.getElementById('a-slide-dur').value) || 8;
+
+  const newSlide = { type, title, duration: dur };
+  if (type === 'image' || type === 'video') newSlide.url = sub;
+  else { newSlide.body = sub; }
+
+  slides.push(newSlide);
+  buildSlides();
+  showSlide(slides.length - 1);
+  renderSlideEditor();
+
+  document.getElementById('a-slide-title').value = '';
+  document.getElementById('a-slide-sub').value   = '';
+}
+
+function removeSlide(i) {
+  slides.splice(i, 1);
+  if (slides.length === 0) slides.push({ type:'text', title:'Adicione slides no painel admin', duration:8 });
+  buildSlides();
+  showSlide(0);
+  renderSlideEditor();
+}
+
+/* ════════════════════════════════════
+   TOASTS DE STATUS
+════════════════════════════════════ */
+function showToast(msg, type='ok', dur=3000) {
+  const overlay = document.getElementById('status-overlay');
+  const t = document.createElement('div');
+  t.className = `status-toast ${type}`;
+  t.innerHTML = `<span>${type==='ok'?'✓':'✕'}</span> ${msg}`;
+  overlay.appendChild(t);
+  requestAnimationFrame(() => t.classList.add('show'));
+  setTimeout(() => {
+    t.classList.remove('show');
+    setTimeout(() => t.remove(), 400);
+  }, dur);
+}
+
+/* ════════════════════════════════════
+   FULLSCREEN
+════════════════════════════════════ */
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(()=>{});
+  } else {
+    document.exitFullscreen().catch(()=>{});
+  }
+}
+// Auto-fullscreen ao clicar (necessário para autoplay)
+document.addEventListener('click', function autoFS() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(()=>{});
+  }
+  document.removeEventListener('click', autoFS);
+}, { once: true });
+
+/* ════════════════════════════════════
+   UTILITÁRIOS
+════════════════════════════════════ */
+function getQueryParam(name) {
+  return new URLSearchParams(window.location.search).get(name);
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+// Carrega config local ao iniciar
+loadFromLocal();
+</script>
+
+</body>
+</html>
