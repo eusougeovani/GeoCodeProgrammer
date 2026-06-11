@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- ══════════════════════════════════
+       SEO — substitua os [[placeholders]]
+  ══════════════════════════════════ -->
+  <title>[[Seu Nome / Marca]] — [[Tagline curta]]</title>
+  <meta name="description" content="[[Bio curta para o Google. Ex: Designer, fotógrafo e criador de conteúdo baseado em Aracaju/SE.]]" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://[[seudominio.com]]/" />
+
+  <!-- Open Graph / WhatsApp -->
+  <meta property="og:type"        content="profile" />
+  <meta property="og:title"       content="[[Seu Nome]] — [[Tagline]]" />
+  <meta property="og:description" content="[[Bio curta]]" />
+  <meta property="og:image"       content="https://[[seudominio.com]]/avatar.jpg" />
+  <meta property="og:url"         content="https://[[seudominio.com]]/" />
+  <meta property="og:locale"      content="pt_BR" />
+
+  <!-- Favicon inline — troque pela sua inicial -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='16' fill='%237C3AED'/><text y='23' x='8' font-size='18' fill='white' font-family='sans-serif' font-weight='bold'>[[G]]</text></svg>" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ════════════════════════════════════
+       TOKENS — edite para rebrand completo
+    ════════════════════════════════════ */
+    :root {
+      /* Cor de acento principal — mude aqui para qualquer cor */
+      --accent:      #7C3AED;
+      --accent-2:    #A855F7;
+      --accent-dim:  rgba(124, 58, 237, 0.15);
+      --accent-glow: rgba(124, 58, 237, 0.35);
+
+      /* Fundos */
+      --bg:          #0A0A0F;
+      --surface:     #141420;
+      --surface-2:   #1C1C2E;
+      --border:      rgba(255,255,255,0.08);
+      --border-h:    rgba(124,58,237,0.4);
+
+      /* Texto */
+      --white:       #F0F0F8;
+      --muted:       #6B6B8A;
+      --dim:         #9898B8;
+
+      /* Tipografia */
+      --font-d: 'Bricolage Grotesque', sans-serif;
+      --font-b: 'Inter', sans-serif;
+
+      /* Layout */
+      --max:    480px;
+      --radius: 16px;
+      --radius-s: 10px;
+    }
+
+    /* ── Modo claro (opcional — descomente para ativar)
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #F4F4FA; --surface: #FFFFFF; --surface-2: #EEEEF8;
+        --border: rgba(0,0,0,0.08); --white: #111128; --muted: #8888AA; --dim: #555570;
+      }
+    } */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      background: var(--bg);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: var(--font-b);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 0 80px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ── Grade de pontos de fundo ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Halo de cor pulsante ── */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 65%);
+      animation: halopulse 6s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    @keyframes halopulse {
+      0%, 100% { opacity: .7; transform: translateX(-50%) scale(1); }
+      50%       { opacity: 1;  transform: translateX(-50%) scale(1.12); }
+    }
+
+    /* ── Container principal ── */
+    .page {
+      width: 100%;
+      max-width: var(--max);
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ════════════════════════════════════
+       PERFIL
+    ════════════════════════════════════ */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 56px 0 36px;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-d);
+      font-size: 38px;
+      font-weight: 800;
+      color: #fff;
+      position: relative;
+      z-index: 2;
+      /* Substitua por: background: url('avatar.jpg') center/cover; */
+      box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent), 0 16px 40px var(--accent-glow);
+    }
+
+    .avatar-status {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 18px;
+      height: 18px;
+      background: #22C55E;
+      border-radius: 50%;
+      border: 3px solid var(--bg);
+      z-index: 3;
+    }
+    .avatar-status::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: rgba(34,197,94,.4);
+      animation: pulse-ring 2s ease-in-out infinite;
+    }
+    @keyframes pulse-ring { 0%,100% { transform:scale(1); opacity:.5; } 50% { transform:scale(1.6); opacity:0; } }
+
+    .profile-name {
+      font-family: var(--font-d);
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .profile-handle {
+      font-size: 14px;
+      color: var(--accent-2);
+      font-weight: 500;
+      margin-bottom: 12px;
+      letter-spacing: .01em;
+    }
+
+    .profile-bio {
+      font-size: 15px;
+      color: var(--dim);
+      line-height: 1.65;
+      max-width: 360px;
+      margin-bottom: 20px;
+    }
+
+    /* Tags de habilidades */
+    .profile-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+    .tag {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-2);
+      background: var(--accent-dim);
+      border: 1px solid var(--border-h);
+      padding: 4px 12px;
+      border-radius: 100px;
+      letter-spacing: .02em;
+    }
+
+    /* Ícones sociais rápidos */
+    .social-icons {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .si {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      text-decoration: none;
+      transition: background .2s, border-color .2s, transform .18s;
+      position: relative;
+    }
+    .si:hover {
+      background: var(--accent-dim);
+      border-color: var(--border-h);
+      transform: translateY(-2px);
+    }
+    .si .si-tooltip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--surface-2);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .15s;
+      border: 1px solid var(--border);
+    }
+    .si:hover .si-tooltip { opacity: 1; }
+
+    /* ════════════════════════════════════
+       CATEGORIAS E LINKS
+    ════════════════════════════════════ */
+    .links-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .category {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .category-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-d);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 4px;
+    }
+    .category-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Tile padrão (lista) ── */
+    .link-tile {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+      text-decoration: none;
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+      transition: border-color .2s, transform .2s, box-shadow .2s, background .2s;
+      cursor: pointer;
+
+      /* Entrada animada */
+      opacity: 0;
+      transform: translateY(16px);
+      animation: tileIn .4s ease forwards;
+    }
+    .link-tile::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--accent-dim), transparent);
+      opacity: 0;
+      transition: opacity .25s;
+    }
+    .link-tile:hover::before { opacity: 1; }
+    .link-tile:hover {
+      border-color: var(--border-h);
+      transform: translateX(4px) scale(1.01);
+      box-shadow: 0 4px 24px var(--accent-glow);
+    }
+    .link-tile:active { transform: scale(.98); }
+
+    @keyframes tileIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tile-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-s);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+      transition: background .2s, border-color .2s;
+    }
+    .link-tile:hover .tile-icon {
+      background: var(--accent-dim);
+      border-color: var(--border-h);
+    }
+
+    .tile-text {
+      flex: 1;
+      min-width: 0;
+    }
+    .tile-label {
+      font-family: var(--font-d);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .tile-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .tile-arrow {
+      color: var(--muted);
+      font-size: 16px;
+      transition: color .2s, transform .2s;
+      flex-shrink: 0;
+    }
+    .link-tile:hover .tile-arrow {
+      color: var(--accent-2);
+      transform: translateX(3px);
+    }
+
+    /* Variante: badge "Novo" */
+    .tile-badge {
+      font-size: 10px;
+      font-weight: 700;
+      background: var(--accent);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 100px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-left: 4px;
+      flex-shrink: 0;
+    }
+    .tile-badge.green { background: #16A34A; }
+    .tile-badge.amber { background: #D97706; }
+
+    /* ── Tiles em grid 2 colunas ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .link-tile.grid-tile {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 18px 16px;
+      gap: 10px;
+    }
+    .link-tile.grid-tile .tile-icon { width: 40px; height: 40px; font-size: 20px; }
+    .link-tile.grid-tile .tile-label { font-size: 14px; white-space: normal; }
+    .link-tile.grid-tile .tile-sub { white-space: normal; }
+    .link-tile.grid-tile .tile-arrow { display: none; }
+
+    /* ── Tile destaque (featured / CTA) ── */
+    .link-tile.cta {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border-color: transparent;
+      box-shadow: 0 4px 24px var(--accent-glow);
+    }
+    .link-tile.cta::before { display: none; }
+    .link-tile.cta .tile-icon { background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.2); }
+    .link-tile.cta .tile-label { color: #fff; font-size: 16px; }
+    .link-tile.cta .tile-sub { color: rgba(255,255,255,.75); }
+    .link-tile.cta .tile-arrow { color: rgba(255,255,255,.8); }
+    .link-tile.cta:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 36px var(--accent-glow); }
+
+    /* ── Tile WhatsApp ── */
+    .link-tile.wa {
+      background: linear-gradient(135deg, #16a34a, #15803d);
+      border-color: transparent;
+      box-shadow: 0 4px 20px rgba(22,163,74,.3);
+    }
+    .link-tile.wa::before { display: none; }
+    .link-tile.wa .tile-icon { background: rgba(255,255,255,.15); border-color: rgba(255,255,255,.2); }
+    .link-tile.wa .tile-label, .link-tile.wa .tile-arrow { color: #fff; }
+    .link-tile.wa .tile-sub { color: rgba(255,255,255,.75); }
+    .link-tile.wa:hover { transform: translateY(-3px) scale(1.02); }
+
+    /* ════════════════════════════════════
+       ANALYTICS PAINEL
+    ════════════════════════════════════ */
+    .analytics-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 36px auto 0;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: var(--font-b);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 9px 20px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: border-color .2s, color .2s;
+    }
+    .analytics-toggle:hover { border-color: var(--accent); color: var(--accent-2); }
+
+    .analytics-panel {
+      display: none;
+      margin-top: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .analytics-panel.open { display: block; }
+
+    .analytics-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .analytics-header h3 {
+      font-family: var(--font-d);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .analytics-header .reset-btn {
+      font-size: 12px;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 4px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: var(--font-b);
+      transition: border-color .2s, color .2s;
+    }
+    .analytics-header .reset-btn:hover { border-color: #EF4444; color: #EF4444; }
+
+    .analytics-list {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .analytic-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: var(--radius-s);
+      background: var(--surface-2);
+    }
+    .ar-icon { font-size: 18px; flex-shrink: 0; width: 28px; text-align: center; }
+    .ar-label { flex: 1; font-size: 13px; font-weight: 600; color: var(--white); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .ar-count {
+      font-family: var(--font-d);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent-2);
+      flex-shrink: 0;
+    }
+    .ar-bar-wrap { flex-shrink: 0; width: 60px; }
+    .ar-bar {
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .ar-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      border-radius: 2px;
+      transition: width .5s ease;
+    }
+
+    .analytics-footer {
+      padding: 12px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ════════════════════════════════════
+       RODAPÉ
+    ════════════════════════════════════ */
+    .bio-footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .bio-footer a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .15s;
+    }
+    .bio-footer a:hover { color: var(--accent-2); }
+    .powered {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: var(--muted);
+      opacity: .5;
+    }
+
+    /* ════════════════════════════════════
+       UTILITÁRIOS DE ANIMAÇÃO
+    ════════════════════════════════════ */
+    [data-delay="1"] { animation-delay: .05s; }
+    [data-delay="2"] { animation-delay: .10s; }
+    [data-delay="3"] { animation-delay: .15s; }
+    [data-delay="4"] { animation-delay: .20s; }
+    [data-delay="5"] { animation-delay: .25s; }
+    [data-delay="6"] { animation-delay: .30s; }
+    [data-delay="7"] { animation-delay: .35s; }
+    [data-delay="8"] { animation-delay: .40s; }
+    [data-delay="9"] { animation-delay: .45s; }
+    [data-delay="10"]{ animation-delay: .50s; }
+    [data-delay="11"]{ animation-delay: .55s; }
+    [data-delay="12"]{ animation-delay: .60s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .link-tile { animation: none; opacity: 1; transform: none; }
+      body::after { animation: none; }
+      .avatar-status::after { animation: none; }
+    }
+
+    /* Responsividade */
+    @media (max-width: 400px) {
+      .profile-name { font-size: 22px; }
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══════════ PERFIL ══════════ -->
+  <div class="profile">
+
+    <div class="avatar-wrap">
+      <div class="avatar" id="avatarEl">
+        <!-- Troque pelo emoji inicial ou use: style="background:url('avatar.jpg') center/cover" -->
+        [[G]]
+      </div>
+      <div class="avatar-status" title="Disponível para projetos"></div>
+    </div>
+
+    <h1 class="profile-name">[[Seu Nome Completo / Marca]]</h1>
+    <p class="profile-handle">@[[seuhandle]]</p>
+
+    <p class="profile-bio">
+      [[Bio curta em 1-2 linhas. Ex: Designer & dev baseado em Aracaju • Crio identidades digitais que convertem • Aberto a projetos]]
+    </p>
+
+    <div class="profile-tags">
+      <span class="tag">[[Tag 1]]</span>
+      <span class="tag">[[Tag 2]]</span>
+      <span class="tag">[[Tag 3]]</span>
+      <span class="tag">[[Tag 4]]</span>
+    </div>
+
+    <!-- Ícones sociais rápidos -->
+    <div class="social-icons">
+
+      <a href="https://instagram.com/[[handle]]" target="_blank" rel="noopener"
+         class="si" onclick="track('Instagram','si')" aria-label="Instagram">
+        📸 <span class="si-tooltip">Instagram</span>
+      </a>
+
+      <a href="https://tiktok.com/@[[handle]]" target="_blank" rel="noopener"
+         class="si" onclick="track('TikTok','si')" aria-label="TikTok">
+        🎵 <span class="si-tooltip">TikTok</span>
+      </a>
+
+      <a href="https://youtube.com/@[[handle]]" target="_blank" rel="noopener"
+         class="si" onclick="track('YouTube','si')" aria-label="YouTube">
+        ▶️ <span class="si-tooltip">YouTube</span>
+      </a>
+
+      <a href="https://linkedin.com/in/[[handle]]" target="_blank" rel="noopener"
+         class="si" onclick="track('LinkedIn','si')" aria-label="LinkedIn">
+        💼 <span class="si-tooltip">LinkedIn</span>
+      </a>
+
+      <a href="https://twitter.com/[[handle]]" target="_blank" rel="noopener"
+         class="si" onclick="track('Twitter/X','si')" aria-label="Twitter/X">
+        🐦 <span class="si-tooltip">Twitter / X</span>
+      </a>
+
+      <a href="mailto:[[email@voce.com]]"
+         class="si" onclick="track('E-mail','si')" aria-label="E-mail">
+        ✉️ <span class="si-tooltip">E-mail</span>
+      </a>
+
+    </div>
+  </div><!-- /profile -->
+
+
+  <!-- ══════════ LINKS ══════════ -->
+  <div class="links-container">
+
+
+    <!-- ─── CATEGORIA: DESTAQUE ─────────────────── -->
+    <div class="category">
+      <div class="category-label">✦ Destaque</div>
+
+      <!-- CTA principal — WhatsApp -->
+      <a href="https://wa.me/55XXXXXXXXXXX?text=Oi!%20Vim%20pelo%20seu%20link%20na%20bio%20e%20quero%20saber%20mais."
+         class="link-tile wa"
+         target="_blank" rel="noopener"
+         onclick="track('WhatsApp','cta')"
+         data-delay="1">
+        <div class="tile-icon">💬</div>
+        <div class="tile-text">
+          <div class="tile-label">Fale comigo agora</div>
+          <div class="tile-sub">Respondo em minutos pelo WhatsApp</div>
+        </div>
+        <span class="tile-arrow">→</span>
+      </a>
+
+      <!-- Link destaque principal -->
+      <a href="[[https://seusite.com]]"
+         class="link-tile cta"
+         target="_blank" rel="noopener"
+         onclick="track('[[Site Principal]]','cta')"
+         data-delay="2">
+        <div class="tile-icon">🚀</div>
+        <div class="tile-text">
+          <div class="tile-label">[[CTA principal — ex: Ver meu portfólio]]</div>
+          <div class="tile-sub">[[Sublabel opcional — ex: Projetos selecionados 2024]]</div>
+        </div>
+        <span class="tile-arrow">→</span>
+      </a>
+
+    </div><!-- /destaque -->
+
+
+    <!-- ─── CATEGORIA: LINKS PRINCIPAIS ────────── -->
+    <div class="category">
+      <div class="category-label">🔗 Links principais</div>
+
+      <a href="[[URL]]" class="link-tile" target="_blank" rel="noopener"
+         onclick="track('[[Label 1]]','link')" data-delay="3">
+        <div class="tile-icon">[[🌐]]</div>
+        <div class="tile-text">
+          <div class="tile-label">[[Link 1 — Ex: Meu site profissional]]</div>
+          <div class="tile-sub">[[seudominio.com]]</div>
+        </div>
+        <span class="tile-badge">Novo</span>
+        <span class="tile-arrow">→</span>
+      </a>
+
+      <a href="[[URL]]" class="link-tile" target="_blank" rel="noopener"
+         onclick="track('[[Label 2]]','link')" data-delay="4">
+        <div class="tile-icon">[[📋]]</div>
+        <div class="tile-text">
+          <div class="tile-label">[[Link 2 — Ex: Currículo / CV]]</div>
+          <div class="tile-sub">[[Sublabel descritivo]]</div>
+        </div>
+        <span class="tile-arrow">→</span>
+      </a>
+
+      <a href="[[URL]]" class="link-tile" target="_blank" rel="noopener"
+         onclick="track('[[Label 3]]','link')" data-delay="5">
+        <div class="tile-icon">[[⭐]]</div>
+        <div class="tile-text">
+          <div class="tile-label">[[Link 3 — Ex: Avalie no Google]]</div>
+          <div class="tile-sub">[[Sublabel descritivo]]</div>
+        </div>
+        <span class="tile-arrow">→</span>
+      </a>
+
+    </div><!-- /links principais -->
+
+
+    <!-- ─── CATEGORIA: SERVIÇOS (GRID 2 COL) ────── -->
+    <div class="category">
+      <div class="category-label">💼 Serviços</div>
+
+      <div class="grid-2">
+
+        <a href="[[URL]]" class="link-tile grid-tile" target="_blank" rel="noopener"
+           onclick="track('[[Serviço 1]]','grid')" data-delay="6">
+          <div class="tile-icon">[[🎨]]</div>
+          <div class="tile-text">
+            <div class="tile-label">[[Serviço 1]]</div>
+            <div class="tile-sub">[[Descrição curta]]</div>
+          </div>
+        </a>
+
+        <a href="[[URL]]" class="link-tile grid-tile" target="_blank" rel="noopener"
+           onclick="track('[[Serviço 2]]','grid')" data-delay="7">
+          <div class="tile-icon">[[⚡]]</div>
+          <div class="tile-text">
+            <div class="tile-label">[[Serviço 2]]</div>
+            <div class="tile-sub">[[Descrição curta]]</div>
+          </div>
+        </a>
+
+        <a href="[[URL]]" class="link-tile grid-tile" target="_blank" rel="noopener"
+           onclick="track('[[Serviço 3]]','grid')" data-delay="8">
+          <div class="tile-icon">[[📱]]</div>
+          <div class="tile-text">
+            <div class="tile-label">[[Serviço 3]]</div>
+            <div class="tile-sub">[[Descrição curta]]</div>
+          </div>
+        </a>
+
+        <a href="[[URL]]" class="link-tile grid-tile" target="_blank" rel="noopener"
+           onclick="track('[[Serviço 4]]','grid')" data-delay="9">
+          <div class="tile-icon">[[📈]]</div>
+          <div class="tile-text">
+            <div class="tile-label">[[Serviço 4]]</div>
+            <div class="tile-sub">[[Descrição curta]]</div>
+          </div>
+        </a>
+
+      </div>
+    </div><!-- /serviços -->
+
+
+    <!-- ─── CATEGORIA: CONTEÚDO ──────────────────── -->
+    <div class="category">
+      <div class="category-label">📢 Conteúdo</div>
+
+      <a href="[[URL do canal/perfil]]" class="link-tile" target="_blank" rel="noopener"
+         onclick="track('[[Conteúdo 1]]','content')" data-delay="10">
+        <div class="tile-icon">[[▶️]]</div>
+        <div class="tile-text">
+          <div class="tile-label">[[Ex: Canal no YouTube]]</div>
+          <div class="tile-sub">[[Ex: Vídeos sobre desenvolvimento web toda semana]]</div>
+        </div>
+        <span class="tile-badge green">[[+1k]]</span>
+        <span class="tile-arrow">→</span>
+      </a>
+
+      <a href="[[URL do podcast/newsletter]]" class="link-tile" target="_blank" rel="noopener"
+         onclick="track('[[Conteúdo 2]]','content')" data-delay="11">
+        <div class="tile-icon">[[🎙️]]</div>
+        <div class="tile-text">
+          <div class="tile-label">[[Ex: Newsletter / Podcast]]</div>
+          <div class="tile-sub">[[Ex: Assine grátis — toda quinta-feira]]</div>
+        </div>
+        <span class="tile-badge amber">Grátis</span>
+        <span class="tile-arrow">→</span>
+      </a>
+
+      <a href="[[URL da loja/produto digital]]" class="link-tile" target="_blank" rel="noopener"
+         onclick="track('[[Produto Digital]]','content')" data-delay="12">
+        <div class="tile-icon">[[🛒]]</div>
+        <div class="tile-text">
+          <div class="tile-label">[[Ex: Meus produtos digitais]]</div>
+          <div class="tile-sub">[[Ex: Templates, e-books e cursos]]</div>
+        </div>
+        <span class="tile-arrow">→</span>
+      </a>
+
+    </div><!-- /conteúdo -->
+
+
+  </div><!-- /links-container -->
+
+
+  <!-- ══════════ ANALYTICS ══════════ -->
+  <button class="analytics-toggle" onclick="toggleAnalytics()" aria-expanded="false" id="analyticsBtn">
+    📊 Ver estatísticas de cliques
+  </button>
+
+  <div class="analytics-panel" id="analyticsPanel" role="region" aria-label="Estatísticas">
+    <div class="analytics-header">
+      <h3>📊 Cliques por link</h3>
+      <button class="reset-btn" onclick="resetAnalytics()">Zerar dados</button>
+    </div>
+    <div class="analytics-list" id="analyticsList">
+      <!-- preenchido por JS -->
+    </div>
+    <div class="analytics-footer" id="analyticsFooter">
+      Dados armazenados localmente neste dispositivo · Última atualização: agora
+    </div>
+  </div>
+
+
+  <!-- ══════════ RODAPÉ ══════════ -->
+  <footer class="bio-footer">
+    <p>
+      <a href="/privacidade">Privacidade</a> ·
+      <a href="mailto:[[email@voce.com]]">Contato</a>
+    </p>
+    <span class="powered">
+      Feito com ♥ por <a href="https://geocode.com.br" target="_blank" rel="noopener" style="color:inherit;margin-left:4px">GeoCODE</a>
+    </span>
+  </footer>
+
+</div><!-- /page -->
+
+
+<!-- ══════════ SCRIPTS ══════════ -->
+<script>
+/* ════════════════════════════════════
+   ANALYTICS — localStorage
+════════════════════════════════════ */
+const STORE_KEY = 'bio_clicks_v1';
+
+function getClicks() {
+  try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; }
+  catch { return {}; }
+}
+
+function saveClicks(data) {
+  try { localStorage.setItem(STORE_KEY, JSON.stringify(data)); } catch {}
+}
+
+function track(label, category) {
+  const data = getClicks();
+  const key = label;
+  data[key] = (data[key] || 0) + 1;
+  saveClicks(data);
+  renderAnalytics();
+
+  // Opcional: envia para Google Analytics se presente
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'click', { event_category: category, event_label: label });
+  }
+}
+
+function renderAnalytics() {
+  const data   = getClicks();
+  const list   = document.getElementById('analyticsList');
+  const footer = document.getElementById('analyticsFooter');
+  const entries = Object.entries(data).sort((a, b) => b[1] - a[1]);
+  const total  = entries.reduce((s, [, v]) => s + v, 0);
+
+  if (entries.length === 0) {
+    list.innerHTML = '<div style="padding:20px;text-align:center;font-size:13px;color:var(--muted)">Nenhum clique registrado ainda.<br>Comece a compartilhar seu link!</div>';
+    footer.textContent = 'Total: 0 cliques · Dados locais neste dispositivo';
+    return;
+  }
+
+  const max = entries[0][1];
+
+  list.innerHTML = entries.map(([label, count]) => {
+    const pct = Math.round((count / max) * 100);
+    // Tenta encontrar o ícone do tile correspondente
+    const tile = [...document.querySelectorAll('.link-tile')].find(t => {
+      const lbl = t.querySelector('.tile-label');
+      return lbl && lbl.textContent.trim().includes(label.split('—')[0].trim());
+    });
+    const iconEl = tile ? tile.querySelector('.tile-icon') : null;
+    const icon   = iconEl ? iconEl.textContent.trim().split('\n')[0].trim() : '🔗';
+
+    return `
+      <div class="analytic-row">
+        <span class="ar-icon">${icon}</span>
+        <span class="ar-label" title="${label}">${label}</span>
+        <div class="ar-bar-wrap">
+          <div class="ar-bar"><div class="ar-bar-fill" style="width:${pct}%"></div></div>
+        </div>
+        <span class="ar-count">${count}</span>
+      </div>`;
+  }).join('');
+
+  const ts = new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+  footer.textContent = `Total: ${total} clique${total !== 1 ? 's' : ''} · Atualizado às ${ts} · Dados locais neste dispositivo`;
+}
+
+function toggleAnalytics() {
+  const panel = document.getElementById('analyticsPanel');
+  const btn   = document.getElementById('analyticsBtn');
+  const open  = panel.classList.toggle('open');
+  btn.setAttribute('aria-expanded', open);
+  btn.textContent = open ? '▲ Fechar estatísticas' : '📊 Ver estatísticas de cliques';
+  if (open) renderAnalytics();
+}
+
+function resetAnalytics() {
+  if (!confirm('Zerar todos os dados de cliques?')) return;
+  saveClicks({});
+  renderAnalytics();
+}
+
+/* ════════════════════════════════════
+   MÁSCARA TELEFONE NO WHATSAPP
+   (links dinâmicos opcionais)
+════════════════════════════════════ */
+
+/* ════════════════════════════════════
+   STAGGER DE ANIMAÇÃO
+   Garante que tiles acima da dobra
+   nunca fiquem invisíveis
+════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', () => {
+  // Force visibility em tiles sem delay definido
+  document.querySelectorAll('.link-tile:not([data-delay])').forEach(el => {
+    el.style.animationDelay = '0s';
+  });
+});
+</script>
+
+</body>
+</html>
