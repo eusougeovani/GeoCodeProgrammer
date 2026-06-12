@@ -3608,69 +3608,174 @@
   <section id="s-portfolio" class="sec sec-alt">
     <div class="container">
       <div class="text-center reveal">
-        <div class="eyebrow">Portfólio & Produtos</div>
-        <h2 class="sec-title">Projetos em destaque da GeoCODE</h2>
-        <p class="sec-sub">Explore nossos cases de sucesso, desde CRMs e PWAs até sites institucionais. Soluções focadas
-          em alta performance e experiência do usuário.</p>
+        <div class="eyebrow">PORTFÓLIO & CATÁLOGO</div>
+        <h2 class="sec-title">Catálogo de Serviços GeoCODE</h2>
+        <p class="sec-sub">Soluções sob medida para o seu negócio. Escolha o serviço ideal e impulsione seus resultados
+          no
+          ambiente digital.</p>
       </div>
+
+      <!-- Filtros atualizados conforme o catálogo -->
       <div class="portfolio-filter">
         <button class="pf-btn active" onclick="filterPortfolio('all',this)">Todos</button>
-        <button class="pf-btn" onclick="filterPortfolio('sites',this)">Sites</button>
-        <button class="pf-btn" onclick="filterPortfolio('lojas',this)">Lojas</button>
-        <button class="pf-btn" onclick="filterPortfolio('apps',this)">Apps/SaaS</button>
-        <button class="pf-btn" onclick="filterPortfolio('digital',this)">Digital</button>
+        <button class="pf-btn" onclick="filterPortfolio('sites',this)">Sites & Lojas</button>
+        <button class="pf-btn" onclick="filterPortfolio('sistemas',this)">Sistemas Web</button>
+        <button class="pf-btn" onclick="filterPortfolio('marketing',this)">Marketing & SEO</button>
+        <button class="pf-btn" onclick="filterPortfolio('digital',this)">Digital Signage</button>
       </div>
 
-      <!-- Grid de Projetos -->
+      <!-- Grid de Produtos com base na imagem enviada -->
       <div class="portfolio-grid" id="portfolioGrid"
-        style="display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-top: 40px;">
+        style="display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-top: 40px;">
 
-        <!-- Card 1: SaaS/CRM -->
-        <div class="portfolio-card"
-          style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; position: relative;">
-          <div style="font-size: 3rem; text-align: center; margin-bottom: 24px; color: #00e5ff;">💻</div>
-          <div
-            style="font-size: 11px; font-weight: 700; color: #8892b0; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;">
-            APPS / SAAS</div>
-          <h3 style="font-size: 20px; color: #fff; margin-bottom: 12px; font-weight: 600;">Akanni Psi (CRM)</h3>
-          <p style="font-size: 14px; color: #a8b2d1; line-height: 1.6; margin-bottom: 24px;">Sistema completo de gestão
-            para psicólogos, com cadastro de pacientes, painel de controle e prontuários estruturados.</p>
-          <div style="font-size: 20px; font-weight: 700; color: #fff;">Projeto sob medida</div>
-          <button
-            style="position: absolute; bottom: 24px; right: 24px; background: #ff7b00; color: #fff; border: none; width: 40px; height: 40px; border-radius: 8px; font-size: 20px; cursor: pointer; transition: 0.3s;"
-            onclick="addToCart('akanni')">+</button>
+        <!-- Produto 1: Landing Page -->
+        <div class="service-card reveal" data-category="sites">
+          <span class="si-tag" style="background:#ff9800;color:#fff;border:none;">🔥 Mais vendido</span>
+          <div class="si-title" style="margin-top: 16px;">Landing Page</div>
+          <div class="si-desc">Página focada em conversão, ideal para campanhas de anúncios, captação de leads e vendas
+            diretas.</div>
+          <ul class="si-feat">
+            <li>Design exclusivo focado em conversão</li>
+            <li>Carregamento ultrarrápido (Otimizado)</li>
+            <li>Integração com WhatsApp e CRM</li>
+            <li>Copywriting persuasiva inclusa</li>
+          </ul>
+          <div style="margin-top:24px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px;">
+            <div style="font-size:12px; color:#8892b0; text-transform: uppercase; margin-bottom: 4px;">Valor do Projeto
+            </div>
+            <div style="font-size:28px; font-weight:bold; color:#fff;">R$ 600<span
+                style="font-size:16px; color:#8892b0;">,00</span></div>
+          </div>
+          <button class="btn btn-primary btn-full"
+            style="margin-top:16px; background-color: #25d366; color: #fff; border: none;"
+            onclick="addToCart('landing-page')">
+            🛒 Pedir
+          </button>
         </div>
 
-        <!-- Card 2: Site Institucional -->
-        <div class="portfolio-card"
-          style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; position: relative;">
-          <div style="font-size: 3rem; text-align: center; margin-bottom: 24px; color: #00e5ff;">🌐</div>
-          <div
-            style="font-size: 11px; font-weight: 700; color: #8892b0; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;">
-            SITES</div>
-          <h3 style="font-size: 20px; color: #fff; margin-bottom: 12px; font-weight: 600;">Fundação Fênix 193</h3>
-          <p style="font-size: 14px; color: #a8b2d1; line-height: 1.6; margin-bottom: 24px;">Site institucional e
-            estruturação front-end focado em clareza de informações, captação e forte presença digital.</p>
-          <div style="font-size: 20px; font-weight: 700; color: #fff;">Projeto sob medida</div>
-          <button
-            style="position: absolute; bottom: 24px; right: 24px; background: #ff7b00; color: #fff; border: none; width: 40px; height: 40px; border-radius: 8px; font-size: 20px; cursor: pointer; transition: 0.3s;"
-            onclick="addToCart('fenix')">+</button>
+        <!-- Produto 2: Site Institucional -->
+        <div class="service-card reveal reveal-d1" data-category="sites">
+          <span class="si-tag">🌐 Sites</span>
+          <div class="si-title" style="margin-top: 16px;">Site Institucional</div>
+          <div class="si-desc">Apresente sua empresa ao mundo com um site profissional, responsivo e otimizado para o
+            Google.</div>
+          <ul class="si-feat">
+            <li>Design responsivo (Mobile First)</li>
+            <li>Painel Administrativo para Blog/Notícias</li>
+            <li>Páginas internas (Home, Sobre, Serviços, etc)</li>
+            <li>Otimização SEO On-Page</li>
+          </ul>
+          <div style="margin-top:24px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px;">
+            <div style="font-size:12px; color:#8892b0; text-transform: uppercase; margin-bottom: 4px;">Valor do Projeto
+            </div>
+            <div style="font-size:28px; font-weight:bold; color:#fff;">R$ 1.100<span
+                style="font-size:16px; color:#8892b0;">,00</span></div>
+          </div>
+          <button class="btn btn-primary btn-full"
+            style="margin-top:16px; background-color: #25d366; color: #fff; border: none;"
+            onclick="addToCart('institucional')">
+            🛒 Pedir
+          </button>
         </div>
 
-        <!-- Card 3: PWA -->
-        <div class="portfolio-card"
-          style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 24px; position: relative;">
-          <div style="font-size: 3rem; text-align: center; margin-bottom: 24px; color: #00e5ff;">📱</div>
-          <div
-            style="font-size: 11px; font-weight: 700; color: #8892b0; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px;">
-            APPS / SAAS</div>
-          <h3 style="font-size: 20px; color: #fff; margin-bottom: 12px; font-weight: 600;">Netlove (PWA)</h3>
-          <p style="font-size: 14px; color: #a8b2d1; line-height: 1.6; margin-bottom: 24px;">Progressive Web App
-            interativo projetado com UI/UX refinada para acompanhamento pessoal dinâmico.</p>
-          <div style="font-size: 20px; font-weight: 700; color: #fff;">Projeto sob medida</div>
-          <button
-            style="position: absolute; bottom: 24px; right: 24px; background: #ff7b00; color: #fff; border: none; width: 40px; height: 40px; border-radius: 8px; font-size: 20px; cursor: pointer; transition: 0.3s;"
-            onclick="addToCart('netlove')">+</button>
+        <!-- Produto 3: Link na Bio -->
+        <div class="service-card reveal" data-category="sites">
+          <span class="si-tag">📱 Identidade Visual</span>
+          <div class="si-title" style="margin-top: 16px;">Link em árvore (Bio)</div>
+          <div class="si-desc">Centralize todos os seus links importantes em uma única página personalizada com a sua
+            identidade visual.</div>
+          <ul class="si-feat">
+            <li>Design 100% alinhado à sua marca</li>
+            <li>Links ilimitados para redes e contatos</li>
+            <li>Carregamento instantâneo</li>
+            <li>Hospedagem inclusa no pacote</li>
+          </ul>
+          <div style="margin-top:24px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px;">
+            <div style="font-size:12px; color:#8892b0; text-transform: uppercase; margin-bottom: 4px;">Valor do Projeto
+            </div>
+            <div style="font-size:28px; font-weight:bold; color:#fff;">R$ 250<span
+                style="font-size:16px; color:#8892b0;">,00</span></div>
+          </div>
+          <button class="btn btn-primary btn-full"
+            style="margin-top:16px; background-color: #25d366; color: #fff; border: none;"
+            onclick="addToCart('link-bio')">
+            🛒 Pedir
+          </button>
+        </div>
+
+        <!-- Produto 4: Digital Signage -->
+        <div class="service-card reveal reveal-d1" data-category="digital">
+          <span class="si-tag">📺 Digital Signage</span>
+          <div class="si-title" style="margin-top: 16px;">Digital Signage</div>
+          <div class="si-desc">TVs Corporativas e Painéis de Menu Board (Cardápios Digitais) atualizados remotamente.
+          </div>
+          <ul class="si-feat">
+            <li>Gestão de conteúdo 100% remota</li>
+            <li>Atualização em tempo real (Clima, Notícias)</li>
+            <li>Sistema em nuvem contínuo</li>
+            <li>Layout personalizado para seu negócio</li>
+          </ul>
+          <div style="margin-top:24px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px;">
+            <div style="font-size:12px; color:#8892b0; text-transform: uppercase; margin-bottom: 4px;">Valor do Projeto
+            </div>
+            <div style="font-size:28px; font-weight:bold; color:#fff;">R$ 475<span
+                style="font-size:16px; color:#8892b0;">,00</span></div>
+          </div>
+          <button class="btn btn-primary btn-full"
+            style="margin-top:16px; background-color: #25d366; color: #fff; border: none;"
+            onclick="addToCart('digital-signage')">
+            🛒 Pedir
+          </button>
+        </div>
+
+        <!-- Produto 5: Akanni MED -->
+        <div class="service-card reveal" data-category="sistemas">
+          <span class="si-tag">⚕️ Sistemas SaaS</span>
+          <div class="si-title" style="margin-top: 16px;">Akanni MED</div>
+          <div class="si-desc">Sistema robusto de gestão para clínicas médicas e consultórios. Controle total do seu
+            atendimento.</div>
+          <ul class="si-feat">
+            <li>Agenda inteligente integrada</li>
+            <li>Prontuário eletrônico de pacientes</li>
+            <li>Gestão financeira e relatórios</li>
+            <li>Painel administrativo completo</li>
+          </ul>
+          <div style="margin-top:24px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px;">
+            <div style="font-size:12px; color:#8892b0; text-transform: uppercase; margin-bottom: 4px;">Valor do Projeto
+            </div>
+            <div style="font-size:28px; font-weight:bold; color:#fff;">R$ 1.700<span
+                style="font-size:16px; color:#8892b0;">,00</span></div>
+          </div>
+          <button class="btn btn-primary btn-full"
+            style="margin-top:16px; background-color: #25d366; color: #fff; border: none;"
+            onclick="addToCart('akanni-med')">
+            🛒 Pedir
+          </button>
+        </div>
+
+        <!-- Produto 6: Loja Virtual -->
+        <div class="service-card reveal reveal-d1" data-category="sites">
+          <span class="si-tag">🛒 Lojas Virtuais</span>
+          <div class="si-title" style="margin-top: 16px;">Loja Virtual Completa</div>
+          <div class="si-desc">Sua loja aberta 24h por dia. E-commerce seguro com gestão de estoque e checkout
+            transparente.</div>
+          <ul class="si-feat">
+            <li>Cadastro fácil de produtos</li>
+            <li>Integração com Mercado Pago / PIX</li>
+            <li>Cálculo de frete automático</li>
+            <li>Painel de administração de vendas</li>
+          </ul>
+          <div style="margin-top:24px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px;">
+            <div style="font-size:12px; color:#8892b0; text-transform: uppercase; margin-bottom: 4px;">Valor do Projeto
+            </div>
+            <div style="font-size:28px; font-weight:bold; color:#fff;">R$ 3.000<span
+                style="font-size:16px; color:#8892b0;">,00</span></div>
+          </div>
+          <button class="btn btn-primary btn-full"
+            style="margin-top:16px; background-color: #25d366; color: #fff; border: none;"
+            onclick="addToCart('loja-virtual')">
+            🛒 Pedir
+          </button>
         </div>
 
       </div>
@@ -4524,15 +4629,75 @@
     }
 
     /* ════════════════════════════════════
-       PORTFÓLIO / CATÁLOGO
-    ════════════════════════════════════ */
+           PORTFÓLIO / CATÁLOGO
+        ════════════════════════════════════ */
     const DEMO_PRODUCTS = [
-      { id: 'p1', name: '[[Projeto/Produto 1]]', category: 'sites', price: 1499, emoji: '🌐', description: '[[Descrição do projeto 1 — ex: Site institucional completo com SEO e hospedagem]]', stock: 99, active: true, featured: true },
-      { id: 'p2', name: '[[Projeto/Produto 2]]', category: 'lojas', price: 2499, priceOld: 2999, emoji: '🛒', description: '[[Descrição do projeto 2 — ex: Loja virtual com catálogo Firebase e checkout PIX]]', stock: 99, active: true, featured: false },
-      { id: 'p3', name: '[[Projeto/Produto 3]]', category: 'digital', price: 799, emoji: '📺', description: '[[Descrição do projeto 3 — ex: Painel Digital Signage para TV com clima e conteúdo remoto]]', stock: 99, active: true, featured: false },
-      { id: 'p4', name: '[[Projeto/Produto 4]]', category: 'apps', price: 3499, priceOld: 3999, emoji: '⚡', description: '[[Descrição do projeto 4 — ex: SaaS/CRM personalizado com Firebase e painel admin]]', stock: 10, active: true, featured: true },
-      { id: 'p5', name: '[[Projeto/Produto 5]]', category: 'sites', price: 599, emoji: '🎯', description: '[[Descrição do projeto 5 — ex: Landing Page de alta conversão com lead form e pixel]]', stock: 99, active: true, featured: false },
-      { id: 'p6', name: '[[Projeto/Produto 6]]', category: 'apps', price: 299, emoji: '📱', description: '[[Descrição do projeto 6 — ex: Link na Bio personalizado com analytics e WhatsApp]]', stock: 99, active: true, featured: false },
+      {
+        id: 'p1',
+        name: 'Landing Page',
+        category: 'sites',
+        price: 600,
+        emoji: '🔥',
+        description: 'Página focada em conversão, ideal para campanhas de anúncios, captação de leads e vendas diretas.',
+        stock: 99,
+        active: true,
+        featured: true
+      },
+      {
+        id: 'p2',
+        name: 'Site Institucional',
+        category: 'sites',
+        price: 1100,
+        emoji: '🌐',
+        description: 'Apresente sua empresa ao mundo com um site profissional, responsivo e otimizado para o Google.',
+        stock: 99,
+        active: true,
+        featured: false
+      },
+      {
+        id: 'p3',
+        name: 'Link em árvore (Bio)',
+        category: 'sites',
+        price: 250,
+        emoji: '📱',
+        description: 'Centralize todos os seus links importantes em uma única página personalizada com a sua identidade visual.',
+        stock: 99,
+        active: true,
+        featured: false
+      },
+      {
+        id: 'p4',
+        name: 'Digital Signage',
+        category: 'digital',
+        price: 475,
+        emoji: '📺',
+        description: 'TVs Corporativas e Painéis de Menu Board (Cardápios Digitais) atualizados remotamente.',
+        stock: 99,
+        active: true,
+        featured: false
+      },
+      {
+        id: 'p5',
+        name: 'Akanni MED',
+        category: 'sistemas',
+        price: 1700,
+        emoji: '⚕️',
+        description: 'Sistema robusto de gestão para clínicas médicas e consultórios. Controle total do seu atendimento.',
+        stock: 10,
+        active: true,
+        featured: false
+      },
+      {
+        id: 'p6',
+        name: 'Loja Virtual Completa',
+        category: 'lojas',
+        price: 3000,
+        emoji: '🛒',
+        description: 'Sua loja aberta 24h por dia. E-commerce seguro com gestão de estoque e checkout transparente.',
+        stock: 99,
+        active: true,
+        featured: true
+      }
     ];
 
     function getProducts() { return products.length ? products : DEMO_PRODUCTS; }
