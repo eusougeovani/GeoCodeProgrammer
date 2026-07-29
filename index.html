@@ -497,7 +497,7 @@
             display: grid;
             grid-template-columns: 110px 1fr 1.3fr;
             gap: 28px;
-            align-items: baseline;
+            align-items: start;
             padding: 30px 0;
             border-bottom: 1px solid var(--line);
             transition: var(--trans);
@@ -511,6 +511,14 @@
             font-family: var(--mono);
             color: var(--blue);
             font-size: 14px;
+            padding-top: 3px;
+        }
+
+        .svc-name-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
         }
 
         .svc-name {
@@ -521,6 +529,31 @@
         .svc-desc {
             color: var(--ink-soft);
             font-size: 15px;
+            padding-top: 3px;
+        }
+
+        .svc-view {
+            font-family: var(--mono);
+            font-size: 12px;
+            color: var(--blue);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            transition: var(--trans);
+        }
+
+        .svc-view:hover {
+            color: var(--blue-d);
+            gap: 9px;
+        }
+
+        .svc-view svg {
+            width: 12px;
+            height: 12px;
         }
 
         @media (max-width:700px) {
@@ -608,6 +641,118 @@
         .log-link svg {
             width: 12px;
             height: 12px;
+        }
+
+        /* ══════════════════════════════════════
+           MODAL — visualizar serviço
+        ══════════════════════════════════════ */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 300;
+            background: rgba(26, 30, 27, .55);
+            padding: 28px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal-window {
+            position: relative;
+            width: 100%;
+            max-width: 660px;
+            animation: modalIn .25s ease;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px) scale(.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -38px;
+            right: 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: var(--mono);
+            font-size: 13px;
+            color: #F3F4EF;
+            opacity: .8;
+        }
+
+        .modal-close:hover {
+            opacity: 1;
+        }
+
+        .browser-frame {
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--paper);
+        }
+
+        .browser-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 14px;
+            background: var(--paper-2);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .browser-bar .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--line);
+        }
+
+        .browser-url {
+            margin-left: 10px;
+            font-family: var(--mono);
+            font-size: 11px;
+            color: var(--ink-faint);
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 100px;
+            padding: 4px 14px;
+            flex: 1;
+            max-width: 280px;
+            text-align: center;
+        }
+
+        .browser-body {
+            width: 100%;
+            display: block;
+            line-height: 0;
+        }
+
+        .modal-caption {
+            margin-top: 16px;
+            font-family: var(--mono);
+            font-size: 12.5px;
+            color: var(--paper-2);
+            text-align: center;
+            opacity: .85;
+        }
+
+        @media (max-width:600px) {
+            .modal-close {
+                top: -32px;
+            }
         }
 
         /* ══════════════════════════════════════
@@ -827,31 +972,76 @@
             <div class="svc-list reveal">
                 <div class="svc-row">
                     <div class="svc-ext">.site</div>
-                    <div class="svc-name">Site institucional</div>
+                    <div class="svc-name-wrap">
+                        <div class="svc-name">Site institucional</div>
+                        <button class="svc-view" onclick="openMockup('site')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            Visualizar serviço
+                        </button>
+                    </div>
                     <div class="svc-desc">Presença profissional para a sua marca, com foco em carregamento rápido e
                         SEO local.</div>
                 </div>
                 <div class="svc-row">
                     <div class="svc-ext">.page</div>
-                    <div class="svc-name">Landing page</div>
+                    <div class="svc-name-wrap">
+                        <div class="svc-name">Landing page</div>
+                        <button class="svc-view" onclick="openMockup('page')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            Visualizar serviço
+                        </button>
+                    </div>
                     <div class="svc-desc">Página única, direta ao ponto, pensada para converter visitantes em
                         contatos.</div>
                 </div>
                 <div class="svc-row">
                     <div class="svc-ext">.sys</div>
-                    <div class="svc-name">Sistemas sob medida</div>
+                    <div class="svc-name-wrap">
+                        <div class="svc-name">Sistemas sob medida</div>
+                        <button class="svc-view" onclick="openMockup('sys')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            Visualizar serviço
+                        </button>
+                    </div>
                     <div class="svc-desc">CRM, agenda, cadastro de clientes e paineis administrativos (a linha
-                        Akanni.)</div>
+                        Akanni)</div>
                 </div>
                 <div class="svc-row">
                     <div class="svc-ext">.tv</div>
-                    <div class="svc-name">Digital Signage</div>
+                    <div class="svc-name-wrap">
+                        <div class="svc-name">Digital Signage</div>
+                        <button class="svc-view" onclick="openMockup('tv')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            Visualizar serviço
+                        </button>
+                    </div>
                     <div class="svc-desc">Painéis digitais para recepções e vitrines, com conteúdo atualizado à
                         distância.</div>
                 </div>
                 <div class="svc-row">
                     <div class="svc-ext">.bio</div>
-                    <div class="svc-name">Micro-site / link na bio</div>
+                    <div class="svc-name-wrap">
+                        <div class="svc-name">Micro-site / link na bio</div>
+                        <button class="svc-view" onclick="openMockup('bio')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            Visualizar serviço
+                        </button>
+                    </div>
                     <div class="svc-desc">Um hub de links com a sua identidade, no lugar de soluções genéricas
                         prontas.</div>
                 </div>
@@ -893,6 +1083,24 @@
                             <path d="M7 17L17 7M7 7h10v10" />
                         </svg>
                     </a>
+                </div>
+                <div class="log-item">
+                    <div class="log-commit">build: PWA</div>
+                    <div class="log-name">GeoCODE Hub</div>
+                    <div class="log-desc">Coleção de mini-aplicativos web instalável como aplicativo, construída em
+                        JavaScript puro.</div>
+                    <a href="https://akannihub.vercel.app/" target="_blank" rel="noopener" class="log-link">
+                        Visitar o app
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M7 7h10v10" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="log-item">
+                    <div class="log-commit">feat: sistema de gestão para clínicas</div>
+                    <div class="log-name">AkanniMED <span class="priv">projeto privado</span></div>
+                    <div class="log-desc">Sistema web para clínicas e consultórios — agendamento, prontuário e
+                        cadastro de pacientes na nuvem.</div>
                 </div>
             </div>
         </div>
@@ -957,6 +1165,21 @@
         </div>
     </footer>
 
+    <!-- ══════════ MODAL: VISUALIZAR SERVIÇO ══════════ -->
+    <div class="modal-overlay" id="serviceModal" onclick="if(event.target===this) closeMockup()">
+        <div class="modal-window">
+            <button class="modal-close" onclick="closeMockup()">Fechar ✕</button>
+            <div class="browser-frame">
+                <div class="browser-bar">
+                    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                    <div class="browser-url" id="mockupUrl">geocodeprogrammer.vercel.app</div>
+                </div>
+                <div class="browser-body" id="mockupBody"></div>
+            </div>
+            <p class="modal-caption" id="mockupCaption"></p>
+        </div>
+    </div>
+
     <script>
         // header on scroll
         const header = document.getElementById('siteHeader');
@@ -980,6 +1203,54 @@
             });
         }, { threshold: .12 });
         document.querySelectorAll('.reveal:not(.up)').forEach(el => io.observe(el));
+
+        /* ════════════════════════════════════
+           MODAL — VISUALIZAR SERVIÇO
+           (capturas de tela em assets/screen/)
+        ════════════════════════════════════ */
+        const MOCKUPS = {
+            site: {
+                url: 'suamarca.com.br',
+                caption: 'Site institucional — header, hero, seção de serviços e contato.',
+                img: 'assets/screen/site.png'
+            },
+            page: {
+                url: 'suaoferta.com.br',
+                caption: 'Landing page — foco em uma única chamada para ação.',
+                img: 'assets/screen/page.png'
+            },
+            sys: {
+                url: 'painel.suaempresa.com',
+                caption: 'Sistema sob medida — painel administrativo com dados em tempo real.',
+                img: 'assets/screen/sys.png'
+            },
+            tv: {
+                url: 'display · painel local',
+                caption: 'Digital Signage — conteúdo em tela cheia, atualizado à distância.',
+                img: 'assets/screen/tv.png'
+            },
+            bio: {
+                url: 'bio.suamarca.com',
+                caption: 'Micro-site / link na bio — hub de links com identidade própria.',
+                img: 'assets/screen/bio.png'
+            }
+        };
+
+        function openMockup(key) {
+            const m = MOCKUPS[key];
+            if (!m) return;
+            document.getElementById('mockupUrl').textContent = m.url;
+            document.getElementById('mockupBody').innerHTML =
+                `<img src="${m.img}" alt="${m.caption}" style="width:100%;height:auto;display:block" />`;
+            document.getElementById('mockupCaption').textContent = m.caption;
+            document.getElementById('serviceModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMockup() {
+            document.getElementById('serviceModal').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMockup(); });
     </script>
 </body>
 
