@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords"
+        content="Psicóloga, Psicologia, Aracaju, Sergipe, Terapia, Atendimento Online, Atendimento Presencial, Meire França, psimeirefranca">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="author" content="GeoCODE Programmer | Geovani Santos">
+    <meta name="theme-color" content="#3D1A0D">
+    <meta name="description" content="Psicóloga Meire França — Painel Digital Signage">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="apple-mobile-web-app-title" content="Psi MF" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Psi Meire França | Digital Signage</title>
+    <link rel="manifest" href="../site.webmanifest" />
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+    <link rel="shortcut icon" href="../assets/img/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Raleway:wght@300;400;500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="../test/teste.css" />
+</head>
+
+<body>
+    <div id="loading" aria-hidden="true">
+        <div class="load-logo">MF</div>
+        <div class="load-ring"></div>
+        <span class="load-txt">Carregando painel…</span>
+    </div>
+
+    <div id="start-overlay" role="dialog" aria-modal="true" aria-label="Iniciar painel de exibição">
+        <button id="start-btn" type="button" aria-label="Iniciar reprodução e entrar em tela cheia">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M8 5v14l11-7z" />
+            </svg>
+            Iniciar Painel
+        </button>
+        <span id="start-hint">Toque em qualquer lugar para continuar</span>
+    </div>
+
+    <div id="shell">
+
+        <aside id="sidebar" aria-label="Informações e Player">
+
+            <div id="profile-widget">
+                <div id="photo-wrap">
+                    <img id="profile-photo" src="../assets/img/francia.png" alt="Psicóloga Meire França"
+                        onerror="this.style.opacity='0'" />
+                </div>
+                <div id="profile-text">
+                    <div id="profile-name">Meire França</div>
+                    <div id="profile-role">Psicóloga Clínica</div>
+                    <div id="status-chip">
+                        <div id="status-dot"></div>Em Atendimento
+                    </div>
+                </div>
+            </div>
+
+            <div class="sb-divider"></div>
+
+            <div id="clock-widget" aria-live="polite">
+                <div id="clk-time"><span id="clk-h">00</span><span id="clk-colon">:</span><span
+                        id="clk-m">00</span><span id="clk-colon2">:</span><span id="clk-s">00</span></div>
+                <div id="clk-date">—</div>
+                <div id="clk-day">—</div>
+            </div>
+
+            <div id="weather-widget" aria-label="Previsão do tempo em Aracaju">
+                <div id="wx-icon">⛅</div>
+                <div id="wx-text">
+                    <div id="wx-temp">—°C</div>
+                    <div id="wx-desc">Aracaju, SE</div>
+                </div>
+            </div>
+
+            <div class="sb-divider"></div>
+
+            <div id="sb-quotes" aria-live="polite">
+                <div id="sb-quote-text">Bem-vinda (o) ao meu Consultório.</div>
+                <div id="sb-quote-author">— Meire França</div>
+            </div>
+
+            <div id="music-widget">
+                <div id="sb-header">
+                    <svg id="sb-music-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true">
+                        <path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm12-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"
+                            stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <div>
+                        <div id="sb-title">Música Ambiente</div>
+                        <div id="sb-track-name">—</div>
+                    </div>
+                </div>
+                <div id="sb-waves" aria-hidden="true"></div>
+                <div id="sb-track-info">
+                    <div id="sb-track-state"><span id="sb-state-dot"></span><span id="sb-state-label">Aguardando…</span>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+        <main id="main-content">
+
+            <div id="stage" aria-label="Apresentação de imagens do consultório">
+                <div id="dots" aria-hidden="true"></div>
+                <div id="counter" aria-hidden="true"></div>
+            </div>
+
+            <footer id="ftr" aria-label="Avisos do consultório">
+                <div id="ticker-badge" aria-hidden="true">
+                    <span id="ticker-pill">AVISOS</span>
+                </div>
+                <div id="ticker-wrap">
+                    <div id="ticker-track"></div>
+                </div>
+            </footer>
+
+        </main>
+
+    </div>
+
+    <script src="../test/teste.js"></script>
+</body>
+
+</html>

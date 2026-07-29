@@ -1,0 +1,932 @@
+:root {
+    /* ── Tons de base (../assets/css/style.css) ── */
+    --ink: #3D1A0D;
+    --ink-soft: #76331A;
+    --ink-mid: #A84520;
+
+    /* ── Acento dourado / âmbar (../assets/css/style.css) ── */
+    --gold: #FFBD2C;
+    --gold-light: #FFD97A;
+    --gold-deep: #F87319;
+
+    /* ── Superfícies e fundos (../assets/css/style.css) ── */
+    --cream: #FFEEC8;
+    --cream-soft: #FFF8ED;
+    --cream-dark: #F5DFB0;
+    --parchment: #FAF0DC;
+
+    /* ── Tipografia (../assets/css/style.css) ── */
+    --text: #2E1206;
+    --text-soft: #5A2D0C;
+    --text-muted: #A0622A;
+
+    /* ── Bordas (../assets/css/style.css) ── */
+    --border: rgba(168, 69, 32, 0.14);
+    --border-solid: #C4763A;
+    --border-warm: rgba(248, 115, 25, 0.22);
+
+    /* ── Sidebar (../assets/css/style.css) ── */
+    --sidebar-bg: #2E1206;
+
+    /* ── Sombras (../assets/css/style.css) ── */
+    --shadow-md: 0 4px 18px rgba(61, 26, 13, 0.12);
+    --shadow-lg: 0 12px 40px rgba(61, 26, 13, 0.16);
+    --shadow-warm: 0 8px 32px rgba(168, 69, 32, 0.18);
+
+    /* ── Tokens de layout exclusivos do Digital Signage ── */
+    --sb-w: 28%;
+    --sb-max: 380px;
+    --sb-min: 260px;
+    --hdr: 106px;
+    --ftr: clamp(40px, 5.5vh, 56px);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Raleway', 'Segoe UI', sans-serif;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --fade: 1.5s;
+}
+
+/* =====================================================================
+    RESET
+    ===================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+/* =====================================================================
+    BASE
+    ===================================================================== */
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--sidebar-bg);
+    color: var(--cream);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+    -webkit-user-select: none
+}
+
+/* =====================================================================
+    NOVA ESTRUTURA (2 COLUNAS)
+    ===================================================================== */
+#shell {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: var(--sidebar-bg);
+}
+
+/* ── BARRA LATERAL ESQUERDA ── */
+#sidebar {
+    width: clamp(var(--sb-min), var(--sb-w), var(--sb-max));
+    min-width: var(--sb-min);
+    max-width: var(--sb-max);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--gold-deep);
+    position: relative;
+    z-index: 10;
+    /* Permite scroll vertical invisível se o conteúdo ultrapassar a altura */
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE / Edge */
+    padding: clamp(10px, 2vh, 20px) 0;
+    flex-shrink: 0;
+}
+
+#sidebar::-webkit-scrollbar {
+    display: none;
+    /* Chrome / Safari */
+}
+
+#sidebar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 110% 55% at 50% 0%, rgba(168, 69, 32, .28) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 40% at 50% 100%, rgba(62, 26, 8, .90) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ── ÁREA PRINCIPAL DIREITA ── */
+#main-content {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+/* =====================================================================
+    WIDGETS DA LATERAL (z-index garante sobreposição ao fundo)
+    ===================================================================== */
+#clock-widget,
+#weather-widget,
+#profile-widget,
+#music-widget {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: clamp(6px, 1.2vh, 12px) clamp(14px, 2.5vw, 24px);
+    flex-shrink: 0;
+}
+
+/* ── Relógio ── */
+#clk-time {
+    font-family: var(--serif);
+    font-size: clamp(1.6rem, min(4.6vw, 6vh), 3.4rem);
+    font-weight: 800;
+    color: var(--cream);
+    letter-spacing: -2px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+#clk-colon,
+#clk-colon2 {
+    color: var(--gold);
+    animation: colonBlink 1s step-end infinite;
+}
+
+#clk-date {
+    font-size: clamp(0.65rem, 1.2vw, 0.95rem);
+    font-weight: 500;
+    color: var(--gold-light);
+    margin-top: 4px;
+}
+
+#clk-day {
+    font-size: clamp(0.55rem, 0.9vw, 0.70rem);
+    font-weight: 700;
+    color: var(--cream-soft);
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+}
+
+/* ── Clima ── */
+#weather-widget {
+    flex-direction: row;
+    justify-content: center;
+    gap: clamp(6px, 1.5vw, 12px);
+    align-items: center;
+}
+
+#wx-icon {
+    font-size: clamp(1.6rem, min(3vw, 4.5vh), 2.5rem);
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+#wx-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#wx-temp {
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, min(2.5vw, 3.5vh), 2rem);
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1;
+}
+
+#wx-desc {
+    font-size: clamp(0.55rem, 0.8vw, 0.75rem);
+    color: var(--cream-soft);
+    margin-top: 4px;
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ── Perfil ── */
+#profile-widget {
+    gap: clamp(6px, 1.2vh, 12px);
+}
+
+#photo-wrap {
+    flex-shrink: 0;
+}
+
+#profile-photo {
+    width: clamp(55px, min(9vw, 11vh), 85px);
+    height: clamp(55px, min(9vw, 11vh), 85px);
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--gold);
+    box-shadow: 0 0 0 5px var(--cream), 0 6px 28px rgba(0, 0, 0, .55);
+    display: block;
+}
+
+#profile-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#profile-name {
+    font-family: var(--serif);
+    font-size: clamp(1rem, min(2.2vw, 3vh), 1.6rem);
+    font-weight: 800;
+    color: var(--cream);
+    line-height: 1;
+}
+
+#profile-role {
+    font-size: clamp(0.55rem, 0.8vw, 0.65rem);
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+#status-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--gold);
+    flex-shrink: 0;
+}
+
+#status-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255, 189, 44, .09);
+    border: 1px solid rgba(255, 189, 44, .25);
+    border-radius: 50px;
+    padding: 5px 12px;
+    font-size: clamp(0.50rem, 0.75vw, 0.65rem);
+    font-weight: 700;
+    color: var(--cream);
+    text-transform: uppercase;
+    margin-top: 8px;
+    white-space: nowrap;
+}
+
+/* ── Divisores Internos ── */
+.sb-divider {
+    margin: clamp(4px, 1vh, 10px) 24px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(248, 115, 25, .30) 20%, rgba(248, 115, 25, .30) 80%, transparent);
+    flex-shrink: 0;
+}
+
+/* ── Frases ── */
+#sb-quotes {
+    flex: 1 1 auto;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(10px, 1.8vh, 20px) clamp(18px, 2.8vw, 28px);
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    gap: 0;
+}
+
+/* Aspa decorativa grande — preenche o espaço visualmente */
+#sb-quotes::before {
+    content: '\201C';
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+    color: rgba(255, 189, 44, 0.13);
+    line-height: 0.7;
+    display: block;
+    align-self: flex-start;
+    margin-left: -4px;
+    margin-bottom: 4px;
+    pointer-events: none;
+}
+
+#sb-quote-text {
+    font-family: var(--serif);
+    /* Fonte bem maior: ~18-22px num ecrã Full HD — legível a distância */
+    font-size: clamp(0.85rem, 1.6vw, 1.10rem);
+    font-style: italic;
+    color: var(--cream-soft);
+    line-height: 1.6;
+    transition: opacity 0.9s ease;
+    /* Sem line-clamp: deixa o texto fluir e o container cresce */
+    overflow: hidden;
+}
+
+#sb-quote-author {
+    font-size: clamp(0.65rem, 1.1vw, 0.82rem);
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1.8px;
+    margin-top: clamp(8px, 1.2vh, 14px);
+    transition: opacity 0.9s ease;
+}
+
+/* ── Música ── */
+#music-widget {
+    flex: 0 0 auto;
+}
+
+#sb-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+#sb-music-icon {
+    width: clamp(18px, 2.5vw, 24px);
+    height: clamp(18px, 2.5vw, 24px);
+    color: var(--gold);
+    flex-shrink: 0;
+}
+
+#sb-title {
+    font-family: var(--serif);
+    font-size: clamp(0.80rem, 1.2vw, 1rem);
+    font-weight: 700;
+    color: var(--cream);
+}
+
+#sb-track-name {
+    font-size: clamp(0.50rem, 0.75vw, 0.60rem);
+    color: var(--gold-light);
+    margin-top: 2px;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: opacity 0.4s ease;
+}
+
+#sb-track-name.fade-out {
+    opacity: 0;
+}
+
+#sb-waves {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    height: clamp(20px, 3.5vh, 32px);
+}
+
+#sb-track-info {
+    display: flex;
+    justify-content: center;
+}
+
+#sb-track-state {
+    font-size: clamp(0.48rem, 0.72vw, 0.58rem);
+    font-weight: 700;
+    color: var(--gold);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+/* =====================================================================
+    RODAPÉ / TICKER (Acoplado à Área Principal)
+    ===================================================================== */
+#ftr {
+    height: var(--ftr);
+    display: flex;
+    align-items: center;
+    background: var(--sidebar-bg);
+    border-top: 1px solid var(--gold-deep);
+    position: relative;
+    z-index: 30;
+    flex-shrink: 0;
+}
+
+/* =====================================================================
+    PALCO DE SLIDES
+    ===================================================================== */
+#stage {
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    position: relative;
+    overflow: hidden;
+    background: var(--sidebar-bg)
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity var(--fade) var(--ease);
+    will-change: opacity;
+}
+
+.slide.active {
+    opacity: 1
+}
+
+.slide img,
+.slide video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Fundo desfocado para slides em contain ── */
+.slide-bg-blur {
+    display: none;
+}
+
+.slide-ph {
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse 80% 60% at 65% 45%, rgba(118, 51, 26, .30) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 80% at 18% 65%, rgba(255, 189, 44, .07) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 50% 100%, rgba(19, 15, 12, .80) 0%, transparent 80%),
+        var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px
+}
+
+.ph-mono {
+    font-family: var(--serif);
+    font-size: clamp(60px, 12vw, 140px);
+    font-weight: 800;
+    color: rgba(255, 189, 44, .08);
+    letter-spacing: -10px;
+    line-height: 1
+}
+
+.ph-tag {
+    font-family: var(--serif);
+    font-size: clamp(0.85rem, 1.5vw, 1.4rem);
+    font-style: italic;
+    color: rgba(255, 238, 200, .18)
+}
+
+/* ── Dots e contador ── */
+#dots {
+    position: absolute;
+    bottom: clamp(10px, 2vh, 18px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    z-index: 5
+}
+
+.dot {
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, .22);
+    transition: all .4s var(--ease)
+}
+
+.dot.on {
+    background: var(--gold);
+    box-shadow: 0 0 10px var(--gold)
+}
+
+#counter {
+    position: absolute;
+    bottom: clamp(8px, 1.5vh, 16px);
+    right: 22px;
+    font-size: .65rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, .22);
+    letter-spacing: 1.5px;
+    z-index: 5
+}
+
+/* =====================================================================
+    RODAPÉ — TICKER DE AVISOS
+    ===================================================================== */
+#ftr {
+    display: flex;
+    align-items: center;
+    background: var(--sidebar-bg);
+    border-top: 1px solid var(--gold-deep);
+    position: relative;
+    z-index: 30;
+    overflow: hidden
+}
+
+#ftr::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            var(--gold-deep) 25%,
+            var(--gold) 50%,
+            var(--gold-deep) 75%,
+            transparent 100%);
+    pointer-events: none
+}
+
+#ticker-badge {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 clamp(10px, 2vw, 20px);
+    border-right: 1px solid var(--gold-deep);
+    background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+    gap: 8px
+}
+
+#ticker-pill {
+    background: rgba(62, 26, 8, .70);
+    color: var(--cream);
+    font-size: clamp(0.50rem, 0.85vw, 0.60rem);
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 5px;
+    white-space: nowrap
+}
+
+#ticker-wrap {
+    flex: 1;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative
+}
+
+#ticker-wrap::before,
+#ticker-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 60px;
+    z-index: 2;
+    pointer-events: none
+}
+
+#ticker-wrap::before {
+    left: 0;
+    background: linear-gradient(to right, var(--sidebar-bg), transparent)
+}
+
+#ticker-wrap::after {
+    right: 0;
+    background: linear-gradient(to left, var(--sidebar-bg), transparent)
+}
+
+#ticker-track {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    will-change: transform
+}
+
+.t-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: clamp(0.68rem, 1.2vw, 0.83rem);
+    font-weight: 400;
+    color: var(--cream);
+    padding: 0 clamp(16px, 2.5vw, 32px)
+}
+
+.t-icon {
+    font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+    flex-shrink: 0;
+    opacity: .75
+}
+
+.t-sep {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: .55;
+    margin: 0 8px;
+    flex-shrink: 0
+}
+
+/* =====================================================================
+    LOADING SCREEN
+    ===================================================================== */
+#loading {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transition: opacity .9s var(--ease)
+}
+
+#loading.gone {
+    opacity: 0;
+    pointer-events: none
+}
+
+.load-logo {
+    font-family: var(--serif);
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: rgba(255, 189, 44, .18);
+    letter-spacing: -4px
+}
+
+.load-ring {
+    width: 42px;
+    height: 42px;
+    border: 2.5px solid rgba(255, 238, 200, .20);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin .9s linear infinite
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes colonBlink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+.load-txt {
+    font-size: .68rem;
+    font-weight: 600;
+    color: var(--cream-soft);
+    letter-spacing: 2.5px;
+    text-transform: uppercase
+}
+
+/* =====================================================================
+    OVERLAY DE AUTOPLAY
+    ===================================================================== */
+#start-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 500;
+    background: rgba(46, 18, 6, .82);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .5s var(--ease)
+}
+
+#start-overlay.visible {
+    opacity: 1;
+    pointer-events: all
+}
+
+#start-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+    color: var(--sidebar-bg);
+    font-family: var(--sans);
+    font-size: .90rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 50px;
+    padding: 16px 36px;
+    cursor: pointer;
+    box-shadow: 0 8px 32px rgba(248, 115, 25, .40);
+    transition: transform .2s var(--ease), box-shadow .2s var(--ease)
+}
+
+#start-btn:hover {
+    transform: scale(1.04);
+    box-shadow: 0 12px 40px rgba(248, 115, 25, .55)
+}
+
+#start-btn:active {
+    transform: scale(.97)
+}
+
+#start-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--sidebar-bg)
+}
+
+#start-hint {
+    font-size: .60rem;
+    font-weight: 500;
+    color: rgba(255, 238, 200, .45);
+    letter-spacing: 2px;
+    text-transform: uppercase
+}
+
+/* =====================================================================
+    RESPONSIVIDADE — LARGURA
+    ===================================================================== */
+
+/* Telas largas (≤ 1280px) */
+@media (max-width: 1280px) {
+    :root {
+        --sb-w: 30%;
+        --sb-max: 340px;
+    }
+}
+
+/* Telas médias (≤ 1024px) — tablets na horizontal, monitores menores */
+@media (max-width: 1024px) {
+    :root {
+        --sb-min: 240px;
+        --sb-w: 32%;
+        --sb-max: 300px;
+    }
+
+    #profile-photo {
+        width: clamp(50px, 8vw, 72px);
+        height: clamp(50px, 8vw, 72px);
+    }
+}
+
+/* Telas pequenas (≤ 768px) — mobile portrait */
+@media (max-width: 768px) {
+    :root {
+        --ftr: 44px;
+    }
+
+    #sidebar {
+        display: none;
+    }
+
+    #status-chip {
+        display: none;
+    }
+}
+
+/* =====================================================================
+    RESPONSIVIDADE — ALTURA
+    Garante que o conteúdo da sidebar nunca fique cortado em
+    monitores curtos (ex.: 720p, landscape em tablets).
+    ===================================================================== */
+
+/* Telas médias em altura (≤ 768px) */
+@media (max-height: 768px) {
+    .sb-divider {
+        margin: clamp(3px, 0.8vh, 8px) 20px;
+    }
+
+    #clock-widget,
+    #weather-widget,
+    #profile-widget,
+    #music-widget {
+        padding: clamp(4px, 0.8vh, 10px) clamp(14px, 2vw, 24px);
+    }
+
+    #status-chip {
+        margin-top: 4px;
+        padding: 4px 10px;
+    }
+
+    #sb-waves {
+        height: clamp(16px, 2.5vh, 26px);
+    }
+
+    #sb-track-state {
+        margin-top: 4px;
+    }
+}
+
+/* Telas curtas (≤ 620px de altura) — ex.: 1080×600, landscape mobile */
+@media (max-height: 620px) {
+
+    /* Reduz quote para caber melhor */
+    #sb-quotes {
+        min-height: 40px;
+    }
+
+    #sb-quotes::before {
+        font-size: 2.5rem;
+    }
+
+    #sb-quote-text {
+        /* Limita a 3 linhas apenas em telas muito curtas */
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: clamp(0.70rem, 1.4vw, 0.90rem);
+    }
+
+    /* Oculta as ondas de áudio para ganhar espaço */
+    #sb-waves {
+        display: none;
+    }
+
+    /* Agrupa ícone + info do clima na horizontal */
+    #weather-widget {
+        flex-direction: row;
+        gap: 8px;
+    }
+
+    /* Oculta descrição do clima para economizar espaço */
+    #wx-desc {
+        display: none;
+    }
+}
+
+/* Telas muito curtas (≤ 480px de altura) — ex.: landscape mobile */
+@media (max-height: 480px) {
+
+    /* Oculta seção de frases inteiramente */
+    #sb-quotes {
+        display: none;
+    }
+
+    /* Remove divisores secundários */
+    .sb-divider:last-of-type {
+        display: none;
+    }
+
+    #music-widget {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+    :root {
+        --ftr: 36px;
+    }
+}
+
+/* =====================================================================
+    RESPONSIVIDADE — LARGURA + ALTURA (landscape tablet / TV curta)
+    ===================================================================== */
+@media (max-width: 1024px) and (max-height: 700px) {
+    :root {
+        --sb-min: 220px;
+        --sb-max: 280px;
+    }
+
+    #profile-photo {
+        width: 52px;
+        height: 52px;
+    }
+
+    #status-chip {
+        display: none;
+    }
+}
