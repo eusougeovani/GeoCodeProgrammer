@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1366" />
-    <title>Digital Signage — [[Nome do Painel]]</title>
+    <title>Digital Signage — Lorem Ipsam</title>
     <meta name="robots" content="noindex, nofollow" />
 
     <!-- Google Fonts — Barlow para legibilidade a distância -->
@@ -1243,12 +1243,12 @@
             panelId: getQueryParam('panel') || 'PAINEL-01',
 
             // ── Marca
-            brandName: '[[Nome da Empresa]]',
-            brandSub: '[[Recepção · Unidade]]',
-            brandIcon: '[[G]]',
+            brandName: 'Lorem Ipsam',
+            brandSub: 'Lorem · Ipsum',
+            brandIcon: 'L',
 
             // ── Clima — OpenWeatherMap
-            weatherCity: '[[Aracaju,BR]]',   // city,countryCode
+            weatherCity: 'Lorem,BR',   // city,countryCode
             weatherKey: '[[SUA_API_KEY]]',  // openweathermap.org/api
 
             // ── Firebase (opcional — remoto)
@@ -1265,24 +1265,24 @@
             slides: [
                 {
                     type: 'text',
-                    eyebrow: 'Bem-vindo',
-                    title: 'Seja bem-vindo à [[Nome da Empresa]]',
-                    body: 'Nosso atendimento está disponível para ajudar você.',
+                    eyebrow: 'Lorem Ipsum',
+                    title: 'Lorem ipsum dolor sit amet',
+                    body: 'Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
                     cta: '',
                     duration: 8,
                 },
                 {
                     type: 'text',
-                    eyebrow: 'Nossos serviços',
-                    title: '[[Serviço principal]]',
-                    body: '[[Descrição curta e legível a distância — máximo 2 linhas]]',
-                    cta: '💬 WhatsApp: ([[DDD]]) XXXXX-XXXX',
+                    eyebrow: 'Lorem Ipsum',
+                    title: 'Ut enim ad minim veniam',
+                    body: 'Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.',
+                    cta: '💬 WhatsApp: (00) 00000-0000',
                     duration: 10,
                 },
                 {
                     type: 'qr',
-                    title: 'Escaneie e fale conosco',
-                    body: 'Atendimento pelo WhatsApp ou pelo nosso site',
+                    title: 'Lorem ipsum dolor sit amet',
+                    body: 'Consectetur adipiscing elit sed do eiusmod tempor incididunt',
                     qrEmoji: '📱',
                     duration: 12,
                 },
@@ -1290,10 +1290,10 @@
 
             // ── Ticker inicial
             tickerItems: [
-                { text: '[[Aviso 1 — Ex: Horário de funcionamento: Seg–Sex 08h–18h · Sab 09h–13h]]', type: 'normal' },
-                { text: '[[Aviso 2 — Ex: Wi-Fi disponível para clientes — Senha: ]][[SENHA]]', type: 'highlight' },
-                { text: '[[Aviso 3 — Ex: Acompanhe nossas novidades no Instagram @handle]]', type: 'normal' },
-                { text: '[[Aviso 4 — Ex: Pagamentos: Pix · Cartão · Dinheiro]]', type: 'normal' },
+                { text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam', type: 'normal' },
+                { text: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua', type: 'highlight' },
+                { text: 'Ut enim ad minim veniam quis nostrud exercitation ullamco laboris', type: 'normal' },
+                { text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse', type: 'normal' },
             ],
 
             // ── Intervalos
@@ -1530,8 +1530,8 @@
                 case 'qr':
                     return `
         <div class="qr-text">
-          <div class="s-eyebrow">Digital · Rápido · Fácil</div>
-          <div class="s-title">${escapeHtml(slide.title || 'Escaneie o QR Code')}</div>
+          <div class="s-eyebrow">Lorem · Ipsum · Dolor</div>
+          <div class="s-title">${escapeHtml(slide.title || 'Lorem ipsum dolor sit amet')}</div>
           ${slide.body ? `<div class="s-body">${escapeHtml(slide.body)}</div>` : ''}
         </div>
         <div class="qr-box">${slide.qrEmoji || '📱'}</div>
