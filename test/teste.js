@@ -97,7 +97,7 @@
         if (eH.textContent !== hh) eH.textContent = hh;
         if (eM.textContent !== mm) eM.textContent = mm;
         if (eS.textContent !== ss) eS.textContent = ss;
-        eDate.textContent = n.getDate() + ' de ' + MESES[n.getMonth()] + ' de ' + n.getFullYear();
+        eDate.textContent = ', ' + n.getDate() + ' de ' + MESES[n.getMonth()] + ' de ' + n.getFullYear();
         eDay.textContent = SEMANAS[n.getDay()];
     }
     tickClock();
