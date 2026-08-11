@@ -565,6 +565,133 @@
         }
 
         /* ══════════════════════════════════════
+           AKANNI — accordion de módulos
+        ══════════════════════════════════════ */
+        .akanni-list {
+            margin-top: 46px;
+            border-top: 1px solid var(--line);
+        }
+
+        .akanni-item {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .akanni-item summary {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            padding: 26px 0;
+            cursor: pointer;
+            list-style: none;
+        }
+
+        .akanni-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .akanni-item summary:hover .akanni-name {
+            color: var(--blue);
+        }
+
+        .akanni-tag {
+            font-family: var(--mono);
+            font-size: 13px;
+            color: var(--blue);
+            width: 122px;
+            flex-shrink: 0;
+            padding-top: 4px;
+        }
+
+        .akanni-head {
+            flex: 1;
+        }
+
+        .akanni-name {
+            font-family: var(--serif);
+            font-size: 20px;
+            color: var(--ink);
+            transition: var(--trans);
+            margin-bottom: 5px;
+        }
+
+        .akanni-name small {
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--ink-faint);
+            margin-left: 4px;
+        }
+
+        .akanni-tagline {
+            font-size: 14.5px;
+            color: var(--ink-soft);
+            max-width: 560px;
+        }
+
+        .akanni-chevron {
+            flex-shrink: 0;
+            width: 16px;
+            height: 16px;
+            margin-top: 6px;
+            color: var(--ink-faint);
+            transition: var(--trans);
+        }
+
+        .akanni-item[open] .akanni-chevron {
+            transform: rotate(180deg);
+            color: var(--blue);
+        }
+
+        .akanni-body {
+            padding: 0 0 30px 146px;
+        }
+
+        .akanni-desc {
+            color: var(--ink-soft);
+            font-size: 15px;
+            max-width: 560px;
+            margin-bottom: 18px;
+        }
+
+        .akanni-body ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .akanni-body li {
+            display: flex;
+            gap: 12px;
+            color: var(--ink-soft);
+            font-size: 14.5px;
+            max-width: 560px;
+        }
+
+        .akanni-body li::before {
+            content: '—';
+            color: var(--blue);
+            flex-shrink: 0;
+        }
+
+        @media (max-width:700px) {
+            .akanni-item summary {
+                flex-wrap: wrap;
+                gap: 10px 24px;
+            }
+
+            .akanni-tag {
+                width: auto;
+                padding-top: 0;
+                order: -1;
+            }
+
+            .akanni-body {
+                padding-left: 0;
+            }
+        }
+
+        /* ══════════════════════════════════════
            PROJETOS — commit log
         ══════════════════════════════════════ */
         .log {
@@ -999,6 +1126,7 @@
             <ul class="nav-links">
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#akanni">Akanni</a></li>
                 <li><a href="#projetos">Projetos</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
@@ -1013,6 +1141,7 @@
             <ul>
                 <li><a href="#sobre" onclick="closeMobile()">Sobre</a></li>
                 <li><a href="#servicos" onclick="closeMobile()">Serviços</a></li>
+                <li><a href="#akanni" onclick="closeMobile()">Akanni</a></li>
                 <li><a href="#projetos" onclick="closeMobile()">Projetos</a></li>
                 <li><a href="#contato" onclick="closeMobile()">Contato</a></li>
                 <li><a href="https://wa.me/5579988663905" target="_blank" rel="noopener">WhatsApp ↗</a></li>
@@ -1186,6 +1315,177 @@
                     </div>
                     <div class="svc-desc">Crescimento acelerado para o seu negócio com anúncios patrocinados e posicionamento orgânico no topo do Google.</div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ AKANNI ══════════ -->
+    <section id="akanni">
+        <div class="container">
+            <div class="reveal">
+                <div class="eyebrow">Ecossistema Akanni</div>
+                <h2 class="sec-title">Soluções modulares para gestão inteligente</h2>
+                <p class="sec-sub">Uma suíte de aplicações web pensada para resolver desafios de gestão por meio da
+                    tecnologia — da governança institucional à logística de operações complexas. Cada módulo funciona
+                    de forma independente ou integrada, dando uma visão 360° dos processos da sua organização.</p>
+                <div class="stack-row">
+                    <span class="stack-chip">Arquitetura modular</span>
+                    <span class="stack-chip">Escalável</span>
+                    <span class="stack-chip">Interfaces focadas em UI/UX</span>
+                </div>
+            </div>
+
+            <div class="akanni-list reveal">
+                <details class="akanni-item" open>
+                    <summary>
+                        <span class="akanni-tag">akanni.app</span>
+                        <span class="akanni-head">
+                            <div class="akanni-name">AkanniAPP <small>Aplicações Web e PWAs</small></div>
+                            <div class="akanni-tagline">A ponte de engajamento direto e mobilidade do ecossistema.
+                            </div>
+                        </span>
+                        <svg class="akanni-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </summary>
+                    <div class="akanni-body">
+                        <p class="akanni-desc">Focado na criação de WebApps e Progressive Web Apps, entregando a
+                            experiência de um aplicativo nativo direto no navegador de qualquer dispositivo, sem
+                            necessidade de downloads em lojas de aplicativos.</p>
+                        <ul>
+                            <li>Arquitetura mobile-first e interfaces altamente responsivas</li>
+                            <li>Notificações push web</li>
+                            <li>Funcionamento adaptativo, com suporte a recursos offline</li>
+                            <li>Integração contínua via API com os sistemas de retaguarda</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="akanni-item">
+                    <summary>
+                        <span class="akanni-tag">akanni.crm</span>
+                        <span class="akanni-head">
+                            <div class="akanni-name">AkanniCRM <small>Gestão de Relacionamento</small></div>
+                            <div class="akanni-tagline">Focado no coração de qualquer negócio: o cliente.</div>
+                        </span>
+                        <svg class="akanni-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </summary>
+                    <div class="akanni-body">
+                        <p class="akanni-desc">Centraliza o atendimento e otimiza a jornada de relacionamento, seja
+                            para o setor de saúde, serviços ou vendas.</p>
+                        <ul>
+                            <li>Gestão de contatos e históricos — prontuários ou perfis de clientes</li>
+                            <li>Controle de agendamentos</li>
+                            <li>Funil de atendimento e registro de interações</li>
+                            <li>Acompanhamento de métricas de satisfação</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="akanni-item">
+                    <summary>
+                        <span class="akanni-tag">akanni.cms</span>
+                        <span class="akanni-head">
+                            <div class="akanni-name">AkanniCMS <small>Gestão de Conteúdo e Governança</small></div>
+                            <div class="akanni-tagline">O centro digital de comunicação institucional e
+                                transparência.</div>
+                        </span>
+                        <svg class="akanni-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </summary>
+                    <div class="akanni-body">
+                        <p class="akanni-desc">Ideal para fundações, ONGs e portais corporativos que precisam de
+                            controle ágil e seguro sobre o que é publicado para o público externo.</p>
+                        <ul>
+                            <li>Publicação e edição de notícias</li>
+                            <li>Portal de transparência, com upload seguro de documentos</li>
+                            <li>Calendário de eventos</li>
+                            <li>Central de recebimento e triagem de mensagens de usuários</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="akanni-item">
+                    <summary>
+                        <span class="akanni-tag">akanni.core</span>
+                        <span class="akanni-head">
+                            <div class="akanni-name">AkanniCORE <small>ERP · Gestão Empresarial Integrada</small>
+                            </div>
+                            <div class="akanni-tagline">A espinha dorsal administrativa e financeira da operação.
+                            </div>
+                        </span>
+                        <svg class="akanni-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </summary>
+                    <div class="akanni-body">
+                        <p class="akanni-desc">Garante que os recursos da empresa sejam administrados com precisão,
+                            reduzindo gargalos operacionais e fornecendo dados sólidos para a tomada de decisão.</p>
+                        <ul>
+                            <li>Fluxo de caixa — contas a pagar e a receber</li>
+                            <li>Emissão de relatórios gerenciais</li>
+                            <li>Controle de patrimônio</li>
+                            <li>Gestão de contratos e integração de dados de backoffice</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="akanni-item">
+                    <summary>
+                        <span class="akanni-tag">akanni.flow</span>
+                        <span class="akanni-head">
+                            <div class="akanni-name">AkanniFLOW <small>SCM · Cadeia de Suprimentos</small></div>
+                            <div class="akanni-tagline">O maestro da logística — controle absoluto do que entra, se
+                                move e sai.</div>
+                        </span>
+                        <svg class="akanni-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </summary>
+                    <div class="akanni-body">
+                        <p class="akanni-desc">Criado para organizações que precisam de controle total sobre a
+                            movimentação de recursos, garantindo que estejam sempre no lugar certo.</p>
+                        <ul>
+                            <li>Auditoria e controle de estoque em tempo real</li>
+                            <li>Gestão do relacionamento com fornecedores</li>
+                            <li>Rastreabilidade de insumos</li>
+                            <li>Controle de frota ou distribuição</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details class="akanni-item">
+                    <summary>
+                        <span class="akanni-tag">akanni.people</span>
+                        <span class="akanni-head">
+                            <div class="akanni-name">AkanniPEOPLE <small>HRM · Gestão de Pessoas</small></div>
+                            <div class="akanni-tagline">Voltado para o maior ativo de qualquer operação: os talentos
+                                humanos.</div>
+                        </span>
+                        <svg class="akanni-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M6 9l6 6 6-6" />
+                        </svg>
+                    </summary>
+                    <div class="akanni-body">
+                        <p class="akanni-desc">Vai além do departamento pessoal tradicional, focando no
+                            desenvolvimento e engajamento das equipes.</p>
+                        <ul>
+                            <li>Gestão de ponto e jornadas</li>
+                            <li>Portal do colaborador para solicitações e holerites</li>
+                            <li>Recrutamento e seleção, com ATS integrado</li>
+                            <li>Acompanhamento de avaliações de desempenho</li>
+                        </ul>
+                    </div>
+                </details>
             </div>
         </div>
     </section>
