@@ -314,9 +314,15 @@
             position: fixed;
             inset: 0;
             top: 68px;
+            background: #F3F4EF;
             background: var(--paper);
-            z-index: 90;
+            opacity: 1;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            isolation: isolate;
+            z-index: 200;
             padding: 40px 28px;
+            overflow-y: auto;
         }
 
         #mobileNav ul {
@@ -1138,18 +1144,18 @@
                 </button>
             </div>
         </nav>
-        <div id="mobileNav">
-            <ul>
-                <li><a href="#sobre" onclick="closeMobile()">Sobre</a></li>
-                <li><a href="#servicos" onclick="closeMobile()">Serviços</a></li>
-                <li><a href="valores.html" onclick="closeMobile()">Valores</a></li>
-                <li><a href="#akanni" onclick="closeMobile()">Akanni</a></li>
-                <li><a href="#projetos" onclick="closeMobile()">Projetos</a></li>
-                <li><a href="#contato" onclick="closeMobile()">Contato</a></li>
-                <li><a href="https://wa.me/5579988663905" target="_blank" rel="noopener">WhatsApp ↗</a></li>
-            </ul>
-        </div>
     </header>
+    <div id="mobileNav">
+        <ul>
+            <li><a href="#sobre" onclick="closeMobile()">Sobre</a></li>
+            <li><a href="#servicos" onclick="closeMobile()">Serviços</a></li>
+            <li><a href="valores.html" onclick="closeMobile()">Valores</a></li>
+            <li><a href="#akanni" onclick="closeMobile()">Akanni</a></li>
+            <li><a href="#projetos" onclick="closeMobile()">Projetos</a></li>
+            <li><a href="#contato" onclick="closeMobile()">Contato</a></li>
+            <li><a href="https://wa.me/5579988663905" target="_blank" rel="noopener">WhatsApp ↗</a></li>
+        </ul>
+    </div>
 
     <!-- ══════════ HERO ══════════ -->
     <section id="hero">
