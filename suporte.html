@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Suporte Técnico · GeoCODE Programmer · Geovani Santos</title>
+    <meta name="description"
+        content="Abra um chamado de suporte técnico da GeoCODE Programmer. Preencha o formulário e a solicitação chega organizada, com protocolo, direto no WhatsApp." />
+    <link rel="canonical" href="https://geocodeprogrammer.vercel.app/suporte.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Suporte Técnico · GeoCODE Programmer" />
+    <meta property="og:description"
+        content="Algo não está funcionando? Abra um chamado e receba atendimento direto pelo WhatsApp." />
+    <meta property="og:url" content="https://geocodeprogrammer.vercel.app/suporte.html" />
+    <meta property="og:image" content="https://geocodeprogrammer.vercel.app/assets/ui/og.jpg" />
+    <link rel="icon" type="image/png" href="/assets/ui/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/ui/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/ui/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/ui/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="GeoCODE" />
+    <meta name="author" content="Geovani Santos — GeoCODE Programmer" />
+    <meta name="theme-color" content="#F3F4EF" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        :root {
+            --paper: #F3F4EF;
+            --paper-2: #EAEAE1;
+            --ink: #1A1E1B;
+            --ink-soft: #545C55;
+            --ink-faint: #93968C;
+            --blue: #2E5C82;
+            --blue-d: #1E3E56;
+            --moss: #47563F;
+            --amber: #B7791F;
+            --err: #A4432F;
+            --line: #DBD9CC;
+            --max: 1100px;
+            --serif: 'Fraunces', Georgia, serif;
+            --sans: 'Manrope', -apple-system, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
+            --trans: .25s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+        }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img { max-width: 100%; display: block; }
+        a { color: inherit; text-decoration: none; }
+        .container { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+
+        section { padding: 76px 0; border-top: 1px solid var(--line); }
+        section:first-of-type { border-top: none; }
+
+        .eyebrow {
+            font-family: var(--mono);
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: .06em;
+            color: var(--blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+        .eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--blue); }
+
+        h1, h2, h3 { font-family: var(--serif); font-weight: 500; letter-spacing: -.01em; color: var(--ink); }
+
+        .btn {
+            font-family: var(--sans);
+            font-weight: 600;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 14px 26px;
+            border-radius: 3px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: var(--trans);
+            white-space: nowrap;
+        }
+        .btn-primary { background: var(--blue); color: #FBF7F1; }
+        .btn-primary:hover { background: var(--blue-d); transform: translateY(-1px); }
+        .btn-ghost { border-color: var(--ink); color: var(--ink); background: transparent; }
+        .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+        .btn svg { width: 16px; height: 16px; }
+        .btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+        /* NAV */
+        header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(243, 244, 239, 0);
+            border-bottom: 1px solid transparent;
+            transition: var(--trans);
+        }
+        header.scrolled { background: rgba(243, 244, 239, .92); backdrop-filter: blur(8px); border-bottom-color: var(--line); }
+        nav { max-width: var(--max); margin: 0 auto; padding: 20px 28px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 20px; display: flex; align-items: baseline; gap: 3px; }
+        .logo span { color: var(--blue); }
+        .nav-links { display: flex; gap: 34px; list-style: none; }
+        .nav-links a { font-family: var(--mono); font-size: 12.5px; letter-spacing: .04em; color: var(--ink-soft); transition: var(--trans); position: relative; }
+        .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+        .nav-links a.active { color: var(--blue); }
+        .nav-cta { display: flex; align-items: center; gap: 22px; }
+        .nav-cta .btn { padding: 10px 20px; font-size: 13.5px; }
+        #hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+        #hamburger span { width: 22px; height: 1.5px; background: var(--ink); }
+        #mobileNav { display: none; }
+        @media (max-width:820px) {
+            .nav-links { display: none; }
+            #hamburger { display: flex; }
+            .nav-cta .btn-ghost { display: none; }
+        }
+        #mobileNav.open {
+            display: block; position: fixed; inset: 0; top: 68px;
+            background: #F3F4EF; background: var(--paper);
+            opacity: 1; backdrop-filter: none; -webkit-backdrop-filter: none;
+            isolation: isolate; z-index: 200; padding: 40px 28px; overflow-y: auto;
+        }
+        #mobileNav ul { list-style: none; display: flex; flex-direction: column; gap: 26px; }
+        #mobileNav a { font-family: var(--serif); font-size: 26px; }
+
+        /* HERO */
+        #shero { padding: 150px 0 56px; border-top: none; }
+        .shero-h1 { font-size: clamp(30px, 4vw, 44px); line-height: 1.14; max-width: 700px; margin-bottom: 16px; }
+        .shero-h1 em { font-style: italic; color: var(--blue); }
+        .shero-p { color: var(--ink-soft); font-size: 16.5px; max-width: 580px; }
+
+        /* LAYOUT */
+        #chamado { padding: 56px 0 96px; }
+        .support-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+            gap: 64px;
+            align-items: start;
+        }
+        @media (max-width:940px) { .support-layout { grid-template-columns: 1fr; gap: 56px; } }
+
+        /* FORM */
+        .sup-form { display: flex; flex-direction: column; gap: 46px; }
+        .step { display: flex; flex-direction: column; gap: 20px; }
+        .step-head {
+            display: flex; align-items: baseline; gap: 14px;
+            padding-bottom: 14px; border-bottom: 1px solid var(--line);
+        }
+        .step-n { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; color: var(--blue); }
+        .step-t { font-size: 22px; line-height: 1.2; }
+
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        @media (max-width:560px) { .form-row { grid-template-columns: 1fr; } }
+
+        .field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+        .field label, .lbl {
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+        }
+        .req { color: var(--blue); margin-left: 3px; }
+
+        .ctl {
+            width: 100%;
+            font-family: var(--sans);
+            font-size: 15px;
+            color: var(--ink);
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: 3px;
+            padding: 13px 14px;
+            transition: var(--trans);
+        }
+        .ctl::placeholder { color: var(--ink-faint); }
+        .ctl:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(46, 92, 130, .12); }
+        textarea.ctl { resize: vertical; min-height: 130px; line-height: 1.55; }
+        select.ctl {
+            appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 40px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2393968C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 14px center; background-size: 14px;
+        }
+
+        .field-err { display: none; font-family: var(--mono); font-size: 11.5px; color: var(--err); }
+        .field.invalid .field-err { display: block; }
+        .field.invalid .ctl { border-color: var(--err); }
+        .field.invalid .ctl:focus { box-shadow: 0 0 0 3px rgba(164, 67, 47, .14); }
+        .field.invalid .chips span { border-color: var(--err); }
+
+        .hint { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); line-height: 1.5; }
+        .counter { align-self: flex-end; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); margin-top: -2px; }
+
+        /* Chips (tipo de solicitação) */
+        .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+        .chip { position: relative; }
+        .chip input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; margin: 0; cursor: pointer; }
+        .chip span {
+            display: inline-block; pointer-events: none;
+            font-family: var(--mono); font-size: 12px; letter-spacing: .03em;
+            color: var(--ink-soft); padding: 8px 15px;
+            border: 1px solid var(--line); border-radius: 100px; transition: var(--trans);
+        }
+        .chip:hover span { border-color: var(--blue); color: var(--blue); }
+        .chip input:checked + span { background: var(--blue); border-color: var(--blue); color: #FBF7F1; }
+        .chip input:focus-visible + span { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+        /* Urgência */
+        .opt-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 1px; background: var(--line); border: 1px solid var(--line);
+        }
+        @media (max-width:520px) { .opt-grid { grid-template-columns: 1fr; } }
+        .opt { position: relative; display: block; background: var(--paper); cursor: pointer; }
+        .opt input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; margin: 0; cursor: pointer; }
+        .opt-body { height: 100%; padding: 16px 18px; transition: var(--trans); }
+        .opt:hover .opt-body { background: rgba(46, 92, 130, .04); }
+        .opt input:checked + .opt-body { background: rgba(46, 92, 130, .06); box-shadow: inset 2px 0 0 var(--blue); }
+        .opt input:focus-visible + .opt-body { outline: 2px solid var(--blue); outline-offset: -2px; }
+        .opt-name { display: flex; align-items: center; gap: 9px; font-family: var(--serif); font-size: 17px; }
+        .opt-name::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--dot); flex-shrink: 0; }
+        .opt-desc { display: block; margin-top: 2px; font-size: 13px; color: var(--ink-soft); line-height: 1.45; }
+
+        /* Checkboxes */
+        .checks { display: flex; flex-direction: column; gap: 14px; }
+        .check { display: flex; gap: 12px; align-items: flex-start; cursor: pointer; font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+        .check input {
+            appearance: none; -webkit-appearance: none; flex-shrink: 0;
+            width: 18px; height: 18px; margin-top: 2px; cursor: pointer;
+            border: 1px solid var(--ink-faint); border-radius: 3px; background: var(--paper);
+            display: grid; place-content: center; transition: var(--trans);
+        }
+        .check input::after {
+            content: ''; width: 9px; height: 5px; opacity: 0;
+            border-left: 2px solid #FBF7F1; border-bottom: 2px solid #FBF7F1;
+            transform: rotate(-45deg) translate(1px, -1px);
+        }
+        .check input:checked { background: var(--blue); border-color: var(--blue); }
+        .check input:checked::after { opacity: 1; }
+        .check input:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+        .check small { display: block; font-family: var(--mono); font-size: 11.5px; color: var(--ink-faint); margin-top: 2px; }
+
+        /* Ações */
+        .form-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+        .form-actions .btn-primary { border: none; }
+        .form-note { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); margin-top: -6px; }
+        .form-note a { color: var(--blue); }
+        .form-note a:hover { text-decoration: underline; }
+
+        /* Pré-visualização */
+        .preview { border: 1px solid var(--line); }
+        .preview summary {
+            list-style: none; cursor: pointer; padding: 14px 18px;
+            font-family: var(--mono); font-size: 12.5px; letter-spacing: .03em; color: var(--blue);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .preview summary::-webkit-details-marker { display: none; }
+        .preview summary::before { content: '+'; width: 14px; text-align: center; }
+        .preview[open] summary::before { content: '–'; }
+        .preview summary:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+        .preview-body { border-top: 1px solid var(--line); background: var(--paper-2); padding: 20px 20px 22px; }
+        .preview-body pre {
+            font-family: var(--mono); font-size: 12.5px; line-height: 1.65; color: var(--ink);
+            white-space: pre-wrap; word-break: break-word; max-height: 380px; overflow-y: auto;
+        }
+        .preview-body .hint { margin-top: 14px; }
+
+        /* Confirmação */
+        .sent { border: 1px solid var(--line); border-left: 2px solid var(--moss); padding: 22px 24px; background: rgba(71, 86, 63, .05); }
+        .sent[hidden] { display: none; }
+        .sent-t { font-family: var(--serif); font-size: 19px; margin-bottom: 6px; }
+        .sent p { font-size: 14.5px; color: var(--ink-soft); }
+        .sent .btn { margin-top: 16px; padding: 10px 20px; font-size: 13.5px; }
+
+        /* ASIDE */
+        .side { display: flex; flex-direction: column; gap: 18px; }
+        @media (min-width:941px) { .side { position: sticky; top: 96px; } }
+        .side-card { border: 1px solid var(--line); padding: 24px; }
+        .side-card h3 { font-size: 18px; margin-bottom: 12px; }
+        .side-card p { font-size: 14px; color: var(--ink-soft); }
+        .side-card p + p { margin-top: 10px; }
+        .side-card a.lnk { color: var(--blue); font-weight: 600; }
+        .side-card a.lnk:hover { text-decoration: underline; }
+        .hours { list-style: none; border-top: 1px solid var(--line); }
+        .hours li {
+            display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: baseline;
+            padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--ink);
+        }
+        .hours li span { font-family: var(--mono); font-size: 12.5px; color: var(--blue); text-align: right; }
+        .tips { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+        .tips li { display: flex; gap: 8px; color: var(--ink-soft); font-size: 14px; line-height: 1.5; }
+        .tips li::before { content: '—'; color: var(--blue); flex-shrink: 0; }
+        .side-card .btn { margin-top: 14px; padding: 10px 20px; font-size: 13.5px; }
+
+        /* FOOTER */
+        footer { border-top: 1px solid var(--line); padding: 40px 0; }
+        .footer-grid { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .footer-links { display: flex; gap: 22px; list-style: none; font-family: var(--mono); font-size: 12px; color: var(--ink-faint); }
+        .footer-links a:hover, .footer-links a.active { color: var(--blue); }
+        .footer-copy { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); }
+        .footer-social { display: flex; gap: 16px; }
+        .footer-social a { color: var(--ink-soft); }
+        .footer-social a:hover { color: var(--blue); }
+        .footer-social svg { width: 17px; height: 17px; }
+    </style>
+</head>
+
+<body>
+
+    <header id="siteHeader">
+        <nav>
+            <a href="index.html#hero" class="logo">GeoCODE<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html#sobre">Sobre</a></li>
+                <li><a href="index.html#servicos">Serviços</a></li>
+                <li><a href="valores.html">Valores</a></li>
+                <li><a href="index.html#akanni">Akanni</a></li>
+                <li><a href="index.html#projetos">Projetos</a></li>
+                <li><a href="index.html#contato">Contato</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="https://wa.me/5579988663905" target="_blank" rel="noopener" class="btn btn-ghost">Conversar</a>
+                <button id="hamburger" onclick="toggleMobile()" aria-label="Abrir menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+    <div id="mobileNav">
+        <ul>
+            <li><a href="index.html#sobre" onclick="closeMobile()">Sobre</a></li>
+            <li><a href="index.html#servicos" onclick="closeMobile()">Serviços</a></li>
+            <li><a href="valores.html" onclick="closeMobile()">Valores</a></li>
+            <li><a href="index.html#akanni" onclick="closeMobile()">Akanni</a></li>
+            <li><a href="index.html#projetos" onclick="closeMobile()">Projetos</a></li>
+            <li><a href="index.html#contato" onclick="closeMobile()">Contato</a></li>
+            <li><a href="https://wa.me/5579988663905" target="_blank" rel="noopener">WhatsApp ↗</a></li>
+        </ul>
+    </div>
+
+    <!-- ══════════ HERO ══════════ -->
+    <section id="shero">
+        <div class="container">
+            <div class="eyebrow">SUPORTE TÉCNICO</div>
+            <h1 class="shero-h1">Algo não está funcionando? <em>Vamos resolver</em>.</h1>
+            <p class="shero-p">Conte o que está acontecendo no formulário abaixo. A solicitação chega organizada, com
+                protocolo, no meu WhatsApp, e eu já começo pelo diagnóstico.</p>
+        </div>
+    </section>
+
+    <!-- ══════════ FORMULÁRIO ══════════ -->
+    <section id="chamado">
+        <div class="container support-layout">
+
+            <form class="sup-form" id="supportForm" novalidate>
+
+                <!-- 01 · Seus dados -->
+                <div class="step">
+                    <div class="step-head"><span class="step-n">01</span>
+                        <h2 class="step-t">Seus dados</h2>
+                    </div>
+                    <div class="field">
+                        <label for="f-nome">Nome completo ou da empresa<span class="req">*</span></label>
+                        <input class="ctl" type="text" id="f-nome" maxlength="80" autocomplete="name"
+                            placeholder="Ex.: Maria Souza ou Clínica Bem Estar" />
+                        <p class="field-err">Informe seu nome completo ou o nome da empresa.</p>
+                    </div>
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="f-whats">WhatsApp<span class="req">*</span></label>
+                            <input class="ctl" type="tel" id="f-whats" inputmode="tel" autocomplete="tel-national"
+                                placeholder="(79) 90000-0000" />
+                            <p class="field-err">Informe um WhatsApp válido, com DDD.</p>
+                        </div>
+                        <div class="field">
+                            <label for="f-email">E-mail</label>
+                            <input class="ctl" type="email" id="f-email" maxlength="80" autocomplete="email"
+                                placeholder="seu@email.com" />
+                            <p class="field-err">Esse e-mail não parece válido.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 02 · Serviço contratado -->
+                <div class="step">
+                    <div class="step-head"><span class="step-n">02</span>
+                        <h2 class="step-t">Serviço contratado</h2>
+                    </div>
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="f-produto">Produto ou serviço<span class="req">*</span></label>
+                            <select class="ctl" id="f-produto">
+                                <option value="">Selecione…</option>
+                                <optgroup label="Sites e páginas">
+                                    <option>Site Institucional</option>
+                                    <option>Landing Page</option>
+                                    <option>Bio Site</option>
+                                </optgroup>
+                                <optgroup label="Sistema Akanni">
+                                    <option>AkanniMED</option>
+                                    <option>AkanniHUB</option>
+                                    <option>AkanniAPP</option>
+                                    <option>AkanniCRM</option>
+                                    <option>AkanniCMS</option>
+                                    <option>AkanniCORE</option>
+                                    <option>AkanniFLOW</option>
+                                    <option>AkanniPEOPLE</option>
+                                    <option>Outro sistema Akanni</option>
+                                </optgroup>
+                                <optgroup label="Outros serviços">
+                                    <option>Digital Signage</option>
+                                    <option>Tráfego Pago</option>
+                                    <option>SEO / Google Meu Negócio</option>
+                                    <option>PWA</option>
+                                    <option>Outro</option>
+                                </optgroup>
+                            </select>
+                            <p class="field-err">Selecione o produto ou serviço.</p>
+                        </div>
+                        <div class="field">
+                            <label for="f-plano">Plano de manutenção</label>
+                            <select class="ctl" id="f-plano">
+                                <option value="">Selecione…</option>
+                                <option>Essencial</option>
+                                <option>Profissional</option>
+                                <option>Premium</option>
+                                <option>Não tenho plano (suporte avulso)</option>
+                                <option>Não sei informar</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="f-url">Endereço do site ou nome do sistema</label>
+                        <input class="ctl" type="text" id="f-url" maxlength="120" autocomplete="off"
+                            placeholder="Ex.: https://meusite.com.br" />
+                    </div>
+                </div>
+
+                <!-- 03 · O problema -->
+                <div class="step">
+                    <div class="step-head"><span class="step-n">03</span>
+                        <h2 class="step-t">O que está acontecendo</h2>
+                    </div>
+
+                    <div class="field" id="g-tipo">
+                        <span class="lbl" id="lbl-tipo">Tipo de solicitação<span class="req">*</span></span>
+                        <div class="chips" role="radiogroup" aria-labelledby="lbl-tipo">
+                            <label class="chip"><input type="radio" name="tipo" value="Erro ou falha" /><span>Erro ou falha</span></label>
+                            <label class="chip"><input type="radio" name="tipo" value="Sistema ou site fora do ar" /><span>Fora do ar</span></label>
+                            <label class="chip"><input type="radio" name="tipo" value="Lentidão ou desempenho" /><span>Lentidão</span></label>
+                            <label class="chip"><input type="radio" name="tipo" value="Acesso, login ou senha" /><span>Acesso ou senha</span></label>
+                            <label class="chip"><input type="radio" name="tipo" value="Dúvida de uso" /><span>Dúvida de uso</span></label>
+                            <label class="chip"><input type="radio" name="tipo" value="Alteração de conteúdo" /><span>Alteração de conteúdo</span></label>
+                            <label class="chip"><input type="radio" name="tipo" value="Nova funcionalidade" /><span>Nova funcionalidade</span></label>
+                            <label class="chip"><input type="radio" name="tipo" value="Outro assunto" /><span>Outro</span></label>
+                        </div>
+                        <p class="field-err">Escolha o tipo de solicitação.</p>
+                    </div>
+
+                    <div class="field">
+                        <span class="lbl" id="lbl-urg">Urgência<span class="req">*</span></span>
+                        <div class="opt-grid" role="radiogroup" aria-labelledby="lbl-urg">
+                            <label class="opt" style="--dot:var(--moss)">
+                                <input type="radio" name="urgencia" value="Baixa" />
+                                <span class="opt-body"><span class="opt-name">Baixa</span><span class="opt-desc">Posso aguardar alguns dias.</span></span>
+                            </label>
+                            <label class="opt" style="--dot:var(--blue)">
+                                <input type="radio" name="urgencia" value="Média" checked />
+                                <span class="opt-body"><span class="opt-name">Média</span><span class="opt-desc">Atrapalha, mas ainda consigo trabalhar.</span></span>
+                            </label>
+                            <label class="opt" style="--dot:var(--amber)">
+                                <input type="radio" name="urgencia" value="Alta" />
+                                <span class="opt-body"><span class="opt-name">Alta</span><span class="opt-desc">Está afetando minha operação.</span></span>
+                            </label>
+                            <label class="opt" style="--dot:var(--err)">
+                                <input type="radio" name="urgencia" value="Crítica" />
+                                <span class="opt-body"><span class="opt-name">Crítica</span><span class="opt-desc">Sistema parado ou fora do ar.</span></span>
+                            </label>
+                        </div>
+                        <p class="hint" id="urgHint" hidden>Falhas críticas também são atendidas em fins de semana e
+                            feriados.</p>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="f-inicio">Quando começou?</label>
+                            <select class="ctl" id="f-inicio">
+                                <option value="">Selecione…</option>
+                                <option>Hoje</option>
+                                <option>Ontem</option>
+                                <option>Nos últimos dias</option>
+                                <option>Há mais de uma semana</option>
+                                <option>Desde sempre</option>
+                                <option>Não sei informar</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="f-device">Onde acontece?</label>
+                            <select class="ctl" id="f-device">
+                                <option value="">Selecione…</option>
+                                <option>Computador</option>
+                                <option>Celular</option>
+                                <option>Tablet</option>
+                                <option>TV ou painel (Digital Signage)</option>
+                                <option>Em vários dispositivos</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="f-problema">Descreva o problema<span class="req">*</span></label>
+                        <textarea class="ctl" id="f-problema" maxlength="1500"
+                            placeholder="O que aconteceu? Em qual página ou tela? Apareceu alguma mensagem de erro?"></textarea>
+                        <span class="counter" id="cnt">0/1500</span>
+                        <p class="field-err">Descreva o problema com um pouco mais de detalhe (mínimo de 15
+                            caracteres).</p>
+                    </div>
+
+                    <div class="field">
+                        <label for="f-tentativas">O que você já tentou? (opcional)</label>
+                        <textarea class="ctl" id="f-tentativas" maxlength="1000" style="min-height:96px"
+                            placeholder="Ex.: atualizei a página, limpei o cache, testei em outro navegador…"></textarea>
+                    </div>
+                </div>
+
+                <!-- 04 · Retorno -->
+                <div class="step">
+                    <div class="step-head"><span class="step-n">04</span>
+                        <h2 class="step-t">Como prefere o retorno</h2>
+                    </div>
+                    <div class="form-row">
+                        <div class="field">
+                            <label for="f-horario">Melhor horário</label>
+                            <select class="ctl" id="f-horario">
+                                <option value="">Qualquer horário</option>
+                                <option>Manhã (8h às 12h)</option>
+                                <option>Tarde (12h às 18h)</option>
+                                <option>Noite (18h às 20h)</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label for="f-retorno">Forma de contato</label>
+                            <select class="ctl" id="f-retorno">
+                                <option value="">Mensagem no WhatsApp</option>
+                                <option>Ligação</option>
+                                <option>Chamada de vídeo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="checks">
+                        <label class="check">
+                            <input type="checkbox" id="f-anexos" />
+                            <span>Vou enviar prints ou vídeos logo depois de abrir a conversa.
+                                <small>O WhatsApp não anexa arquivos por link, então envie na conversa.</small></span>
+                        </label>
+                        <label class="check">
+                            <input type="checkbox" id="f-env" checked />
+                            <span>Incluir dados técnicos do meu aparelho para agilizar o diagnóstico.
+                                <small id="envHint"></small></span>
+                        </label>
+                    </div>
+                </div>
+
+                <details class="preview" id="preview">
+                    <summary>Ver como a mensagem vai chegar no WhatsApp</summary>
+                    <div class="preview-body">
+                        <pre id="previewText"></pre>
+                        <p class="hint">Você confere tudo no WhatsApp antes de confirmar o envio.</p>
+                    </div>
+                </details>
+
+                <div class="sent" id="sent" hidden role="status">
+                    <div class="sent-t">Chamado pronto para envio</div>
+                    <p>Abrimos o WhatsApp com a mensagem preenchida. Confirme o envio por lá. Protocolo
+                        <strong id="sentProto"></strong>.</p>
+                    <a class="btn btn-ghost" id="sentLink" href="#" target="_blank" rel="noopener">Abrir o WhatsApp
+                        novamente</a>
+                </div>
+
+                <div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.3c1.5.8 3.1 1.3 4.8 1.3 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18c-1.5 0-3-.4-4.3-1.2l-.3-.2-3.1.8.8-3-.2-.3C4.4 15 4 13.5 4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8z" />
+                            </svg>
+                            Enviar chamado
+                        </button>
+                        <button type="reset" class="btn btn-ghost">Limpar</button>
+                    </div>
+                    <p class="form-note" style="margin-top:14px">Ao enviar, o WhatsApp abre com a mensagem pronta. Seus
+                        dados são usados só para o atendimento, conforme a <a
+                            href="privacidade.html">Política de Privacidade</a>.</p>
+                </div>
+
+                <noscript>
+                    <p class="form-note">Este formulário precisa de JavaScript. Se preferir, chame direto em
+                        <a href="https://wa.me/5579988663905">wa.me/5579988663905</a>.</p>
+                </noscript>
+            </form>
+
+            <!-- ASIDE -->
+            <aside class="side">
+                <div class="side-card">
+                    <h3>Horário de atendimento</h3>
+                    <ul class="hours">
+                        <li>Segunda a sexta<span>8h às 20h</span></li>
+                        <li>Fins de semana e feriados<span>só falhas críticas</span></li>
+                    </ul>
+                </div>
+
+                <div class="side-card">
+                    <h3>Para agilizar</h3>
+                    <ul class="tips">
+                        <li>Diga em qual página ou tela o problema aparece.</li>
+                        <li>Copie a mensagem de erro, se houver.</li>
+                        <li>Conte o passo a passo até o problema acontecer.</li>
+                        <li>Tenha em mãos prints ou um vídeo curto da tela.</li>
+                    </ul>
+                </div>
+
+                <div class="side-card">
+                    <h3>Planos e suporte avulso</h3>
+                    <p>Quem tem plano de manutenção usa as horas de suporte incluídas. Sem plano, o suporte avulso é
+                        cobrado por hora técnica, como descrito nos <a class="lnk" href="termos.html#s6">Termos de
+                            uso</a>.</p>
+                    <p>Veja o que cada plano cobre em <a class="lnk" href="valores.html#manutencao">Valores</a>.</p>
+                </div>
+
+                <div class="side-card">
+                    <h3>Prefere falar direto?</h3>
+                    <p>Chame no WhatsApp ou escreva por e-mail, em <a class="lnk"
+                            href="mailto:geocodeprogrammer@gmail.com">geocodeprogrammer@gmail.com</a>.</p>
+                    <a href="https://wa.me/5579988663905" target="_blank" rel="noopener" class="btn btn-ghost">Abrir
+                        WhatsApp</a>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <span class="logo" style="font-size:16px">GeoCODE<span>.</span></span>
+            <ul class="footer-links">
+                <li><a href="suporte.html" class="active">Suporte</a></li>
+                <li><a href="termos.html">Termos de uso</a></li>
+                <li><a href="privacidade.html">Privacidade</a></li>
+            </ul>
+            <div class="footer-social">
+                <a href="https://instagram.com/geovanikeeper" target="_blank" rel="noopener" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="3" y="3" width="18" height="18" rx="5" />
+                        <circle cx="12" cy="12" r="4" />
+                        <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/in/eusougeovani" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <rect x="3" y="3" width="18" height="18" rx="3" />
+                        <line x1="7.5" y1="10" x2="7.5" y2="17" />
+                        <circle cx="7.5" cy="7" r="0.6" fill="currentColor" />
+                        <path d="M11 17v-4.5a2 2 0 0 1 4 0V17" />
+                        <line x1="11" y1="10" x2="11" y2="17" />
+                    </svg>
+                </a>
+            </div>
+            <span class="footer-copy">© 2026 GeoCODE Programmer · Geovani Santos</span>
+        </div>
+    </footer>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget({
+            rootPath: 'https://vlibras.gov.br/app',
+            personalization: 'https://vlibras.gov.br/config/default_logo.json',
+            avatar: 'random',
+            position: 'R',
+        });
+    </script>
+
+    <script>
+        'use strict';
+
+        /* ── Header e menu mobile ── */
+        const header = document.getElementById('siteHeader');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 20);
+        }, { passive: true });
+
+        function toggleMobile() {
+            document.getElementById('mobileNav').classList.toggle('open');
+            document.getElementById('hamburger').classList.toggle('open');
+        }
+        function closeMobile() {
+            document.getElementById('mobileNav').classList.remove('open');
+        }
+
+        /* ── Formulário de suporte → WhatsApp ── */
+        (function () {
+            const PHONE = '5579988663905';
+            const form = document.getElementById('supportForm');
+            const $ = id => document.getElementById(id);
+
+            const URG = {
+                'Baixa': '🟢',
+                'Média': '🟡',
+                'Alta': '🟠',
+                'Crítica': '🔴'
+            };
+
+            /* Protocolo: SUP-AAMMDD-XXXX */
+            const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+            function makeProtocol() {
+                const n = new Date();
+                const p = v => String(v).padStart(2, '0');
+                let rnd = '';
+                for (let i = 0; i < 4; i++) rnd += ALPHABET[Math.floor(Math.random() * ALPHABET.length)];
+                return 'SUP-' + String(n.getFullYear()).slice(2) + p(n.getMonth() + 1) + p(n.getDate()) + '-' + rnd;
+            }
+            let protocol = makeProtocol();
+
+            /* Detecção simples de navegador / sistema */
+            function detectEnv() {
+                const ua = navigator.userAgent;
+                let os = 'sistema não identificado';
+                let br = 'navegador não identificado';
+                if (/Windows/.test(ua)) os = 'Windows';
+                else if (/Android/.test(ua)) os = 'Android';
+                else if (/iPhone|iPad|iPod/.test(ua)) os = 'iOS';
+                else if (/CrOS/.test(ua)) os = 'ChromeOS';
+                else if (/Mac OS X/.test(ua)) os = 'macOS';
+                else if (/Linux/.test(ua)) os = 'Linux';
+                if (/Edg\//.test(ua)) br = 'Edge';
+                else if (/OPR\/|Opera/.test(ua)) br = 'Opera';
+                else if (/SamsungBrowser/.test(ua)) br = 'Samsung Internet';
+                else if (/Firefox\/|FxiOS/.test(ua)) br = 'Firefox';
+                else if (/Chrome\/|CriOS/.test(ua)) br = 'Chrome';
+                else if (/Safari\//.test(ua)) br = 'Safari';
+                return br + ' em ' + os + ', tela ' + window.screen.width + '×' + window.screen.height;
+            }
+            const envText = detectEnv();
+            $('envHint').textContent = envText;
+
+            /* Máscara do WhatsApp */
+            const whats = $('f-whats');
+            whats.addEventListener('input', () => {
+                let v = whats.value.replace(/\D/g, '');
+                if (v.length > 11 && v.startsWith('55')) v = v.slice(2);
+                v = v.slice(0, 11);
+                let out = v;
+                if (v.length > 10) out = '(' + v.slice(0, 2) + ') ' + v.slice(2, 7) + '-' + v.slice(7);
+                else if (v.length > 6) out = '(' + v.slice(0, 2) + ') ' + v.slice(2, 6) + '-' + v.slice(6);
+                else if (v.length > 2) out = '(' + v.slice(0, 2) + ') ' + v.slice(2);
+                else if (v.length > 0) out = '(' + v;
+                whats.value = out;
+            });
+
+            /* Contador de caracteres */
+            const problema = $('f-problema');
+            const updateCounter = () => { $('cnt').textContent = problema.value.length + '/' + problema.maxLength; };
+
+            /* Dica para urgência crítica */
+            function updateUrgHint() {
+                const r = form.querySelector('input[name="urgencia"]:checked');
+                $('urgHint').hidden = !(r && r.value === 'Crítica');
+            }
+
+            /* Coleta */
+            const val = id => ($(id).value || '').trim();
+            const radio = name => {
+                const r = form.querySelector('input[name="' + name + '"]:checked');
+                return r ? r.value : '';
+            };
+            const clean = s => s.replace(/\r/g, '').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+
+            function collect() {
+                return {
+                    nome: val('f-nome'),
+                    whats: val('f-whats'),
+                    email: val('f-email'),
+                    produto: val('f-produto'),
+                    plano: val('f-plano'),
+                    url: val('f-url'),
+                    tipo: radio('tipo'),
+                    urgencia: radio('urgencia'),
+                    inicio: val('f-inicio'),
+                    device: val('f-device'),
+                    problema: clean($('f-problema').value),
+                    tentativas: clean($('f-tentativas').value),
+                    horario: val('f-horario'),
+                    retorno: val('f-retorno'),
+                    anexos: $('f-anexos').checked,
+                    env: $('f-env').checked
+                };
+            }
+
+            /* Mensagem organizada para o WhatsApp */
+            function buildMessage(d) {
+                const now = new Date();
+                const data = now.toLocaleDateString('pt-BR');
+                const hora = now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+                const or = (v, f) => v || f;
+                const L = [];
+
+                L.push('*🛠️ CHAMADO DE SUPORTE TÉCNICO*');
+                L.push('_Protocolo ' + protocol + ' · ' + data + ' às ' + hora + '_');
+                L.push('');
+
+                L.push('*👤 CLIENTE*');
+                L.push('• Nome/Empresa: ' + or(d.nome, '—'));
+                L.push('• WhatsApp: ' + or(d.whats, '—'));
+                if (d.email) L.push('• E-mail: ' + d.email);
+                L.push('');
+
+                L.push('*📦 SERVIÇO CONTRATADO*');
+                L.push('• Produto/serviço: ' + or(d.produto, '—'));
+                if (d.plano) L.push('• Plano de manutenção: ' + d.plano);
+                if (d.url) L.push('• Endereço/sistema: ' + d.url);
+                L.push('');
+
+                L.push('*⚠️ SOLICITAÇÃO*');
+                L.push('• Tipo: ' + or(d.tipo, '—'));
+                L.push('• Urgência: ' + (URG[d.urgencia] || '') + ' ' + or(d.urgencia, '—'));
+                if (d.inicio) L.push('• Começou: ' + d.inicio);
+                if (d.device) L.push('• Onde acontece: ' + d.device);
+                L.push('');
+
+                L.push('*📝 PROBLEMA*');
+                L.push(or(d.problema, '—'));
+
+                if (d.tentativas) {
+                    L.push('');
+                    L.push('*🔍 JÁ TENTEI*');
+                    L.push(d.tentativas);
+                }
+
+                if (d.env) {
+                    L.push('');
+                    L.push('*💻 AMBIENTE*');
+                    L.push(envText);
+                }
+
+                L.push('');
+                L.push('*🕐 RETORNO*');
+                L.push('• Horário: ' + or(d.horario, 'Qualquer horário'));
+                L.push('• Contato: ' + or(d.retorno, 'Mensagem no WhatsApp'));
+                if (d.anexos) L.push('• 📎 Vou enviar prints/vídeos em seguida.');
+
+                return L.join('\n');
+            }
+
+            /* Pré-visualização (escapa HTML e aplica *negrito* e _itálico_ como o WhatsApp) */
+            const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            function renderPreview() {
+                let h = esc(buildMessage(collect()));
+                h = h.replace(/\*([^*\n]+)\*/g, '<strong>$1</strong>').replace(/(^|\s)_([^_\n]+)_(?=\s|$)/g, '$1<em>$2</em>');
+                $('previewText').innerHTML = h;
+            }
+
+            /* Validação */
+            const rules = [
+                ['f-nome', v => v.length >= 3],
+                ['f-whats', v => { const n = v.replace(/\D/g, ''); return n.length === 10 || n.length === 11; }],
+                ['f-email', v => !v || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)],
+                ['f-produto', v => !!v],
+                ['f-problema', v => v.trim().length >= 15]
+            ];
+
+            function setInvalid(fieldEl, on) { fieldEl.classList.toggle('invalid', on); }
+
+            function validate() {
+                let first = null;
+                rules.forEach(([id, test]) => {
+                    const el = $(id);
+                    const ok = test(el.value.trim());
+                    setInvalid(el.closest('.field'), !ok);
+                    if (!ok && !first) first = el;
+                });
+                const tipoOk = !!radio('tipo');
+                setInvalid($('g-tipo'), !tipoOk);
+                if (!tipoOk && !first) first = form.querySelector('input[name="tipo"]');
+
+                if (first) {
+                    const target = first.closest('.field') || first;
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    first.focus({ preventScroll: true });
+                    return false;
+                }
+                return true;
+            }
+
+            /* Limpa o erro assim que o campo é corrigido */
+            rules.forEach(([id]) => {
+                const el = $(id);
+                const clear = () => setInvalid(el.closest('.field'), false);
+                el.addEventListener('input', clear);
+                el.addEventListener('change', clear);
+            });
+            form.querySelectorAll('input[name="tipo"]').forEach(r =>
+                r.addEventListener('change', () => setInvalid($('g-tipo'), false)));
+
+            /* Eventos */
+            form.addEventListener('input', () => { updateCounter(); renderPreview(); });
+            form.addEventListener('change', () => { updateUrgHint(); renderPreview(); });
+            $('preview').addEventListener('toggle', renderPreview);
+
+            form.addEventListener('reset', () => {
+                setTimeout(() => {
+                    form.querySelectorAll('.field.invalid').forEach(f => f.classList.remove('invalid'));
+                    $('sent').hidden = true;
+                    updateCounter(); updateUrgHint(); renderPreview();
+                }, 0);
+            });
+
+            form.addEventListener('submit', e => {
+                e.preventDefault();
+                if (!validate()) return;
+
+                const msg = buildMessage(collect());
+                const url = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
+
+                const w = window.open(url, '_blank');
+                if (!w) window.location.href = url;
+
+                $('sentProto').textContent = protocol;
+                $('sentLink').href = url;
+                $('sent').hidden = false;
+                $('sent').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                protocol = makeProtocol();
+                renderPreview();
+            });
+
+            updateCounter();
+            renderPreview();
+        })();
+    </script>
+</body>
+
+</html>
