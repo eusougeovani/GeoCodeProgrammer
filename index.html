@@ -263,12 +263,14 @@
         .proj:hover .proj-thumb { border-color: var(--blue); transform: translateY(-3px); }
         .proj-thumb svg { width: 76%; height: auto; }
         .proj-thumb .tag { position: absolute; left: 10px; top: 10px; font-family: var(--mono); font-size: 10px; letter-spacing: .04em; color: #FBF7F1; background: rgba(26, 30, 27, .4); padding: 3px 9px; border-radius: 100px; }
-        .t1 { background: var(--blue); }
-        .t2 { background: var(--moss); }
-        .t3 { background: var(--paper-2); }
-        .t3 .tag { color: var(--ink); background: rgba(255, 255, 255, .7); }
-        .t4 { background: var(--ink); }
-        .t5 { background: var(--blue-d); }
+        /* cor predominante de cada projeto (--ac = cor de apoio) */
+        .t1 { background: #FAEED3; --ac: #7A3520; }   /* Psi Meire França · Âmbar Mel */
+        .t1 .tag { color: #3E1F14; background: rgba(255, 255, 255, .65); }
+        .t2 { background: #B02A1E; --ac: #F5B301; }   /* Fundação Fênix 193 · Vermelho Brasa */
+        .t3 { background: #281B34; --ac: #F2C14E; }   /* LuminaBoard · Ameixa Noturna */
+        .t4 { background: #131313; --ac: #E50914; }   /* Netlove · Carvão Cinema */
+        .t5 { background: var(--blue-d); }            /* Ecossistema Akanni */
+        .proj-thumb svg { filter: drop-shadow(0 8px 14px rgba(0, 0, 0, .22)); }
         .proj h3 { font-size: 17px; margin-top: 16px; }
         .proj p { font-size: 13px; color: var(--ink-soft); margin-top: 3px; line-height: 1.5; }
         .proj .go { font-family: var(--mono); display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 11.5px; color: var(--blue); }
@@ -448,9 +450,9 @@
                 <rect x="18" y="32" width="64" height="8" rx="1.5" fill="#1A1E1B" opacity=".85" />
                 <rect x="18" y="46" width="48" height="5" rx="1.5" fill="#93968C" opacity=".6" />
                 <rect x="18" y="56" width="56" height="5" rx="1.5" fill="#93968C" opacity=".6" />
-                <rect x="18" y="72" width="30" height="10" rx="1.5" fill="#2E5C82" />
+                <rect x="18" y="72" width="30" height="10" rx="1.5" fill="var(--ac,#2E5C82)" />
                 <rect x="94" y="32" width="46" height="52" rx="3" fill="#EAEAE1" />
-                <circle cx="117" cy="52" r="10" fill="#2E5C82" opacity=".75" />
+                <circle cx="117" cy="52" r="10" fill="var(--ac,#2E5C82)" opacity=".8" />
                 <rect x="102" y="70" width="30" height="5" rx="1.5" fill="#47563F" opacity=".6" />
             </symbol>
         </defs>
