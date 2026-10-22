@@ -607,21 +607,16 @@
         #mobileNav.open { z-index: 200; isolation: isolate; }
 
         /* correções herdadas das versões anteriores */
-        .eyebrow { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .06em; color: var(--blue); display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
-        .eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--blue); }
         .toc nav { align-items: stretch; justify-content: flex-start; max-width: none; margin: 0; }
         .field label.opt, .field label.chip { text-transform: none; letter-spacing: normal; font-family: var(--sans); font-size: 16px; color: var(--ink); }
         .opt-body { display: block; }
         .opt-desc { font-family: var(--sans); text-transform: none; letter-spacing: normal; }
         section[id] { scroll-margin-top: 130px; }
 
-        .crumb { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); margin-bottom: 22px; }
-        .crumb a:hover { color: var(--blue); }
-
         /* hero das páginas legais */
         .legal-hero { background: var(--paper-2); }
         .legal-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
-        .legal-hero .eyebrow { margin-bottom: 18px; }
+        .legal-hero { margin-bottom: 18px; }
         .legal-hero p { margin-bottom: 0; }
         .glance { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
         .glance li { background: var(--paper); padding: 20px; }
@@ -648,8 +643,8 @@
         /* faixa azul de chamada */
         .band-cta { background: var(--blue-d); color: #F3F4EF; padding: 84px 0; border-top: none; }
         .band-cta-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px; align-items: center; }
-        .band-cta .eyebrow { color: #A9C4D9; }
-        .band-cta .eyebrow::before { background: #A9C4D9; }
+        .band-cta { color: #A9C4D9; }
+        .band-cta::before { background: #A9C4D9; }
         .band-cta h2 { color: #F3F4EF; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.18; margin-bottom: 12px; }
         .band-cta h2 em { color: #A9C4D9; }
         .band-cta p { color: #D8E4EE; max-width: 480px; font-size: 16px; }
@@ -698,12 +693,10 @@
     <section class="legal-hero">
         <div class="container legal-grid">
             <div class="reveal up">
-                <div class="crumb"><a href="index.html">Início</a> / Termos de uso</div>
-                <div class="eyebrow">Documento legal · Contrato de serviços</div>
                 <h1>Termos de <em>Uso</em></h1>
                 <p>Regras, direitos e responsabilidades que regem o uso de todos os serviços prestados por Geovani Santos — sites, sistemas sob medida, Digital Signage e a linha Akanni. A contratação implica aceitação integral destes termos.</p>
             </div>
-            <ul class="glance reveal up"><li><b>30 / 30 / 40</b><span>cronograma de pagamento</span></li><li><b>Seg a sex, 8h às 20h</b><span>suporte técnico</span></li><li><b>3 a 5 semanas</b><span>prazo de sites e Digital Signage</span></li><li><b>Aracaju/SE</b><span>foro eleito</span></li></ul>
+            <ul class="glance reveal up"><li><b>30 / 30 / 40</b><span>cronograma de pagamento</span></li><li><b>Seg a sex,<br>8h às 20h</b><span>suporte técnico</span></li><li><b>3 a 5 semanas</b><span>prazo de sites e Digital Signage</span></li><li><b>Aracaju/SE</b><span>foro eleito</span></li></ul>
         </div>
     </section>
 
@@ -975,7 +968,6 @@
     <section class="band-cta">
         <div class="container band-cta-grid">
             <div>
-                <div class="eyebrow">Fale comigo</div>
                 <h2>Ficou com alguma <em>dúvida</em> sobre os termos?</h2>
                 <p>Questões contratuais são respondidas em até 2 dias úteis.</p>
             </div>
