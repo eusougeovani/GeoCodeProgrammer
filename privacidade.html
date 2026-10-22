@@ -606,6 +606,81 @@
             width: 17px;
             height: 17px;
         }
+    
+        /* ══════════════════════════════════════
+           REPAGINAÇÃO — padrão do novo index
+        ══════════════════════════════════════ */
+        .nav-links a.active { color: var(--blue); }
+        #mobileNav.open { z-index: 200; isolation: isolate; }
+
+        /* correções herdadas das versões anteriores */
+        .eyebrow { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .06em; color: var(--blue); display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+        .eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--blue); }
+        .toc nav { align-items: stretch; justify-content: flex-start; max-width: none; margin: 0; }
+        .field label.opt, .field label.chip { text-transform: none; letter-spacing: normal; font-family: var(--sans); font-size: 16px; color: var(--ink); }
+        .opt-body { display: block; }
+        .opt-desc { font-family: var(--sans); text-transform: none; letter-spacing: normal; }
+        section[id] { scroll-margin-top: 130px; }
+
+        .crumb { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); margin-bottom: 22px; }
+        .crumb a:hover { color: var(--blue); }
+
+        /* hero das páginas legais */
+        .legal-hero { background: var(--paper-2); }
+        .legal-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
+        .legal-hero .eyebrow { margin-bottom: 18px; }
+        .legal-hero p { margin-bottom: 0; }
+        .glance { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+        .glance li { background: var(--paper); padding: 20px; }
+        .glance b { display: block; font-family: var(--serif); font-weight: 500; font-size: 22px; color: var(--blue); line-height: 1.2; margin-bottom: 4px; }
+        .glance span { display: block; font-size: 12.5px; color: var(--ink-soft); line-height: 1.45; }
+        @media (max-width:900px) { .legal-grid { grid-template-columns: 1fr; gap: 36px; } }
+        @media (max-width:420px) { .glance { grid-template-columns: 1fr; } }
+
+        /* suporte: como funciona */
+        .flow { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 34px; max-width: 760px; }
+        .flow li { background: var(--paper); padding: 18px 20px; }
+        .flow-n { font-family: var(--mono); font-size: 11.5px; color: var(--blue); display: block; margin-bottom: 6px; }
+        .flow b { display: block; font-family: var(--serif); font-weight: 500; font-size: 17px; }
+        .flow small { display: block; font-size: 13px; color: var(--ink-soft); margin-top: 2px; line-height: 1.45; }
+        @media (max-width:640px) { .flow { grid-template-columns: 1fr; } }
+
+        /* valores: fatos rápidos + ritmo de seções */
+        .facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+        .facts span { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 100px; padding: 6px 14px; display: inline-flex; align-items: center; gap: 8px; }
+        .facts span::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--moss); }
+        #landing, #signage, #growth, #manutencao { background: var(--paper-2); }
+        .tabnav-wrap { top: 69px; }
+
+        /* faixa azul de chamada */
+        .band-cta { background: var(--blue-d); color: #F3F4EF; padding: 84px 0; border-top: none; }
+        .band-cta-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px; align-items: center; }
+        .band-cta .eyebrow { color: #A9C4D9; }
+        .band-cta .eyebrow::before { background: #A9C4D9; }
+        .band-cta h2 { color: #F3F4EF; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.18; margin-bottom: 12px; }
+        .band-cta h2 em { color: #A9C4D9; }
+        .band-cta p { color: #D8E4EE; max-width: 480px; font-size: 16px; }
+        .band-cta-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end; }
+        .btn-light { background: var(--paper); color: var(--blue-d); }
+        .btn-light:hover { background: #fff; transform: translateY(-1px); }
+        .btn-line { border-color: rgba(243, 244, 239, .6); color: #F3F4EF; }
+        .btn-line:hover { border-color: #fff; background: rgba(255, 255, 255, .08); }
+        @media (max-width:820px) { .band-cta-grid { grid-template-columns: 1fr; } .band-cta-actions { justify-content: flex-start; } }
+
+        /* rodapé em colunas */
+        footer.site-footer { padding: 56px 0 34px; }
+        .sf-grid { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 40px; align-items: start; }
+        .sf-social { display: flex; gap: 16px; margin-top: 18px; }
+        .sf-social a { color: var(--ink-soft); transition: var(--trans); }
+        .sf-social a:hover { color: var(--blue); }
+        .sf-social svg { width: 17px; height: 17px; }
+        .site-footer h4 { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 14px; }
+        .sf-links { list-style: none; display: grid; grid-template-columns: repeat(2, auto); gap: 8px 28px; justify-content: start; font-family: var(--mono); font-size: 12px; color: var(--ink-soft); }
+        .sf-links a:hover, .sf-contact a:hover, .sf-legal a:hover { color: var(--blue); }
+        .sf-contact { list-style: none; display: flex; flex-direction: column; gap: 9px; font-size: 13.5px; color: var(--ink-soft); }
+        .sf-bottom { margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; font-family: var(--mono); font-size: 12px; color: var(--ink-faint); }
+        .sf-legal { display: flex; gap: 22px; }
+        @media (max-width:820px) { .sf-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 
@@ -613,14 +688,8 @@
 
     <header id="siteHeader">
         <nav>
-            <a href="index.html" class="logo">GeoCODE<span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="index.html#sobre">Sobre</a></li>
-                <li><a href="index.html#servicos">Serviços</a></li>
-                <li><a href="index.html#projetos">Projetos</a></li>
-                <li><a href="index.html#contato">Contato</a></li>
-                <li><a href="suporte.html">Suporte</a></li>
-            </ul>
+            <a href="index.html#hero" class="logo">GeoCODE<span>.</span></a>
+            <ul class="nav-links"><li><a href="index.html#hero">Início</a></li><li><a href="index.html#sobre">Sobre</a></li><li><a href="index.html#servicos">Serviços</a></li><li><a href="valores.html">Valores</a></li><li><a href="index.html#akanni">Akanni</a></li><li><a href="index.html#projetos">Projetos</a></li><li><a href="index.html#contato">Contato</a></li><li><a href="suporte.html">Suporte</a></li></ul>
             <div class="nav-cta">
                 <a href="https://wa.me/5579988663905" target="_blank" rel="noopener" class="btn btn-ghost">Conversar</a>
                 <button id="hamburger" onclick="toggleMobile()" aria-label="Abrir menu">
@@ -628,23 +697,20 @@
                 </button>
             </div>
         </nav>
-        <div id="mobileNav">
-            <ul>
-                <li><a href="index.html#sobre" onclick="closeMobile()">Sobre</a></li>
-                <li><a href="index.html#servicos" onclick="closeMobile()">Serviços</a></li>
-                <li><a href="index.html#projetos" onclick="closeMobile()">Projetos</a></li>
-                <li><a href="index.html#contato" onclick="closeMobile()">Contato</a></li>
-                <li><a href="suporte.html" onclick="closeMobile()">Suporte</a></li>
-                <li><a href="https://wa.me/5579988663905" target="_blank" rel="noopener">WhatsApp ↗</a></li>
-            </ul>
-        </div>
     </header>
+    <div id="mobileNav">
+        <ul><li><a href="index.html#hero" onclick="closeMobile()">Início</a></li><li><a href="index.html#sobre" onclick="closeMobile()">Sobre</a></li><li><a href="index.html#servicos" onclick="closeMobile()">Serviços</a></li><li><a href="valores.html" onclick="closeMobile()">Valores</a></li><li><a href="index.html#akanni" onclick="closeMobile()">Akanni</a></li><li><a href="index.html#projetos" onclick="closeMobile()">Projetos</a></li><li><a href="index.html#contato" onclick="closeMobile()">Contato</a></li><li><a href="suporte.html" onclick="closeMobile()">Suporte</a></li><li><a href="https://wa.me/5579988663905" target="_blank" rel="noopener">WhatsApp ↗</a></li></ul>
+    </div>
 
     <section class="legal-hero">
-        <div class="container reveal up">
-            <h1>Política de <em>Privacidade</em></h1>
-            <p>Como Geovani Santos, sob a marca GeoCODE Programmer, coleta, utiliza, armazena e protege dados
-                pessoais em todos os serviços contratados — sites, Digital Signage, PWAs e a linha Akanni.</p>
+        <div class="container legal-grid">
+            <div class="reveal up">
+                <div class="crumb"><a href="index.html">Início</a> / Privacidade</div>
+                <div class="eyebrow">Documento legal · LGPD</div>
+                <h1>Política de <em>Privacidade</em></h1>
+                <p>Como Geovani Santos, sob a marca GeoCODE Programmer, coleta, utiliza, armazena e protege dados pessoais em todos os serviços contratados — sites, Digital Signage, PWAs e a linha Akanni.</p>
+            </div>
+            <ul class="glance reveal up"><li><b>LGPD</b><span>Lei nº 13.709/2018</span></li><li><b>30 dias</b><span>prazo para responder aos titulares</span></li><li><b>Sem venda</b><span>de dados a terceiros</span></li><li><b>DPO</b><span>Geovani Santos</span></li></ul>
         </div>
     </section>
 
@@ -878,33 +944,60 @@
         </div>
     </div>
 
-    <footer>
-        <div class="container footer-grid">
-            <span class="logo" style="font-size:16px">GeoCODE<span>.</span></span>
-            <ul class="footer-links">
-                <li><a href="suporte.html">Suporte</a></li>
-                <li><a href="termos.html">Termos de uso</a></li>
-                <li><a href="privacidade.html">Privacidade</a></li>
-            </ul>
-            <div class="footer-social">
-                <a href="https://instagram.com/geovanikeeper" target="_blank" rel="noopener" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                        <rect x="3" y="3" width="18" height="18" rx="5" />
-                        <circle cx="12" cy="12" r="4" />
-                        <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
-                    </svg>
-                </a>
-                <a href="https://linkedin.com/in/eusougeovani" target="_blank" rel="noopener" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                        <rect x="3" y="3" width="18" height="18" rx="3" />
-                        <line x1="7.5" y1="10" x2="7.5" y2="17" />
-                        <circle cx="7.5" cy="7" r="0.6" fill="currentColor" />
-                        <path d="M11 17v-4.5a2 2 0 0 1 4 0V17" />
-                        <line x1="11" y1="10" x2="11" y2="17" />
-                    </svg>
-                </a>
+    <section class="band-cta">
+        <div class="container band-cta-grid">
+            <div>
+                <div class="eyebrow">Fale comigo</div>
+                <h2>Quer exercer um <em>direito</em> ou tirar dúvidas?</h2>
+                <p>Solicitações de titulares são respondidas em até 30 dias corridos, conforme a LGPD.</p>
             </div>
-            <span class="footer-copy">© 2026 GeoCODE Programmer · Geovani Santos</span>
+            <div class="band-cta-actions"><a href="mailto:geocodeprogrammer@gmail.com" class="btn btn-light">Enviar e-mail</a><a href="https://wa.me/5579988663905" target="_blank" rel="noopener" class="btn btn-line">Chamar no WhatsApp</a></div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="sf-grid">
+                <div>
+                    <a href="index.html#hero" class="logo">GeoCODE<span>.</span></a>
+                    <div class="sf-social">
+                        <a href="https://instagram.com/geovanikeeper" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" /></svg>
+                        </a>
+                        <a href="https://linkedin.com/in/eusougeovani" target="_blank" rel="noopener" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="3" /><line x1="7.5" y1="10" x2="7.5" y2="17" /><circle cx="7.5" cy="7" r="0.6" fill="currentColor" /><path d="M11 17v-4.5a2 2 0 0 1 4 0V17" /><line x1="11" y1="10" x2="11" y2="17" /></svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Links rápidos</h4>
+                    <ul class="sf-links">
+                        <li><a href="index.html#hero">Início</a></li>
+                        <li><a href="index.html#sobre">Sobre</a></li>
+                        <li><a href="index.html#servicos">Serviços</a></li>
+                        <li><a href="valores.html">Valores</a></li>
+                        <li><a href="index.html#akanni">Akanni</a></li>
+                        <li><a href="index.html#projetos">Projetos</a></li>
+                        <li><a href="suporte.html">Suporte</a></li>
+                        <li><a href="index.html#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Vamos trabalhar juntos</h4>
+                    <ul class="sf-contact">
+                        <li><a href="mailto:geocodeprogrammer@gmail.com">geocodeprogrammer@gmail.com</a></li>
+                        <li><a href="https://wa.me/5579988663905" target="_blank" rel="noopener">(79) 98866-3905</a></li>
+                        <li>Aracaju, Sergipe — Brasil</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sf-bottom">
+                <span>© 2026 GeoCODE Programmer · Geovani Santos</span>
+                <div class="sf-legal">
+                    <a href="termos.html">Termos de uso</a>
+                    <a href="privacidade.html">Privacidade</a>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -938,6 +1031,16 @@
             });
         }, { rootMargin: '-20% 0px -70% 0px' });
         secs.forEach(s => spy.observe(s));
+    </script>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget({
+            rootPath: 'https://vlibras.gov.br/app',
+            personalization: 'https://vlibras.gov.br/config/default_logo.json',
+            avatar: 'random',
+            position: 'R',
+        });
     </script>
 </body>
 
