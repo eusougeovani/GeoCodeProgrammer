@@ -67,19 +67,6 @@
         section { padding: 76px 0; border-top: 1px solid var(--line); }
         section:first-of-type { border-top: none; }
 
-        .eyebrow {
-            font-family: var(--mono);
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: .06em;
-            color: var(--blue);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 18px;
-        }
-        .eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--blue); }
-
         h1, h2, h3 { font-family: var(--serif); font-weight: 500; letter-spacing: -.01em; color: var(--ink); }
 
         .sec-title { font-size: clamp(24px, 2.8vw, 34px); line-height: 1.18; max-width: 620px; margin-bottom: 12px; }
@@ -252,8 +239,6 @@
         #mobileNav.open { z-index: 200; isolation: isolate; }
 
         /* correções herdadas das versões anteriores */
-        .eyebrow { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .06em; color: var(--blue); display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
-        .eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--blue); }
         .toc nav { align-items: stretch; justify-content: flex-start; max-width: none; margin: 0; }
         .field label.opt, .field label.chip { text-transform: none; letter-spacing: normal; font-family: var(--sans); font-size: 16px; color: var(--ink); }
         .opt-body { display: block; }
@@ -266,7 +251,7 @@
         /* hero das páginas legais */
         .legal-hero { background: var(--paper-2); }
         .legal-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
-        .legal-hero .eyebrow { margin-bottom: 18px; }
+        .legal-hero { margin-bottom: 18px; }
         .legal-hero p { margin-bottom: 0; }
         .glance { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
         .glance li { background: var(--paper); padding: 20px; }
@@ -284,17 +269,14 @@
         @media (max-width:640px) { .flow { grid-template-columns: 1fr; } }
 
         /* valores: fatos rápidos + ritmo de seções */
-        .facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
-        .facts span { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 100px; padding: 6px 14px; display: inline-flex; align-items: center; gap: 8px; }
-        .facts span::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--moss); }
         #landing, #signage, #growth, #manutencao { background: var(--paper-2); }
         .tabnav-wrap { top: 69px; }
 
         /* faixa azul de chamada */
         .band-cta { background: var(--blue-d); color: #F3F4EF; padding: 84px 0; border-top: none; }
         .band-cta-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px; align-items: center; }
-        .band-cta .eyebrow { color: #A9C4D9; }
-        .band-cta .eyebrow::before { background: #A9C4D9; }
+        .band-cta { color: #A9C4D9; }
+        .band-cta::before { background: #A9C4D9; }
         .band-cta h2 { color: #F3F4EF; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.18; margin-bottom: 12px; }
         .band-cta h2 em { color: #A9C4D9; }
         .band-cta p { color: #D8E4EE; max-width: 480px; font-size: 16px; }
@@ -342,15 +324,9 @@
     <!-- ══════════ HERO ══════════ -->
     <section id="vhero">
         <div class="container">
-            <div class="eyebrow reveal up">VALORES</div>
             <h1 class="vhero-h1 reveal up">Preços diretos, <em>sem enrolação</em>.</h1>
             <p class="vhero-p reveal up">Valores de referência para cada serviço. O orçamento final é sempre
                 fechado após uma conversa rápida sobre o que você precisa.</p>
-            <div class="facts reveal up">
-                <span>Orçamento final após uma conversa rápida</span>
-                <span>Verba de anúncios sempre à parte</span>
-                <span>Até 20% de desconto no pagamento trimestral ou anual</span>
-            </div>
         </div>
     </section>
 
@@ -378,7 +354,6 @@
                         <circle cx="12" cy="12" r="3" />
                     </svg>
                 </div>
-                <div class="eyebrow reveal up" style="margin-bottom:0">.SITE</div>
             </div>
             <h2 class="sec-title reveal up">Sites Institucionais</h2>
             <p class="sec-sub reveal up">Presença profissional para a sua marca, com carregamento rápido e SEO local.</p>
@@ -425,7 +400,6 @@
                         <path d="M3 9h18M7 13h6M7 16h4" />
                     </svg>
                 </div>
-                <div class="eyebrow reveal up" style="margin-bottom:0">.PAGE</div>
             </div>
             <h2 class="sec-title reveal up">Landing Page</h2>
             <p class="sec-sub reveal up">Uma página, um objetivo: converter visitante em contato.</p>
@@ -463,7 +437,6 @@
                         <rect x="14" y="14" width="7" height="7" rx="1" />
                     </svg>
                 </div>
-                <div class="eyebrow reveal up" style="margin-bottom:0">.SYS</div>
             </div>
             <h2 class="sec-title reveal up">Sistema Akanni</h2>
             <p class="sec-sub reveal up">CRM, agenda e painéis administrativos sob medida, em Firebase.</p>
@@ -503,7 +476,6 @@
                         <path d="M9 21h6M12 17v4" />
                     </svg>
                 </div>
-                <div class="eyebrow reveal up" style="margin-bottom:0">.TV</div>
             </div>
             <h2 class="sec-title reveal up">Digital Signage</h2>
             <p class="sec-sub reveal up">Painéis para recepções e vitrines, com conteúdo editável à distância.</p>
@@ -539,7 +511,6 @@
                         <path d="M5 21c0-4 3-6.5 7-6.5s7 2.5 7 6.5" />
                     </svg>
                 </div>
-                <div class="eyebrow reveal up" style="margin-bottom:0">.BIO</div>
             </div>
             <h2 class="sec-title reveal up">Bio Site</h2>
             <p class="sec-sub reveal up">Seu hub de links, com a sua identidade — sem taxas de terceiros.</p>
@@ -574,7 +545,6 @@
                         <path d="M3 17l6-6 4 4 8-9" /><path d="M15 6h6v6" />
                     </svg>
                 </div>
-                <div class="eyebrow reveal up" style="margin-bottom:0">.GROWTH</div>
             </div>
             <h2 class="sec-title reveal up">Tráfego Pago &amp; SEO</h2>
             <p class="sec-sub reveal up">Anúncios e posicionamento orgânico, mês após mês. Verba de anúncios é sempre à parte.</p>
@@ -605,7 +575,6 @@
     <!-- ══════════ EXTRAS ══════════ -->
     <section id="extras">
         <div class="container">
-            <div class="eyebrow reveal up">EXTRAS</div>
             <h2 class="sec-title reveal up">Serviços avulsos</h2>
             <p class="sec-sub reveal up">Para demandas pontuais fora do escopo inicial do projeto.</p>
 
@@ -633,7 +602,6 @@
     <!-- ══════════ MANUTENÇÃO ══════════ -->
     <section id="manutencao">
         <div class="container">
-            <div class="eyebrow reveal up">SUPORTE</div>
             <h2 class="sec-title reveal up">Planos de manutenção</h2>
             <p class="sec-sub reveal up">Acompanhamento mensal para manter o site sempre no ar e atualizado.</p>
 
@@ -681,7 +649,6 @@
     <section class="band-cta">
         <div class="container band-cta-grid">
             <div>
-                <div class="eyebrow">Orçamento sob medida</div>
                 <h2>Vamos falar sobre o seu <em>projeto</em>?</h2>
                 <p>Os valores acima são referência — o orçamento final é fechado após uma conversa rápida sobre o escopo.</p>
             </div>
