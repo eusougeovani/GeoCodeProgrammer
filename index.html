@@ -160,13 +160,6 @@
         .art-frame { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--paper-2); position: relative; aspect-ratio: 1 / 1.02; }
         .art-frame svg.scene { position: absolute; inset: 0; width: 100%; height: 100%; }
         .art-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
-        .avail {
-            position: absolute; left: -22px; bottom: 28px; z-index: 3;
-            background: var(--paper); border: 1px solid var(--line); border-radius: 100px;
-            padding: 9px 16px; font-family: var(--mono); font-size: 11.5px; color: var(--ink);
-            display: inline-flex; align-items: center; gap: 9px;
-        }
-        .avail i { width: 8px; height: 8px; border-radius: 50%; background: var(--moss); box-shadow: 0 0 0 3px rgba(71, 86, 63, .18); }
         @media (max-width:900px) {
             .hero-grid { grid-template-columns: 1fr; gap: 48px; }
             .hero-art { max-width: 460px; width: calc(100% - 22px); margin: 0 auto; }
@@ -187,7 +180,6 @@
         .about-copy { padding-right: 34px; }
         .about-copy h2 { font-size: clamp(24px, 2.6vw, 32px); line-height: 1.2; margin-bottom: 18px; }
         .about-copy p { color: var(--ink-soft); font-size: 15.5px; margin-bottom: 20px; }
-        .signature { font-family: var(--serif); font-style: italic; font-size: 24px; color: var(--blue); }
         .traits { list-style: none; border-left: 1px solid var(--line); padding-left: 30px; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
         .traits li { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--ink); line-height: 1.4; }
         .traits li small { display: block; font-size: 12.5px; color: var(--ink-soft); margin-top: 2px; }
@@ -229,8 +221,6 @@
         ══════════════════════════════════════ */
         .akanni-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 70px; align-items: start; }
         .akanni-intro { position: sticky; top: 100px; }
-        .stack-row { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 10px; }
-        .stack-chip { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 100px; padding: 6px 14px; }
         .akanni-list { border-top: 1px solid var(--line); }
         .akanni-item { border-bottom: 1px solid var(--line); }
         .akanni-item summary { display: flex; align-items: flex-start; gap: 22px; padding: 24px 0; cursor: pointer; list-style: none; }
@@ -305,7 +295,6 @@
         .tl::before { content: ''; position: absolute; left: 6px; right: 6px; top: 6px; height: 1px; background: rgba(243, 244, 239, .3); }
         .tl-item { position: relative; padding-top: 32px; }
         .tl-item::before { content: ''; position: absolute; left: 0; top: 0; width: 13px; height: 13px; border-radius: 50%; background: var(--paper); border: 3px solid var(--blue-d); outline: 1px solid rgba(243, 244, 239, .5); }
-        .tl-when { font-family: var(--mono); font-size: 12px; color: #A9C4D9; }
         .tl-item h3 { color: #F3F4EF; font-size: 19px; margin: 6px 0 2px; }
         .tl-item small { font-family: var(--mono); font-size: 11.5px; color: #A9C4D9; display: block; margin-bottom: 10px; }
         .tl-item p { font-size: 14px; color: #D8E4EE; line-height: 1.6; }
@@ -326,7 +315,6 @@
         .proc-grid { display: grid; grid-template-columns: .85fr 1.5fr; }
         .valores { padding-right: 48px; border-right: 1px solid var(--line); }
         .valores h2 { font-size: 30px; line-height: 1.2; margin-bottom: 20px; }
-        .quote-mark { font-family: var(--serif); font-size: 60px; line-height: .6; color: var(--blue); display: block; height: 30px; }
         .valores p { color: var(--ink-soft); font-size: 15.5px; margin-bottom: 26px; }
         .val-links { display: flex; flex-direction: column; gap: 16px; margin-bottom: 28px; }
         .val-row { display: flex; align-items: center; gap: 14px; }
@@ -509,8 +497,7 @@
             <div class="reveal up">
                 <h1 class="hero-h1">Sites e sistemas com a <em>precisão do código</em> e a leveza do design.</h1>
                 <p class="hero-p">Sou Geovani Santos, desenvolvedor freelancer. Construo sites institucionais,
-                    sistemas sob medida e paineis digitais com HTML, CSS e JavaScript puro, sem excesso de
-                    dependências, sem enfeite desnecessário.</p>
+                    sistemas sob medida e paineis digitais.</p>
                 <div class="hero-ctas">
                     <a href="https://wa.me/5579988663905" target="_blank" rel="noopener" class="btn btn-primary">
                         <svg class="i"><use href="#ic-wa" /></svg>
@@ -554,7 +541,6 @@
                     </svg>
                     <img class="art-photo" src="assets/ui/geovani.jpg" alt="Geovani Santos" onerror="this.remove()" />
                 </div>
-                <div class="avail"><i></i>Disponível para freelance</div>
             </div>
         </div>
     </section>
@@ -600,7 +586,6 @@
                             tecnologia, do uso básico do computador ao desenvolvimento web. Antes de programar,
                             trabalhei como assistente administrativo, o que me deixou atento ao lado prático do
                             negócio, não só ao código.</p>
-                        <div class="signature">Geovani Santos</div>
                     </div>
                     <ul class="traits">
                         <li><svg class="i"><use href="#ic-tune" /></svg><span>Feito sob medida<small>Funções exatas para o seu negócio.</small></span></li>
@@ -640,7 +625,7 @@
                     <div class="svc-ico"><svg class="i"><use href="#ic-sys" /></svg></div>
                     <div class="svc-ext">.sys</div>
                     <h3>Sistema Akanni</h3>
-                    <p>CRM, agenda, cadastro de clientes e paineis administrativos (a linha Akanni).</p>
+                    <p>CRM, agenda, cadastro de clientes e paineis administrativos.</p>
                     <button class="svc-view" onclick="openMockup('sys')">Visualizar serviço <svg class="i"><use href="#ic-arrow" /></svg></button>
                 </article>
                 <article class="svc-card">
@@ -674,17 +659,12 @@
             <div class="akanni-intro reveal">
                 <h2 class="sec-title">Soluções modulares para gestão inteligente</h2>
                 <p class="sec-sub">Uma suíte de aplicações web pensada para resolver desafios de gestão por meio da
-                    tecnologia — da governança institucional à logística de operações complexas. Cada módulo funciona
+                    tecnologia (da governança institucional à logística de operações complexas). Cada módulo funciona
                     de forma independente ou integrada, dando uma visão 360° dos processos da sua organização.</p>
-                <div class="stack-row">
-                    <span class="stack-chip">Arquitetura modular</span>
-                    <span class="stack-chip">Escalável</span>
-                    <span class="stack-chip">Interfaces focadas em UI/UX</span>
-                </div>
             </div>
 
             <div class="akanni-list reveal">
-                <details class="akanni-item" open>
+                <details class="akanni-item">
                     <summary>
                         <span class="akanni-tag">akanni.app</span>
                         <span class="akanni-head">
@@ -881,21 +861,15 @@
                 <h2 class="sec-title">Minha trajetória</h2>
                 <div class="tl">
                     <div class="tl-item">
-                        <div class="tl-when">origem</div>
                         <h3>Assistente Administrativo</h3>
-                        <small>rotina de negócio</small>
                         <p>Daqui vem o olhar prático para o negócio, não só para o código.</p>
                     </div>
                     <div class="tl-item">
-                        <div class="tl-when">atuação</div>
                         <h3>Desenvolvedor Freelancer</h3>
-                        <small>GeoCODE Programmer</small>
                         <p>Sites, sistemas Akanni e Digital Signage com HTML, CSS e JavaScript puro.</p>
                     </div>
                     <div class="tl-item">
-                        <div class="tl-when">ensino</div>
                         <h3>Instrutor de Tecnologia</h3>
-                        <small>do básico ao desenvolvimento web</small>
                         <p>Aulas do uso básico do computador ao desenvolvimento web.</p>
                     </div>
                 </div>
@@ -908,7 +882,6 @@
         <div class="container proc-grid">
             <div class="valores reveal">
                 <h2>Preços diretos, <em>sem enrolação</em></h2>
-                <span class="quote-mark">“</span>
                 <p>Valores de referência para cada serviço. O orçamento final é sempre fechado após uma conversa
                     rápida sobre o que você precisa.</p>
                 <div class="val-links">
