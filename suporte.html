@@ -71,19 +71,6 @@
         section { padding: 76px 0; border-top: 1px solid var(--line); }
         section:first-of-type { border-top: none; }
 
-        .eyebrow {
-            font-family: var(--mono);
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: .06em;
-            color: var(--blue);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 18px;
-        }
-        .eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--blue); }
-
         h1, h2, h3 { font-family: var(--serif); font-weight: 500; letter-spacing: -.01em; color: var(--ink); }
 
         .btn {
@@ -329,8 +316,6 @@
         #mobileNav.open { z-index: 200; isolation: isolate; }
 
         /* correções herdadas das versões anteriores */
-        .eyebrow { font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: .06em; color: var(--blue); display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
-        .eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--blue); }
         .toc nav { align-items: stretch; justify-content: flex-start; max-width: none; margin: 0; }
         .field label.opt, .field label.chip { text-transform: none; letter-spacing: normal; font-family: var(--sans); font-size: 16px; color: var(--ink); }
         .opt-body { display: block; }
@@ -343,7 +328,7 @@
         /* hero das páginas legais */
         .legal-hero { background: var(--paper-2); }
         .legal-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
-        .legal-hero .eyebrow { margin-bottom: 18px; }
+        .legal-hero { margin-bottom: 18px; }
         .legal-hero p { margin-bottom: 0; }
         .glance { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
         .glance li { background: var(--paper); padding: 20px; }
@@ -370,8 +355,8 @@
         /* faixa azul de chamada */
         .band-cta { background: var(--blue-d); color: #F3F4EF; padding: 84px 0; border-top: none; }
         .band-cta-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px; align-items: center; }
-        .band-cta .eyebrow { color: #A9C4D9; }
-        .band-cta .eyebrow::before { background: #A9C4D9; }
+        .band-cta { color: #A9C4D9; }
+        .band-cta { background: #A9C4D9; }
         .band-cta h2 { color: #F3F4EF; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.18; margin-bottom: 12px; }
         .band-cta h2 em { color: #A9C4D9; }
         .band-cta p { color: #D8E4EE; max-width: 480px; font-size: 16px; }
@@ -419,7 +404,6 @@
     <!-- ══════════ HERO ══════════ -->
     <section id="shero">
         <div class="container">
-            <div class="eyebrow">SUPORTE TÉCNICO</div>
             <h1 class="shero-h1">Algo não está funcionando? <em>Vamos resolver</em>.</h1>
             <p class="shero-p">Conte o que está acontecendo no formulário abaixo. A solicitação chega organizada, com
                 protocolo, no meu WhatsApp, e eu já começo pelo diagnóstico.</p>
@@ -445,14 +429,14 @@
                     <div class="field">
                         <label for="f-nome">Nome completo ou da empresa<span class="req">*</span></label>
                         <input class="ctl" type="text" id="f-nome" maxlength="80" autocomplete="name"
-                            placeholder="Ex.: Maria Souza ou Clínica Bem Estar" />
+                            placeholder="Ex.: Seu Nome ou Sua Empresa" />
                         <p class="field-err">Informe seu nome completo ou o nome da empresa.</p>
                     </div>
                     <div class="form-row">
                         <div class="field">
                             <label for="f-whats">WhatsApp<span class="req">*</span></label>
                             <input class="ctl" type="tel" id="f-whats" inputmode="tel" autocomplete="tel-national"
-                                placeholder="(79) 90000-0000" />
+                                placeholder="(00) 90000-0000" />
                             <p class="field-err">Informe um WhatsApp válido, com DDD.</p>
                         </div>
                         <div class="field">
@@ -474,29 +458,15 @@
                             <label for="f-produto">Produto ou serviço<span class="req">*</span></label>
                             <select class="ctl" id="f-produto">
                                 <option value="">Selecione…</option>
-                                <optgroup label="Sites e páginas">
-                                    <option>Site Institucional</option>
-                                    <option>Landing Page</option>
-                                    <option>Bio Site</option>
-                                </optgroup>
-                                <optgroup label="Sistema Akanni">
-                                    <option>AkanniMED</option>
-                                    <option>AkanniHUB</option>
-                                    <option>AkanniAPP</option>
-                                    <option>AkanniCRM</option>
-                                    <option>AkanniCMS</option>
-                                    <option>AkanniCORE</option>
-                                    <option>AkanniFLOW</option>
-                                    <option>AkanniPEOPLE</option>
-                                    <option>Outro sistema Akanni</option>
-                                </optgroup>
-                                <optgroup label="Outros serviços">
-                                    <option>Digital Signage</option>
-                                    <option>Tráfego Pago</option>
-                                    <option>SEO / Google Meu Negócio</option>
-                                    <option>PWA</option>
-                                    <option>Outro</option>
-                                </optgroup>
+                                <option>Site Institucional</option>
+                                <option>Landing Page</option>
+                                <option>Bio Site</option>
+                                <option>Sistema Akanni</option>
+                                <option>Digital Signage</option>
+                                <option>Tráfego Pago</option>
+                                <option>SEO / Google Meu Negócio</option>
+                                <option>PWA</option>
+                                <option>Outro</option>
                             </select>
                             <p class="field-err">Selecione o produto ou serviço.</p>
                         </div>
