@@ -81,19 +81,6 @@
 
         .i { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
 
-        .eyebrow {
-            font-family: var(--mono);
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: .06em;
-            color: var(--blue);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--blue); }
-
         h1, h2, h3 { font-family: var(--serif); font-weight: 500; letter-spacing: -.01em; color: var(--ink); }
         h1 em, h2 em { font-style: italic; color: var(--blue); }
 
@@ -221,7 +208,7 @@
         ══════════════════════════════════════ */
         #servicos { background: var(--paper-2); }
         .center-head { text-align: center; }
-        .center-head .eyebrow { justify-content: center; }
+        .center-head { justify-content: center; }
         .center-head .sec-title, .center-head .sec-sub { margin-left: auto; margin-right: auto; }
         .svc-grid { margin-top: 54px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
         .svc-card { background: var(--paper); padding: 32px 28px 26px; display: flex; flex-direction: column; transition: var(--trans); }
@@ -303,8 +290,6 @@
            FAIXA AZUL — STACK + JORNADA
         ══════════════════════════════════════ */
         #jornada { background: var(--blue-d); color: #F3F4EF; border-top: none; padding: 100px 0; }
-        #jornada .eyebrow { color: #A9C4D9; }
-        #jornada .eyebrow::before { background: #A9C4D9; }
         #jornada h2 { color: #F3F4EF; }
         .band-grid { display: grid; grid-template-columns: .8fr 1.5fr; align-items: start; }
         .skills { padding-right: 48px; border-right: 1px solid rgba(243, 244, 239, .22); }
@@ -522,7 +507,6 @@
     <section id="hero" data-spy>
         <div class="container hero-grid">
             <div class="reveal up">
-                <div class="eyebrow">Olá, eu sou o Geovani</div>
                 <h1 class="hero-h1">Sites e sistemas com a <em>precisão do código</em> e a leveza do design.</h1>
                 <p class="hero-p">Sou Geovani Santos, desenvolvedor freelancer. Construo sites institucionais,
                     sistemas sob medida e paineis digitais com HTML, CSS e JavaScript puro, sem excesso de
@@ -609,7 +593,6 @@
             </div>
 
             <div class="reveal">
-                <div class="eyebrow">Sobre</div>
                 <div class="about-text">
                     <div class="about-copy">
                         <h2>Um único desenvolvedor. <em>Código enxuto</em>, sem dependências desnecessárias.</h2>
@@ -634,7 +617,6 @@
     <section id="servicos" data-spy>
         <div class="container">
             <div class="center-head reveal">
-                <div class="eyebrow">Serviços</div>
                 <h2 class="sec-title">O que eu construo</h2>
                 <p class="sec-sub">Cada projeto é feito sob medida. O formato abaixo é só o ponto de partida da conversa.</p>
             </div>
@@ -690,7 +672,6 @@
     <section id="akanni" data-spy>
         <div class="container akanni-grid">
             <div class="akanni-intro reveal">
-                <div class="eyebrow">Ecossistema Akanni</div>
                 <h2 class="sec-title">Soluções modulares para gestão inteligente</h2>
                 <p class="sec-sub">Uma suíte de aplicações web pensada para resolver desafios de gestão por meio da
                     tecnologia — da governança institucional à logística de operações complexas. Cada módulo funciona
@@ -838,7 +819,6 @@
         <div class="container">
             <div class="proj-head reveal">
                 <div>
-                    <div class="eyebrow">Projetos</div>
                     <h2 class="sec-title">Um retrospecto do que já foi ao ar</h2>
                 </div>
                 <a href="#contato" class="link-arrow">Quero um projeto assim <svg class="i"><use href="#ic-arrow" /></svg></a>
@@ -883,7 +863,6 @@
     <section id="jornada">
         <div class="container band-grid">
             <div class="skills reveal">
-                <div class="eyebrow">Stack</div>
                 <h2 class="sec-title">Ferramentas &amp; Tecnologias</h2>
                 <div class="tools">
                     <div class="tool" title="HTML5">H5</div>
@@ -899,7 +878,6 @@
             </div>
 
             <div class="journey reveal">
-                <div class="eyebrow">Jornada</div>
                 <h2 class="sec-title">Minha trajetória</h2>
                 <div class="tl">
                     <div class="tl-item">
@@ -929,7 +907,6 @@
     <section id="processo">
         <div class="container proc-grid">
             <div class="valores reveal">
-                <div class="eyebrow">Valores e suporte</div>
                 <h2>Preços diretos, <em>sem enrolação</em></h2>
                 <span class="quote-mark">“</span>
                 <p>Valores de referência para cada serviço. O orçamento final é sempre fechado após uma conversa
@@ -951,7 +928,6 @@
             </div>
 
             <div class="process reveal">
-                <div class="eyebrow">Como eu trabalho</div>
                 <h2 class="sec-title">Simples, claro e colaborativo</h2>
                 <div class="steps">
                     <div class="step">
@@ -1029,7 +1005,6 @@
             </div>
 
             <div class="contact-copy reveal">
-                <div class="eyebrow">Contato</div>
                 <h2>Vamos conversar sobre o <em>seu projeto</em>?</h2>
                 <p>Preencha o formulário, sua mensagem chega pronta no meu WhatsApp, sem burocracia.</p>
 
