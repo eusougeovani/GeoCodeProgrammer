@@ -8,10 +8,12 @@
 geocodeprogrammer/
 │
 ├── index.html              # Página principal (portfolio + soluções + stack + sobre)
-├── catalogo.html           # Catálogo marketplace filtrável de serviços
-├── privacidade.html        # Política de Privacidade (LGPD)
-├── termos.html             # Termos de Uso
 │
+└── pages/
+    ├── valores.html           # 
+    ├── privacidade.html        # Política de Privacidade (LGPD)
+    ├── termos.html             # Termos de Uso
+    ├── suporte.html             # 
 └── assets/
     ├── ui/
     │   ├── geovani.jpg         # Foto do desenvolvedor (hero)
