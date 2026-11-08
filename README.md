@@ -145,7 +145,7 @@ geocodeprogrammer/
 | **jsPDF** | Geração de relatórios em PDF |
 | **QRCode.js** | Geração de QR Code e integração PIX |
 | **Swiper.js** | Carrosséis touch-friendly |
-| **Jitsi Meet SDK** | Videoconferência embarcada |
+| **Cloudflare** | DNS, CDN e segurança |
 
 ### Ambiente de Desenvolvimento
 

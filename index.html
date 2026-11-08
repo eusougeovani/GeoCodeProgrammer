@@ -212,9 +212,6 @@
         .svc-ext { font-family: var(--mono); color: var(--blue); font-size: 13px; margin-bottom: 4px; }
         .svc-card h3 { font-size: 21px; margin-bottom: 10px; }
         .svc-card p { font-size: 15px; color: var(--ink-soft); margin-bottom: 20px; flex: 1; }
-        .svc-view { font-family: var(--mono); font-size: 12px; color: var(--blue); display: inline-flex; align-items: center; gap: 6px; background: none; border: none; padding: 0; cursor: pointer; transition: var(--trans); align-self: flex-start; }
-        .svc-view:hover { color: var(--blue-d); gap: 10px; }
-        .svc-view svg { width: 13px; height: 13px; }
         @media (max-width:900px) { .svc-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width:560px) { .svc-grid { grid-template-columns: 1fr; } }
 
@@ -402,22 +399,6 @@
         @media (max-width:600px) { footer { padding-bottom: 96px; } }
 
         /* ══════════════════════════════════════
-           MODAL — visualizar serviço
-        ══════════════════════════════════════ */
-        .modal-overlay { display: none; position: fixed; inset: 0; z-index: 300; background: rgba(26, 30, 27, .55); padding: 28px; align-items: center; justify-content: center; }
-        .modal-overlay.open { display: flex; }
-        .modal-window { position: relative; width: 100%; max-width: 660px; animation: modalIn .25s ease; }
-        @keyframes modalIn { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: none; } }
-        .modal-close { position: absolute; top: -38px; right: 0; background: none; border: none; cursor: pointer; font-family: var(--mono); font-size: 13px; color: #F3F4EF; opacity: .8; }
-        .modal-close:hover { opacity: 1; }
-        .browser-frame { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--paper); }
-        .browser-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: var(--paper-2); border-bottom: 1px solid var(--line); }
-        .browser-bar .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line); }
-        .browser-url { margin-left: 10px; font-family: var(--mono); font-size: 11px; color: var(--ink-faint); background: var(--paper); border: 1px solid var(--line); border-radius: 100px; padding: 4px 14px; flex: 1; max-width: 280px; text-align: center; }
-        .browser-body { width: 100%; display: block; line-height: 0; }
-        .modal-caption { margin-top: 16px; font-family: var(--mono); font-size: 12.5px; color: var(--paper-2); text-align: center; opacity: .85; }
-
-        /* ══════════════════════════════════════
            BOTÃO FLUTUANTE — orçamento / suporte
         ══════════════════════════════════════ */
         .fab { position: fixed; right: 20px; bottom: 20px; z-index: 90; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
@@ -537,42 +518,36 @@
                     <div class="svc-ext">.site</div>
                     <h3>Site Institucional</h3>
                     <p>Presença profissional para a sua marca, com foco em carregamento rápido e SEO local.</p>
-                    <button class="svc-view" onclick="openMockup('site')">Visualizar serviço <svg class="i"><use href="#ic-arrow" /></svg></button>
                 </article>
                 <article class="svc-card">
                     <div class="svc-ico"><svg class="i"><use href="#ic-page" /></svg></div>
                     <div class="svc-ext">.page</div>
                     <h3>Landing Page</h3>
                     <p>Página única, direta ao ponto, pensada para converter visitantes em contatos.</p>
-                    <button class="svc-view" onclick="openMockup('page')">Visualizar serviço <svg class="i"><use href="#ic-arrow" /></svg></button>
                 </article>
                 <article class="svc-card">
                     <div class="svc-ico"><svg class="i"><use href="#ic-sys" /></svg></div>
                     <div class="svc-ext">.sys</div>
                     <h3>Sistema Akanni</h3>
                     <p>CRM, agenda, cadastro de clientes e paineis administrativos.</p>
-                    <button class="svc-view" onclick="openMockup('sys')">Visualizar serviço <svg class="i"><use href="#ic-arrow" /></svg></button>
                 </article>
                 <article class="svc-card">
                     <div class="svc-ico"><svg class="i"><use href="#ic-tv" /></svg></div>
                     <div class="svc-ext">.tv</div>
                     <h3>Digital Signage</h3>
                     <p>Painéis digitais para recepções e vitrines, com conteúdo atualizado à distância.</p>
-                    <button class="svc-view" onclick="openMockup('tv')">Visualizar serviço <svg class="i"><use href="#ic-arrow" /></svg></button>
                 </article>
                 <article class="svc-card">
                     <div class="svc-ico"><svg class="i"><use href="#ic-bio" /></svg></div>
                     <div class="svc-ext">.bio</div>
                     <h3>Bio Site</h3>
                     <p>Um hub de links com a sua identidade, no lugar de soluções genéricas prontas.</p>
-                    <button class="svc-view" onclick="openMockup('bio')">Visualizar serviço <svg class="i"><use href="#ic-arrow" /></svg></button>
                 </article>
                 <article class="svc-card">
                     <div class="svc-ico"><svg class="i"><use href="#ic-growth" /></svg></div>
                     <div class="svc-ext">.growth</div>
                     <h3>Tráfego e SEO</h3>
                     <p>Crescimento acelerado para o seu negócio com anúncios patrocinados e posicionamento orgânico no topo do Google.</p>
-                    <button class="svc-view" onclick="openMockup('growth')">Visualizar serviço <svg class="i"><use href="#ic-arrow" /></svg></button>
                 </article>
             </div>
         </div>
@@ -818,10 +793,10 @@
                     <div class="tool" title="Firebase"><img src="assets/tech/firebase.png" alt="Firebase" width="64" height="64" loading="lazy" /></div>
                     <div class="tool" title="Vercel"><img src="assets/tech/vercel.png" alt="Vercel" width="64" height="64" loading="lazy" /></div>
                     <div class="tool" title="GitHub"><img src="assets/tech/github.png" alt="GitHub" width="64" height="64" loading="lazy" /></div>
-                    <div class="tool" title="Jitsi"><img src="assets/tech/jitsi.png" alt="Jitsi" width="64" height="64" loading="lazy" /></div>
+                    <div class="tool" title="Cloudflare"><img src="assets/tech/cloudflare.png" alt="Cloudflare" width="64" height="64" loading="lazy" /></div>
                     <div class="tool" title="PWA"><img src="assets/tech/pwa.png" alt="PWA" width="64" height="64" loading="lazy" /></div>
                 </div>
-                <p class="tools-note">HTML5 · CSS3 · JavaScript ES6+ · Firebase · Vercel · GitHub · Jitsi · PWA</p>
+                <p class="tools-note">HTML5 · CSS3 · JavaScript ES6+ · Firebase · Vercel · GitHub · Cloudflare · PWA</p>
             </div>
 
             <div class="journey reveal">
@@ -1049,21 +1024,6 @@
         </button>
     </div>
 
-    <!-- ══════════ MODAL: VISUALIZAR SERVIÇO ══════════ -->
-    <div class="modal-overlay" id="serviceModal" onclick="if(event.target===this) closeMockup()">
-        <div class="modal-window">
-            <button class="modal-close" onclick="closeMockup()">Fechar ✕</button>
-            <div class="browser-frame">
-                <div class="browser-bar">
-                    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                    <div class="browser-url" id="mockupUrl">geocodeprogrammer.vercel.app</div>
-                </div>
-                <div class="browser-body" id="mockupBody"></div>
-            </div>
-            <p class="modal-caption" id="mockupCaption"></p>
-        </div>
-    </div>
-
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
         new window.VLibras.Widget({
@@ -1133,35 +1093,6 @@
         fabBtn.addEventListener('click', () => setFab(fabMenu.hidden));
         document.addEventListener('click', e => { if (!fab.contains(e.target)) setFab(false); });
         document.addEventListener('keydown', e => { if (e.key === 'Escape') setFab(false); });
-
-        /* ════════════════════════════════════
-           MODAL — VISUALIZAR SERVIÇO
-           (capturas de tela em assets/screen/)
-        ════════════════════════════════════ */
-        const MOCKUPS = {
-            site: { url: 'site.com.br', caption: 'Site institucional — header, hero, seção de serviços e contato.', img: 'assets/screen/site.png' },
-            page: { url: 'page.com.br', caption: 'Landing Page — foco em uma única chamada para ação.', img: 'assets/screen/page.png' },
-            sys: { url: 'sys.com', caption: 'Akanni — painel administrativo com dados em tempo real.', img: 'assets/screen/sys.png' },
-            tv: { url: 'display · painel local', caption: 'Digital Signage — conteúdo em tela cheia, atualizado à distância.', img: 'assets/screen/tv.png' },
-            bio: { url: 'bio.com', caption: 'BioSite — hub de links com identidade própria.', img: 'assets/screen/bio.png' },
-            growth: { url: 'growth.com', caption: 'Tráfego e SEO — divulgação online da marca.', img: 'assets/screen/growth.png' }
-        };
-
-        function openMockup(key) {
-            const m = MOCKUPS[key];
-            if (!m) return;
-            document.getElementById('mockupUrl').textContent = m.url;
-            document.getElementById('mockupBody').innerHTML =
-                `<img src="${m.img}" alt="${m.caption}" style="width:100%;height:auto;display:block" />`;
-            document.getElementById('mockupCaption').textContent = m.caption;
-            document.getElementById('serviceModal').classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-        function closeMockup() {
-            document.getElementById('serviceModal').classList.remove('open');
-            document.body.style.overflow = '';
-        }
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMockup(); });
 
         /* ════════════════════════════════════
            FORMULÁRIO DE CONTATO → WHATSAPP
