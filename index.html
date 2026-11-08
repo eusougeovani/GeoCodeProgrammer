@@ -160,7 +160,8 @@
 
         .hero-art { position: relative; }
         .art-frame { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--paper-2); position: relative; aspect-ratio: 1 / 1.02; }
-        .art-frame svg.scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+        .art-frame.empty, .about-frame.empty, .proj-thumb.empty { background: var(--paper-2); }
+        .art-frame.empty::after, .about-frame.empty::after, .proj-thumb.empty::after { content: "Imagem em breve"; position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--mono); font-size: 12px; letter-spacing: .04em; color: var(--ink-soft); }
         .art-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; }
         @media (max-width:900px) {
             .hero-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -173,7 +174,6 @@
         .sobre-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 72px; align-items: center; }
         .about-art { position: relative; max-width: 420px; }
         .about-frame { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--paper-2); position: relative; aspect-ratio: 1 / 1.02; }
-        .about-frame svg.scene { position: absolute; inset: 0; width: 100%; height: 100%; }
         .about-badge { position: absolute; right: -24px; bottom: 24px; z-index: 3; background: var(--blue); color: #FBF7F1; width: 124px; padding: 16px 12px; border-radius: 3px; }
         .about-badge b { display: block; font-family: var(--serif); font-size: 30px; font-weight: 500; line-height: 1; }
         .about-badge span { display: block; font-family: var(--mono); font-size: 10.5px; line-height: 1.4; margin-top: 8px; opacity: .85; }
@@ -268,16 +268,8 @@
         .proj { display: block; }
         .proj-thumb { aspect-ratio: 1 / .8; border-radius: 3px; border: 1px solid var(--line); overflow: hidden; position: relative; display: grid; place-items: center; transition: var(--trans); }
         .proj:hover .proj-thumb { border-color: var(--blue); transform: translateY(-3px); }
-        .proj-thumb svg { width: 76%; height: auto; }
-        .proj-thumb .tag { position: absolute; left: 10px; top: 10px; font-family: var(--mono); font-size: 10px; letter-spacing: .04em; color: #FBF7F1; background: rgba(26, 30, 27, .4); padding: 3px 9px; border-radius: 100px; }
-        /* cor predominante de cada projeto (--ac = cor de apoio) */
-        .t1 { background: #FAEED3; --ac: #7A3520; }   /* Psi Meire França · Âmbar Mel */
-        .t1 .tag { color: #3E1F14; background: rgba(255, 255, 255, .65); }
-        .t2 { background: #B02A1E; --ac: #F5B301; }   /* Fundação Fênix 193 · Vermelho Brasa */
-        .t3 { background: #281B34; --ac: #F2C14E; }   /* LuminaBoard · Ameixa Noturna */
-        .t4 { background: #131313; --ac: #E50914; }   /* Netlove · Carvão Cinema */
-        .t5 { background: var(--blue-d); }            /* Ecossistema Akanni */
-        .proj-thumb svg { filter: drop-shadow(0 8px 14px rgba(0, 0, 0, .22)); }
+        .proj-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .proj-thumb .tag { position: absolute; left: 10px; top: 10px; font-family: var(--mono); font-size: 10px; letter-spacing: .04em; color: #FBF7F1; background: rgba(26, 30, 27, .4); padding: 3px 9px; border-radius: 100px; z-index: 2; }
         .proj h3 { font-size: 17px; margin-top: 16px; }
         .proj p { font-size: 13px; color: var(--ink-soft); margin-top: 3px; line-height: 1.5; }
         .proj .go { font-family: var(--mono); display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; font-size: 11.5px; color: var(--blue); }
@@ -293,10 +285,10 @@
         .band-grid { display: grid; grid-template-columns: .8fr 1.5fr; align-items: start; }
         .skills { padding-right: 48px; border-right: 1px solid rgba(243, 244, 239, .22); }
         .skills .sec-title, .journey .sec-title { font-size: 28px; }
-        .tools { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 28px; max-width: 300px; }
+        .tools { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 28px; max-width: 340px; }
         .tool { aspect-ratio: 1; border-radius: 3px; background: var(--paper); color: var(--blue); display: grid; place-items: center; font-family: var(--mono); font-weight: 500; font-size: 14px; transition: var(--trans); }
         .tool:hover { transform: translateY(-3px); }
-        .tool svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+        .tool img { width: 54%; height: 54%; object-fit: contain; }
         .tools-note { margin-top: 18px; font-family: var(--mono); font-size: 11.5px; color: #A9C4D9; max-width: 300px; line-height: 1.7; }
         .journey { padding-left: 48px; }
         .journey .sec-title { margin-bottom: 38px; }
@@ -467,18 +459,6 @@
             <symbol id="ic-rocket" viewBox="0 0 24 24"><path d="M14 4c3 0 6 0 6 0s0 3-1 6l-5 5-4-4z" /><path d="M9 11l-4 1-2 3 4 1M13 15l-1 4-3 2-1-4M15.5 8.5h.01" /></symbol>
             <symbol id="ic-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z" /><path d="M9 12l2 2 4-4" /></symbol>
             <symbol id="ic-tune" viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10" /><circle cx="16" cy="7" r="2" /><circle cx="8" cy="17" r="2" /></symbol>
-
-            <symbol id="mini" viewBox="0 0 160 110">
-                <rect x="8" y="8" width="144" height="94" rx="4" fill="#F3F4EF" opacity=".96" />
-                <circle cx="20" cy="19" r="2.6" fill="#DBD9CC" /><circle cx="29" cy="19" r="2.6" fill="#DBD9CC" /><circle cx="38" cy="19" r="2.6" fill="#DBD9CC" />
-                <rect x="18" y="32" width="64" height="8" rx="1.5" fill="#1A1E1B" opacity=".85" />
-                <rect x="18" y="46" width="48" height="5" rx="1.5" fill="#93968C" opacity=".6" />
-                <rect x="18" y="56" width="56" height="5" rx="1.5" fill="#93968C" opacity=".6" />
-                <rect x="18" y="72" width="30" height="10" rx="1.5" fill="var(--ac,#2E5C82)" />
-                <rect x="94" y="32" width="46" height="52" rx="3" fill="#EAEAE1" />
-                <circle cx="117" cy="52" r="10" fill="var(--ac,#2E5C82)" opacity=".8" />
-                <rect x="102" y="70" width="30" height="5" rx="1.5" fill="#47563F" opacity=".6" />
-            </symbol>
         </defs>
     </svg>
 
@@ -536,37 +516,7 @@
 
             <div class="hero-art reveal up">
                 <div class="art-frame">
-                    <!-- Ilustração padrão. Para usar uma foto, salve em assets/ui/geovani.jpg -->
-                    <svg class="scene" viewBox="0 0 440 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                        <rect width="440" height="450" fill="#EAEAE1" />
-                        <rect x="40" y="56" width="300" height="214" rx="8" fill="#F3F4EF" stroke="#DBD9CC" />
-                        <rect x="40" y="56" width="300" height="28" rx="8" fill="#EAEAE1" />
-                        <circle cx="58" cy="70" r="4" fill="#DBD9CC" /><circle cx="72" cy="70" r="4" fill="#DBD9CC" /><circle cx="86" cy="70" r="4" fill="#DBD9CC" />
-                        <rect x="104" y="63" width="130" height="14" rx="7" fill="#F3F4EF" stroke="#DBD9CC" />
-                        <rect x="64" y="108" width="150" height="14" rx="2" fill="#1A1E1B" />
-                        <rect x="64" y="130" width="112" height="14" rx="2" fill="#2E5C82" opacity=".9" />
-                        <rect x="64" y="162" width="130" height="7" rx="2" fill="#93968C" opacity=".55" />
-                        <rect x="64" y="176" width="110" height="7" rx="2" fill="#93968C" opacity=".55" />
-                        <rect x="64" y="204" width="76" height="26" rx="3" fill="#2E5C82" />
-                        <rect x="150" y="204" width="64" height="26" rx="3" fill="none" stroke="#1A1E1B" />
-                        <rect x="236" y="104" width="82" height="128" rx="4" fill="#EAEAE1" />
-                        <rect x="246" y="116" width="62" height="38" rx="3" fill="#47563F" opacity=".85" />
-                        <rect x="246" y="164" width="44" height="6" rx="2" fill="#93968C" opacity=".6" />
-                        <rect x="246" y="178" width="56" height="6" rx="2" fill="#93968C" opacity=".6" />
-                        <rect x="246" y="200" width="40" height="14" rx="2" fill="#2E5C82" opacity=".8" />
-                        <!-- cartão de código -->
-                        <rect x="150" y="238" width="250" height="150" rx="8" fill="#1E3E56" />
-                        <rect x="166" y="258" width="46" height="7" rx="2" fill="#A9C4D9" />
-                        <rect x="220" y="258" width="78" height="7" rx="2" fill="#F3F4EF" opacity=".85" />
-                        <rect x="182" y="276" width="96" height="7" rx="2" fill="#8FB08A" />
-                        <rect x="182" y="294" width="64" height="7" rx="2" fill="#F3F4EF" opacity=".7" />
-                        <rect x="254" y="294" width="82" height="7" rx="2" fill="#A9C4D9" />
-                        <rect x="182" y="312" width="118" height="7" rx="2" fill="#F3F4EF" opacity=".7" />
-                        <rect x="182" y="330" width="52" height="7" rx="2" fill="#8FB08A" />
-                        <rect x="166" y="348" width="30" height="7" rx="2" fill="#A9C4D9" />
-                        <rect x="166" y="366" width="3" height="10" fill="#F3F4EF" />
-                    </svg>
-                    <img class="art-photo" src="assets/ui/geovani.jpg" alt="Geovani Santos" onerror="this.remove()" />
+                    <img class="art-photo" src="assets/ui/geovani.jpg" alt="Geovani Santos" width="880" height="900" fetchpriority="high" onerror="this.parentElement.classList.add('empty');this.remove()" />
                 </div>
             </div>
         </div>
@@ -790,31 +740,31 @@
 
             <div class="proj-grid reveal">
                 <a class="proj" data-cat="sites sistemas paineis" href="https://psimeirefranca.vercel.app/" target="_blank" rel="noopener">
-                    <div class="proj-thumb t1"><span class="tag">Cliente</span><svg viewBox="0 0 160 110"><use href="#mini" /></svg></div>
+                    <div class="proj-thumb"><span class="tag">Cliente</span><img src="assets/projetos/psimeirefranca.jpg" alt="Site da Psi Meire França" width="640" height="512" loading="lazy" onerror="this.parentElement.classList.add('empty');this.remove()" /></div>
                     <h3>Psi Meire França</h3>
                     <p>Landing Page + AkanniCRM + Digital Signage + Bio Site + Tráfego e SEO</p>
                     <span class="go">Visitar o site <svg class="i"><use href="#ic-arrow" /></svg></span>
                 </a>
                 <a class="proj" data-cat="sites sistemas" href="https://ff193.vercel.app/" target="_blank" rel="noopener">
-                    <div class="proj-thumb t2"><span class="tag">Cliente</span><svg viewBox="0 0 160 110"><use href="#mini" /></svg></div>
+                    <div class="proj-thumb"><span class="tag">Cliente</span><img src="assets/projetos/ff193.jpg" alt="Site da Fundação Fênix 193" width="640" height="512" loading="lazy" onerror="this.parentElement.classList.add('empty');this.remove()" /></div>
                     <h3>Fundação Fênix 193</h3>
                     <p>Site Institucional + AkanniCMS + Tráfego e SEO</p>
                     <span class="go">Visitar o site <svg class="i"><use href="#ic-arrow" /></svg></span>
                 </a>
                 <a class="proj" data-cat="paineis" href="https://luminaboard.vercel.app/" target="_blank" rel="noopener">
-                    <div class="proj-thumb t3"><span class="tag">Painel</span><svg viewBox="0 0 160 110"><use href="#mini" /></svg></div>
+                    <div class="proj-thumb"><span class="tag">Painel</span><img src="assets/projetos/luminaboard.jpg" alt="LuminaBoard" width="640" height="512" loading="lazy" onerror="this.parentElement.classList.add('empty');this.remove()" /></div>
                     <h3>LuminaBoard</h3>
                     <p>Digital Signage — painel interativo para estudos</p>
                     <span class="go">Visitar o site <svg class="i"><use href="#ic-arrow" /></svg></span>
                 </a>
                 <a class="proj" data-cat="sistemas" href="https://netlove.vercel.app/" target="_blank" rel="noopener">
-                    <div class="proj-thumb t4"><span class="tag">WebApp</span><svg viewBox="0 0 160 110"><use href="#mini" /></svg></div>
+                    <div class="proj-thumb"><span class="tag">WebApp</span><img src="assets/projetos/netlove.jpg" alt="Netlove" width="640" height="512" loading="lazy" onerror="this.parentElement.classList.add('empty');this.remove()" /></div>
                     <h3>Netlove</h3>
                     <p>AkanniAPP — Web App privado de marcos de relacionamento</p>
                     <span class="go">Visitar o site <svg class="i"><use href="#ic-arrow" /></svg></span>
                 </a>
                 <a class="proj" data-cat="sistemas" href="#akanni">
-                    <div class="proj-thumb t5"><span class="tag">Sistemas</span><svg viewBox="0 0 160 110"><use href="#mini" /></svg></div>
+                    <div class="proj-thumb"><span class="tag">Sistemas</span><img src="assets/projetos/akanni.jpg" alt="Ecossistema Akanni" width="640" height="512" loading="lazy" onerror="this.parentElement.classList.add('empty');this.remove()" /></div>
                     <h3>Ecossistema Akanni</h3>
                     <p>CRM, CMS, ERP, SCM, HRM e PWAs modulares</p>
                     <span class="go">Conhecer os módulos <svg class="i"><use href="#ic-arrow" /></svg></span>
@@ -828,27 +778,7 @@
         <div class="container sobre-grid">
             <div class="about-art reveal">
                 <div class="about-frame">
-                    <!-- Ilustração padrão. Para usar uma foto, salve em assets/ui/geovani-trabalho.jpg -->
-                    <svg class="scene" viewBox="0 0 400 410" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                        <rect width="400" height="410" fill="#EAEAE1" />
-                        <rect x="36" y="48" width="80" height="10" rx="2" fill="#2E5C82" />
-                        <rect x="36" y="70" width="140" height="6" rx="2" fill="#93968C" opacity=".5" />
-                        <rect x="36" y="84" width="110" height="6" rx="2" fill="#93968C" opacity=".5" />
-                        <rect x="0" y="318" width="400" height="92" fill="#DBD9CC" />
-                        <rect x="60" y="150" width="280" height="176" rx="8" fill="#1A1E1B" />
-                        <rect x="70" y="160" width="260" height="156" rx="4" fill="#1E3E56" />
-                        <rect x="88" y="182" width="44" height="7" rx="2" fill="#A9C4D9" />
-                        <rect x="140" y="182" width="86" height="7" rx="2" fill="#F3F4EF" opacity=".85" />
-                        <rect x="104" y="202" width="102" height="7" rx="2" fill="#8FB08A" />
-                        <rect x="104" y="222" width="70" height="7" rx="2" fill="#F3F4EF" opacity=".7" />
-                        <rect x="182" y="222" width="82" height="7" rx="2" fill="#A9C4D9" />
-                        <rect x="88" y="242" width="120" height="7" rx="2" fill="#F3F4EF" opacity=".7" />
-                        <rect x="104" y="262" width="58" height="7" rx="2" fill="#8FB08A" />
-                        <rect x="88" y="282" width="3" height="10" fill="#F3F4EF" />
-                        <path d="M40 326h320l-16 14H56z" fill="#93968C" opacity=".7" />
-                        <rect x="300" y="92" width="64" height="46" rx="4" fill="#47563F" opacity=".85" />
-                    </svg>
-                    <img class="art-photo" src="assets/ui/geovani-trabalho.jpg" alt="Geovani trabalhando" onerror="this.remove()" />
+                    <img class="art-photo" src="assets/ui/geovani-trabalho.jpg" alt="Geovani trabalhando" width="800" height="820" loading="lazy" onerror="this.parentElement.classList.add('empty');this.remove()" />
                 </div>
                 <div class="about-badge">
                     <b>100%</b>
@@ -882,14 +812,14 @@
             <div class="skills reveal">
                 <h2 class="sec-title">Ferramentas &amp; Tecnologias</h2>
                 <div class="tools">
-                    <div class="tool" title="HTML5">H5</div>
-                    <div class="tool" title="CSS3">C3</div>
-                    <div class="tool" title="JavaScript ES6+">JS</div>
-                    <div class="tool" title="Firebase"><svg viewBox="0 0 24 24"><use href="#ic-db" /></svg></div>
-                    <div class="tool" title="Vercel">▲</div>
-                    <div class="tool" title="GitHub"><svg viewBox="0 0 24 24"><use href="#ic-code" /></svg></div>
-                    <div class="tool" title="Jitsi">Ji</div>
-                    <div class="tool" title="PWA">PWA</div>
+                    <div class="tool" title="HTML5"><img src="assets/tech/html5.png" alt="HTML5" width="64" height="64" loading="lazy" /></div>
+                    <div class="tool" title="CSS3"><img src="assets/tech/css3.png" alt="CSS3" width="64" height="64" loading="lazy" /></div>
+                    <div class="tool" title="JavaScript ES6+"><img src="assets/tech/javascript.png" alt="JavaScript ES6+" width="64" height="64" loading="lazy" /></div>
+                    <div class="tool" title="Firebase"><img src="assets/tech/firebase.png" alt="Firebase" width="64" height="64" loading="lazy" /></div>
+                    <div class="tool" title="Vercel"><img src="assets/tech/vercel.png" alt="Vercel" width="64" height="64" loading="lazy" /></div>
+                    <div class="tool" title="GitHub"><img src="assets/tech/github.png" alt="GitHub" width="64" height="64" loading="lazy" /></div>
+                    <div class="tool" title="Jitsi"><img src="assets/tech/jitsi.png" alt="Jitsi" width="64" height="64" loading="lazy" /></div>
+                    <div class="tool" title="PWA"><img src="assets/tech/pwa.png" alt="PWA" width="64" height="64" loading="lazy" /></div>
                 </div>
                 <p class="tools-note">HTML5 · CSS3 · JavaScript ES6+ · Firebase · Vercel · GitHub · Jitsi · PWA</p>
             </div>
